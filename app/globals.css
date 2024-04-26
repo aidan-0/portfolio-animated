@@ -2,32 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+* {
+    overflow: hidden;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+#container-red,
+#container-blue {
+    display: grid;
+    place-content: center;
+    height: 100vh;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+h1 {
+    /* font-size: 7rem; */
+    text-transform: uppercase;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    line-height: 5.9rem;
+    letter-spacing: 0.25rem;
+    text-align: left;
+    color: #0f1113;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+#word1,
+#word2,
+#word3,
+#word4,
+#initial-entry {
+    transform: translateY(115px);
 }
+
+#word4 {
+    color: #0A1117;
+}
+
+.text-wrapper {
+    position: absolute;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+* {
+    overflow: hidden;
+}
+
+/* Orange */
+.bg-111 {
+    background: rgb(200,113,55);
+    background: radial-gradient(circle at top center, rgba(200,113,55,1) 0%, rgba(154,53,20,1) 100%);
+}
+
+
+/* Keep 1 */
+.bg-1 {
+    background: rgb(18,59,98);
+    background: radial-gradient(circle at top center, rgba(18,59,98,1) 0%, rgba(2,34,65,1) 100%);
+}
+
+.bg-2 {
+    background: rgb(67,116,163);
+    background: radial-gradient(circle at top center, rgba(67,116,163,1) 0%, rgba(66,79,127,1) 100%);
+}
+
+.bg-2 {
+    background: rgb(0,101,138);
+background: radial-gradient(circle at top center, rgba(0,101,138,1) 0%, rgba(0,120,157,1) 100%);
+}
+
+.bg-3 {
+    background: rgb(156,118,176);
+    background: radial-gradient(circle at top center, rgba(156,118,176,1) 0%, rgba(110,98,153,1) 100%);
+}
+
+/* Keep 4 */
+.bg-4 {
+    background: rgb(0,101,138);
+    background: radial-gradient(circle at top center, rgba(0,101,138,1) 0%, rgba(18,59,98,1) 100%);
+}
+
+
+
+
+
+
