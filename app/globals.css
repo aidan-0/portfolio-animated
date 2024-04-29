@@ -42,46 +42,31 @@ h1 {
     align-items: center;
 }
 
-* {
-    overflow: hidden;
-}
-
-/* Orange */
-.bg-111 {
-    background: rgb(200,113,55);
-    background: radial-gradient(circle at top center, rgba(200,113,55,1) 0%, rgba(154,53,20,1) 100%);
-}
-
-
 /* Keep 1 */
-.bg-1 {
+.bg-1,
+#main-bg {
     background: rgb(18,59,98);
     background: radial-gradient(circle at top center, rgba(18,59,98,1) 0%, rgba(2,34,65,1) 100%);
 }
 
 .bg-2 {
-    background: rgb(67,116,163);
-    background: radial-gradient(circle at top center, rgba(67,116,163,1) 0%, rgba(66,79,127,1) 100%);
-}
-
-.bg-2 {
-    background: rgb(0,101,138);
-background: radial-gradient(circle at top center, rgba(0,101,138,1) 0%, rgba(0,120,157,1) 100%);
-}
-
-.bg-3 {
-    background: rgb(156,118,176);
-    background: radial-gradient(circle at top center, rgba(156,118,176,1) 0%, rgba(110,98,153,1) 100%);
-}
-
-/* Keep 4 */
-.bg-4 {
     background: rgb(0,101,138);
     background: radial-gradient(circle at top center, rgba(0,101,138,1) 0%, rgba(18,59,98,1) 100%);
 }
 
+.bg-3 {
+    background: rgb(0,101,138);
+background: radial-gradient(circle at top center, rgba(0,101,138,1) 0%, rgba(0,120,157,1) 100%);
+}
 
+.bg-4 {
+    background: rgb(200,113,55);
+    background: radial-gradient(circle at top center, rgba(200,113,55,1) 0%, rgba(154,53,20,1) 100%);
+}
 
+#nav-link:hover {
+    color: #f3c12a;
+}
 
 
 

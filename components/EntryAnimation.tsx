@@ -1,17 +1,17 @@
 "use client"
 
 import { gsap } from 'gsap';
-// import './global.css';
 import { useGSAP } from "@gsap/react";
 
 const EntryAnimation = () => {
+    
     useGSAP(() => {
         const swipeDuration = 1;
 
-        const t1 = gsap.timeline();
+        const entryTimeline = gsap.timeline();
 
         // Text enters
-        t1.to("#initial-entry", {
+        entryTimeline.to("#initial-entry", {
             y: 0,
             duration: 2,
             ease: "expo.inOut",
@@ -48,9 +48,6 @@ const EntryAnimation = () => {
             color: "#0a1117",
             delay: 0.22
         }, "<")
-        .to('#developer-dot', {
-            color: "#adcbfb"
-        }, "<")
         .to('.h1-text', {
             color: "#0a1117",
             delay: 0.1
@@ -78,9 +75,6 @@ const EntryAnimation = () => {
         .to('.dev-text', {
             color: "#E1EAF1",
             delay: 0.4
-        }, "<")
-        .to('#developer-dot', {
-            color: "#022342",
         }, "<")
         .to('.h1-text', {
             color: "#E1EAF1",
@@ -111,9 +105,6 @@ const EntryAnimation = () => {
         .to('.dev-text', {
             color: "#0A1117",
             delay: 0.18
-        }, "<")
-        .to('#developer-dot', {
-            color: "#adcbfb",
         }, "<")
         .to('.h1-text', {
             color: "#0A1117",
@@ -149,20 +140,19 @@ const EntryAnimation = () => {
         })
         .to(".dev-text", {
             color: "#E1EAF1"
+        }, "<")  
+        .to("#entry-animation-container", {
+            opacity: 0
         }, "<")
-        .to("#text-container", {
-            opacity: 1,
-            duration: 1,
-            ease: "power3.inOut", 
-        }, "<")        
-
-
-
-
+        .to("#entry-animation-container", {
+            display: "none"
+        })
+        
+        
     }, []);
 
     return (
-        <>
+        <div id='entry-animation-container'>
         {/* Starting Container */}
         <div className='h-screen p-10 bg-1 absolute top-0 left-0 z-40 w-full' id="container-bg-1"></div>
         <div className='h-screen p-10 absolute top-0 left-0 z-50 w-full flex flex-col justify-center' id="text-container">
@@ -176,7 +166,7 @@ const EntryAnimation = () => {
                   <div className="text-wrapper"><h1 className='text-4xl sm:text-8xl uppercase font-semibold h1-text text-text-dark' id='word4'>Solutions</h1></div>
                 </div>
                 <div><h1 className='text-4xl sm:text-8xl'>&nbsp;</h1></div>
-                <div><h1 className='text-4xl sm:text-8xl uppercase font-semibold dev-text block pl-48' id="initial-entry">Developer<span id="developer-dot" className='text-[#007297]'>.</span></h1></div>
+                <div><h1 className='text-4xl sm:text-8xl uppercase font-semibold dev-text block pl-48' id="initial-entry">Developer.</h1></div>
             </div>
 
   
@@ -184,13 +174,12 @@ const EntryAnimation = () => {
         
         {/* Second Container */}
         <div className='h-screen p-10 bg-2 absolute top-0 left-0 z-30 w-full flex flex-col gap-10' id="container-bg-2">
-            {/* Optional: Any content you might want to have on the blue background */}
         </div>
         {/* Third Container */}
         <div className='h-screen p-10 bg-3 absolute top-0 left-0 z-20 w-full' id="container-bg-3"></div>
         {/* Fourth Container */}
         <div className='h-screen p-10 bg-4 absolute top-0 left-0 z-10 w-full' id="container-bg-4"></div>
-        </>
+        </div>
     );
 };
 
