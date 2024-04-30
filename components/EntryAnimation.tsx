@@ -3,8 +3,9 @@
 import { gsap } from 'gsap';
 import { useGSAP } from "@gsap/react";
 
+
 const EntryAnimation = () => {
-    
+
     useGSAP(() => {
         const swipeDuration = 1;
 
@@ -144,14 +145,16 @@ const EntryAnimation = () => {
         .to("#entry-animation-container", {
             opacity: 0
         }, "<")
+        .to("*", {
+            overflow: "visible"
+        })
         .to("#entry-animation-container", {
             display: "none"
         })
-        
-        
-    }, []);
+        }, []);
 
     return (
+        <>
         <div id='entry-animation-container'>
         {/* Starting Container */}
         <div className='h-screen p-10 bg-1 absolute top-0 left-0 z-40 w-full' id="container-bg-1"></div>
@@ -179,7 +182,10 @@ const EntryAnimation = () => {
         <div className='h-screen p-10 bg-3 absolute top-0 left-0 z-20 w-full' id="container-bg-3"></div>
         {/* Fourth Container */}
         <div className='h-screen p-10 bg-4 absolute top-0 left-0 z-10 w-full' id="container-bg-4"></div>
+        {/* <Header /> */}
         </div>
+
+        </>
     );
 };
 
