@@ -2,9 +2,11 @@
 
 import { gsap } from 'gsap';
 import { useGSAP } from "@gsap/react";
+import { useAnimation } from '../AnimationContext';
 
 
 const EntryAnimation = () => {
+    const { setAnimationTrigger } = useAnimation();
 
     useGSAP(() => {
         const swipeDuration = 1;
@@ -12,7 +14,15 @@ const EntryAnimation = () => {
         const entryTimeline = gsap.timeline();
 
         // Text enters
-        entryTimeline.to("#initial-entry", {
+        entryTimeline.to("*", {
+            overflow: "hidden",
+            duration: 0.01,
+        })
+        .to("#entry-animation-container", {
+            visibility: "visible",
+            duration: 0.01,
+        }, "<")
+        .to("#initial-entry", {
             y: 0,
             duration: 2,
             ease: "expo.inOut",
@@ -109,7 +119,7 @@ const EntryAnimation = () => {
         }, "<")
         .to('.h1-text', {
             color: "#0A1117",
-            delay: 0.1
+            delay: 0.1 
         }, "<")
 
 
@@ -137,21 +147,27 @@ const EntryAnimation = () => {
             delay: 0.2
         }, "<")
         .to(".h1-text", {
-            color: "#E1EAF1"
+            color: "#E1EAF1",
+            onComplete: () => {
+                console.log("entry animation complete")
+                setAnimationTrigger(true);
+                console.log("animation trigger set to true")
+            },  
         })
         .to(".dev-text", {
             color: "#E1EAF1"
         }, "<")  
         .to("#entry-animation-container", {
-            opacity: 0
+            opacity: 0,
         }, "<")
         .to("*", {
             overflow: "visible"
         })
         .to("#entry-animation-container", {
-            display: "none"
+            display: "none",
+    
         })
-        }, []);
+        }, [setAnimationTrigger]);
 
     return (
         <>

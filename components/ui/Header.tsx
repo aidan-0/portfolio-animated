@@ -7,8 +7,8 @@ import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useAnimation } from "../AnimationContext";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const navLinks = [
 	{
@@ -35,35 +35,44 @@ const navLinks = [
 
 const Header = () => {
 	const pathname = usePathname();
-
-
-
+	const { animationTrigger } = useAnimation();
+	
+	
+	
 	useGSAP(() => {
-        const timeline = gsap.timeline({
-            onStart: () => {
-                document.body.style.overflow = 'hidden'; // Disable scrolling
-            },
-            onComplete: () => {
-                document.body.style.overflow = 'visible'; // Enable scrolling
-            }
-        });
+		gsap.registerPlugin(ScrollTrigger);
 
+		if (animationTrigger) {
+        const timeline = gsap.timeline();
+		console.log("Starting Header Animation")
 
-
-		timeline.from("#header-container", {
+		timeline
+		.to("#outer-container", {
+			opacity: 1,
+			duration: 1,
+			ease: "power1.inOut",
+		})
+		.fromTo("#aidan-mcdonald", {
+			y: 200,
+		}, {opacity: 1,
+			duration: 1,
+			y: 0,
+			ease: "power1.inOut",}, "<")
+		.from("#header-container", {
 			    // delay: 6.3,
-				duration: 1.2,
-				ease: "power3.inOut",
+				// ease: "power3.inOut",
+				delay: 0.3,
+				duration: 1,
 				width: "70px",
 				alignContent: "center",
-			}),
-			timeline.from("#nav-link",
-				{
-					opacity: 0,
-					delay: 0.5,
-					duration: 1.5,
-				},
-				"<",
+			}, "<"),
+		timeline.from("#nav-link",
+			{
+				opacity: 0,
+				delay: 0.5,
+				duration: 1.3,
+			},
+			"<",
 			);
 
 		const tlHeaderScroll = gsap.timeline({
@@ -86,12 +95,11 @@ const Header = () => {
 				paddingLeft: "70%",
 				paddingRight: "10%",
 			}, "<")
-
-
-	}, []);
+		}
+	}, [animationTrigger]);
 
 	return (
-		<div className="p-5 flex justify-center sticky top-0" id="outer-container">
+		<div className="p-5 opacity-[0] flex justify-center sticky top-0" id="outer-container">
 			<header
 				className="w-[80%] items-center rounded-full bg-white shadow"
 				id="header-container"

@@ -14,6 +14,11 @@
     height: 100vh;
 }
 
+#entry-animation-container {
+    visibility: hidden;
+}
+
+
 h1 {
     /* font-size: 7rem; */
     text-transform: uppercase;
@@ -22,6 +27,7 @@ h1 {
     letter-spacing: 0.25rem;
     text-align: left;
     color: #0f1113;
+
 }
 
 #word1,
