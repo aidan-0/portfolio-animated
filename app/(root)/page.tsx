@@ -1,10 +1,10 @@
 import React from "react";
-import EntryAnimation from "../../components/EntryAnimation";
+import EntryAnimation from "../../components/ui/EntryAnimation";
 
 const page = () => {
 	return (
 		<>
-			{/* <EntryAnimation /> */}
+			<EntryAnimation />
 
 			{/* Aidan McDonald */}
 			<section>

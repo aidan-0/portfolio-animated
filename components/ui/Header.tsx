@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useAnimation } from "../AnimationContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,36 +36,34 @@ const navLinks = [
 
 const Header = () => {
 	const pathname = usePathname();
+	const { animationTrigger } = useAnimation();
+
 
 
 
 	useGSAP(() => {
-        const timeline = gsap.timeline({
-            onStart: () => {
-                document.body.style.overflow = 'hidden'; // Disable scrolling
-            },
-            onComplete: () => {
-                document.body.style.overflow = 'visible'; // Enable scrolling
-            }
-        });
+		if(animationTrigger) {
+        const timeline = gsap.timeline();
 
 
-
-		timeline.from("#header-container", {
+		timeline.to("#outer-container", {
+			opacity: 1,
+		})
+		.from("#header-container", {
 			    // delay: 6.3,
 				duration: 1.2,
 				ease: "power3.inOut",
 				width: "70px",
 				alignContent: "center",
 			}),
-			timeline.from("#nav-link",
-				{
-					opacity: 0,
-					delay: 0.5,
-					duration: 1.5,
-				},
-				"<",
-			);
+		timeline.from("#nav-link",
+			{
+				opacity: 0,
+				delay: 0.5,
+				duration: 1.5,
+			},
+			"<",
+		);
 
 		const tlHeaderScroll = gsap.timeline({
 			scrollTrigger: {
@@ -74,6 +73,7 @@ const Header = () => {
 				markers: true,
 				scrub: 1,
 			},
+			defaults: {overwrite: false}
 		});
 		tlHeaderScroll
 			.to("#nav-link", {
@@ -86,12 +86,11 @@ const Header = () => {
 				paddingLeft: "70%",
 				paddingRight: "10%",
 			}, "<")
-
-
-	}, []);
+		}
+	}, [animationTrigger]);
 
 	return (
-		<div className="p-5 flex justify-center sticky top-0" id="outer-container">
+		<div className="p-5 justify-center sticky top-0 opacity-0" id="outer-container">
 			<header
 				className="w-[80%] items-center rounded-full bg-white shadow"
 				id="header-container"

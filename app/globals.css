@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 
-/* * {
+* {
     overflow: hidden;
-} */
+}
 
 #container-red,
 #container-blue {

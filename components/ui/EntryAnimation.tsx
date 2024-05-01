@@ -2,9 +2,13 @@
 
 import { gsap } from 'gsap';
 import { useGSAP } from "@gsap/react";
+import { useAnimation } from '../AnimationContext';
+
 
 
 const EntryAnimation = () => {
+    const { setAnimationTrigger } = useAnimation();
+
 
     useGSAP(() => {
         const swipeDuration = 1;
@@ -149,9 +153,16 @@ const EntryAnimation = () => {
             overflow: "visible"
         })
         .to("#entry-animation-container", {
-            display: "none"
+            display: "none",
+            onComplete: () => {
+                console.log(setAnimationTrigger)
+                setAnimationTrigger(true);
+                console.log(setAnimationTrigger)
+            }
         })
-        }, []);
+
+
+        }, [setAnimationTrigger]);
 
     return (
         <>
