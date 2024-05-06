@@ -1,14 +1,21 @@
+"use client";
+
 import React from "react";
 import EntryAnimation from "../../components/ui/EntryAnimation";
+import Image from "next/image";
+
 
 const page = () => {
+
+
+	
 	return (
 		<>
-			<EntryAnimation />
+			{/* <EntryAnimation /> */}
 
 			{/* Aidan McDonald */}
-			<section>
-				<div className="h-[88vh] flex flex-col justify-center font-semibold uppercase pt-60 opacity-0" id="aidan-mcdonald">
+			<section id="home-section1">
+				<div className="h-screen flex flex-col justify-center font-semibold uppercase pt-60 opacity-0" id="aidan-mcdonald">
 						<h1 className="text-3xl sm:text-8xl tracking-wide text-center text-text-light pb-4">
 							Aidan<br/>McDonald
 						</h1>

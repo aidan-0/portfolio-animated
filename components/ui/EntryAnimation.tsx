@@ -53,14 +53,14 @@ const EntryAnimation = () => {
             y: 0,
             duration: 1,
             ease: "expo.inOut",
-            color: "#0a1117"
+            color: "#111416"
         }, "<")
         .to('.dev-text', {
-            color: "#0a1117",
+            color: "#111416",
             delay: 0.22
         }, "<")
         .to('.h1-text', {
-            color: "#0a1117",
+            color: "#111416",
             delay: 0.1
         }, "<")
 

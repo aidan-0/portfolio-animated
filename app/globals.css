@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 
-/* * {
-    overflow: hidden;
-} */
+body {
+    background: #0c3256;
+}
 
 #container-red,
 #container-blue {
@@ -72,11 +72,21 @@ background: radial-gradient(circle at top center, rgba(0,101,138,1) 0%, rgba(0,1
 }
 
 #nav-link:hover {
-    color: #f3c12a;
+    color: #dcaa7e;
 }
 
 
 #home-section2 {
     background: rgb(18,59,98);
     background: radial-gradient(circle at bottom center, rgba(18,59,98,1) 0%, rgba(2,34,65,1) 100%);
+}
+
+
+/* Header */
+#outer-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
