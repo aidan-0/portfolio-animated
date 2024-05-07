@@ -51,7 +51,7 @@ h1 {
 
 /* Keep 1 */
 .bg-1,
-#main-bg {
+#home-section1 {
     background: rgb(18,59,98);
     background: radial-gradient(circle at top center, rgba(18,59,98,1) 0%, rgba(2,34,65,1) 100%);
 }

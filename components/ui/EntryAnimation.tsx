@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import { useAnimation } from '../AnimationContext';
 
 
+
 const EntryAnimation = () => {
     const { setAnimationTrigger } = useAnimation();
 
@@ -165,8 +166,8 @@ const EntryAnimation = () => {
         })
         .to("#entry-animation-container", {
             display: "none",
-    
         })
+ 
         }, [setAnimationTrigger]);
 
     return (

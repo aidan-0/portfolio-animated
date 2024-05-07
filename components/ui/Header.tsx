@@ -34,10 +34,10 @@ const navLinks = [
 
 const Header = () => {
 	const pathname = usePathname();
-	// const { animationTrigger } = useAnimation();
+	const { animationTrigger } = useAnimation();
 
 	useGSAP(() => {
-		// if (animationTrigger) {
+		if (animationTrigger) {
 		gsap.registerPlugin(ScrollTrigger);
 
 		const timeline = gsap.timeline();
@@ -50,7 +50,7 @@ const Header = () => {
 				ease: "power1.inOut",
 			})
 			.fromTo(
-				"#aidan-mcdonald",
+				"#aidan-mcdonald-div",
 				{
 					y: 200,
 				},
@@ -82,7 +82,7 @@ const Header = () => {
 			scrollTrigger: {
 				trigger: "#home-section1",
 				start: "top top",
-				end: "+=300px",
+				end: "+=500px",
 				markers: true,
 				scrub: 1,
 			},
@@ -150,9 +150,9 @@ const Header = () => {
 
 
 
-		// }
-	}, []);
-	// }, [animationTrigger]);
+		}
+	// }, []);
+	}, [animationTrigger]);
 
 	return (
 		<div
