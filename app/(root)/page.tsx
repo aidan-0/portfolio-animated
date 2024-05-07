@@ -10,8 +10,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 
 const page = () => {
-	// SplitText.create("#hero-main-text:nth-child(1)", {type:"chars"})
 	gsap.registerPlugin(ScrollTrigger);
+	let heroSplitText = SplitText.create("#hero-main-text", {type:"chars"})
+
+
 
 
 	useGSAP(() => {
@@ -37,7 +39,18 @@ const page = () => {
 				y: 200,
 				scale: 0.5,
 			}, "<")
+
+
+
+	
+			//text scatters l / r by varying percentages changed on the stagger as well as falling back
+				
+			//build animation
+			tlHeroSection.to(heroSplitText.chars, {duration:0.4, rotationX:90, transformOrigin:
+	"50% 50% -50", stagger: 0.2})
+			.to(heroSplitText.chars, {duration:0.4, rotationX:0
 		})
+	});
 
 
 	
