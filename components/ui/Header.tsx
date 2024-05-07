@@ -34,15 +34,16 @@ const navLinks = [
 
 const Header = () => {
 	const pathname = usePathname();
-	const { animationTrigger } = useAnimation();
+	// const { animationTrigger } = useAnimation();
 
 	useGSAP(() => {
-		if (animationTrigger) {
+		// if (animationTrigger) {
 		gsap.registerPlugin(ScrollTrigger);
 
 		const timeline = gsap.timeline();
 		console.log("Starting Header Animation");
 
+		//load in animation
 		timeline
 			.to("#outer-container", {
 				opacity: 1,
@@ -78,42 +79,49 @@ const Header = () => {
 				"<",
 			);
 
+		// header fade away
 		const tlHeaderScroll = gsap.timeline({
 			scrollTrigger: {
 				trigger: "#home-section1",
 				start: "top top",
-				end: "+=500px",
+				end: "+=350px",
 				markers: true,
 				scrub: 1,
 			},
 		});
-		tlHeaderScroll
-			.to(
-				"#nav-link",
-				{
-					opacity: 0,
-					duration: 2,
-				},
-				"<",
-			)
-			.to(
-				"#outer-container",
-				{
-					opacity: 0,
-					duration: 2,
-					ease: "power1.inOut",
-				},
-				"<",
-			)
-			.to(
-				"#header-container",
-				{
-					duration: 4,
-					width: "300px",
-					delay: 0.2,
-				},
-				"<",
-			)
+
+		
+
+		// tlHeaderScroll
+			// .to(
+			// 	"#nav-link",
+			// 	{
+			// 		opacity: 0,
+			// 		duration: 4,
+			// 	},
+			// 	"<",
+			// )
+			// .to(
+			// 	"#outer-container",
+			// 	{
+			// 		opacity: 0,
+			// 		duration: 4,
+			// 		ease: "power1.inOut",
+			// 	},
+			// 	"<",
+			// )
+			// .fromTo(
+			// 	"#header-container",
+			// 	{
+			// 		width: "80%"
+			// 	},
+			// 	{
+			// 		duration: 4,
+			// 		width: "50%",
+			// 		// delay: 0,
+			// 	},
+			// 	"<",
+			// )
 
 			
 
@@ -122,7 +130,7 @@ const Header = () => {
 		const tlHeaderIcon = gsap.timeline({
 			scrollTrigger: {
 				trigger: "#home-section1",
-				start: "+=350px top",
+				start: "+=800px top",
 				end: "+=400px",
 				markers: true,
 				scrub: 1,
@@ -130,33 +138,31 @@ const Header = () => {
 		});
 		tlHeaderIcon
 		.to("#header-container", {
-			width: "100%",
+			width: "80%",
 		})
-
-		.to("#nav-link", {
-			display: "none",
-		}, "<")
-		.to("#nav-logo", {
-			paddingLeft: "100px",
-		}, "<")
 		.to("#outer-container", {
 			paddingLeft: "100px",
+			paddingRight: "100px",
+		})
+		.to("#nav-link", {
+			display: "none",
 		}, "<")
 		.to("#outer-container", {
 			opacity: 1,
 			ease: "power1.inOut",
+			duration: 1,
 		})
 
 
 
 
-		}
-	// }, []);
-	}, [animationTrigger]);
+		// }
+	}, []);
+	// }, [animationTrigger]);
 
 	return (
 		<div
-			className="opacity-[0] flex justify-center top-0 absolute"
+			className="opacity-0 flex justify-center top-0 absolute"
 			id="outer-container"
 		>
 			<header
