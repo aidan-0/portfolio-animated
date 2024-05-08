@@ -9,28 +9,6 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useAnimation } from "../AnimationContext";
 
-const navLinks = [
-	{
-		href: "/about",
-		name: "ABOUT",
-	},
-	{
-		href: "/work",
-		name: "WORK",
-	},
-	{
-		href: "/",
-		name: "LOGO",
-	},
-	{
-		href: "/resume",
-		name: "RESUME",
-	},
-	{
-		href: "/contact",
-		name: "CONTACT",
-	},
-];
 
 const Header = () => {
 	const pathname = usePathname();
@@ -130,7 +108,7 @@ const Header = () => {
 		const tlHeaderIcon = gsap.timeline({
 			scrollTrigger: {
 				trigger: "#home-section1",
-				start: "+=800px top",
+				start: "+=1000px top",
 				end: "+=400px",
 				markers: true,
 				scrub: 1,
@@ -174,14 +152,14 @@ const Header = () => {
 					id="inner-header-container"
 				>
 					<Link
-						href="/about"
+						href="#about"
 						className={`${pathname === "/about" ? "text-[#dcaa7e]" : "text-[#adcae5]"}`}
 						id="nav-link"
 					>
 						ABOUT
 					</Link>
 					<Link
-						href="/work"
+						href="#work"
 						className={`${pathname === "/work" ? "text-[#dcaa7e]" : "text-[#adcae5]"}`}
 						id="nav-link"
 					>

@@ -1,37 +1,47 @@
+import Image from "next/image";
 import React from "react";
 
 const page = () => {
   return (
     <>
-      <div>Testing</div>
-      <section id="home-section1" className="h-screen">
+      <section id="home-section1" className="h-screen flex flex-row px-[20%]">
+        {/* text */}
         <div
-          className="w-[50%] flex flex-col justify-center font-semibold uppercase pt-60 text-text-light"
+          className="w-[60%]  flex flex-col justify-center font-[500]  text-text-light text-3xl tracking-wider leading-10"
           id="aidan-mcdonald-div"
         >
-          <div id="hero-text-inner-container" className="px-20">
+          <div id="hero-text-inner-container">
             <span className="" id="hidden-intro-text">
               Hi, I'm{" "}
             </span>
             <span
-              className="tracking-wide text-center pb-4 text-[#dcaa7e]"
+              className="tracking-wide text-center pb-4"
               id="hero-main-text"
             >
               Aidan McDonald
             </span>
             <span className="" id="hidden-intro-text">
-              {" "}a skilled web{" "}
+              {" "}a <br/>passionate Web{" "}
             </span>
-            <span className="text-center text-[#dcaa7e]" id="hero-sub-text">
-              Developer
-            </span>
-            <span className="" id="hidden-intro-text">
-              {" "} currently seeking opportunities where I can bring my unique
-              blend of technical skills and creative vision to develop
-              innovative web solutions that drive business success.{" "}
+            <span className="text-center" id="hero-sub-text">
+              Developer <br/>from Perth.
             </span>
           </div>
         </div>
+
+        {/* image */}
+        <div
+          id="hero-image-container"
+          className="w-[40%] flex justify-center items-center">
+          <Image
+            id="hero-image"
+            className="justify-center align-middle items-center rounded-t-full"
+            width={200} height={200}
+            src="/headshot.png"
+            alt="Aidan McDonald"
+            />
+          </div>
+
       </section>
     </>
   );

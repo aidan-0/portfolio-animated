@@ -15,7 +15,7 @@ const page = () => {
 			scrollTrigger: {
 				trigger: "#home-section1",
 				start: "top top",
-				end: "+=1500",
+				end: "+=700",
 				scrub: 1,
 				markers: true,
 				pin: true,
@@ -25,19 +25,19 @@ const page = () => {
 		//Hero text exit animation
 		tlHeroSection
 			.to("#hero-main-text", {
-				fontSize: "1rem",
+				fontSize: "5rem",
+				opacity: 0,
+				// duration: 1,
 			})
 			.to(
 				"#hero-sub-text",
 				{
-					fontSize: "1rem",
+					fontSize: "1.2rem",
+					opacity: 0,
+					// duration: 1,
 				},
-				"<"
+				"<",
 			)
-			.to("#hidden-intro-text", {
-				opacity: 1,
-				display: "block",
-			}, "<")
 			.fromTo(
 				"#nav-link",
 				{
@@ -45,7 +45,7 @@ const page = () => {
 				},
 				{
 					opacity: 0,
-					// duration: 4,
+					// duration: 2,
 				},
 				"<",
 			)
@@ -56,13 +56,23 @@ const page = () => {
 					width: "80%",
 				},
 				{
-					// duration: 4,
+					// duration: 2,
 					width: "50%",
 					opacity: 0,
-					// delay: 0,
 				},
 				"<",
-			);
+			)
+
+			.to("#aidan-mcdonald-div", {
+				display: "none",
+			})
+
+			.to("#bio-outer-container", {
+				opacity: 1,
+				display: "flex",
+				duration: 1,
+			})
+
 
 	});
 
@@ -76,9 +86,6 @@ const page = () => {
 					className="h-screen flex flex-col justify-center font-semibold uppercase pt-60 opacity-0"
 					id="aidan-mcdonald-div"
 				>
-					<span className="opacity-0 hidden" id="hidden-intro-text">
-						Hi, I'm
-					</span>
 					<span
 						className="text-3xl sm:text-8xl tracking-wide text-center text-text-light pb-4"
 						id="hero-main-text"
@@ -87,29 +94,63 @@ const page = () => {
 						<br />
 						McDonald
 					</span>
-					<span className="opacity-0 hidden" id="hidden-intro-text">
-						a skilled web {" "}
-					</span>
 					<span
 						className="text-4xl sm:text-3xl text-center tracking-[.5em] text-[#dcaa7e]"
 						id="hero-sub-text"
 					>
 						Developer
 					</span>
-					<span className="opacity-0 hidden" id="hidden-intro-text">
-						I'm currently seeking opportunities where I can bring my unique
-						blend of technical skills and creative vision to develop innovative
-						web solutions that drive business success.{" "}
-					</span>
-
-					{/* <div className="absolute bottom-[10%] right-[10%]">
-					position absolute down arrow
-				</div> */}
 				</div>
-			</section>
+
 
 			{/* About */}
-			<section id="home-section2">
+			<div id="about">
+
+
+			<div id="bio-outer-container" className="hidden opacity-0 h-screen items-center">
+    <div
+        className="w-[60%] justify-center font-[500] text-text-light text-3xl tracking-wider leading-10"
+        id="bio-text-container"
+    >
+        <div id="bio-inner-container">
+            <span className="">Hi, I'm </span>
+            <span>Aidan McDonald</span>
+            <span className="">
+                {" "} 
+                a <br />
+                passionate Web{" "}
+            </span>
+            <span>
+                Developer <br />
+                from Perth.
+            </span>
+        </div>
+    </div>
+
+    {/* image */}
+    <div
+        id="hero-image-container"
+        className="w-[40%] justify-center items-center"
+    >
+        <Image
+            id="hero-image"
+            className="justify-center align-middle items-center rounded-t-full"
+            width={200}
+            height={200}
+            src="/headshot.png"
+            alt="Aidan McDonald"
+        />
+    </div>
+</div>
+</div>
+
+
+			</section>
+
+
+
+			{/* About */}
+			<section id="work">
 				<div className="h-screen pt-20 flex flex-col justify-center font-semibold uppercase">
 					<h1 className="text-3xl sm:text-8xl tracking-wide text-center text-text-light pb-4">
 						2nd
