@@ -34,10 +34,10 @@ const navLinks = [
 
 const Header = () => {
 	const pathname = usePathname();
-	// const { animationTrigger } = useAnimation();
+	const { animationTrigger } = useAnimation();
 
 	useGSAP(() => {
-		// if (animationTrigger) {
+		if (animationTrigger) {
 		gsap.registerPlugin(ScrollTrigger);
 
 		const timeline = gsap.timeline();
@@ -80,15 +80,15 @@ const Header = () => {
 			);
 
 		// header fade away
-		const tlHeaderScroll = gsap.timeline({
-			scrollTrigger: {
-				trigger: "#home-section1",
-				start: "top top",
-				end: "+=350px",
-				markers: true,
-				scrub: 1,
-			},
-		});
+		// const tlHeaderScroll = gsap.timeline({
+		// 	scrollTrigger: {
+		// 		trigger: "#home-section1",
+		// 		start: "top top",
+		// 		end: "+=350px",
+		// 		markers: true,
+		// 		scrub: 1,
+		// 	},
+		// });
 
 		
 
@@ -156,9 +156,9 @@ const Header = () => {
 
 
 
-		// }
-	}, []);
-	// }, [animationTrigger]);
+		}
+	// }, []);
+	}, [animationTrigger]);
 
 	return (
 		<div

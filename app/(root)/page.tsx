@@ -37,7 +37,7 @@ const page = () => {
 			.to("#hidden-intro-text", {
 				opacity: 1,
 				display: "block",
-			})
+			}, "<")
 			.fromTo(
 				"#nav-link",
 				{
@@ -68,7 +68,7 @@ const page = () => {
 
 	return (
 		<>
-			{/* <EntryAnimation /> */}
+			<EntryAnimation />
 
 			{/* Aidan McDonald */}
 			<section id="home-section1">
