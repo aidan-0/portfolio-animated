@@ -28,12 +28,17 @@ const Header = () => {
 				duration: 1,
 				ease: "power1.inOut",
 			})
+			.to("#hero-div-container", {
+				opacity: 1,
+				duration: 1,
+				ease: "power1.inOut",
+			}, "<")
 			.fromTo(
-				"#aidan-mcdonald-div",
+				"#hero-main-text",
 				{
-					y: 200,
+					y: 80,
 				},
-				{ opacity: 1, duration: 2, y: 0, ease: "elastic.out(1.15, 1)" },
+				{ duration: 2, y: 0, stagger: 0.05, ease: "elastic.out(1.15, 1)" },
 				"<",
 			)
 			.from(
@@ -46,7 +51,18 @@ const Header = () => {
 					alignContent: "center",
 				},
 				"<",
-			),
+			)
+			.fromTo(".mini-bio-text", {
+				// opacity: 0,
+				y: 35,
+
+			  }, {
+				opacity: 1,
+				y: 0,
+				stagger: 0.05,
+				// duration: 0.6,
+				ease: "power1.inOut",
+			  }, "<")
 			timeline.from(
 				"#nav-link",
 				{
@@ -56,14 +72,7 @@ const Header = () => {
 				},
 				"<",
 			)
-			.from("#mini-bio-text", {
-				opacity: 0,
-				y: -50,
-				stagger: 0.4,
-				duration: 1,
-				ease: "power1.out",
-				delay: 1,
-			  }, "<");
+
 			
 
 		// header fade away
@@ -161,11 +170,11 @@ const Header = () => {
 					id="inner-header-container"
 				>
 					<Link
-						href="#about"
+						href="#tech"
 						className={`${pathname === "/about" ? "text-[#dcaa7e]" : "text-[#adcae5]"}`}
 						id="nav-link"
 					>
-						ABOUT
+						TECH
 					</Link>
 					<Link
 						href="#portfolio"

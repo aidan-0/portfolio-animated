@@ -2,10 +2,12 @@
 
 import React from "react";
 import EntryAnimation from "../../components/ui/EntryAnimation";
+import TechStack from "../../components/TechStack";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 
 const page = () => {
   useGSAP(() => {
@@ -24,28 +26,23 @@ const page = () => {
 
     //Hero text exit animation
     tlHeroSection
-      .to("#hero-main-text", {
-        fontSize: "5rem",
+      .fromTo("#hero-main-text", {
+		y: 0,
+	  }, {
+        y: -50,
         opacity: 0,
-        // duration: 1,
+        duration: 2,
+		stagger: .25,
       })
-      .to(
-        "#hero-sub-text",
-        {
-        //   fontSize: "1.2rem",
-          opacity: 0,
-          // duration: 1,
-        },
-        "<"
-      )
       .fromTo(
         "#nav-link",
         {
           opacity: 1,
+		  duration: 2,
         },
         {
           opacity: 0,
-          // duration: 2,
+          duration: 2,
         },
         "<"
       )
@@ -54,24 +51,22 @@ const page = () => {
         {
           opacity: 1,
           width: "80%",
+		  duration: 2,
         },
         {
-          // duration: 2,
+          duration: 2,
           width: "50%",
           opacity: 0,
         },
         "<"
       )
-
-      .to("#aidan-mcdonald-div", {
-        display: "none",
-      })
-
-      .to("#bio-outer-container", {
-        opacity: 1,
-        display: "flex",
-        duration: 1,
-      });
+	  .fromTo(".mini-bio-text", { y:0, opacity: 1},{
+		y: -30,
+		stagger: .3,
+		rotationX: 70,
+		opacity: 0, 
+		duration: 2,
+	  }, "<")
   });
 
   return (
@@ -81,15 +76,15 @@ const page = () => {
       {/* Aidan McDonald */}
       <section id="home-section1">
         <div
-          className="h-screen flex flex-col justify-center tracking-wide font-semibold pt-40 opacity-0 text-text-light"
-          id="aidan-mcdonald-div"
+          className="h-screen flex flex-col justify-center tracking-wider font-semibold pt-20 opacity-0 text-text-light"
+          id="hero-div-container"
         >
           <span
             className="text-3xl text-center font-[500] text-[#dcaa7e] pt-24"
-            id="hero-sub-text"
+            id="hero-main-text"
           >Hi, I'm</span>
           <span
-            className="text-3xl sm:text-8xl text-center "
+            className="text-3xl sm:text-8xl text-center"
             id="hero-main-text"
           >AIDAN
           </span>
@@ -99,22 +94,44 @@ const page = () => {
           >MCDONALD
           </span>
 		  
-          <div className="w-[1000px] pl-[10%] text-xl font-[400]"
+          <div className="w-[1000px] pl-[10%] text-2xl font-[400] flex flex-col leading-9"
 		  id="mini-bio-div">
-            <span id="mini-bio-text">
-              I'm a dedicated Web Developer from Perth.<br/>
+            <span className="mini-bio-text opacity-0">
+              A dedicated Web Developer from Perth,<br/>
             </span>
-            <span id="mini-bio-text">
-			  I specialise in <span style="font-family: ">designing</span> and <span>developing</span>> <br/>
+            <span className="mini-bio-text opacity-0">
+			 specialising in <span className="italic text-[#dcaa7e] font-medium">designing</span> and <span className="italic font-medium text-[#dcaa7e]">developing</span> <br/>
             </span>
-            <span id="mini-bio-text">
+            <span className="mini-bio-text opacity-0">
 			  advanced client solutions.
             </span>
           </div>
         </div>
+		</section>
 
-        {/* About */}
-        <div id="about">
+
+		<TechStack />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {/* <div id="about">
           <div
             id="bio-outer-container"
             className="hidden opacity-0 h-screen items-center"
@@ -138,7 +155,6 @@ const page = () => {
               </div>
             </div>
 
-            {/* image */}
             <div
               id="hero-image-container"
               className="w-[40%] justify-center items-center"
@@ -156,8 +172,7 @@ const page = () => {
         </div>
       </section>
 
-      {/* About */}
-      <section id="work">
+      <section id="hero-section2">
         <div className="h-screen pt-20 flex flex-col justify-center font-semibold uppercase">
           <h1 className="text-3xl sm:text-8xl tracking-wide text-center text-text-light pb-4">
             2nd
@@ -181,19 +196,7 @@ const page = () => {
             Bottom Text
           </h2>
         </div>
-      </section>
-      <section id="home-section4">
-        <div className="h-screen pt-20 flex flex-col justify-center font-semibold uppercase">
-          <h1 className="text-3xl sm:text-8xl tracking-wide text-center text-text-light pb-4">
-            4th
-            <br />
-            Section
-          </h1>
-          <h2 className="text-4xl sm:text-3xl text-center tracking-[.5em] text-[#dcaa7e]">
-            Bottom Text
-          </h2>
-        </div>
-      </section>
+      </section> */}
     </>
   );
 };
