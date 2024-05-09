@@ -87,29 +87,28 @@ const page = () => {
           <span
             className="text-3xl text-center font-[500] text-[#dcaa7e] pt-24"
             id="hero-sub-text"
-          >
-            Hi, I'm
-          </span>
+          >Hi, I'm</span>
           <span
             className="text-3xl sm:text-8xl text-center "
             id="hero-main-text"
-          >
-            AIDAN
+          >AIDAN
           </span>
           <span
             className="text-3xl sm:text-8xl text-center pb-36"
             id="hero-main-text"
-          >
-            MCDONALD
+          >MCDONALD
           </span>
 		  
-          <div className="w-[600px] pl-[10%] ">
-            <span
-              className="text-xl font-[400]"
-              id="hero-sub-text"
-            >
-              A dedicated Web Developer from Perth. I specialise in designing
-              and developing advanced client solutions.
+          <div className="w-[1000px] pl-[10%] text-xl font-[400]"
+		  id="mini-bio-div">
+            <span id="mini-bio-text">
+              I'm a dedicated Web Developer from Perth.<br/>
+            </span>
+            <span id="mini-bio-text">
+			  I specialise in <span style="font-family: ">designing</span> and <span>developing</span>> <br/>
+            </span>
+            <span id="mini-bio-text">
+			  advanced client solutions.
             </span>
           </div>
         </div>

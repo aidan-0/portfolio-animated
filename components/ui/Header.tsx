@@ -33,7 +33,7 @@ const Header = () => {
 				{
 					y: 200,
 				},
-				{ opacity: 1, duration: 1, y: 0, ease: "power1.inOut" },
+				{ opacity: 1, duration: 2, y: 0, ease: "elastic.out(1.15, 1)" },
 				"<",
 			)
 			.from(
@@ -55,7 +55,16 @@ const Header = () => {
 					duration: 1.5,
 				},
 				"<",
-			);
+			)
+			.from("#mini-bio-text", {
+				opacity: 0,
+				y: -50,
+				stagger: 0.4,
+				duration: 1,
+				ease: "power1.out",
+				delay: 1,
+			  }, "<");
+			
 
 		// header fade away
 		// const tlHeaderScroll = gsap.timeline({
@@ -148,7 +157,7 @@ const Header = () => {
 				id="header-container"
 			>
 				<div
-					className="flex items-center justify-between  py-5 font-semibold text-[18px] overflow-hidden"
+					className="flex items-center justify-between py-5 font-semibold text-[18px] overflow-hidden"
 					id="inner-header-container"
 				>
 					<Link
@@ -159,11 +168,11 @@ const Header = () => {
 						ABOUT
 					</Link>
 					<Link
-						href="#work"
-						className={`${pathname === "/work" ? "text-[#dcaa7e]" : "text-[#adcae5]"}`}
+						href="#portfolio"
+						className={`${pathname === "/portfolio" ? "text-[#dcaa7e]" : "text-[#adcae5]"}`}
 						id="nav-link"
 					>
-						WORK
+						PORTFOLIO
 					</Link>
 
 					<Link href="/" id="nav-logo">
