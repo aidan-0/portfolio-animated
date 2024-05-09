@@ -12,10 +12,10 @@ import { useAnimation } from "../AnimationContext";
 
 const Header = () => {
 	const pathname = usePathname();
-	const { animationTrigger } = useAnimation();
+	// const { animationTrigger } = useAnimation();
 
 	useGSAP(() => {
-		if (animationTrigger) {
+		// if (animationTrigger) {
 		gsap.registerPlugin(ScrollTrigger);
 
 		const timeline = gsap.timeline();
@@ -134,9 +134,9 @@ const Header = () => {
 
 
 
-		}
-	// }, []);
-	}, [animationTrigger]);
+		// }
+	}, []);
+	// }, [animationTrigger]);
 
 	return (
 		<div
