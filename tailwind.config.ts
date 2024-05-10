@@ -20,7 +20,8 @@ const config: Config = {
         'new-grey-blue': '#415278',
         'new-dark-grey-blue': '#2F4858',
         'text-light': '#E1EAF1',
-        'text-dark': '#0a1117'
+        'text-dark': '#0a1117',
+        'new-text-light-purple': '#9297e2'
       },
     fontFamily: {
       spaceGrotesk: ['Space Grotesk', 'sans-serif'],

@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 
+
 body {
     /* blue */
-    background: #0C3256;
+    /* background: #0C3256; */
 }
 
 #container-red,
@@ -52,8 +53,8 @@ h1 {
 
 /* Keep 1 */
 .bg-1,
-#home-section1,
-#tech-stack-container {
+#home-section1
+ {
     background: rgb(18,59,98);
     background: radial-gradient(circle at top center, rgba(18,59,98,1) 0%, rgba(2,34,65,1) 100%);
 }
@@ -78,10 +79,10 @@ background: radial-gradient(circle at top center, rgba(0,101,138,1) 0%, rgba(0,1
 }
 
 
-/* #tech-stack-container {
-    background: rgb(18,59,98);
-    background: radial-gradient(circle at bottom center, rgba(18,59,98,1) 0%, rgba(2,34,65,1) 100%);
-} */
+#tech-stack-container-inner,
+#tech-stack-container-outer {
+    background: red;
+}
 
 
 /* Header */

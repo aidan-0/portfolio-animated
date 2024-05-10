@@ -2,11 +2,12 @@
 
 import React from "react";
 import EntryAnimation from "../../components/ui/EntryAnimation";
-import TechStack from "../../components/TechStack";
+// import TechStack from "../../components/TechStack";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import TechStack from "@/components/TechStack/TechStack";
 
 
 const page = () => {
@@ -17,7 +18,8 @@ const page = () => {
       scrollTrigger: {
         trigger: "#home-section1",
         start: "top top",
-        end: "+=700",
+        // end: "+=700",
+		end: "+=1600",
         scrub: 1,
         markers: true,
         pin: true,
@@ -67,12 +69,6 @@ const page = () => {
 		opacity: 0, 
 		duration: 2,
 	  }, "<")
-    
-    .to("#home-section1", {
-      opacity: 0,
-      duration: 0,
-    })
-
   });
 
   return (
@@ -80,9 +76,9 @@ const page = () => {
       {/* <EntryAnimation /> */}
 
       {/* Aidan McDonald */}
-      <section id="home-section1">
+      <section id="home-section1" className="h-screen w-screen flex justify-center align-middle items-center">
         <div
-          className="h-screen flex flex-col justify-center tracking-wider font-semibold pt-20 opacity-0 text-text-light"
+          className="h-screen w-screen flex flex-col justify-center tracking-wider font-semibold pt-20 opacity-0 text-text-light"
           id="hero-div-container"
         >
           <span
@@ -137,7 +133,8 @@ const page = () => {
 
 
 
-        {/* <div id="about">
+
+        <div id="about">
           <div
             id="bio-outer-container"
             className="hidden opacity-0 h-screen items-center"
@@ -176,7 +173,7 @@ const page = () => {
             </div>
           </div>
         </div>
-      </section>
+
 
       <section id="hero-section2">
         <div className="h-screen pt-20 flex flex-col justify-center font-semibold uppercase">
@@ -202,7 +199,7 @@ const page = () => {
             Bottom Text
           </h2>
         </div>
-      </section> */}
+      </section>
     </>
   );
 };
