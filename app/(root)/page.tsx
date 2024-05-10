@@ -67,6 +67,12 @@ const page = () => {
 		opacity: 0, 
 		duration: 2,
 	  }, "<")
+    
+    .to("#home-section1", {
+      opacity: 0,
+      duration: 0,
+    })
+
   });
 
   return (

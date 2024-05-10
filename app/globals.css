@@ -52,7 +52,8 @@ h1 {
 
 /* Keep 1 */
 .bg-1,
-#home-section1 {
+#home-section1,
+#tech-stack-container {
     background: rgb(18,59,98);
     background: radial-gradient(circle at top center, rgba(18,59,98,1) 0%, rgba(2,34,65,1) 100%);
 }
@@ -77,10 +78,10 @@ background: radial-gradient(circle at top center, rgba(0,101,138,1) 0%, rgba(0,1
 }
 
 
-#tech-stack-container {
+/* #tech-stack-container {
     background: rgb(18,59,98);
     background: radial-gradient(circle at bottom center, rgba(18,59,98,1) 0%, rgba(2,34,65,1) 100%);
-}
+} */
 
 
 /* Header */

@@ -25,6 +25,17 @@ const page = () => {
 	});
 
 	return (
+		<>
+		<section id="tech-stack-container">
+        <div
+          className="h-screen flex flex-col justify-center tracking-wider font-semibold pt-20 text-text-light"
+          id=""
+        >
+        </div>
+		</section>
+
+
+		
 		<div id="tech-stack-container" className="h-screen">
 			<section id="section1">
 				<div id="blueBoxContainer">
@@ -39,6 +50,7 @@ const page = () => {
 				</div>
 			</section>
 		</div>
+		</>
 	);
 };
 
