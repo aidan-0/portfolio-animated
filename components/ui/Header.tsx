@@ -123,31 +123,31 @@ const Header = () => {
 
 
 		// hover logo for nav show
-		const tlHeaderIcon = gsap.timeline({
-			scrollTrigger: {
-				trigger: "#home-section1",
-				start: "+=1000px top",
-				end: "+=400px",
-				markers: true,
-				scrub: 1,
-			},
-		});
-		tlHeaderIcon
-		.to("#header-container", {
-			width: "80%",
-		})
-		.to("#outer-container", {
-			paddingLeft: "100px",
-			paddingRight: "100px",
-		})
-		.to("#nav-link", {
-			display: "none",
-		}, "<")
-		.to("#outer-container", {
-			opacity: 1,
-			ease: "power1.inOut",
-			duration: 1,
-		})
+		// const tlHeaderIcon = gsap.timeline({
+		// 	scrollTrigger: {
+		// 		trigger: "#home-section1",
+		// 		start: "+=1000px top",
+		// 		end: "+=400px",
+		// 		markers: true,
+		// 		scrub: 1,
+		// 	},
+		// });
+		// tlHeaderIcon
+		// .to("#header-container", {
+		// 	width: "80%",
+		// })
+		// .to("#outer-container", {
+		// 	paddingLeft: "100px",
+		// 	paddingRight: "100px",
+		// })
+		// .to("#nav-link", {
+		// 	display: "none",
+		// }, "<")
+		// .to("#outer-container", {
+		// 	opacity: 1,
+		// 	ease: "power1.inOut",
+		// 	duration: 1,
+		// })
 
 
 

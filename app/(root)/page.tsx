@@ -8,6 +8,7 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TechStack from "@/components/TechStack/TechStack";
+import Portfolio from "@/components/Portfolio/Portfolio";
 
 
 const page = () => {
@@ -19,10 +20,11 @@ const page = () => {
         trigger: "#home-section1",
         start: "top top",
         // end: "+=700",
-		end: "+=1600",
+		end: "100%",
         scrub: 1,
         markers: true,
         pin: true,
+		pinSpacing: false,
       },
     });
 
@@ -64,11 +66,15 @@ const page = () => {
       )
 	  .fromTo(".mini-bio-text", { y:0, opacity: 1},{
 		y: -30,
-		stagger: .3,
+		stagger: .15,
 		rotationX: 70,
 		opacity: 0, 
 		duration: 2,
 	  }, "<")
+	  .to("#home-section1", {
+		opacity: 0,
+		duration: 0,
+	  })
   });
 
   return (
@@ -76,7 +82,7 @@ const page = () => {
       {/* <EntryAnimation /> */}
 
       {/* Aidan McDonald */}
-      <section id="home-section1" className="h-screen w-screen flex justify-center align-middle items-center">
+      <section id="home-section1" className="h-screen w-screen flex justify-center align-middle items-center z-20">
         <div
           className="h-screen w-screen flex flex-col justify-center tracking-wider font-semibold pt-20 opacity-0 text-text-light"
           id="hero-div-container"
@@ -113,6 +119,7 @@ const page = () => {
 
 
 		<TechStack />
+		<Portfolio />
 
 
 
@@ -133,46 +140,6 @@ const page = () => {
 
 
 
-
-        <div id="about">
-          <div
-            id="bio-outer-container"
-            className="hidden opacity-0 h-screen items-center"
-          >
-            <div
-              className="w-[60%] justify-center font-[500] text-text-light text-3xl tracking-wider leading-10"
-              id="bio-text-container"
-            >
-              <div id="bio-inner-container">
-                <span className="">Hi, I'm </span>
-                <span>Aidan McDonald</span>
-                <span className="">
-                  {" "}
-                  a <br />
-                  passionate Web{" "}
-                </span>
-                <span>
-                  Developer <br />
-                  from Perth.
-                </span>
-              </div>
-            </div>
-
-            <div
-              id="hero-image-container"
-              className="w-[40%] justify-center items-center"
-            >
-              <Image
-                id="hero-image"
-                className="justify-center align-middle items-center rounded-t-full"
-                width={200}
-                height={200}
-                src="/headshot.png"
-                alt="Aidan McDonald"
-              />
-            </div>
-          </div>
-        </div>
 
 
       <section id="hero-section2">

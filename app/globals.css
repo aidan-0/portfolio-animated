@@ -7,6 +7,7 @@
 body {
     /* blue */
     /* background: #0C3256; */
+    overflow-x: hidden;
 }
 
 #container-red,
@@ -51,7 +52,7 @@ h1 {
     align-items: center;
 }
 
-/* Keep 1 */
+/* Swipe colours */
 .bg-1,
 #home-section1
  {
@@ -79,10 +80,8 @@ background: radial-gradient(circle at top center, rgba(0,101,138,1) 0%, rgba(0,1
 }
 
 
-#tech-stack-container-inner,
-#tech-stack-container-outer {
-    background: red;
-}
+/* Portfolio */
+
 
 
 /* Header */
