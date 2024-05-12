@@ -10,11 +10,11 @@ const Portfolio = () => {
     useGSAP(() => {
         gsap.registerPlugin(ScrollTrigger); 
          
-        let tlPortfolio = gsap.timeline({
+        const tlPortfolioBackground = gsap.timeline({
             scrollTrigger: {
               trigger: "#portfolio",
               start: "top top",
-              end: "+=200px",
+              end: "+=3000px",
               markers: true,
               scrub: 1,
               pin: true,
@@ -24,7 +24,7 @@ const Portfolio = () => {
 
 
 
-        tlPortfolio
+        tlPortfolioBackground
         .to("body", {
             background: "#9297e2",
         })
@@ -32,8 +32,19 @@ const Portfolio = () => {
             background: "#9297e2",
         }, {
             background: "radial-gradient(circle at top center, rgba(200,113,55,1) 0%, rgba(154,53,20,1) 100%)",
-            duration: 1,
-        });
+            duration: 2,
+        })
+        .to("#portfolio-header", {
+            color: "#0a1117",
+            duration: 4,
+        }, "<")
+        .to("#portfolio-sub-header", {
+            color: "#0a1117",
+            duration: 5,
+        })
+
+
+
 
     });
 
@@ -43,12 +54,12 @@ const Portfolio = () => {
             {/* swipe to orange on animation */}
 			<section id="portfolio">
 				<div className="h-screen pt-20 flex flex-col justify-center font-semibold uppercase">
-					<h1 className="text-3xl sm:text-8xl tracking-wide text-center text-[#261d06] pb-4">
-						2nd
-						<br />
-						Section
+					<h1 className="text-3xl sm:text-8xl tracking-wide text-center text-text-light pb-4"
+                    id="portfolio-header">
+                        Portfolio
 					</h1>
-					<h2 className="text-4xl sm:text-3xl text-center tracking-[.5em] text-text-light">
+					<h2 className="text-4xl sm:text-3xl text-center tracking-[.5em] text-text-light"
+                    id="portfolio-sub-header">
 						Bottom Text
 					</h2>
 				</div>

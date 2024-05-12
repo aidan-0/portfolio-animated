@@ -3,34 +3,27 @@
 @tailwind utilities;
 
 
+* {
+    overflow: hidden;
+}
 
 body {
-    /* blue */
-    /* background: #0C3256; */
-    overflow-x: hidden;
+    overflow-x: hidden !important;
 }
 
-#container-red,
-#container-blue {
-    display: grid;
-    place-content: center;
-    height: 100vh;
-}
-
-#entry-animation-container {
+/* 
+#entry-animation-container  {
     visibility: hidden;
-}
+} */
 
 
 h1 {
-    /* font-size: 7rem; */
     text-transform: uppercase;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     line-height: 5.9rem;
     letter-spacing: 0.25rem;
     text-align: left;
     color: #0f1113;
-
 }
 
 #word1,
@@ -67,7 +60,7 @@ h1 {
 
 .bg-3 {
     background: rgb(0,101,138);
-background: radial-gradient(circle at top center, rgba(0,101,138,1) 0%, rgba(0,120,157,1) 100%);
+    background: radial-gradient(circle at top center, rgba(0,101,138,1) 0%, rgba(0,120,157,1) 100%);
 }
 
 .bg-4 {
@@ -78,9 +71,6 @@ background: radial-gradient(circle at top center, rgba(0,101,138,1) 0%, rgba(0,1
 #nav-link:hover {
     color: #dcaa7e;
 }
-
-
-/* Portfolio */
 
 
 

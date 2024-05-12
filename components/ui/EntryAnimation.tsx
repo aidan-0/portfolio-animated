@@ -15,10 +15,7 @@ const EntryAnimation = () => {
         const entryTimeline = gsap.timeline();
 
         // Text enters
-        entryTimeline.to("*", {
-            overflow: "hidden",
-            duration: 0.01,
-        })
+        entryTimeline
         .to("#entry-animation-container", {
             visibility: "visible",
             duration: 0.01,
@@ -162,13 +159,20 @@ const EntryAnimation = () => {
             opacity: 0,
         }, "<")
         .to("*", {
-            overflow: "visible"
-        })
+            overflow: "initial"
+        }, "<")
+        .to("body", {
+            overflowX: "clip",
+        }, "<")
         .to("#entry-animation-container", {
             display: "none",
         })
  
         }, [setAnimationTrigger]);
+
+
+        
+
 
     return (
         <>
@@ -176,7 +180,7 @@ const EntryAnimation = () => {
         {/* Starting Container */}
         <div className='h-screen p-10 bg-1 absolute top-0 left-0 z-40 w-full' id="container-bg-1"></div>
         <div className='h-screen p-10 absolute top-0 left-0 z-50 w-full flex flex-col justify-center' id="text-container">
-            <div id='inner-text-container leading-10'>
+            <div id='inner-text-container'>
                 {/* maybe remove 'let me be' */}
                 <div><h1 className='text-3xl sm:text-5xl uppercase font-semibold h1-text pl-28 pb-2 tracking-wide' id="initial-entry">your go-to</h1></div>
                 <div className='pl-28 pb-2'>
@@ -196,9 +200,9 @@ const EntryAnimation = () => {
         <div className='h-screen p-10 bg-2 absolute top-0 left-0 z-30 w-full flex flex-col gap-10' id="container-bg-2">
         </div>
         {/* Third Container */}
-        <div className='h-screen p-10 bg-3 absolute top-0 left-0 z-20 w-full' id="container-bg-3"></div>
+        <div className='h-screen p-10 bg-3 absolute top-0 left-0 z-[29] w-full' id="container-bg-3"></div>
         {/* Fourth Container */}
-        <div className='h-screen p-10 bg-4 absolute top-0 left-0 z-10 w-full' id="container-bg-4"></div>
+        <div className='h-screen p-10 bg-4 absolute top-0 left-0 z-[28] w-full' id="container-bg-4"></div>
         {/* <Header /> */}
         </div>
 

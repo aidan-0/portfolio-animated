@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import "./TechStack.css";
 import Image from "next/image";
+import { logos } from "../data";
 
 const TechStack = () => {
 	useGSAP(() => {
@@ -28,13 +29,11 @@ const TechStack = () => {
 		});
 
 		gsap.set(boxContainer, {
-			// position: 'relative',
 			marginLeft: "auto",
 			marginRight: "auto",
 			borderRadius: "0px",
 			width: "100vw",
 			height: "100vh",
-			// transformOrigin: "50% 50%"
 		});
 
 		gsap.set(marqueeContainer, {
@@ -46,7 +45,7 @@ const TechStack = () => {
 			scrollTrigger: {
 				trigger: tech,
 				start: "top top",
-				end: "+=2500px",
+				end: "+=3000px",
 				markers: true,
 				scrub: 1,
 				pin: tech,
@@ -57,8 +56,8 @@ const TechStack = () => {
 		});
 
 		// Purple Section
-		tl1
-			.to(boxTitle1, { opacity: 1, duration: 3 })
+		tl1 
+            .to(boxTitle1, { opacity: 1, duration: 3 })
 			.to(
 				boxTitle1,
 				{ top: "30%", left: "15%", duration: 6, color: "#FFFFFF" },
@@ -77,6 +76,7 @@ const TechStack = () => {
 				height: "74vh",
 				marginTop: "13vh",
 				borderRadius: "50px",
+                overflow: "hidden",
 			})
 			// Box is pinned
 			.to(
@@ -107,12 +107,12 @@ const TechStack = () => {
 			// Text move up and down
 			.to(boxSubtitle1, { opacity: 1, duration: 2, y: -30, color: "#0a1117" })
 			.to(boxTitle1, { y: 30, duration: 2, color: "#0a1117" }, "<")
-			.to(boxContainer, { duration: 2, background: "#9297e2" }, "<")
+			.to(boxContainer, { duration: 4, background: "#9297e2" }, "<")
 			.to(marqueeContainer, { duration: 2, opacity: 1, y: 0 }, "<")
 
 			// text move left and right
-			.to(boxSubtitle1, { duration: 7, x: -40 })
-			.to(boxTitle1, { duration: 8, x: 40 }, "<")
+			.to(boxSubtitle1, { duration: 9, x: -60 })
+			.to(boxTitle1, { duration: 9, x: 60 }, "<")
 
 			// Box expands
 			.to(boxContainer, {
@@ -132,7 +132,7 @@ const TechStack = () => {
 		<>
 			<div id="tech" className="z-10">
 				<section id="boxSection">
-					<div id="boxContainer" className="flex justify-center">
+					<div id="boxContainer" className="flex justify-center overflow-hidden">
 						<h3 id="boxTitle1">My Tech Stack</h3>
 						<div
 							className="flex flex-col gap-16 justify-center items-center w-[80%]"
@@ -140,136 +140,32 @@ const TechStack = () => {
 						>
 							<div className="marquee w-full">
 								<ul className="marquee-content justify-center items-center">
-									<li>
-										<Image
-											src="/tech-logos/adobe-illustrator.svg"
-											alt="adobe-illustrator"
-											width={60}
-											height={60}
-										/>
-									</li>
-									<li>
-										<Image
-											src="/tech-logos/canva.svg"
-											alt="canva"
-											width={60}
-											height={60}
-										/>
-									</li>
-									<li>
-										<Image
-											src="/tech-logos/css-3.svg"
-											alt="css-3"
-											width={60}
-											height={60}
-										/>
-									</li>
-									<li>
-										<Image
-											src="/tech-logos/firebase.svg"
-											alt="firebase"
-											width={60}
-											height={60}
-										/>
-									</li>
-									<li>
-										<Image
-											src="/tech-logos/git-icon.svg"
-											alt="git-icon"
-											width={60}
-											height={60}
-										/>
-									</li>
-									<li>
-										<Image
-											src="/tech-logos/GSAP.png"
-											alt="GSAP"
-											width={60}
-											height={60}
-										/>
-									</li>
-									<li>
-										<Image
-											src="/tech-logos/html-1.svg"
-											alt="html-1"
-											width={60}
-											height={60}
-										/>
-									</li>
-									<li>
-										<Image
-											src="/tech-logos/javascript.svg"
-											alt="javascript"
-											width={60}
-											height={60}
-										/>
-									</li>
-									<li>
-										<Image
-											src="/tech-logos/next-js.svg"
-											alt="next-js"
-											width={60}
-											height={60}
-										/>
-									</li>
-									<li>
-										<Image
-											src="/tech-logos/notion-logo.svg"
-											alt="notion-logo"
-											width={60}
-											height={60}
-										/>
-									</li>
-									<li>
-										<Image
-											src="/tech-logos/react.svg"
-											alt="react"
-											width={60}
-											height={60}
-										/>
-									</li>
-									<li>
-										<Image
-											src="/tech-logos/tailwind-css.svg"
-											alt="tailwind-css"
-											width={60}
-											height={60}
-										/>
-									</li>
-									<li>
-										<Image
-											src="/tech-logos/typescript.svg"
-											alt="typescript"
-											width={60}
-											height={60}
-										/>
-									</li>
-									<li>
-										<Image
-											src="/tech-logos/woocommerce.svg"
-											alt="woocommerce"
-											width={60}
-											height={60}
-										/>
-									</li>
-									<li>
-										<Image
-											src="/tech-logos/wordpress-icon.svg"
-											alt="wordpress-icon"
-											width={60}
-											height={60}
-                                            className="fill-current text-[#FF9A00]"
-										/>
-									</li>
+									{logos.map((logo, index) => (
+										<li key={index}>
+											<Image
+												src={logo.src}
+												alt={logo.alt}
+												width={60}
+												height={60}
+                                                className="tech-logo"
+											/>
+										</li>
+									))}
 								</ul>
 
-								<ul aria-hidden="true" className="marquee-content">
-									<li>1</li>
-									<li>2</li>
-									<li>3</li>
-									<li>4</li>
-									<li>5</li>
-									<li>6</li>
+								<ul aria-hidden="true" className="marquee-content justify-center items-center">
+									{logos.map((logo, index) => (
+										<li key={index}>
+											<Image
+												src={logo.src}
+												alt={logo.alt}
+												width={60}
+												height={60}
+                                                className="tech-logo"
+
+											/>
+										</li>
+									))}
 								</ul>
 							</div>
 							<Image
@@ -279,25 +175,37 @@ const TechStack = () => {
 								height={100}
 							/>
 							<div className="marquee w-full">
-								<ul className="marquee-content marquee-reverse">
-									<li>1</li>
-									<li>2</li>
-									<li>3</li>
-									<li>4</li>
-									<li>5</li>
-									<li>6</li>
+								<ul className="marquee-content marquee-reverse justify-center items-center">
+									{logos.map((logo, index) => (
+										<li key={index}>
+											<Image
+												src={logo.src}
+												alt={logo.alt}
+												width={60}
+												height={60}
+                                                className="tech-logo"
+
+											/>
+										</li>
+									))}
 								</ul>
 
 								<ul
 									aria-hidden="true"
-									className="marquee-content marquee-reverse"
+									className="marquee-content marquee-reverse justify-center items-center"
 								>
-									<li>1</li>
-									<li>2</li>
-									<li>3</li>
-									<li>4</li>
-									<li>5</li>
-									<li>6</li>
+									{logos.map((logo, index) => (
+										<li key={index}>
+											<Image
+												src={logo.src}
+												alt={logo.alt}
+												width={60}
+												height={60}
+                                                className="tech-logo"
+
+											/>
+										</li>
+									))}
 								</ul>
 							</div>
 						</div>

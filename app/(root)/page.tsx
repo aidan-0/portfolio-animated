@@ -79,7 +79,7 @@ const page = () => {
 
   return (
     <>
-      {/* <EntryAnimation /> */}
+      <EntryAnimation />
 
       {/* Aidan McDonald */}
       <section id="home-section1" className="h-screen w-screen flex justify-center align-middle items-center z-20">
