@@ -14,9 +14,10 @@ const Portfolio = () => {
             scrollTrigger: {
               trigger: "#portfolio",
               start: "top top",
-              end: "+=100px",
+              end: "+=200px",
               markers: true,
               scrub: 1,
+              pin: true,
             },
             defaults: { ease: "none" }
           });
