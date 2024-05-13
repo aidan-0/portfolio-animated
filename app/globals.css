@@ -55,34 +55,26 @@ h1 {
 
 .bg-2 {
     /* halfway between 1 & 2 */
-    background: #1d5e4d;
-    /* background: radial-gradient(circle at top center, #1B7D63 0%, #1f4037 100%); */
+    background: #086a38;
     background: radial-gradient(circle at top center, #0C8C45 0%, #023926 100%);
 
 }
 
 .bg-3 {
     /* halfway between 1 & 2 */
-    background: #1d5e4d;
-    /* background: radial-gradient(circle at top center, #4F9BCE 0%, #14799A 100%); */
-    /* background: radial-gradient(circle at top center, #6f0000 0%, #2E0531 100%); */
+    background: #7c1e24;
     background: radial-gradient(circle at top center, #8D2626 0%, #45071E 100%);
-
-
-
 }
 
 .bg-4 {
     /* halfway between 1 & 2 */
-    background: #b35a30; 
-    /* background: radial-gradient(circle at top center, #CE824F 0%, #9a3514 100%); */
+    background: #aa562c; 
     background: radial-gradient(circle at top center, #B76F3F 0%, #9a3514 100%);
 }
 
 
 #test-bg {
-    background: radial-gradient(circle at top center, #B76F3F 0%, #9a3514 100%);
-
+    background: radial-gradient(circle at top center, #0C8C45 0%, #023926 100%);
 }
 
 

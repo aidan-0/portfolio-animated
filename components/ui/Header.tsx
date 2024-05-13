@@ -44,8 +44,6 @@ const Header = () => {
 			.from(
 				"#header-container",
 				{
-					// delay: 6.3,
-					// ease: "power3.inOut",
 					duration: 1,
 					width: "70px",
 					alignContent: "center",
@@ -53,14 +51,12 @@ const Header = () => {
 				"<",
 			)
 			.fromTo(".mini-bio-text", {
-				// opacity: 0,
 				y: 35,
 
 			  }, {
 				opacity: 1,
 				y: 0,
 				stagger: 0.05,
-				// duration: 0.6,
 				ease: "power1.inOut",
 			  }, "<")
 			timeline.from(
@@ -171,7 +167,7 @@ const Header = () => {
 				>
 					<Link
 						href="#tech"
-						className={`${pathname === "/about" ? "text-[#dcaa7e]" : "text-[#adcae5]"}`}
+						className={`${pathname === "/" ? "text-[#dcaa7e]" : "text-[#adcae5]"}`}
 						id="nav-link"
 					>
 						TECH

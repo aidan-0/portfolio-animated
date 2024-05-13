@@ -51,14 +51,14 @@ const EntryAnimation = () => {
             y: 0,
             duration: 1,
             ease: "expo.inOut",
-            color: "#111416"
+            color: "#151B20"
         }, "<")
         .to('.dev-text', {
-            color: "#111416",
+            color: "#151B20",
             delay: 0.22
         }, "<")
         .to('.h1-text', {
-            color: "#111416",
+            color: "#151B20",
             delay: 0.1
         }, "<")
 
@@ -98,7 +98,7 @@ const EntryAnimation = () => {
             ease: "power3.inOut", 
         })
         .to("#word4", {
-            color: "#0A1117"
+            color: "#151B20"
         }, "<")
         .to("#word3", {
             y: -150,
@@ -112,11 +112,11 @@ const EntryAnimation = () => {
             ease: "expo.inOut",
         }, "<")
         .to('.dev-text', {
-            color: "#0A1117",
+            color: "#151B20",
             delay: 0.18
         }, "<")
         .to('.h1-text', {
-            color: "#0A1117",
+            color: "#151B20",
             delay: 0.1 
         }, "<")
 
