@@ -49,24 +49,42 @@ h1 {
 .bg-1,
 #home-section1
  {
-    background: rgb(18,59,98);
-    background: radial-gradient(circle at top center, rgba(18,59,98,1) 0%, rgba(2,34,65,1) 100%);
+    background: #0b345a;
+    background: radial-gradient(circle at top center, #144472 0%, #022241 100%);
 }
 
 .bg-2 {
-    background: rgb(0,101,138);
-    background: radial-gradient(circle at top center, rgba(0,101,138,1) 0%, rgba(18,59,98,1) 100%);
+    /* halfway between 1 & 2 */
+    background: #1d5e4d;
+    /* background: radial-gradient(circle at top center, #1B7D63 0%, #1f4037 100%); */
+    background: radial-gradient(circle at top center, #0C8C45 0%, #023926 100%);
+
 }
 
 .bg-3 {
-    background: rgb(0,101,138);
-    background: radial-gradient(circle at top center, rgba(0,101,138,1) 0%, rgba(0,120,157,1) 100%);
+    /* halfway between 1 & 2 */
+    background: #1d5e4d;
+    /* background: radial-gradient(circle at top center, #4F9BCE 0%, #14799A 100%); */
+    /* background: radial-gradient(circle at top center, #6f0000 0%, #2E0531 100%); */
+    background: radial-gradient(circle at top center, #8D2626 0%, #45071E 100%);
+
+
+
 }
 
 .bg-4 {
-    background: rgb(200,113,55);
-    background: radial-gradient(circle at top center, rgba(200,113,55,1) 0%, rgba(154,53,20,1) 100%);
+    /* halfway between 1 & 2 */
+    background: #b35a30; 
+    /* background: radial-gradient(circle at top center, #CE824F 0%, #9a3514 100%); */
+    background: radial-gradient(circle at top center, #B76F3F 0%, #9a3514 100%);
 }
+
+
+#test-bg {
+    background: radial-gradient(circle at top center, #B76F3F 0%, #9a3514 100%);
+
+}
+
 
 #nav-link:hover {
     color: #dcaa7e;
