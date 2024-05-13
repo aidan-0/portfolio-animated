@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import "./TechStack.css";
 import Image from "next/image";
-import { logos } from "../data";
+import { techLogos } from "../data";
 
 const TechStack = () => {
 	useGSAP(() => {
@@ -24,7 +24,7 @@ const TechStack = () => {
 			left: "70%",
 			position: "absolute",
 			overflow: "hidden",
-			width: "50%",
+			width: "100%",
 			opacity: 0,
 		});
 
@@ -56,8 +56,8 @@ const TechStack = () => {
 		});
 
 		// Purple Section
-		tl1 
-            .to(boxTitle1, { opacity: 1, duration: 3 })
+		tl1
+			.to(boxTitle1, { opacity: 1, duration: 3 })
 			.to(
 				boxTitle1,
 				{ top: "30%", left: "15%", duration: 6, color: "#FFFFFF" },
@@ -72,18 +72,18 @@ const TechStack = () => {
 
 			.to(boxContainer, {
 				duration: 6,
-				width: "85vw",
-				height: "74vh",
-				marginTop: "13vh",
+				width: "80vw",
+				height: "80vh",
+				marginTop: "10vh",
 				borderRadius: "50px",
-                overflow: "hidden",
+				overflow: "hidden",
 			})
 			// Box is pinned
 			.to(
 				boxTitle1,
 				{
-					fontSize: "40px",
-					fontWeight: "700",
+					fontSize: "50px",
+					fontWeight: "600",
 					duration: 4,
 					position: "absolute",
 					top: "35px",
@@ -97,17 +97,25 @@ const TechStack = () => {
 					position: "absolute",
 					bottom: "35px",
 					right: "50px",
-					fontWeight: 600,
+					fontWeight: 400,
 					color: "#FFFFFF",
-					width: "50%",
+					width: "100%",
 				},
 				"<",
 			)
 
 			// Text move up and down
-			.to(boxSubtitle1, { opacity: 1, duration: 2, y: -30, color: "#0a1117" })
-			.to(boxTitle1, { y: 30, duration: 2, color: "#0a1117" }, "<")
-			.to(boxContainer, { duration: 4, background: "#9297e2" }, "<")
+			.to(boxSubtitle1, { opacity: 1, duration: 2, color: "#E1EAF1" })
+			.to(boxTitle1, { duration: 2, color: "#E1EAF1" }, "<")
+			.to(
+				boxContainer,
+				{
+					duration: 4,
+					background:
+						"radial-gradient(circle at top center, #8D2626 0%, #45071E 100%)",
+				},
+				"<",
+			)
 			.to(marqueeContainer, { duration: 2, opacity: 1, y: 0 }, "<")
 
 			// text move left and right
@@ -132,7 +140,10 @@ const TechStack = () => {
 		<>
 			<div id="tech" className="z-10">
 				<section id="boxSection">
-					<div id="boxContainer" className="flex justify-center overflow-hidden">
+					<div
+						id="boxContainer"
+						className="flex justify-center overflow-hidden"
+					>
 						<h3 id="boxTitle1">My Tech Stack</h3>
 						<div
 							className="flex flex-col gap-16 justify-center items-center w-[80%]"
@@ -140,29 +151,31 @@ const TechStack = () => {
 						>
 							<div className="marquee w-full">
 								<ul className="marquee-content justify-center items-center">
-									{logos.map((logo, index) => (
+									{techLogos.map((logo, index) => (
 										<li key={index}>
 											<Image
 												src={logo.src}
 												alt={logo.alt}
-												width={60}
-												height={60}
-                                                className="tech-logo"
+												width={50}
+												height={50}
+												className="tech-logo"
 											/>
 										</li>
 									))}
 								</ul>
 
-								<ul aria-hidden="true" className="marquee-content justify-center items-center">
-									{logos.map((logo, index) => (
+								<ul
+									aria-hidden="true"
+									className="marquee-content justify-center items-center"
+								>
+									{techLogos.map((logo, index) => (
 										<li key={index}>
 											<Image
 												src={logo.src}
 												alt={logo.alt}
-												width={60}
-												height={60}
-                                                className="tech-logo"
-
+												width={50}
+												height={50}
+												className="tech-logo"
 											/>
 										</li>
 									))}
@@ -176,15 +189,14 @@ const TechStack = () => {
 							/>
 							<div className="marquee w-full">
 								<ul className="marquee-content marquee-reverse justify-center items-center">
-									{logos.map((logo, index) => (
+									{techLogos.map((logo, index) => (
 										<li key={index}>
 											<Image
 												src={logo.src}
 												alt={logo.alt}
-												width={60}
-												height={60}
-                                                className="tech-logo"
-
+												width={50}
+												height={50}
+												className="tech-logo"
 											/>
 										</li>
 									))}
@@ -194,33 +206,26 @@ const TechStack = () => {
 									aria-hidden="true"
 									className="marquee-content marquee-reverse justify-center items-center"
 								>
-									{logos.map((logo, index) => (
+									{techLogos.map((logo, index) => (
 										<li key={index}>
 											<Image
 												src={logo.src}
 												alt={logo.alt}
-												width={60}
-												height={60}
-                                                className="tech-logo"
-
+												width={50}
+												height={50}
+												className="tech-logo"
 											/>
 										</li>
 									))}
 								</ul>
 							</div>
 						</div>
-						<h4 id="boxSubtitle1">Here's what i've been working with</h4>
+						<h4 id="boxSubtitle1" className="tracking-[1]">
+							Here's what i've been working with
+						</h4>
 					</div>
 				</section>
 			</div>
-			{/* <div id="projects">
-      <section id="boxSection2">
-        <div id="boxContainer2">
-          <h3 id="boxTitle2">My Projects</h3>
-          <h4 id="boxSubtitle2">Here's a look at what i've made</h4>
-        </div>
-      </section>
-    </div> */}
 		</>
 	);
 };

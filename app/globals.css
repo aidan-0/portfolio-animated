@@ -8,7 +8,7 @@
 }
 
 body {
-    overflow-x: hidden !important;
+	overflow-x: hidden !important;
 }
 
 /* 
@@ -16,14 +16,13 @@ body {
     visibility: hidden;
 } */
 
-
 h1 {
-    text-transform: uppercase;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-    line-height: 5.9rem;
-    letter-spacing: 0.25rem;
-    text-align: left;
-    color: #0f1113;
+	text-transform: uppercase;
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+	line-height: 5.9rem;
+	letter-spacing: 0.25rem;
+	text-align: left;
+	color: #0f1113;
 }
 
 #word1,
@@ -31,64 +30,63 @@ h1 {
 #word3,
 #word4,
 #initial-entry {
-    transform: translateY(115px);
+	transform: translateY(115px);
 }
 
 #word4 {
-    color: #0A1117;
+	color: #0a1117;
 }
 
 .text-wrapper {
-    position: absolute;
-    display: flex;
-    justify-content: center; 
-    align-items: center;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 /* Swipe colours */
+/* Blue */
 .bg-1,
-#home-section1
- {
-    background: #0b345a;
-    background: radial-gradient(circle at top center, #144472 0%, #022241 100%);
+#home-section1 {
+	background: #0b345a;
+	background: radial-gradient(circle at top center, #144472 0%, #022241 100%);
 }
 
+/* Green */
 .bg-2 {
-    /* halfway between 1 & 2 */
-    background: #086a38;
-    background: radial-gradient(circle at top center, #0C8C45 0%, #023926 100%);
-
+	/* halfway between 1 & 2 */
+	background: #086a38;
+	background: radial-gradient(circle at top center, #0c8c45 0%, #023926 100%);
 }
 
-.bg-3 {
-    /* halfway between 1 & 2 */
-    background: #7c1e24;
-    background: radial-gradient(circle at top center, #8D2626 0%, #45071E 100%);
+/* Red */
+.bg-3,
+#portfolio {
+	/* halfway between 1 & 2 */
+	background: #7c1e24;
+	background: radial-gradient(circle at top center, #8d2626 0%, #45071e 100%);
 }
 
+/* Orange */
 .bg-4 {
-    /* halfway between 1 & 2 */
-    background: #aa562c; 
-    background: radial-gradient(circle at top center, #B76F3F 0%, #9a3514 100%);
+	/* halfway between 1 & 2 */
+	background: #aa562c;
+	background: radial-gradient(circle at top center, #b76f3f 0%, #9a3514 100%);
 }
-
 
 #test-bg {
-    background: radial-gradient(circle at top center, #0C8C45 0%, #023926 100%);
+	background: radial-gradient(circle at top center, #0c8c45 0%, #023926 100%);
 }
-
 
 #nav-link:hover {
-    color: #dcaa7e;
+	color: #dcaa7e;
 }
-
-
 
 /* Header */
 #outer-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
 }

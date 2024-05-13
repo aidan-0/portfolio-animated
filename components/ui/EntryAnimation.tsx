@@ -35,7 +35,7 @@ const EntryAnimation = () => {
             color: "#E1EAF1"
         }, "<")
 
-        // BG-1 moves away
+        // BG-1 - Blue moves away
         .to("#container-bg-1", {
             y: "-100%",
             duration: swipeDuration,
@@ -63,7 +63,7 @@ const EntryAnimation = () => {
         }, "<")
 
 
-        // BG-2 moves away
+        // BG-2 - Green moves away
         .to("#container-bg-2", {
             y: "-100%",
             duration: swipeDuration,
@@ -91,7 +91,7 @@ const EntryAnimation = () => {
         }, "<")
         
 
-        // BG-3 moves away (reveals bg-4)
+        // BG-3 - Red moves away
         .to("#container-bg-3", {
             y: "-100%",
             duration: swipeDuration,
@@ -121,7 +121,7 @@ const EntryAnimation = () => {
         }, "<")
 
 
-       // BG-4 moves away and fade to homepage / bring in header etc.
+       // BG-4 - Orange moves away and fade to homepage / bring in header etc.
         .to("#container-bg-3", {
             y: 0,
             duration: 0.8,

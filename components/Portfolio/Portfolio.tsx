@@ -14,7 +14,7 @@ const Portfolio = () => {
             scrollTrigger: {
               trigger: "#portfolio",
               start: "top top",
-              end: "+=3000px",
+              end: "+=2000px",
               markers: true,
               scrub: 1,
               pin: true,
@@ -26,22 +26,25 @@ const Portfolio = () => {
 
         tlPortfolioBackground
         .to("body", {
-            background: "#9297e2",
+            background: "#7c1e24",
         })
-        .fromTo("#portfolio", {
-            background: "#9297e2",
-        }, {
-            background: "radial-gradient(circle at top center, rgba(200,113,55,1) 0%, rgba(154,53,20,1) 100%)",
-            duration: 2,
+        // Red
+        .to("#portfolio", {
+            background: "radial-gradient(circle at bottom center, #8d2626 0%, #45071e 100%"
+        })
+        // Orange
+        .to("#portfolio", {
+            background: "radial-gradient(circle at bottom center, rgba(200,113,55,1) 0%, rgba(154,53,20,1) 100%)",
+            duration: 4,
         })
         .to("#portfolio-header", {
-            color: "#0a1117",
-            duration: 4,
+            color: "#151B20",
+            duration: 3,
         }, "<")
         .to("#portfolio-sub-header", {
-            color: "#0a1117",
-            duration: 5,
-        })
+            color: "#151B20",
+            duration: 3,
+        }, "<")
 
 
 
