@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
@@ -13,12 +13,16 @@ import { useAnimation } from "../AnimationContext";
 const Header = () => {
 	const pathname = usePathname();
 	const { animationTrigger } = useAnimation();
+	const timelineRef = useRef<gsap.core.Timeline | null>(null);
+
 
 	useGSAP(() => {
 		if (animationTrigger) {
 		gsap.registerPlugin(ScrollTrigger);
 
 		const timeline = gsap.timeline();
+		timelineRef.current = timeline;
+
 		console.log("Starting Header Animation");
 
 		//load in animation
@@ -70,53 +74,7 @@ const Header = () => {
 			)
 
 			
-
-		// header fade away
-		// const tlHeaderScroll = gsap.timeline({
-		// 	scrollTrigger: {
-		// 		trigger: "#home-section1",
-		// 		start: "top top",
-		// 		end: "+=350px",
-		// 		markers: true,
-		// 		scrub: 1,
-		// 	},
-		// });
-
 		
-
-		// tlHeaderScroll
-			// .to(
-			// 	"#nav-link",
-			// 	{
-			// 		opacity: 0,
-			// 		duration: 4,
-			// 	},
-			// 	"<",
-			// )
-			// .to(
-			// 	"#outer-container",
-			// 	{
-			// 		opacity: 0,
-			// 		duration: 4,
-			// 		ease: "power1.inOut",
-			// 	},
-			// 	"<",
-			// )
-			// .fromTo(
-			// 	"#header-container",
-			// 	{
-			// 		width: "80%"
-			// 	},
-			// 	{
-			// 		duration: 4,
-			// 		width: "50%",
-			// 		// delay: 0,
-			// 	},
-			// 	"<",
-			// )
-
-			
-
 
 		// hover logo for nav show
 		// const tlHeaderIcon = gsap.timeline({
@@ -152,6 +110,14 @@ const Header = () => {
 	// }, []);
 	}, [animationTrigger]);
 
+
+	const handleLogoClick = () => {
+		if (timelineRef.current) {
+			timelineRef.current.restart();
+		}
+	};
+
+
 	return (
 		<div
 			className="opacity-0 flex justify-center top-0 absolute"
@@ -180,16 +146,11 @@ const Header = () => {
 						PORTFOLIO
 					</Link>
 
-					<Link href="/" id="nav-logo">
-						<Image
-							src="/logos/logo.png"
-							alt="Logo"
-							width={80}
-							height={80}
-							className=""
-							id=""
-						/>
-					</Link>
+					<div onClick={handleLogoClick}>
+						<Link href="/" id="nav-logo">
+							<Image src="/logos/logo.png" alt="Logo" width={80} height={80} className="" />
+						</Link>
+					</div>
 
 					<Link
 						href="/resume"

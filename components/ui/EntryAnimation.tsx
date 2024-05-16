@@ -122,6 +122,9 @@ const EntryAnimation = () => {
 
 
        // BG-4 - Orange moves away and fade to homepage / bring in header etc.
+       .to("#text-container", {
+        zIndex: 28,
+       }, "<")
         .to("#container-bg-3", {
             y: 0,
             duration: 0.8,
@@ -144,17 +147,17 @@ const EntryAnimation = () => {
             ease: "power3.inOut", 
             delay: 0.2
         }, "<")
-        .to(".h1-text", {
-            color: "#E1EAF1",
+        .to("#inner-text-container", {
+            opacity: 0,
             onComplete: () => {
                 console.log("entry animation complete")
                 setAnimationTrigger(true);
                 console.log("animation trigger set to true")
             },  
         })
-        .to(".dev-text", {
-            color: "#E1EAF1"
-        }, "<")  
+        // .to(".dev-text", {
+        //     color: "#E1EAF1"
+        // }, "<")  
         .to("#entry-animation-container", {
             opacity: 0,
         }, "<")
@@ -177,7 +180,7 @@ const EntryAnimation = () => {
     return (
         <>
         <div id='entry-animation-container'>
-        {/* Starting Container */}
+        {/* Starting (blue) Container */}
         <div className='h-screen p-10 bg-1 absolute top-0 left-0 z-40 w-full' id="container-bg-1"></div>
         <div className='h-screen p-10 absolute top-0 left-0 z-50 w-full flex flex-col justify-center' id="text-container">
             <div id='inner-text-container'>
@@ -196,13 +199,13 @@ const EntryAnimation = () => {
   
         </div>
         
-        {/* Second Container */}
+        {/* Second (green) Container */}
         <div className='h-screen p-10 bg-2 absolute top-0 left-0 z-30 w-full flex flex-col gap-10' id="container-bg-2">
         </div>
-        {/* Third Container */}
+        {/* Third (red) Container */}
         <div className='h-screen p-10 bg-3 absolute top-0 left-0 z-[29] w-full' id="container-bg-3"></div>
-        {/* Fourth Container */}
-        <div className='h-screen p-10 bg-4 absolute top-0 left-0 z-[28] w-full' id="container-bg-4"></div>
+        {/* Fourth (orange) Container */}
+        <div className='h-screen p-10 bg-4 absolute top-0 left-0 z-[27] w-full' id="container-bg-4"></div>
         {/* <Header /> */}
         </div>
 
