@@ -15,13 +15,15 @@ const TechStack = () => {
 		let boxTitle1 = document.getElementById("boxTitle1");
 		let boxSubtitle1 = document.getElementById("boxSubtitle1");
 		let boxContainer = document.getElementById("boxContainer");
-		let marqueeContainer = document.getElementById("marqueeContainer");
+		let marqueeContainerTop = document.getElementById("marqueeContainerTop");
+		let marqueeContainerBottom = document.getElementById("marqueeContainerBottom");
+		let TechStackLogo = document.getElementById("TechStackLogo");
 		let tech = document.getElementById("tech");
 
 		gsap.set(boxTitle1, {
 			color: "#FFFFFF",
-			top: "70%",
-			left: "70%",
+			top: "20%",
+			left: "50%",
 			position: "absolute",
 			overflow: "hidden",
 			width: "100%",
@@ -34,18 +36,25 @@ const TechStack = () => {
 			borderRadius: "0px",
 			width: "100vw",
 			height: "100vh",
+			boxShadow: "1px 1px 1px #999, 2px 2px 2px #999, 3px 3px 3px #999, 4px 4px 4px #999, 5px 5px 5px #AAA, 6px 6px 6px #AAA, 7px 7px 7px #CCC"
 		});
 
-		gsap.set(marqueeContainer, {
+
+		gsap.set(marqueeContainerTop, {
 			opacity: 0,
-			y: 20,
+			y: "30vh"
 		});
+		gsap.set(marqueeContainerBottom, {
+			opacity: 0,
+			y: "-30vh"
+		});
+
 
 		let tl1 = gsap.timeline({
 			scrollTrigger: {
 				trigger: tech,
 				start: "top top",
-				end: "+=3000px",
+				end: "+=3500px",
 				markers: true,
 				scrub: 1,
 				pin: tech,
@@ -55,23 +64,16 @@ const TechStack = () => {
 			defaults: { ease: "none" },
 		});
 
-		// Purple Section
+
 		tl1
-			.to(boxTitle1, { opacity: 1, duration: 3 })
+			.to(boxTitle1, { opacity: 1, duration:5 })
 			.to(
 				boxTitle1,
-				{ top: "30%", left: "15%", duration: 6, color: "#FFFFFF" },
+				{ top: "25%", left: "50%", duration: 5, color: "#FFFFFF" },
 				"<",
 			)
-			.to(boxTitle1, {
-				duration: 3,
-				position: "fixed",
-				top: "25%",
-				left: "10%",
-			})
-
 			.to(boxContainer, {
-				duration: 6,
+				duration: 8,
 				width: "80vw",
 				height: "80vh",
 				marginTop: "10vh",
@@ -82,12 +84,11 @@ const TechStack = () => {
 			.to(
 				boxTitle1,
 				{
-					fontSize: "50px",
 					fontWeight: "600",
-					duration: 4,
+					duration: 8,
 					position: "absolute",
-					top: "35px",
-					left: "50px",
+					top: "28%",
+					left: "40%",
 				},
 				"<",
 			)
@@ -95,8 +96,8 @@ const TechStack = () => {
 				boxSubtitle1,
 				{
 					position: "absolute",
-					bottom: "35px",
-					right: "50px",
+					bottom: "35%",
+					right: "40%",
 					fontWeight: 400,
 					color: "#FFFFFF",
 					width: "100%",
@@ -105,8 +106,7 @@ const TechStack = () => {
 			)
 
 			// Text move up and down
-			.to(boxSubtitle1, { opacity: 1, duration: 2, color: "#E1EAF1" })
-			.to(boxTitle1, { duration: 2, color: "#E1EAF1" }, "<")
+			.to(boxSubtitle1, { opacity: 1, duration: 4, color: "#E1EAF1" })
 			.to(
 				boxContainer,
 				{
@@ -116,11 +116,12 @@ const TechStack = () => {
 				},
 				"<",
 			)
-			.to(marqueeContainer, { duration: 2, opacity: 1, y: 0 }, "<")
+			.to(marqueeContainerTop, { duration: 8, opacity: 1, y: "38vh" }, "<+=1")
+			.to(marqueeContainerBottom, { duration: 8, opacity: 1, y: "-38vh" }, "<")
 
 			// text move left and right
-			.to(boxSubtitle1, { duration: 9, x: -60 })
-			.to(boxTitle1, { duration: 9, x: 60 }, "<")
+			.to(boxTitle1, { duration: 15, xPercent: -25 }, "<")
+			.to(boxSubtitle1, { duration: 15, xPercent: 25}, "<")
 
 			// Box expands
 			.to(boxContainer, {
@@ -129,7 +130,13 @@ const TechStack = () => {
 				height: "100vh",
 				borderRadius: 0,
 				marginTop: 0,
-			});
+				boxShadow: "1px 1px 1px #ffffff00, 2px 2px 2px #ffffff00, 3px 3px 3px #ffffff00, 4px 4px 4px #ffffff00, 5px 5px 5px #ffffff00, 6px 6px 6px #ffffff00, 7px 7px 7px #ffffff00"
+				})
+				.to(marqueeContainerTop, { duration: 6, opacity: 1, y: "42vh" }, "<")
+			.to(marqueeContainerBottom, { duration: 6, opacity: 1, y: "-42vh" }, "<")
+
+			.to(boxTitle1, { duration: 4, xPercent: -25 })
+
 
 		gsap.set(tech, {
 			y: -1000,
@@ -144,12 +151,12 @@ const TechStack = () => {
 						id="boxContainer"
 						className="flex justify-center overflow-hidden"
 					>
-						<h3 id="boxTitle1">My Tech Stack</h3>
+						<h3 id="boxTitle1" className="lg:text-7xl  2xl:text-8xl">TECH STACK</h3>
 						<div
-							className="flex flex-col gap-16 justify-center items-center w-[80%]"
-							id="marqueeContainer"
+							className="flex flex-col gap-20 justify-center items-center"
+
 						>
-							<div className="marquee w-full">
+							<div className="marquee w-full" id="marqueeContainerTop">
 								<ul className="marquee-content justify-center items-center">
 									{techLogos.map((logo, index) => (
 										<li key={index}>
@@ -181,13 +188,14 @@ const TechStack = () => {
 									))}
 								</ul>
 							</div>
-							<Image
+							{/* <Image
 								src="/logos/logo.png"
 								alt="Tech Stack"
-								width={100}
-								height={100}
-							/>
-							<div className="marquee w-full">
+								width={70}
+								height={70}
+								id="TechStackLogo"
+							/> */}
+							<div className="marquee w-full" id="marqueeContainerBottom">
 								<ul className="marquee-content marquee-reverse justify-center items-center">
 									{techLogos.map((logo, index) => (
 										<li key={index}>

@@ -35,7 +35,7 @@ const page = () => {
 	  }, {
         y: -50,
         opacity: 0,
-        duration: 2,
+        duration: 1.5,
 		stagger: .25,
       })
       .fromTo(
@@ -79,7 +79,7 @@ const page = () => {
 
   return (
     <>
-      <EntryAnimation />
+      {/* <EntryAnimation /> */}
 
       {/* Aidan McDonald */}
       <section id="home-section1" className="h-screen w-screen flex justify-center align-middle items-center z-20">

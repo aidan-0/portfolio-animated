@@ -6,17 +6,13 @@
 
 #boxContainer {
 	position: relative;
-	background: rgb(18, 59, 98);
-	background: radial-gradient(
-		circle at top center,
-		rgba(18, 59, 98, 1) 0%,
-		rgba(2, 34, 65, 1) 100%
-	);
+	background: #0b345a;
+	background: radial-gradient(circle at top center, #144472 0%, #022241 100%);
 }
 
 #boxTitle1 {
 	opacity: 0;
-	font-size: 6rem;
+	/* font-size: 6rem; */
 	font-weight: 600;
 	letter-spacing: 0.05em;
 }
@@ -37,6 +33,10 @@
 	overflow: hidden;
 	user-select: none;
 	gap: var(--gap);
+	position: relative;
+	mask-image: linear-gradient(to right, transparent 23%, black 26%, black 74%, transparent 77%);
+	-webkit-mask-image: linear-gradient(to right, transparent 23%, black 26%, black 74%, transparent 77%);
+
 }
 
 .marquee-content {
@@ -45,11 +45,9 @@
 	justify-content: space-around;
 	min-width: 100%;
 	gap: var(--gap);
-}
-
-.marquee-content {
 	animation: scroll 75s linear infinite;
 }
+
 
 .marquee-reverse {
 	animation-direction: reverse;
@@ -65,7 +63,7 @@
 }
 
 .tech-logo {
-    height: 50px;
-    width: 50px;
+    height: 55px;
+    width: 55px;
 	/* filter: grayscale(1); */
 }
