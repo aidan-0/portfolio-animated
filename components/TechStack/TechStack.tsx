@@ -66,11 +66,9 @@ const TechStack = () => {
 
 
 		tl1
-			.to(boxTitle1, { opacity: 1, duration:5 })
 			.to(
 				boxTitle1,
-				{ top: "25%", left: "50%", duration: 5, color: "#FFFFFF" },
-				"<",
+				{ opacity: 1, top: "25%", left: "50%", duration: 5, color: "#FFFFFF" }
 			)
 			.to(boxContainer, {
 				duration: 8,

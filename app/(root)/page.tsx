@@ -36,7 +36,7 @@ const page = () => {
         y: -50,
         opacity: 0,
         duration: 1.5,
-		stagger: .25,
+		stagger: .15,
       })
       .fromTo(
         "#nav-link",
@@ -66,8 +66,7 @@ const page = () => {
       )
 	  .fromTo(".mini-bio-text", { y:0, opacity: 1},{
 		y: -30,
-		stagger: .15,
-		rotationX: 70,
+		stagger: .25,
 		opacity: 0, 
 		duration: 2,
 	  }, "<")
@@ -88,7 +87,7 @@ const page = () => {
           id="hero-div-container"
         >
           <span
-            className="text-3xl text-center font-[500] text-[#dcaa7e] pt-24"
+            className="text-3xl text-center font-[500] pt-24 text-gradient"
             id="hero-main-text"
           >Hi, I'm</span>
           <span
@@ -108,7 +107,7 @@ const page = () => {
               A dedicated Web Developer from Perth,<br/>
             </span>
             <span className="mini-bio-text opacity-0">
-			 specialising in <span className="italic text-[#dcaa7e] font-medium">designing</span> and <span className="italic font-medium text-[#dcaa7e]">developing</span> <br/>
+			 specialising in <span className="italic font-medium text-gradient">designing</span> and <span className="italic font-medium text-gradient">developing</span> <br/>
             </span>
             <span className="mini-bio-text opacity-0">
 			  advanced client solutions.

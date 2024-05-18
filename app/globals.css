@@ -11,6 +11,39 @@ body {
 	overflow-x: hidden !important;
 }
 
+#nav-svg {
+	border-radius: 50%;
+  }
+
+    
+  #nav-link {
+    transition: filter 0.5s ease, text-shadow 0.5s ease, transform 0.5s ease;
+	background: #adcae5;
+    -webkit-background-clip: text;
+	background-clip: text;
+    color: transparent;
+}
+
+#nav-link:hover {
+	boxShadow: rgba(173,202,229, 1) 0px 0px 20px 20px;
+	background: linear-gradient(45deg, #f88f7f, #fbd586); 
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	filter: grayscale(0.1);
+}
+
+.text-gradient {
+	background: linear-gradient(45deg, #f88f7f, #fbd586); 
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	filter: grayscale(0.2);
+}
+
+
+
+
 /* 
 #entry-animation-container  {
     visibility: hidden;
@@ -78,9 +111,6 @@ h1 {
 	background: radial-gradient(circle at top center, #0c8c45 0%, #023926 100%);
 }
 
-#nav-link:hover {
-	color: #dcaa7e;
-}
 
 /* Header */
 #outer-container {

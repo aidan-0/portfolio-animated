@@ -26,7 +26,7 @@ const EntryAnimation = () => {
             ease: "expo.inOut",
             delay: 0,
             color: "#E1EAF1"
-        })
+        }, "<")
         .to("#word1", {
             y: 0,
             duration: 2,

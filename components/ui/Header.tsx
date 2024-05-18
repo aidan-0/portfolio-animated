@@ -9,12 +9,11 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useAnimation } from "../AnimationContext";
 
-
 const Header = () => {
 	const pathname = usePathname();
 	// const { animationTrigger } = useAnimation();
 	const timelineRef = useRef<gsap.core.Timeline | null>(null);
-
+	const navSvgRef = useRef<HTMLImageElement | null>(null);
 
 	useGSAP(() => {
 		// if (animationTrigger) {
@@ -32,11 +31,15 @@ const Header = () => {
 				duration: 1,
 				ease: "power1.inOut",
 			})
-			.to("#hero-div-container", {
-				opacity: 1,
-				duration: 1,
-				ease: "power1.inOut",
-			}, "<")
+			.to(
+				"#hero-div-container",
+				{
+					opacity: 1,
+					duration: 1,
+					ease: "power1.inOut",
+				},
+				"<",
+			)
 			.fromTo(
 				"#hero-main-text",
 				{
@@ -54,69 +57,57 @@ const Header = () => {
 				},
 				"<",
 			)
-			.fromTo(".mini-bio-text", {
-				y: 35,
-
-			  }, {
-				opacity: 1,
-				y: 0,
-				stagger: 0.05,
-				ease: "power1.inOut",
-			  }, "<")
-			timeline.from(
-				"#nav-link",
+			.fromTo(
+				".mini-bio-text",
 				{
-					opacity: 0,
-					delay: 0.2,
-					duration: 1.5,
+					y: 35,
+				},
+				{
+					opacity: 1,
+					y: 0,
+					stagger: 0.05,
+					ease: "power1.inOut",
 				},
 				"<",
-			)
+			);
+		timeline.from(
+			"#nav-link",
+			{
+				opacity: 0,
+				delay: 0.2,
+				duration: 1.5,
+			},
+			"<",
+		);
 
-			
-		
+		// nav logo hover effect
+		const hoverAnimation = gsap.to(navSvgRef.current, {
+			background: "linear-gradient(45deg, #f88f7f, #fbcb85)",
+			boxShadow: "rgba(153, 153, 153, 0.1) 0px 0px 8px 4px",
+			scale: 1.04,
+			filter: "grayscale(0.3)",
+			duration: 0.3,
+			ease: "power1.inOut",
+			paused: true,
+		});
 
-		// hover logo for nav show
-		// const tlHeaderIcon = gsap.timeline({
-		// 	scrollTrigger: {
-		// 		trigger: "#home-section1",
-		// 		start: "+=1000px top",
-		// 		end: "+=400px",
-		// 		markers: true,
-		// 		scrub: 1,
-		// 	},
-		// });
-		// tlHeaderIcon
-		// .to("#header-container", {
-		// 	width: "80%",
-		// })
-		// .to("#outer-container", {
-		// 	paddingLeft: "100px",
-		// 	paddingRight: "100px",
-		// })
-		// .to("#nav-link", {
-		// 	display: "none",
-		// }, "<")
-		// .to("#outer-container", {
-		// 	opacity: 1,
-		// 	ease: "power1.inOut",
-		// 	duration: 1,
-		// })
-
-
+		const navSvg = navSvgRef.current;
+		if (navSvg) {
+			navSvg.addEventListener("mouseenter", () => hoverAnimation.play());
+			navSvg.addEventListener("mouseleave", () => hoverAnimation.reverse());
+		}
 
 
 		// }
 	}, []);
 	// }, [animationTrigger]);
 
-
+	//Restart animation on logo click
 	const handleLogoClick = () => {
 		if (timelineRef.current) {
 			timelineRef.current.restart();
 		}
 	};
-
 
 	return (
 		<div
@@ -133,22 +124,30 @@ const Header = () => {
 				>
 					<Link
 						href="#tech"
-						className={`${pathname === "/" ? "text-[#dcaa7e]" : "text-[#adcae5]"}`}
+						className={`${pathname === "#tech" ? "text-[#dcaa7e]" : "text-[#adcae5]"}`}
 						id="nav-link"
 					>
 						TECH
 					</Link>
 					<Link
 						href="#portfolio"
-						className={`${pathname === "/portfolio" ? "text-[#dcaa7e]" : "text-[#adcae5]"}`}
+						className={`${pathname === "#portfolio" ? "text-[#dcaa7e]" : "text-[#adcae5]"}`}
 						id="nav-link"
 					>
 						PORTFOLIO
 					</Link>
 
 					<div onClick={handleLogoClick}>
-						<Link href="/" id="nav-logo">
-							<Image src="/logos/logo.png" alt="Logo" width={80} height={80} className="" />
+						<Link href="/" id="nav-logo nav-link">
+							<Image
+								ref={navSvgRef}
+								src="/logos/logo.png"
+								alt="Logo"
+								width={70}
+								height={70}
+								className=""
+								id="nav-svg"
+							/>
 						</Link>
 					</div>
 
