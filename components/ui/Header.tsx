@@ -11,74 +11,108 @@ import { useAnimation } from "../AnimationContext";
 
 const Header = () => {
 	const pathname = usePathname();
-	// const { animationTrigger } = useAnimation();
+	const { animationTrigger } = useAnimation();
 	const timelineRef = useRef<gsap.core.Timeline | null>(null);
 	const navSvgRef = useRef<HTMLImageElement | null>(null);
 
 	useGSAP(() => {
-		// if (animationTrigger) {
-		gsap.registerPlugin(ScrollTrigger);
+		if (pathname === "/") {
+			if (animationTrigger) {
+				gsap.registerPlugin(ScrollTrigger);
 
-		const timeline = gsap.timeline();
-		timelineRef.current = timeline;
+				const timeline = gsap.timeline();
+				timelineRef.current = timeline;
 
-		console.log("Starting Header Animation");
+				console.log("Starting Header Animation");
 
-		//load in animation
-		timeline
-			.to("#outer-container", {
-				opacity: 1,
-				duration: 1,
-				ease: "power1.inOut",
-			})
-			.to(
-				"#hero-div-container",
-				{
+				//load in animation
+				timeline
+					.to("#outer-container", {
+						opacity: 1,
+						duration: 1,
+						ease: "power1.inOut",
+					})
+					.to(
+						"#hero-div-container",
+						{
+							opacity: 1,
+							duration: 1,
+							ease: "power1.inOut",
+						},
+						"<",
+					)
+					.fromTo(
+						"#hero-main-text",
+						{
+							y: 80,
+						},
+						{ duration: 2, y: 0, stagger: 0.05, ease: "elastic.out(1.15, 1)" },
+						"<",
+					)
+					.from(
+						"#header-container",
+						{
+							duration: 1,
+							width: "70px",
+							alignContent: "center",
+						},
+						"<",
+					)
+					.fromTo(
+						".mini-bio-text",
+						{
+							y: 35,
+						},
+						{
+							opacity: 1,
+							y: 0,
+							stagger: 0.05,
+							ease: "power1.inOut",
+						},
+						"<",
+					);
+				timeline.from(
+					"#nav-link",
+					{
+						opacity: 0,
+						delay: 0.2,
+						duration: 1.5,
+					},
+					"<",
+				);
+			}
+		} else {
+			const timeline = gsap.timeline();
+			timelineRef.current = timeline;
+
+			console.log("Starting Header Animation");
+
+			//load in animation
+			timeline
+				.to("#outer-container", {
 					opacity: 1,
 					duration: 1,
 					ease: "power1.inOut",
-				},
-				"<",
-			)
-			.fromTo(
-				"#hero-main-text",
+				})
+				.from(
+					"#header-container",
+					{
+						duration: 1,
+						width: "70px",
+						alignContent: "center",
+					},
+					"<",
+				)
+				.from(
+				"#nav-link",
 				{
-					y: 80,
-				},
-				{ duration: 2, y: 0, stagger: 0.05, ease: "elastic.out(1.15, 1)" },
-				"<",
-			)
-			.from(
-				"#header-container",
-				{
-					duration: 1,
-					width: "70px",
-					alignContent: "center",
-				},
-				"<",
-			)
-			.fromTo(
-				".mini-bio-text",
-				{
-					y: 35,
-				},
-				{
-					opacity: 1,
-					y: 0,
-					stagger: 0.05,
-					ease: "power1.inOut",
+					opacity: 0,
+					delay: 0.2,
+					duration: 1.5,
 				},
 				"<",
 			);
-		timeline.from(
-			"#nav-link",
-			{
-				opacity: 0,
-				delay: 0.2,
-				duration: 1.5,
-			},
-			"<",
-		);
+		}
 
 		// nav logo hover effect
 		const hoverAnimation = gsap.to(navSvgRef.current, {
@@ -97,21 +131,22 @@ const Header = () => {
 			navSvg.addEventListener("mouseleave", () => hoverAnimation.reverse());
 		}
 
+		// }, []);
+	}, [animationTrigger]);
 
-		// }
-	}, []);
-	// }, [animationTrigger]);
-
-	//Restart animation on logo click
-	const handleLogoClick = () => {
-		if (timelineRef.current) {
+	//Restart animation on logo click if on homepage, else redirect to homepage and refresh page
+	const handleLogoClick = (e: React.MouseEvent) => {
+		if (timelineRef.current && pathname === "/") {
 			timelineRef.current.restart();
+		} else {
+			e.preventDefault();
+			window.location.href = "/";
 		}
 	};
 
 	return (
 		<div
-			className="opacity-0 flex justify-center top-0 absolute"
+			className="opacity-0 flex justify-center top-0 absolute pt-4"
 			id="outer-container"
 		>
 			<header
@@ -122,18 +157,10 @@ const Header = () => {
 					className="flex items-center justify-between py-5 font-semibold text-[18px] overflow-hidden"
 					id="inner-header-container"
 				>
-					<Link
-						href="#tech"
-						className={`${pathname === "#tech" ? "text-[#dcaa7e]" : "text-[#adcae5]"}`}
-						id="nav-link"
-					>
+					<Link href="/tech" id="nav-link">
 						TECH
 					</Link>
-					<Link
-						href="#portfolio"
-						className={`${pathname === "#portfolio" ? "text-[#dcaa7e]" : "text-[#adcae5]"}`}
-						id="nav-link"
-					>
+					<Link href="/work" id="nav-link">
 						PORTFOLIO
 					</Link>
 
@@ -151,18 +178,10 @@ const Header = () => {
 						</Link>
 					</div>
 
-					<Link
-						href="/resume"
-						className={`${pathname === "/resume" ? "text-[#dcaa7e]" : "text-[#adcae5]"}`}
-						id="nav-link"
-					>
+					<Link href="/resume" id="nav-link">
 						RESUME
 					</Link>
-					<Link
-						href="/contact"
-						className={`${pathname === "/contact" ? "text-[#dcaa7e]" : "text-[#adcae5]"}`}
-						id="nav-link"
-					>
+					<Link href="/contact" id="nav-link">
 						CONTACT
 					</Link>
 				</div>

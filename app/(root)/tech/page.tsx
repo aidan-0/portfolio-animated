@@ -1,9 +1,10 @@
 import React from "react";
 
 const page = () => {
-	return (
-		<section
-			id="resume-bg"
+  return (
+    <>
+      <section
+			id="tech-bg"
 			className="h-screen w-screen flex justify-center align-middle items-center z-20"
 		>
 			<div
@@ -44,7 +45,8 @@ const page = () => {
 				</div>
 			</div>
 		</section>
-	);
+    </>
+  );
 };
 
 export default page;

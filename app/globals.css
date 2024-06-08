@@ -3,25 +3,27 @@
 @tailwind utilities;
 
 
-/* * {
+* {
     overflow: hidden;
-} */
+}
 
 body {
 	overflow-x: hidden !important;
 }
 
+
+
 #nav-svg {
 	border-radius: 50%;
   }
 
-    
-  #nav-link {
-    transition: filter 0.5s ease, text-shadow 0.5s ease, transform 0.5s ease;
+
+#nav-link {
+	transition: filter 0.5s ease, text-shadow 0.5s ease, transform 0.5s ease;
 	background: #adcae5;
-    -webkit-background-clip: text;
+	-webkit-background-clip: text;
 	background-clip: text;
-    color: transparent;
+	color: transparent;
 }
 
 #nav-link:hover {
@@ -86,7 +88,8 @@ h1 {
 }
 
 /* Green */
-.bg-2 {
+.bg-2,
+#resume-bg {
 	/* halfway between 1 & 2 */
 	background: #086a38;
 	background: radial-gradient(circle at top center, #0c8c45 0%, #023926 100%);
@@ -94,14 +97,16 @@ h1 {
 
 /* Red */
 .bg-3,
-#portfolio {
+#portfolio,
+#portfolio-bg {
 	/* halfway between 1 & 2 */
 	background: #7c1e24;
 	background: radial-gradient(circle at top center, #8d2626 0%, #45071e 100%);
 }
 
 /* Orange */
-.bg-4 {
+.bg-4,
+#tech-bg {
 	/* halfway between 1 & 2 */
 	background: #aa562c;
 	background: radial-gradient(circle at top center, #b76f3f 0%, #9a3514 100%);

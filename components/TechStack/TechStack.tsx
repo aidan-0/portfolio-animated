@@ -186,13 +186,6 @@ const TechStack = () => {
 									))}
 								</ul>
 							</div>
-							{/* <Image
-								src="/logos/logo.png"
-								alt="Tech Stack"
-								width={70}
-								height={70}
-								id="TechStackLogo"
-							/> */}
 							<div className="marquee w-full" id="marqueeContainerBottom">
 								<ul className="marquee-content marquee-reverse justify-center items-center">
 									{techLogos.map((logo, index) => (
@@ -207,7 +200,6 @@ const TechStack = () => {
 										</li>
 									))}
 								</ul>
-
 								<ul
 									aria-hidden="true"
 									className="marquee-content marquee-reverse justify-center items-center"
