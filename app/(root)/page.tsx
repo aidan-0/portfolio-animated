@@ -80,8 +80,8 @@ const page = () => {
     <>
       <EntryAnimation />
 
-      {/* Aidan McDonald */}
-      <section id="home-section1" className="h-screen flex justify-center align-middle items-center z-20">
+      <div id="animation-id">
+      <div id="home-section1" className="h-screen flex justify-center align-middle items-center z-20">
         <div
           className="h-screen w-screen flex flex-col justify-center tracking-wider font-semibold pt-20 opacity-0 text-text-light"
           id="hero-div-container"
@@ -114,7 +114,8 @@ const page = () => {
             </span>
           </div>
         </div>
-		</section>
+		</div>
+    </div>
 
 
 		<TechStack />

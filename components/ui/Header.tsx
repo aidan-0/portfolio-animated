@@ -3,17 +3,21 @@
 import Link from "next/link";
 import React, { useRef } from "react";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useAnimation } from "../AnimationContext";
+import TransitionLink from "../TransitionLink";
 
 const Header = () => {
 	const pathname = usePathname();
+	const router = useRouter();
 	const { animationTrigger } = useAnimation();
 	const timelineRef = useRef<gsap.core.Timeline | null>(null);
 	const navSvgRef = useRef<HTMLImageElement | null>(null);
+
+
 
 	useGSAP(() => {
 		if (pathname === "/") {
@@ -27,7 +31,7 @@ const Header = () => {
 
 				//load in animation
 				timeline
-					.to("#outer-container", {
+					.to("#outer-header-container", {
 						opacity: 1,
 						duration: 1,
 						ease: "power1.inOut",
@@ -83,13 +87,12 @@ const Header = () => {
 			}
 		} else {
 			const timeline = gsap.timeline();
-			timelineRef.current = timeline;
 
 			console.log("Starting Header Animation");
 
 			//load in animation
 			timeline
-				.to("#outer-container", {
+				.to("#outer-header-container", {
 					opacity: 1,
 					duration: 1,
 					ease: "power1.inOut",
@@ -118,7 +121,7 @@ const Header = () => {
 		const hoverAnimation = gsap.to(navSvgRef.current, {
 			background: "linear-gradient(45deg, #f88f7f, #fbcb85)",
 			boxShadow: "rgba(153, 153, 153, 0.1) 0px 0px 8px 4px",
-			scale: 1.04,
+			scale: 0.96,
 			filter: "grayscale(0.3)",
 			duration: 0.3,
 			ease: "power1.inOut",
@@ -144,10 +147,12 @@ const Header = () => {
 		}
 	};
 
+
+
 	return (
 		<div
 			className="opacity-0 flex justify-center top-0 absolute pt-4"
-			id="outer-container"
+			id="outer-header-container"
 		>
 			<header
 				className="w-[80%] items-center overflow-hidden"
@@ -157,12 +162,14 @@ const Header = () => {
 					className="flex items-center justify-between py-5 font-semibold text-[18px] overflow-hidden"
 					id="inner-header-container"
 				>
-					<Link href="/tech" id="nav-link">
+					{/* <Link href="/tech" id="nav-link">
 						TECH
-					</Link>
-					<Link href="/work" id="nav-link">
+					</Link> */}
+					{/* <Link href="/portfolio" id="nav-link">
 						PORTFOLIO
-					</Link>
+					</Link> */}
+					<TransitionLink href="/tech" label="TECH" />
+					<TransitionLink href="/portfolio" label="PORTFOLIO" />
 
 					<div onClick={handleLogoClick}>
 						<Link href="/" id="nav-logo nav-link">
@@ -178,9 +185,10 @@ const Header = () => {
 						</Link>
 					</div>
 
-					<Link href="/resume" id="nav-link">
+					<TransitionLink href="/resume" label="RESUME" />
+					{/* <Link href="/resume" id="nav-link">
 						RESUME
-					</Link>
+					</Link> */}
 					<Link href="/contact" id="nav-link">
 						CONTACT
 					</Link>

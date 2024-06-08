@@ -1,28 +1,34 @@
-// "use client";
+"use client";
 
-// import { useRouter } from "next/navigation";
-// import { animatePageOut } from "@/animations";
+import { useRouter, usePathname } from "next/navigation";
+import { animatePageOut } from "@/animations";
 
-// export default function TransitionLink({
-//   href,
-//   label,
-// }: {
-//   href: string;
-//   label: string;
-// }) {
-//   const router = useRouter();
+export default function TransitionLink({
+  href,
+  label,
+}: {
+  href: string;
+  label: string;
+}) {
+  const router = useRouter();
+  const pathname = usePathname();
 
-//   const handleClick = () => {
-//     animatePageOut(href, router);
-//   };
+  const handleClick = () => {
+    if (href === pathname) {
+      return;
+    } else {
+    animatePageOut(href, router);
+    }
+    console.log("clicked")
 
-//   return (
-//     <button
-//       className="border-[1px] border-black p-4 rounded-xl hover:bg-black hover:text-neutral-100 cursor-pointer"
-//       id="transition-link-btn"
-//       onClick={handleClick}
-//     >
-//       {label}
-//     </button>
-//   );
-// }
+  };
+
+  return (
+    <button
+      id="nav-link"
+      onClick={handleClick}
+    >
+      {label}
+    </button>
+  );
+}

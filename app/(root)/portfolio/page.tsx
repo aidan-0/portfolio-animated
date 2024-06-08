@@ -1,26 +1,26 @@
-"use client"
+"use client";
 
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import React from "react";
 
 const page = () => {
+	// on page load
 	useGSAP(() => {
-		const resumeTl = gsap.timeline();
+		const portfolioTl = gsap.timeline();
 
 
-		resumeTl
+		portfolioTl
 		.to("#animation-id", {
 			opacity: 1,
 			duration: 1,
 			ease: "power1.inOut",
-		
 		}, 0)
 		.to("#transition-element", {
 			opacity: 0,
 			zIndex: 0,
 		}, "<")
-		.from("#inner-resume-container", {
+		.from("#inner-portfolio-container", {
 			opacity: 0,
 			duration: 1,
 		}, "<")
@@ -30,16 +30,15 @@ const page = () => {
 		  }, "<")
 	}, []);
 
-
 	return (
 		<div id="animation-id">
 			<div
-				id="resume-bg"
-				className="h-screen w-screen flex justify-center align-middle items-center z-20"
+				id="portfolio-bg"
+				className="h-screen flex justify-center align-middle items-center z-20 "
 			>
 				<div
 					className="h-screen w-screen flex flex-col justify-center tracking-wider font-semibold pt-20 text-text-light"
-					id="inner-resume-container"
+					id="inner-portfolio-container"
 				>
 					<span
 						className="text-3xl text-center font-[500] text-[#dcaa7e] pt-24"
