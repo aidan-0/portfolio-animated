@@ -45,6 +45,7 @@ const page = () => {
     );
     let tech = document.getElementById("tech");
 
+	//TODO: fix fouc
     gsap.set(boxTitle1, {
       color: "#FFFFFF",
       top: "50%",

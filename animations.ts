@@ -18,14 +18,14 @@ export const animatePageOut = (href: string, router: AppRouterInstance) => {
         background = "radial-gradient(circle at top center, #144472 0%, #022241 100%)";
         h1text = "Resume";
         break;
-      case "/tech":
+      case "/tech": //GREEN
         background = "radial-gradient(circle at top center, #0c8c45 0%, #023926 100%)";
         break;
       case "/portfolio":
         background = "radial-gradient(circle at top center, #8d2626 0%, #45071e 100%)";
         break;
       default:
-        background = "#333"; // Fallback color
+        background = "#000";
     }
 
     const tl = gsap.timeline({
@@ -61,7 +61,7 @@ export const animatePageOut = (href: string, router: AppRouterInstance) => {
         y: 0,
          duration: 1.3,
         ease: "power2.out",
-      }, 0.5); // Start at the same time as animationElement
+      }, 0.5); // Start around the same time as animationElement to make it flow
     }
   }
 };
