@@ -19,7 +19,7 @@ export const animatePageOut = (href: string, router: AppRouterInstance) => {
         h1text = "Resume";
         break;
       case "/tech":
-        background = "radial-gradient(circle at top center, #b76f3f 0%, #9a3514 100%)";
+        background = "radial-gradient(circle at top center, #0c8c45 0%, #023926 100%)";
         break;
       case "/portfolio":
         background = "radial-gradient(circle at top center, #8d2626 0%, #45071e 100%)";

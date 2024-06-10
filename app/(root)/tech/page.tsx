@@ -1,86 +1,194 @@
-"use client"
+"use client";
 
-import { useGSAP } from "@gsap/react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import React from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import "./TechStack.css";
+import Image from "next/image";
+import { techLogos } from "@/components/data";
 
 const page = () => {
-	useGSAP(() => {
-		const techTl = gsap.timeline();
+  useGSAP(() => {
+    const techTl = gsap.timeline();
 
 
-		techTl
-		.to("#animation-id", {
-			opacity: 1,
-			duration: 1,
-			ease: "power1.inOut",
-		
-		}, 0)
-		.to("#transition-element", {
-			opacity: 50,
-			zIndex: 0,
-		}, "<")
-		.from("#inner-tech-container", {
-			opacity: 0,
-			duration: 1,
-		}, "<")
-		.to("#outer-header-container", {
-			y: 0,
-			duration: 1,
-		  }, "<")
-	}, []);
+	//Load in animations
+    techTl
+      .to(
+        "#animation-id",
+        {
+          opacity: 1,
+          duration: 1,
+          ease: "power1.inOut",
+        },
+        0
+      )
+      .to(
+        "#transition-element",
+        {
+          zIndex: 0,
+        },
+        "<"
+      )
 
+  }, []);
 
-	return (
-		<>
-			<div id="animation-id">
-				<div
-					id="tech-bg"
-					className="h-screen w-screen flex justify-center align-middle items-center z-20"
-				>
-					<div
-						className="h-screen w-screen flex flex-col justify-center tracking-wider font-semibold pt-20 text-text-light"
-						id="inner-tech-container"
-					>
-						<span
-							className="text-3xl text-center font-[500] text-[#dcaa7e] pt-24"
-							id=""
-						>
-							Hi, I'm
-						</span>
-						<span className="text-3xl sm:text-8xl text-center" id="">
-							AIDAN
-						</span>
-						<span className="text-3xl sm:text-8xl text-center pb-36" id="">
-							MCDONALD
-						</span>
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    let boxTitle1 = document.getElementById("boxTitle1");
+    let boxSubtitle1 = document.getElementById("boxSubtitle1");
+    let boxContainer = document.getElementById("boxContainer");
+    let marqueeContainerTop = document.getElementById("marqueeContainerTop");
+    let marqueeContainerBottom = document.getElementById(
+      "marqueeContainerBottom"
+    );
+    let tech = document.getElementById("tech");
 
-						<div
-							className="w-[1000px] pl-[10%] text-2xl font-[400] flex flex-col leading-9"
-							id="mini-bio-div"
-						>
-							<span className="mini-bio-text ">
-								A dedicated Web Developer from Perth,
-								<br />
-							</span>
-							<span className="mini-bio-text">
-								specialising in{" "}
-								<span className="italic text-[#dcaa7e] font-medium">
-									designing
-								</span>{" "}
-								and{" "}
-								<span className="italic font-medium text-[#dcaa7e]">
-									developing
-								</span>{" "}
-								<br />
-							</span>
-							<span className="mini-bio-text ">advanced client solutions.</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</>
-	);
+    gsap.set(boxTitle1, {
+      color: "#FFFFFF",
+      top: "50%",
+      left: "50%",
+      position: "absolute",
+      overflow: "hidden",
+      xPercent: -50,
+      yPercent: -50,
+      textAlign: "center",
+    });
+
+	gsap.set(boxSubtitle1, {
+		color: "#FFFFFF",
+		top: "60%",
+		left: "50%",
+		position: "absolute",
+		overflow: "hidden",
+		xPercent: -50,
+		yPercent: -50,
+		textAlign: "center",
+	})
+
+    gsap.set(boxContainer, {
+      marginLeft: "auto",
+      marginRight: "auto",
+      borderRadius: "0px",
+      width: "100vw",
+      height: "100vh",
+    });
+
+    gsap.set(marqueeContainerTop, {
+      y: "42vh",
+    });
+    gsap.set(marqueeContainerBottom, {
+      y: "-30vh",
+    });
+
+	//SCROLLING - TODO: Fix the scrolling
+    let tl1 = gsap.timeline({
+      scrollTrigger: {
+        trigger: tech,
+        start: "top top",
+        end: "+=1000px",
+        markers: true,
+        scrub: 1,
+        pin: tech,
+        pinSpacing: true,
+        invalidateOnRefresh: true,
+      },
+      defaults: { ease: "none" },
+    });
+
+    tl1
+      // Scrolling text move left and right
+      .to(boxTitle1, { duration: 3, xPercent: -25 }, "<")
+      .to(boxSubtitle1, { duration: 3, xPercent: 25 }, "<");
+  });
+
+  return (
+    <>
+      <div id="animation-id">
+        <div id="tech" className="z-10">
+          <section id="boxSection">
+            <div
+              id="boxContainer"
+              className="flex justify-center overflow-hidden"
+            >
+              <h3 id="boxTitle1" className="lg:text-7xl  2xl:text-8xl">
+                TECH STACK
+              </h3>
+			  <h4 id="boxSubtitle1" className="tracking-[1]">
+                Here's what i've been working with
+              </h4>
+              <div className="flex flex-col gap-20 justify-center items-center">
+                <div className="marquee w-full" id="marqueeContainerTop">
+                  <ul className="marquee-content justify-center items-center">
+                    {techLogos.map((logo, index) => (
+                      <li key={index}>
+                        <Image
+                          src={logo.src}
+                          alt={logo.alt}
+                          width={50}
+                          height={50}
+                          className="tech-logo"
+                        />
+                      </li>
+                    ))}
+                  </ul>
+
+                  <ul
+                    aria-hidden="true"
+                    className="marquee-content justify-center items-center"
+                  >
+                    {techLogos.map((logo, index) => (
+                      <li key={index}>
+                        <Image
+                          src={logo.src}
+                          alt={logo.alt}
+                          width={50}
+                          height={50}
+                          className="tech-logo"
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="marquee w-full" id="marqueeContainerBottom">
+                  <ul className="marquee-content marquee-reverse justify-center items-center">
+                    {techLogos.map((logo, index) => (
+                      <li key={index}>
+                        <Image
+                          src={logo.src}
+                          alt={logo.alt}
+                          width={50}
+                          height={50}
+                          className="tech-logo"
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                  <ul
+                    aria-hidden="true"
+                    className="marquee-content marquee-reverse justify-center items-center"
+                  >
+                    {techLogos.map((logo, index) => (
+                      <li key={index}>
+                        <Image
+                          src={logo.src}
+                          alt={logo.alt}
+                          width={50}
+                          height={50}
+                          className="tech-logo"
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default page;

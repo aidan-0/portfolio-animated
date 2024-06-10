@@ -6,24 +6,21 @@
 
 #boxContainer {
 	position: relative;
-	background: #0b345a;
-	background: radial-gradient(circle at top center, #144472 0%, #022241 100%);
+	background: #086a38;
+	background: radial-gradient(circle at top center, #0c8c45 0%, #023926 100%);
 }
 
 #boxTitle1 {
-	opacity: 0;
-	/* font-size: 6rem; */
 	font-weight: 600;
 	letter-spacing: 0.05em;
 }
 
 #boxSubtitle1 {
 	font-size: 25px;
-	text-align: right;
+	text-align: center;
 	width: 40%;
 	color: "#ffffff";
-	align-self: flex-end;
-	opacity: 0;
+	align-self: center;
 	letter-spacing: 0.05em;
 }
 
@@ -34,8 +31,8 @@
 	user-select: none;
 	gap: var(--gap);
 	position: relative;
-	mask-image: linear-gradient(to right, transparent 23%, black 26%, black 74%, transparent 77%);
-	-webkit-mask-image: linear-gradient(to right, transparent 23%, black 26%, black 74%, transparent 77%);
+	mask-image: linear-gradient(to right, transparent 5%, black 10%, black 90%, transparent 95%);
+	-webkit-mask-image: linear-gradient(to right, transparent 5%, black 10%, black 90%, transparent 95%);
 
 }
 

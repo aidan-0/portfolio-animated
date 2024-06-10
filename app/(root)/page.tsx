@@ -7,8 +7,8 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import TechStack from "@/components/TechStack/TechStack";
-import Portfolio from "@/components/Portfolio/Portfolio";
+// import TechStack from "@/components/TechStack/TechStack";
+// import Portfolio from "@/components/Portfolio/Portfolio";
 
 
 const page = () => {
@@ -118,8 +118,8 @@ const page = () => {
     </div>
 
 
-		<TechStack />
-		<Portfolio />
+		{/* <TechStack /> */}
+		{/* <Portfolio /> */}
 
 
 
