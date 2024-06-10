@@ -118,13 +118,6 @@ const page = () => {
     </div>
 
 
-		{/* <TechStack /> */}
-		{/* <Portfolio /> */}
-
-
-
-
-
 
 
 

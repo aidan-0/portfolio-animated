@@ -1,27 +1,44 @@
 #boxSection {
-	position: relative;
+	/* position: relative;
 	display: flex;
-	background: white;
+	background: white; */
 }
 
 #boxContainer {
 	position: relative;
 	background: #086a38;
 	background: radial-gradient(circle at top center, #0c8c45 0%, #023926 100%);
+	marginLeft: auto;
+	marginRight: auto;
+	width: 100vw;
+	height: 100vh;
 }
 
 #boxTitle1 {
+	color: #FFFFFF;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	overflow: hidden;
+	transform: translate(-50%, -50%);
+	text-align: center;
 	font-weight: 600;
 	letter-spacing: 0.05em;
 }
 
 #boxSubtitle1 {
+	display: flex;
+	justify-content: center;
 	font-size: 25px;
-	text-align: center;
-	width: 40%;
-	color: "#ffffff";
+	color: #ffffff;
 	align-self: center;
 	letter-spacing: 0.05em;
+	top: 60%;
+	left: 50%;
+	position: absolute;
+	overflow: hidden;
+	transform: translate(-50%, -50%);
+	text-align: center;
 }
 
 .marquee {
@@ -33,7 +50,6 @@
 	position: relative;
 	mask-image: linear-gradient(to right, transparent 5%, black 10%, black 90%, transparent 95%);
 	-webkit-mask-image: linear-gradient(to right, transparent 5%, black 10%, black 90%, transparent 95%);
-
 }
 
 .marquee-content {
@@ -50,6 +66,15 @@
 	animation-direction: reverse;
 }
 
+#marqueeContainerTop {
+    transform: translateY(42vh);
+}
+
+#marqueeContainerBottom {
+    transform: translateY(-30vh);
+}
+
+
 @keyframes scroll {
 	from {
 		transform: translateX(0);
@@ -59,8 +84,14 @@
 	}
 }
 
-.tech-logo {
+li .tech-logo {
     height: 55px;
     width: 55px;
-	/* filter: grayscale(1); */
+	transition: 0.3s;
 }
+
+.tech-logo:hover {
+	filter: grayscale(0);
+	transform: translateY(-5px);
+}
+

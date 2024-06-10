@@ -4,6 +4,7 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 export const animatePageOut = (href: string, router: AppRouterInstance) => {
   const animationElement = document.getElementById("animation-id");
   const transitionElement = document.getElementById("transition-element");
+  const transitionText = document.getElementById("page-transition-text");
 
   if (animationElement) {
     console.log("Animating page out")
@@ -61,7 +62,16 @@ export const animatePageOut = (href: string, router: AppRouterInstance) => {
         y: 0,
          duration: 1.3,
         ease: "power2.out",
-      }, 0.5); // Start around the same time as animationElement to make it flow
+      }, 0.5) // Start around the same time as animationElement to make it flow
+      .fromTo(transitionText, {
+        opacity: 0,
+        y: -250,
+      }, {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out",
+      }, 0.8) // Adds up to 1.8s to match the swipe in time
     }
   }
 };
