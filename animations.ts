@@ -6,28 +6,32 @@ export const animatePageOut = (href: string, router: AppRouterInstance) => {
   const transitionElement = document.getElementById("transition-element");
   const transitionText = document.getElementById("page-transition-text");
 
-  if (animationElement) {
-    console.log("Animating page out")
+  if (animationElement && transitionText) {
+    console.log("Animating page out");
     let background;
-    let h1text
+    let h1text;
 
-    // Determine the background color based on the target page
-    // TODO: fix the background colors
-    // TODO: Add text that comes in with it
+    // Determine the background color and text based on the target page
     switch (href) {
-      case "/resume":
-        background = "radial-gradient(circle at top center, #144472 0%, #022241 100%)";
-        h1text = "Resume";
-        break;
-      case "/tech": //GREEN
+      // case "/resume":
+      //   background = "radial-gradient(circle at top center, #144472 0%, #022241 100%)";
+      //   h1text = "RESUME";
+      //   break;
+      case "/tech":
         background = "radial-gradient(circle at top center, #0c8c45 0%, #023926 100%)";
+        h1text = "TECH STACK";
         break;
       case "/portfolio":
         background = "radial-gradient(circle at top center, #8d2626 0%, #45071e 100%)";
+        h1text = "PORTFOLIO";
         break;
       default:
         background = "#000";
+        h1text = " "; 
     }
+
+    // Set the h1 text content
+    transitionText.innerText = h1text;
 
     const tl = gsap.timeline({
       onComplete: () => {
@@ -36,8 +40,7 @@ export const animatePageOut = (href: string, router: AppRouterInstance) => {
     });
 
     // Animate the page content (animationElement)
-    tl
-    .to("#outer-header-container", {
+    tl.to("#outer-header-container", {
       y: "-100%",
       duration: 0.4,
     })
@@ -60,8 +63,8 @@ export const animatePageOut = (href: string, router: AppRouterInstance) => {
       }, 0)
       .to(transitionElement, {
         y: 0,
-         duration: 1.3,
-        ease: "power2.out",
+        duration: 1.3,
+        ease: "power1",
       }, 0.5) // Start around the same time as animationElement to make it flow
       .fromTo(transitionText, {
         opacity: 0,
@@ -69,9 +72,9 @@ export const animatePageOut = (href: string, router: AppRouterInstance) => {
       }, {
         y: 0,
         opacity: 1,
-        duration: 1,
-        ease: "power2.out",
-      }, 0.8) // Adds up to 1.8s to match the swipe in time
+        duration: 0.9,
+        ease: "power1.in",
+      }, 0.9) // Adds up to 1.8s to match the swipe in time
     }
   }
 };

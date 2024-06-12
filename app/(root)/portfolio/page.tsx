@@ -9,70 +9,65 @@ const page = () => {
 	useGSAP(() => {
 		const portfolioTl = gsap.timeline();
 
-
 		portfolioTl
-		.to("#animation-id", {
-			opacity: 1,
-			duration: 1,
-			ease: "power1.inOut",
-		}, 0)
-		.to("#transition-element", {
-			opacity: 0,
-			zIndex: 0,
-		}, "<")
-		.from("#inner-portfolio-container", {
-			opacity: 0,
-			duration: 1,
-		}, "<")
-		.to("#outer-header-container", {
-			y: 0,
-			duration: 1,
-		  }, "<")
+		.to(
+			"#animation-id",
+			{
+				opacity: 1,
+				duration: 1,
+				ease: "power1.inOut",
+			},
+			0,
+		)
+		.to(
+			"#transition-element",
+			{
+				zIndex: 0,
+			},
+			"<",
+		)
+		.fromTo(
+			"#outer-header-container",
+			{ y: -150 },
+			{
+				y: 0,
+				duration: 1,
+			},
+			"<",
+		)
+		.fromTo("#mini-bio-div", { top: "85%", opacity: 0 }, { top: "75%", opacity: 1, duration: 1.5, ease: "back" }, "<");
 	}, []);
 
 	return (
 		<div id="animation-id">
 			<div
 				id="portfolio-bg"
-				className="h-screen flex justify-center align-middle items-center z-20 "
+				className="h-screen z-20 "
 			>
 				<div
-					className="h-screen w-screen flex flex-col justify-center tracking-wider font-semibold pt-20 text-text-light"
+					className="text-text-light"
 					id="inner-portfolio-container"
 				>
-					<span
-						className="text-3xl text-center font-[500] text-[#dcaa7e] pt-24"
-						id=""
-					>
-						Hi, I'm
-					</span>
-					<span className="text-3xl sm:text-8xl text-center" id="">
-						AIDAN
-					</span>
-					<span className="text-3xl sm:text-8xl text-center pb-36" id="">
-						MCDONALD
-					</span>
+					<h1 id="page-transition-text" className="lg:text-7xl  2xl:text-8xl">
+						PORTFOLIO
+					</h1>
 
 					<div
-						className="w-[1000px] pl-[10%] text-2xl font-[400] flex flex-col leading-9"
+						className="w-[1000px] pl-[10%] text-2xl font-[400] flex flex-col leading-9 top-[75%] absolute"
 						id="mini-bio-div"
 					>
-						<span className="mini-bio-text ">
-							A dedicated Web Developer from Perth,
-							<br />
-						</span>
 						<span className="mini-bio-text">
-							specialising in{" "}
-							<span className="italic text-[#dcaa7e] font-medium">
-								designing
-							</span>{" "}
-							and{" "}
+							Scroll down to{" "}
+							<span className="italic text-[#dcaa7e] font-medium">explore</span>{" "}
+							some of <br />
+							the projects I have{" "}
 							<span className="italic font-medium text-[#dcaa7e]">
-								developing
-							</span>{" "}
+								created
+							</span>
+							.
 							<br />
+							(Coming Soon)
 						</span>
-						<span className="mini-bio-text ">advanced client solutions.</span>
 					</div>
 				</div>
 			</div>

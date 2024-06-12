@@ -185,10 +185,10 @@ const Header = () => {
 						</Link>
 					</div>
 
-					<TransitionLink href="/resume" label="RESUME" />
-					{/* <Link href="/resume" id="nav-link">
+
+					<Link href="/resume" download="Resume-Aidan-McDonald.pdf" id="nav-link">
 						RESUME
-					</Link> */}
+					</Link>
 					<Link href="/contact" id="nav-link">
 						CONTACT
 					</Link>

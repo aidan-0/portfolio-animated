@@ -81,9 +81,9 @@ const page = () => {
 				<div id="tech" className="z-10"> 
 					<section id="boxSection">
 						<div id="boxContainer" className="flex justify-center">
-							<h3 id="boxTitle1" className="lg:text-7xl  2xl:text-8xl">
+							<h1 id="boxTitle1" className="lg:text-7xl  2xl:text-8xl">
 								TECH STACK
-							</h3>
+							</h1>
 							<h4 id="boxSubtitle1" className="tracking-[1]">
 								Here's what i've been working with
 							</h4>

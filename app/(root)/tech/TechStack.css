@@ -20,7 +20,7 @@
 	left: 50%;
 	position: absolute;
 	overflow: hidden;
-	transform: translate(-50%, -50%);
+	transform: translate(0%, -50%) translate(-50%, 0px) !important;
 	text-align: center;
 	font-weight: 600;
 	letter-spacing: 0.05em;
