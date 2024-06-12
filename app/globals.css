@@ -130,7 +130,7 @@ h1 {
 
 /* TRANSITIONS */
 #transition-element {
-	transform: translateY(100%); /* Move it off the screen below */
+	/* transform: translateY(100%); Move it off the screen below */
 	/* display: none; */
   }
 

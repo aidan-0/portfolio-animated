@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { gsap } from "gsap";
@@ -9,6 +9,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useAnimation } from "../AnimationContext";
 import TransitionLink from "../TransitionLink";
+import ContactModal from "./ContactModal";
 
 const Header = () => {
 	const pathname = usePathname();
@@ -16,6 +17,8 @@ const Header = () => {
 	const { animationTrigger } = useAnimation();
 	const timelineRef = useRef<gsap.core.Timeline | null>(null);
 	const navSvgRef = useRef<HTMLImageElement | null>(null);
+	const [isContactModalOpen, setContactModalOpen] = useState(false); // State to manage the contact modal
+
 
 
 
@@ -148,8 +151,15 @@ const Header = () => {
 	};
 
 
+	const handleContactClick = (e: React.MouseEvent) => {
+		e.preventDefault();
+		setContactModalOpen(true);
+	  };
+
+
 
 	return (
+		<>
 		<div
 			className="opacity-0 flex justify-center top-0 absolute pt-4"
 			id="outer-header-container"
@@ -189,12 +199,16 @@ const Header = () => {
 					<Link href="https://github.com/aidan-0/portfolio-animated/raw/main/public/Resume-Aidan-McDonald.pdf" download="Resume-Aidan-McDonald.pdf" id="nav-link">
 						RESUME
 					</Link>
-					<Link href="/contact" id="nav-link">
-						CONTACT
+					<Link href="/" id="nav-link" onClick={handleContactClick}>
+					CONTACT
 					</Link>
 				</div>
 			</header>
+
 		</div>
+			<ContactModal isOpen={isContactModalOpen} onClose={() => setContactModalOpen(false)} />
+		</>
+
 	);
 };
 

@@ -59,14 +59,18 @@ const page = () => {
 						<span className="mini-bio-text">
 							Scroll down to{" "}
 							<span className="italic text-[#dcaa7e] font-medium">explore</span>{" "}
-							some of <br />
-							the projects I have{" "}
+							some of
+							the projects I've{" "}
 							<span className="italic font-medium text-[#dcaa7e]">
 								created
 							</span>
 							.
 							<br />
-							(Coming Soon)
+							(Coming Soon) <br/><br/> In the meantime check out{" "}
+								<span className="italic font-medium text-[#dcaa7e]">
+								<a href='https://ecommerce-psi-sooty-97.vercel.app/'>this project</a>
+							</span>
+							
 						</span>
 					</div>
 				</div>
