@@ -44,13 +44,13 @@ const page = () => {
 				{ y: -150 },
 				{
 					y: 0,
-					duration: 1,
+					duration: 2,
 				},
 				"<",
 			)
 			.fromTo(boxSubtitle1, { top: "70%", opacity: 0 }, { top: "60%", opacity: 1, duration: 1.5, ease: "back"}, "<")
-			.fromTo(marqueeContainerTop, { y: "48vh", opacity: 0 }, { y: "42vh", opacity: 1, duration: 1.5, ease: "back"  }, "<")
-			.fromTo(marqueeContainerBottom, {y: "-36vh", opacity: 0 }, { y: "-30vh", opacity: 1, duration: 1.5, ease: "back"  }, "<")
+			.fromTo(marqueeContainerTop, { y: "44vh", opacity: 0 }, { y: "42vh", opacity: 1, duration: 1.5, ease: "power1.inOut"  }, "<")
+			.fromTo(marqueeContainerBottom, {y: "-32vh", opacity: 0 }, { y: "-30vh", opacity: 1, duration: 1.5, ease: "power1.inOut"  }, "<")
 
 
 

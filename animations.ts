@@ -34,9 +34,9 @@ export const animatePageOut = (href: string, router: AppRouterInstance) => {
     transitionText.innerText = h1text;
 
     const tl = gsap.timeline({
-      onComplete: () => {
-        router.push(href);
-      }
+      // onComplete: () => {
+      //   router.push(href);
+      // }
     });
 
     // Animate the page content (animationElement)
@@ -74,7 +74,13 @@ export const animatePageOut = (href: string, router: AppRouterInstance) => {
         opacity: 1,
         duration: 0.9,
         ease: "power1.in",
+        
       }, 0.9) // Adds up to 1.8s to match the swipe in time
+      .to(transitionText, {
+        onComplete: () => {
+          router.push(href);
+        }
+      }, 1.3);
     }
   }
 };

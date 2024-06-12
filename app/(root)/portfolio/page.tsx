@@ -31,7 +31,7 @@ const page = () => {
 			{ y: -150 },
 			{
 				y: 0,
-				duration: 1,
+				duration: 1.5,
 			},
 			"<",
 		)
