@@ -150,10 +150,13 @@ const Header = () => {
 		}
 	};
 
-
+	//open Modal
 	const handleContactClick = (e: React.MouseEvent) => {
+		console.log(isContactModalOpen)
+		setContactModalOpen(prevContactModalOpen => !prevContactModalOpen);
+		
 		e.preventDefault();
-		setContactModalOpen(true);
+		console.log(isContactModalOpen)
 	  };
 
 
@@ -172,12 +175,6 @@ const Header = () => {
 					className="flex items-center justify-between py-5 font-semibold text-[18px] overflow-hidden"
 					id="inner-header-container"
 				>
-					{/* <Link href="/tech" id="nav-link">
-						TECH
-					</Link> */}
-					{/* <Link href="/portfolio" id="nav-link">
-						PORTFOLIO
-					</Link> */}
 					<TransitionLink href="/tech" label="TECH" />
 					<TransitionLink href="/portfolio" label="PORTFOLIO" />
 
@@ -199,12 +196,11 @@ const Header = () => {
 					<Link href="https://github.com/aidan-0/portfolio-animated/raw/main/public/Resume-Aidan-McDonald.pdf" download="Resume-Aidan-McDonald.pdf" id="nav-link">
 						RESUME
 					</Link>
-					<Link href="/" id="nav-link" onClick={handleContactClick}>
+					<div id="nav-link" className="cursor-pointer" onClick={handleContactClick}>
 					CONTACT
-					</Link>
+					</div>
 				</div>
 			</header>
-
 		</div>
 			<ContactModal isOpen={isContactModalOpen} onClose={() => setContactModalOpen(false)} />
 		</>
