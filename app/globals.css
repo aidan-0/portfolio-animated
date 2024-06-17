@@ -11,6 +11,15 @@ body {
 	overflow-x: hidden !important;
 }
 
+/* Remove scrollbars */
+* {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+*::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
 
 
 #nav-svg {
@@ -141,6 +150,7 @@ h1 {
 	position: absolute;
 	overflow: hidden;
 	transform: translate(0%, -50%) translate(-50%, 0px) !important;
+	/* transform: translate(-50%, -50%); */
 	text-align: center;
 	font-weight: 600;
 	letter-spacing: 0.05em;

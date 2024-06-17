@@ -68,9 +68,9 @@ export const animatePageOut = (href: string, router: AppRouterInstance) => {
       }, 0.5) // Start around the same time as animationElement to make it flow
       .fromTo(transitionText, {
         opacity: 0,
-        y: -250,
+        // y: -250,
       }, {
-        y: 0,
+        // y: 0,
         opacity: 1,
         duration: 0.9,
         ease: "power1.in",

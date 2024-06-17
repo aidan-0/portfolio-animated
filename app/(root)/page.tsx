@@ -2,88 +2,8 @@
 
 import React from "react";
 import EntryAnimation from "../../components/ui/EntryAnimation";
-// import TechStack from "../../components/TechStack";
-import Image from "next/image";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-// import TechStack from "@/components/TechStack/TechStack";
-// import Portfolio from "@/components/Portfolio/Portfolio";
 
 const page = () => {
-	// useGSAP(() => {
-	// 	gsap.registerPlugin(ScrollTrigger);
-
-	// 	const tlHeroSection = gsap.timeline({
-	// 		scrollTrigger: {
-	// 			trigger: "#home-section1",
-	// 			start: "top top",
-	// 			// end: "+=700",
-	// 			end: "100%",
-	// 			scrub: 1,
-	// 			markers: true,
-	// 			pin: true,
-	// 			pinSpacing: false,
-	// 		},
-	// 	});
-
-	// 	//Hero text exit animation
-	// 	tlHeroSection
-	// 		.fromTo(
-	// 			"#hero-main-text",
-	// 			{
-	// 				y: 0,
-	// 			},
-	// 			{
-	// 				y: -50,
-	// 				opacity: 0,
-	// 				duration: 1.5,
-	// 				stagger: 0.15,
-	// 			},
-	// 		)
-	// 		.fromTo(
-	// 			"#nav-link",
-	// 			{
-	// 				opacity: 1,
-	// 				duration: 2,
-	// 			},
-	// 			{
-	// 				opacity: 0,
-	// 				duration: 2,
-	// 			},
-	// 			"<",
-	// 		)
-	// 		.fromTo(
-	// 			"#header-container",
-	// 			{
-	// 				opacity: 1,
-	// 				width: "80%",
-	// 				duration: 2,
-	// 			},
-	// 			{
-	// 				duration: 2,
-	// 				width: "50%",
-	// 				opacity: 0,
-	// 			},
-	// 			"<",
-	// 		)
-	// 		.fromTo(
-	// 			".mini-bio-text",
-	// 			{ y: 0, opacity: 1 },
-	// 			{
-	// 				y: -30,
-	// 				stagger: 0.25,
-	// 				opacity: 0,
-	// 				duration: 2,
-	// 			},
-	// 			"<",
-	// 		)
-	// 		.to("#home-section1", {
-	// 			opacity: 0,
-	// 			duration: 0,
-	// 		});
-	// });
-
 	return (
 		<>
 			<EntryAnimation />

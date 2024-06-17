@@ -41,9 +41,12 @@ const page = () => {
 			)
 			.fromTo(
 				"#outer-header-container",
-				{ y: -150 },
+				{ y: -150,
+				opacity: 0, 
+				 },
 				{
 					y: 0,
+					opacity: 1,
 					duration: 2,
 				},
 				"<",
