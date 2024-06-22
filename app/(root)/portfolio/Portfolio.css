@@ -1,8 +1,13 @@
 #project-screen,
-#project-text {
+#project-text-container,
+.project-selection-btn {
     box-shadow: rgba(33, 33, 33, 0.4) 0px 2px 8px 0px;
     transition: 0.5s;
     background: radial-gradient(circle at bottom right, #242630e8 0%, #242630e8 100%)
+}
+
+#project-text-container {
+    overflow: scroll !important;
 }
 
 
@@ -11,17 +16,17 @@
 #search-bar,
 #project-preview,
 #three-dots,
-#project-description {
+.project-description {
     background: none !important;
 }
 
-#project-img {
+.project-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-#project-img-container {
+.project-img-container {
     overflow: hidden !important;
     border-radius: 10px;
 }

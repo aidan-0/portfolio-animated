@@ -1,13 +1,12 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import "./Portfolio.css";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MaterialSymbolsCircle } from "../../../components/ui/Icons";
-
+import { projectData } from "../../../components/data";
 const page = () => {
 	// on page load
 	useGSAP(() => {
@@ -145,50 +144,77 @@ const page = () => {
 				{
 					x: 0,
 					opacity: 1,
-					duration: 3,
-					stagger: 0.6,
+					stagger: 0.4,
 				},
 				"<",
-			);
+			)
+
+			// Cards have fully entered. Now targeting the scrolling on the text inside the cards
+			gsap.fromTo("#project-text", {
+				y: 2000,
+			  }, {
+				y: 0,
+				duration: 15,
+				scrollTrigger: {
+					trigger: "#project-text",
+					start: "top+=1000 top",  // This means the animation will start when you have scrolled 1000px from the top
+					end: "+=5500",  // This means the animation will end when you have scrolled 2000px from the top
+					scrub: 1,  // This is the speed of the scroll
+					markers: true  // This is optional, used for debugging to see where the start and end positions are
+				}
+			})
 	});
 
-	// Add hover effect to #project-screen
-	function handleMouseEnter(e: any) {
-		if (e.target.id === "project-screen") {
+	// Add hover effect
+	function handleMouseEnterCard(e: any) {
+		if (e.target.id) {
 			gsap.fromTo(
-				`#project-screen`,
+				`#${e.target.id}`,
 				{
 					background:
 						"radial-gradient(circle at bottom right, #242630e8 0%, #242630e8 100%)",
 				},
 				{
 					background:
-						"radial-gradient(circle at bottom right, #45071e 0%, #242630 100%)",
-					duration: 0.5,
-				},
-			);
-		}
-		if (e.target.id === "project-text") {
-			gsap.fromTo(
-				`#project-text`,
-				{
-					background:
-						"radial-gradient(circle at bottom right, #242630e8 0%, #242630e8 100%)",
-				},
-				{
-					background:
-						"radial-gradient(circle at bottom right, #45071e 0%, #242630 100%)",
+						"radial-gradient(circle at bottom right, #292E48 0%, #242630 100%)",
 					duration: 0.5,
 				},
 			);
 		}
 	}
+	function handleMouseEnterBtn(e: any) {
+		if (e.target.id) {
+			gsap.fromTo(
+				`#${e.target.id}`,
+				{
+					background:
+						"radial-gradient(circle at bottom center, #242630e8 0%, #242630e8 100%)",
+				},
+				{
+					background:
+						"radial-gradient(circle at bottom center, #292E48 50%, #242630 100%)",
+					duration: 0.4,
+				},
+			);
+		}
+	}
 
-	function handleMouseLeave(e: any) {
+	// Remove hover effect
+	function handleMouseLeaveCard(e: any) {
 		if (e.target.id) {
 			gsap.to(`#${e.target.id}`, {
 				background:
 					"radial-gradient(circle at bottom right, #242630e8 0%, #242630e8 100%)",
+				duration: 0.5,
+			});
+		}
+	}
+
+	function handleMouseLeaveBtn(e: any) {
+		if (e.target.id) {
+			gsap.to(`#${e.target.id}`, {
+				background:
+					"radial-gradient(circle at bottom center, #242630e8 0%, #242630e8 100%)",
 				duration: 0.5,
 			});
 		}
@@ -240,86 +266,95 @@ const page = () => {
 					</div>
 				</div>
 
-				{/* Portfolio projects */}
+				{/* PORTFOLIO PROJECTS */}
 				<div
 					className="flex flex-row h-screen mt-10"
 					id="portfolio-projects-section"
 				>
-					{/* TODO: fix text wrap in buttons */}
+					{/* PROJECT BUTTONS */}
 					<div
 						id="project-selection-btns"
 						className="flex flex-col justify-center items-start gap-10 pl-10"
 					>
-						<button className="project-selection-btn text-white border border-white rounded px-4 py-2 opacity-0">
-							Project 1
-						</button>
-						<button className="project-selection-btn text-white border border-white rounded px-4 py-2 opacity-0">
-							Project 2
-						</button>
-						<button className="project-selection-btn text-white border border-white rounded px-4 py-2 opacity-0">
-							Project 3
-						</button>
-						<button className="project-selection-btn text-white border border-white rounded px-4 py-2 opacity-0">
-							Project 4
-						</button>
+						{projectData.map((project, index) => (
+							<button
+								key={index}
+								className="project-selection-btn text-white rounded border-2 border-[#ecedf1] px-7 py-2 opacity-0 w-[150px]"
+								id={`project-selection-btn-${index + 1}`}
+								onMouseEnter={handleMouseEnterBtn}
+								onMouseLeave={handleMouseLeaveBtn}
+							>
+								{project.projectBtnText}
+							</button>
+						))}
 					</div>
 
 					<div
 						className="flex grow justify-center items-center gap-14 pr-10 opacity-0"
 						id="project-display"
 					>
-						{/* Project Preview */}
+						{/* PROJECT PREVIEW */}
 						<div
 							id="project-screen"
-							onMouseEnter={handleMouseEnter}
-							onMouseLeave={handleMouseLeave}
-							className="w-1/2 h-[60%] rounded-xl border-2 border-[#343849] flex flex-col justify-center items-center text-white"
+							onMouseEnter={handleMouseEnterCard}
+							onMouseLeave={handleMouseLeaveCard}
+							className="w-1/2 h-[60%] rounded-xl border-2 border-[#ecedf1] flex flex-col justify-center items-center text-white"
 						>
-							<div id="project-contents" className="w-full p-8 flex flex-col justify-between h-full">
+							<div
+								id="project-contents"
+								className="w-full p-8 flex flex-col justify-between h-full"
+							>
 								<div
 									id="project-top-section"
 									className="flex flex-row justify-center items-center gap-4"
 								>
 									<div id="three-dots" className="flex flex-row gap-2">
-										<MaterialSymbolsCircle height={"1.2em"} width={"1.2em"} />
+										<MaterialSymbolsCircle
+											height={"1.2em"}
+											width={"1.2em"}
+											color="#ecedf1"
+										/>
 										<MaterialSymbolsCircle height={"1.2em"} width={"1.2em"} />
 										<MaterialSymbolsCircle height={"1.2em"} width={"1.2em"} />
 									</div>
 
 									<div
 										id="search-bar"
-										className="border-2 rounded-full border-[#fff] w-full flex justify-end pr-3"
+										className="border-2 rounded-full border-[#e2e3e7] w-full flex justify-end pr-3"
 									>
 										<span>x</span>
 									</div>
 								</div>
-								<div
-									id="project-img-container"
-									className="h-full border-2 border-[#fff] mt-7"
-								>
-									<img
-										src="/projects/Stride-for-Education.png"
-										alt="Logo"
-										className=""
-										id="project-img"
-									/>
+								{/* IMAGE CONTAINER */}
+								<div className="h-full border-2 border-[#ecedf1] mt-7 relative project-img-container">
+									{projectData.map((project, index) => (
+										<div key={index} className="absolute">
+											<img
+												src={project.projectImage}
+												alt="project-image"
+												className="project-img"
+											/>
+										</div>
+									))}
 								</div>
 							</div>
 						</div>
-						{/* Project Description */}
+						{/* PROJECT DESCRIPTION */}
 						<div
-							id="project-text"
-							onMouseEnter={handleMouseEnter}
-							onMouseLeave={handleMouseLeave}
-							className="w-1/4 h-[60%] rounded-xl border-2 border-[#343849] flex justify-center items-center text-white"
+							id="project-text-container"
+							onMouseEnter={handleMouseEnterCard}
+							onMouseLeave={handleMouseLeaveCard}
+							className="w-1/4 h-[60%] rounded-xl border-2 border-[#ecedf1] flex flex-col justify-center items-center text-white relative"
 						>
-							<div id="project-description" className="m-8">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								Doloremque dicta ipsam blanditiis doloribus, culpa sequi labore,
-								veritatis laboriosam esse enim maxime earum, maiores dignissimos
-								ad facilis debitis necessitatibus assumenda nam nostrum vitae
-								eaque minus sint tenetur laborum! Iusto, esse labore.
-							</div>
+							{projectData.map((project, index) => (
+								<div 
+									className="m-8 project-description pb-64 leading-8 tracking-widest" 
+									id="project-text"
+									key={index}>
+										<div className="text-xl font-semibold">{project.projectName}</div>
+										<div className="text-lg">{project.projectDescription}</div>
+								</div>
+							))}
 						</div>
 					</div>
 				</div>

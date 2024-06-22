@@ -16,3 +16,63 @@ export const techLogos = [
   { src: "/tech-logos/git-icon.svg", alt: "git-icon" },
   ];
   
+
+
+export const projectData = [
+  {
+    projectName: "Community Spirit Foundation",
+    projectBtnText: "CSF PWA",
+    projectDescription: "A progressive web app for the Community Spirit Foundation",
+    projectImage: "/projects/Stride-for-Education.png",
+    projectLink: "www.aidanmcd.com",
+    techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
+  },
+  {
+    projectName: "Portfolio",
+    projectBtnText: "View Project",
+    projectDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque dicta ipsam blanditiis doloribus, culpa sequi labore, veritatis laboriosam esse enim maxime earum, maiores dignissimos ad facilis debitis necessitatibus assumenda nam nostrum vitae eaque minus sint tenetur laborum! Iusto, esse labore.",
+    projectImage: "/projects/Movie-selector-API.png",
+    projectLink: "www.aidanmcd.com",
+    techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
+  },
+  {
+    projectName: "E-commerce Store",
+    projectBtnText: "View Project",
+    projectDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque dicta ipsam blanditiis doloribus, culpa sequi labore, veritatis laboriosam esse enim maxime earum, maiores dignissimos ad facilis debitis necessitatibus assumenda nam nostrum vitae eaque minus sint tenetur laborum! Iusto, esse labore.",
+    projectImage: "/ecommerce.png",
+    projectLink: "www.ecommercestore.com",
+    techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
+  },
+  {
+    projectName: "Blog App",
+    projectBtnText: "View Project",
+    projectDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque dicta ipsam blanditiis doloribus, culpa sequi labore, veritatis laboriosam esse enim maxime earum, maiores dignissimos ad facilis debitis necessitatibus assumenda nam nostrum vitae eaque minus sint tenetur laborum! Iusto, esse labore.",
+    projectImage: "/blog.png",
+    projectLink: "www.blogapp.com",
+    techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
+  },
+  {
+    projectName: "Social Media Dashboard",
+    projectBtnText: "View Project",
+    projectDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque dicta ipsam blanditiis doloribus, culpa sequi labore, veritatis laboriosam esse enim maxime earum, maiores dignissimos ad facilis debitis necessitatibus assumenda nam nostrum vitae eaque minus sint tenetur laborum! Iusto, esse labore.",
+    projectImage: "/dashboard.png",
+    projectLink: "www.socialmediadashboard.com",
+    techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
+  },
+  {
+    projectName: "Weather App",
+    projectBtnText: "View Project",
+    projectDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque dicta ipsam blanditiis doloribus, culpa sequi labore, veritatis laboriosam esse enim maxime earum, maiores dignissimos ad facilis debitis necessitatibus assumenda nam nostrum vitae eaque minus sint tenetur laborum! Iusto, esse labore.",
+    projectImage: "/weather.png",
+    projectLink: "www.weatherapp.com",
+    techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
+  },
+  {
+    projectName: "Task Manager",
+    projectBtnText: "View Project",
+    projectDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque dicta ipsam blanditiis doloribus, culpa sequi labore, veritatis laboriosam esse enim maxime earum, maiores dignissimos ad facilis debitis necessitatibus assumenda nam nostrum vitae eaque minus sint tenetur laborum! Iusto, esse labore.",
+    projectImage: "/taskmanager.png",
+    projectLink: "www.taskmanager.com",
+    techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
+  }
+]
