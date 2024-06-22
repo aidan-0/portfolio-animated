@@ -7,7 +7,15 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MaterialSymbolsCircle } from "../../../components/ui/Icons";
 import { projectData } from "../../../components/data";
+import { useLenis } from "lenis/react";
 const page = () => {
+	//Scroll to (for the buttons to go to a set project)
+	// const lenis = useLenis((scroll) => {
+	// 	console.log(scroll)
+	// })
+	// https://www.youtube.com/watch?v=QNh0MH-G3OM
+
+
 	// on page load
 	useGSAP(() => {
 		const portfolioTl = gsap.timeline();

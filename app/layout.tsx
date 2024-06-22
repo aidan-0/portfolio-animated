@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { AnimationProvider } from "@/components/AnimationContext";
-
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -18,7 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <AnimationProvider>
-      <body className={montserrat.className}>{children}</body>
+      <body className={montserrat.className}>
+          {children}
+      </body>
       </AnimationProvider>
     </html>
   );
