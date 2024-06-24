@@ -70,7 +70,7 @@ const page = () => {
 			scrollTrigger: {
 				trigger: "#portfolio-bg",
 				start: "top top",
-				end: "+=5000",
+				end: "+=10000",
 				scrub: 1,
 				markers: true,
 				pin: true,
@@ -82,13 +82,13 @@ const page = () => {
 			.to("#portfolio-bg", {
 				background:
 					"radial-gradient(circle at top center, #b76f3f 0%, #9a3514 100%)",
-				duration: 30,
+				duration: 100,
 			})
 			.to(
 				"#page-transition-text",
 				{
 					top: "10%",
-					duration: 8,
+					duration: 12,
 				},
 				"<",
 			)
@@ -99,7 +99,7 @@ const page = () => {
 				},
 				{
 					y: -150,
-					duration: 5,
+					duration: 7,
 				},
 				"<",
 			)
@@ -112,7 +112,7 @@ const page = () => {
 				{
 					top: "85%",
 					opacity: 0,
-					duration: 3,
+					duration: 5,
 				},
 				"<",
 			)
@@ -125,9 +125,9 @@ const page = () => {
 				{
 					opacity: 1,
 					y: 0,
-					duration: 3,
+					duration: 5,
 				},
-				+5,
+				+7,
 			)
 			.fromTo(
 				"#project-display",
@@ -138,7 +138,7 @@ const page = () => {
 				{
 					y: 0,
 					opacity: 1,
-					duration: 5,
+					duration: 7,
 					ease: "power2",
 				},
 				"<",
@@ -152,21 +152,21 @@ const page = () => {
 				{
 					x: 0,
 					opacity: 1,
-					stagger: 0.4,
+					stagger: 0.6,
 				},
 				"<",
 			)
 
 			// Cards have fully entered. Now targeting the scrolling on the text inside the cards
 			gsap.fromTo("#project-text", {
-				y: 2000,
+				y: 2100,
 			  }, {
-				y: 0,
-				duration: 15,
+				y: -2000,
+				duration: 90,
 				scrollTrigger: {
 					trigger: "#project-text",
 					start: "top+=1000 top",  // This means the animation will start when you have scrolled 1000px from the top
-					end: "+=5500",  // This means the animation will end when you have scrolled 2000px from the top
+					end: "+=9000",  // This means the animation will end when you have scrolled 2000px from the top
 					scrub: 1,  // This is the speed of the scroll
 					markers: true  // This is optional, used for debugging to see where the start and end positions are
 				}
@@ -227,6 +227,9 @@ const page = () => {
 			});
 		}
 	}
+
+
+
 
 	return (
 		<div id="animation-id">
@@ -334,9 +337,9 @@ const page = () => {
 									</div>
 								</div>
 								{/* IMAGE CONTAINER */}
-								<div className="h-full border-2 border-[#ecedf1] mt-7 relative project-img-container">
+								<div className="h-full border-2 border-[#ecedf1] mt-7 relative project-img-container overflow-hidden">
 									{projectData.map((project, index) => (
-										<div key={index} className="absolute">
+										<div key={index} className="absolute border-2 border-yellow-500 project-img-inner-container">
 											<img
 												src={project.projectImage}
 												alt="project-image"
@@ -356,11 +359,11 @@ const page = () => {
 						>
 							{projectData.map((project, index) => (
 								<div 
-									className="m-8 project-description pb-64 leading-8 tracking-widest" 
+									className="m-2 project-description py-32 leading-6 tracking-wider border border-red-600 flex flex-col justify-center items-center" 
 									id="project-text"
 									key={index}>
 										<div className="text-xl font-semibold">{project.projectName}</div>
-										<div className="text-lg">{project.projectDescription}</div>
+										<div className="text">{project.projectDescription}</div>
 								</div>
 							))}
 						</div>
