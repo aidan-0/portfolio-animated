@@ -39,7 +39,7 @@ export const projectData = [
     projectName: "E-commerce Store",
     projectBtnText: "View Project",
     projectDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque dicta ipsam blanditiis doloribus, culpa sequi labore, veritatis laboriosam esse enim maxime earum, maiores dignissimos ad facilis debitis necessitatibus assumenda nam nostrum vitae eaque minus sint tenetur laborum! Iusto, esse labore.",
-    projectImage: "/ecommerce.png",
+    projectImage: "/projects/Stride-for-Education.png",
     projectLink: "www.ecommercestore.com",
     techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
   },
@@ -47,7 +47,7 @@ export const projectData = [
     projectName: "Blog App",
     projectBtnText: "View Project",
     projectDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque dicta ipsam blanditiis doloribus, culpa sequi labore, veritatis laboriosam esse enim maxime earum, maiores dignissimos ad facilis debitis necessitatibus assumenda nam nostrum vitae eaque minus sint tenetur laborum! Iusto, esse labore.",
-    projectImage: "/blog.png",
+    projectImage: "/projects/Movie-selector-API.png",
     projectLink: "www.blogapp.com",
     techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
   },
@@ -55,7 +55,7 @@ export const projectData = [
     projectName: "Social Media Dashboard",
     projectBtnText: "View Project",
     projectDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque dicta ipsam blanditiis doloribus, culpa sequi labore, veritatis laboriosam esse enim maxime earum, maiores dignissimos ad facilis debitis necessitatibus assumenda nam nostrum vitae eaque minus sint tenetur laborum! Iusto, esse labore.",
-    projectImage: "/dashboard.png",
+    projectImage: "/projects/Stride-for-Education.png",
     projectLink: "www.socialmediadashboard.com",
     techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
   },
@@ -63,7 +63,7 @@ export const projectData = [
     projectName: "Weather App",
     projectBtnText: "View Project",
     projectDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque dicta ipsam blanditiis doloribus, culpa sequi labore, veritatis laboriosam esse enim maxime earum, maiores dignissimos ad facilis debitis necessitatibus assumenda nam nostrum vitae eaque minus sint tenetur laborum! Iusto, esse labore.",
-    projectImage: "/weather.png",
+    projectImage: "/projects/Movie-selector-API.png",
     projectLink: "www.weatherapp.com",
     techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
   },
@@ -71,7 +71,7 @@ export const projectData = [
     projectName: "Task Manager",
     projectBtnText: "View Project",
     projectDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque dicta ipsam blanditiis doloribus, culpa sequi labore, veritatis laboriosam esse enim maxime earum, maiores dignissimos ad facilis debitis necessitatibus assumenda nam nostrum vitae eaque minus sint tenetur laborum! Iusto, esse labore.",
-    projectImage: "/taskmanager.png",
+    projectImage: "/projects/Stride-for-Education.png",
     projectLink: "www.taskmanager.com",
     techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
   }

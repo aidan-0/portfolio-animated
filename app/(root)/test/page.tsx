@@ -66,15 +66,15 @@ const page = () => {
 		gsap.registerPlugin(ScrollTrigger);
 
 		const tlPortfolio = gsap.timeline({
-			scrollTrigger: {
-				trigger: "#portfolio-bg",
-				start: "top top",
-				end: "+=10000",
-				scrub: 1,
-				markers: true,
-				pin: true,
-				// pinSpacing: false,
-			},
+			// scrollTrigger: {
+			// 	trigger: "#portfolio-bg",
+			// 	start: "top top",
+			// 	end: "+=10000",
+			// 	scrub: 1,
+			// 	markers: true,
+			// 	pin: true,
+			// 	// pinSpacing: false,
+			// },
 		});
 
 		tlPortfolio
@@ -160,38 +160,72 @@ const page = () => {
 		gsap.fromTo(
 			".project-text",
 			{
-				y: 0,
+				yPercent: 0,
 			},
 			{
-				y: -1500,
+				yPercent: -500, // 100 per each card
 				duration: 90,
 				scrollTrigger: {
-					trigger: ".project-text",
-					start: "top+=1000 top", 
-					end: "+=5000", 
-					scrub: 1, 
-					markers: true, 
+					trigger: ".project-description",
+					start: "top+=1000 top",
+					end: "500% top",
+					scrub: 1,
+					markers: {startColor: "white", endColor: "white", fontSize: "18px", fontWeight: "bold", indent: 20}
 				},
 			},
+		)
+		const photos = gsap.utils.toArray<HTMLElement>(
+			".project-img-inner-container",
 		);
+		gsap.set(photos, { yPercent: 101 });
+		// const animation = gsap.to(photos, {yPercent:0, duration:1})
 
+		photos.forEach((photo, i) => {
+			ScrollTrigger.create({
+				trigger: `.project-description:nth-child(${i + 1})`,
+				start: "center top",
+				end: "bottom bottom",
+				onEnter: () => gsap.to(photo, { yPercent: 0, duration: 1 }),
+				// animation: animation,
+				markers: {startColor: "pink", endColor: "pink", fontSize: "18px", fontWeight: "bold", indent: 400},
+				scrub: true,
+			});
+		});
 
-		const photos = gsap.utils.toArray(".project-img-inner-container:not(:first-child)")
-		gsap.set(photos, { yPercent:101})
+		// const photos = gsap.utils.toArray(".project-img-inner-container:not(:first-child)")
+		// gsap.set(photos, { yPercent:101})
 
-		const animation = gsap.to(photos, {yPercent:0, duration:1, stagger:1})
+		// const animation = gsap.to(photos, {yPercent:0, duration:1, stagger:1})
 
-		ScrollTrigger.create({
-			trigger: ".project-text",
-			start: "top top",
-			end: "bottom bottom",
-			animation: animation,
-			scrub: true,
-			markers: true,
-		})
-
-
+		// ScrollTrigger.create({
+		// 	trigger: ".project-text",
+		// 	start: "top top",
+		// 	end: "bottom bottom",
+		// 	animation: animation,
+		// 	scrub: true,
+		// 	markers: true,
+		// })
 	});
+
+	// useGSAP(() => {
+	// 	const photos = gsap.utils.toArray<HTMLElement>(
+	// 		".project-img-inner-container",
+	// 	);
+	// 	gsap.set(photos, { yPercent: 101 });
+	// 	// const animation = gsap.to(photos, {yPercent:0, duration:1})
+
+	// 	photos.forEach((photo, i) => {
+	// 		ScrollTrigger.create({
+	// 			trigger: `.project-description:nth-child(${i + 1})`,
+	// 			start: "center top",
+	// 			end: "bottom bottom",
+	// 			onEnter: () => gsap.to(photo, { yPercent: 0, duration: 1 }),
+	// 			// animation: animation,
+	// 			markers: {startColor: "pink", endColor: "pink", fontSize: "18px", fontWeight: "bold", indent: 400},
+	// 			scrub: true,
+	// 		});
+	// 	});
+	// }, []);
 
 	// Add hover effect
 	function handleMouseEnterCard(e: any) {
@@ -377,7 +411,6 @@ const page = () => {
 							{projectData.map((project, index) => (
 								<div
 									className="project-description leading-6 tracking-wider border border-red-600 flex flex-col justify-center items-center w-full min-h-screen project-text"
-									
 									key={index}
 								>
 									<div className="text-xl font-semibold">
