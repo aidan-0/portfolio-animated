@@ -269,12 +269,12 @@ const page = () => {
 							.
 							<br />
 							(Coming Soon) <br />
-							<br /> In the meantime check out{" "}
-							<span className="italic font-medium text-[#dcaa7e]">
+							{/* <br /> In the meantime check out{" "}
+							<span className="italic font-medium text-[#dcaa7e] z-[1000]">
 								<a href="https://ecommerce-psi-sooty-97.vercel.app/">
 									this project
 								</a>
-							</span>
+							</span> */}
 						</span>
 					</div>
 				</div>
@@ -376,7 +376,7 @@ const page = () => {
 						>
 							{projectData.map((project, index) => (
 								<div
-									className="project-description leading-6 tracking-wider border border-red-600 flex flex-col justify-center items-center w-full min-h-screen project-text"
+									className="project-description leading-6 tracking-wider flex flex-col justify-center items-center w-full min-h-screen project-text"
 									
 									key={index}
 								>
