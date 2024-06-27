@@ -289,12 +289,12 @@ const page = () => {
 							.
 							<br />
 							(Coming Soon) <br />
-							<br /> In the meantime check out{" "}
-							<span className="italic font-medium text-[#dcaa7e]">
+							{/* <br /> In the meantime check out{" "}
+							<span className="italic font-medium text-[#dcaa7e] z-[1000]">
 								<a href="https://ecommerce-psi-sooty-97.vercel.app/">
 									this project
 								</a>
-							</span>
+							</span> */}
 						</span>
 					</div>
 				</div>
