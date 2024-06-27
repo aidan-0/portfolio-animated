@@ -160,12 +160,11 @@ const page = () => {
 			);
 	});
 
+	// Semi-working Scrolling effect
 	useGSAP(() => {
 		gsap.utils.toArray(".project-text").forEach((textElement: any, i) => {
 		  const imageElement = document.querySelectorAll(".project-img")[i];
 		  const textContainer = document.querySelectorAll(".project-text")[i];
-		  
-
 	  
 		  gsap.fromTo(
 			imageElement,
@@ -174,8 +173,8 @@ const page = () => {
 			  yPercent: 0,
 			  scrollTrigger: {
 				trigger: textElement,
-				start: "top 60%",
-				end: `top 20%`, 
+				start: "top 40%",
+				end: `top top`, 
 				scrub: true,
 				markers: {
 				  startColor: "pink",
@@ -185,18 +184,19 @@ const page = () => {
 				},
 			  },
 			},
-		  );
+		  )
+		})
 	  
 		  gsap.fromTo(
-			textContainer,
+			".project-text",
 			{
 			  yPercent: 100,
 			},
 			{
-			  yPercent: -500,
+			  yPercent: -600,
 			  ease: "linear",
 			  scrollTrigger: {
-				trigger: textContainer, 
+				trigger: ".project-text", 
 				start: "top bottom",
 				end: `+=${scrollLength}`,
 				scrub: true,
@@ -209,8 +209,12 @@ const page = () => {
 			  },
 			},
 		  );
-		});
+	
+
+
 	  }, []);
+
+
 	  
 	
 
