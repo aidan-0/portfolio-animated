@@ -9,6 +9,10 @@ import { MaterialSymbolsCircle } from "../../../components/ui/Icons";
 import { projectData } from "../../../components/data";
 import { useLenis } from "lenis/react";
 const page = () => {
+	const viewportHeight = window.innerHeight;
+	const scrollLength = viewportHeight * projectData.length;
+	console.log(projectData.length)
+
 	//Scroll to (for the buttons to go to a set project)
 	// const lenis = useLenis((scroll) => {
 	// 	console.log(scroll)
@@ -69,11 +73,10 @@ const page = () => {
 			scrollTrigger: {
 				trigger: "#portfolio-bg",
 				start: "top top",
-				end: "+=10000",
+				end: `+=${scrollLength}`,
 				scrub: 1,
 				markers: true,
 				pin: true,
-				// pinSpacing: false,
 			},
 		});
 
@@ -132,10 +135,10 @@ const page = () => {
 				"#project-display",
 				{
 					opacity: 0,
-					y: 70,
+					// y: 70,
 				},
 				{
-					y: 0,
+					// y: 0,
 					opacity: 1,
 					duration: 7,
 					ease: "power2",
@@ -155,43 +158,61 @@ const page = () => {
 				},
 				"<",
 			);
-
-		// Cards have fully entered. Now targeting the scrolling on the text inside the cards
-		gsap.fromTo(
-			".project-text",
-			{
-				y: 0,
-			},
-			{
-				y: -1500,
-				duration: 90,
-				scrollTrigger: {
-					trigger: ".project-text",
-					start: "top+=1000 top", 
-					end: "+=5000", 
-					scrub: 1, 
-					markers: true, 
-				},
-			},
-		);
-
-
-		const photos = gsap.utils.toArray(".project-img-inner-container:not(:first-child)")
-		gsap.set(photos, { yPercent:101})
-
-		const animation = gsap.to(photos, {yPercent:0, duration:1, stagger:1})
-
-		ScrollTrigger.create({
-			trigger: ".project-text",
-			start: "top top",
-			end: "bottom bottom",
-			animation: animation,
-			scrub: true,
-			markers: true,
-		})
-
-
 	});
+
+	useGSAP(() => {
+		gsap.utils.toArray(".project-text").forEach((textElement: any, i) => {
+		  const imageElement = document.querySelectorAll(".project-img")[i];
+		  const textContainer = document.querySelectorAll(".project-text")[i];
+		  
+
+	  
+		  gsap.fromTo(
+			imageElement,
+			{ yPercent: 111 },
+			{
+			  yPercent: 0,
+			  scrollTrigger: {
+				trigger: textElement,
+				start: "top 60%",
+				end: `top 20%`, 
+				scrub: true,
+				markers: {
+				  startColor: "pink",
+				  endColor: "pink",
+				  fontSize: "18px",
+				  indent: 400,
+				},
+			  },
+			},
+		  );
+	  
+		  gsap.fromTo(
+			textContainer,
+			{
+			  yPercent: 100,
+			},
+			{
+			  yPercent: -500,
+			  ease: "linear",
+			  scrollTrigger: {
+				trigger: textContainer, 
+				start: "top bottom",
+				end: `+=${scrollLength}`,
+				scrub: true,
+				markers: {
+				  startColor: "cyan",
+				  endColor: "cyan",
+				  fontSize: "18px",
+				  indent: 800,
+				},
+			  },
+			},
+		  );
+		});
+	  }, []);
+	  
+	
 
 	// Add hover effect
 	function handleMouseEnterCard(e: any) {
@@ -237,7 +258,6 @@ const page = () => {
 			});
 		}
 	}
-
 	function handleMouseLeaveBtn(e: any) {
 		if (e.target.id) {
 			gsap.to(`#${e.target.id}`, {
@@ -376,13 +396,12 @@ const page = () => {
 						>
 							{projectData.map((project, index) => (
 								<div
-									className="project-description leading-6 tracking-wider border border-red-600 flex flex-col justify-center items-center w-full min-h-screen project-text"
-									
+									className="leading-6 tracking-wider border-2 border-green-600 flex flex-col pt-20 items-center w-full min-h-screen project-text"
 									key={index}
 								>
-									<div className="text-xl font-semibold">
+									<h1 className="text-xl font-semibold projectName">
 										{project.projectName}
-									</div>
+									</h1>
 									<div className="text">{project.projectDescription}</div>
 								</div>
 							))}
