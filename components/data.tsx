@@ -20,11 +20,12 @@ export const techLogos = [
 
 export const projectData = [
   {
-    projectName: "Community Spirit Foundation",
+    projectName: "Stride for Education",
     projectBtnText: "CSF PWA",
-    projectDescription: "A progressive web app for the Community Spirit Foundation",
+    projectDescription: "Stride For Education is a progressive web app which enables participants to track their kilometers while engaging in a walking/running/wheeling challenge. Through the app, we aim to raise funds and awareness for Community Spirit Foundation. I created the app using Vue and Vuetify for the front-end interfaces and Python & Django for the back-end testing. The app is also PWA compliant and can be installed on any device.",
+    projectDescriptionButton: "View Project",
     projectImage: "/projects/Stride-for-Education.png",
-    projectLink: "www.aidanmcd.com",
+    projectLink: "https://stride-for-education.vercel.app/",
     techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
   },
   {

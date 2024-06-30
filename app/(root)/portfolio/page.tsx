@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import "./Portfolio.css";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -11,8 +11,9 @@ import { useLenis } from "lenis/react";
 const page = () => {
 	const viewportHeight = window.innerHeight;
 	const scrollLength = viewportHeight * projectData.length;
-	console.log(projectData.length)
+	console.log(projectData.length);
 
+	// TODO:
 	//Scroll to (for the buttons to go to a set project)
 	// const lenis = useLenis((scroll) => {
 	// 	console.log(scroll)
@@ -20,6 +21,8 @@ const page = () => {
 	// https://www.youtube.com/watch?v=QNh0MH-G3OM
 
 	// on page load
+
+	// TODO: Add link to project within the url section
 	useGSAP(() => {
 		const portfolioTl = gsap.timeline();
 
@@ -73,9 +76,9 @@ const page = () => {
 			scrollTrigger: {
 				trigger: "#portfolio-bg",
 				start: "top top",
-				end: `+=${scrollLength}`,
+				end: `+=${scrollLength + 300}`,
 				scrub: 1,
-				markers: true,
+				// markers: true,
 				pin: true,
 			},
 		});
@@ -135,10 +138,10 @@ const page = () => {
 				"#project-display",
 				{
 					opacity: 0,
-					// y: 70,
+					y: 70,
 				},
 				{
-					// y: 0,
+					y: 0,
 					opacity: 1,
 					duration: 7,
 					ease: "power2",
@@ -160,67 +163,64 @@ const page = () => {
 			);
 	});
 
-	// Semi-working Scrolling effect
+	// Scrolling effect
 	useGSAP(() => {
 		gsap.utils.toArray(".project-text").forEach((textElement: any, i) => {
-		  const imageElement = document.querySelectorAll(".project-img")[i];
-		  const textContainer = document.querySelectorAll(".project-text")[i];
-	  
-		  gsap.fromTo(
-			imageElement,
-			{ yPercent: 111 },
-			{
-			  yPercent: 0,
-			  scrollTrigger: {
-				trigger: textElement,
-				start: "top 40%",
-				end: `top top`, 
-				scrub: true,
-				markers: {
-				  startColor: "pink",
-				  endColor: "pink",
-				  fontSize: "18px",
-				  indent: 400,
+			// TODO: add not first element
+			const imageElement = document.querySelectorAll(".project-img")[i];
+
+			gsap.fromTo(
+				imageElement,
+				{ yPercent: 105 },
+				{
+					yPercent: 0,
+					ease: "linear",
+					scrollTrigger: {
+						trigger: textElement,
+						// start: "top 50%",
+						// end: `top top`,
+						start: "top 50%",
+						end: `+=${viewportHeight / 2}`,
+						scrub: true,
+						// markers: {
+						//   startColor: "pink",
+						//   endColor: "pink",
+						//   fontSize: "18px",
+						//   indent: 400,
+						// },
+					},
 				},
-			  },
-			},
-		  )
-		})
-	  
-		  gsap.fromTo(
+			);
+		});
+
+		gsap.fromTo(
 			".project-text",
 			{
-			  yPercent: 100,
+				yPercent: 100,
 			},
 			{
-			  yPercent: -600,
-			  ease: "linear",
-			  scrollTrigger: {
-				trigger: ".project-text", 
-				start: "top bottom",
-				end: `+=${scrollLength}`,
-				scrub: true,
-				markers: {
-				  startColor: "cyan",
-				  endColor: "cyan",
-				  fontSize: "18px",
-				  indent: 800,
+				yPercent: -600,
+				ease: "linear",
+				scrollTrigger: {
+					trigger: ".project-text",
+					start: "top bottom",
+					end: `+=${scrollLength}`,
+					scrub: true,
+					// markers: {
+					//   startColor: "cyan",
+					//   endColor: "cyan",
+					//   fontSize: "18px",
+					//   indent: 800,
+					// },
 				},
-			  },
 			},
-		  );
-	
+		);
+	}, []);
 
-
-	  }, []);
-
-
-	  
-	
-
-	// Add hover effect
+	// Hover Effects
 	function handleMouseEnterCard(e: any) {
 		if (e.target.id) {
+			// console.log("Enter");
 			gsap.fromTo(
 				`#${e.target.id}`,
 				{
@@ -237,6 +237,7 @@ const page = () => {
 	}
 	function handleMouseEnterBtn(e: any) {
 		if (e.target.id) {
+			// console.log("Enter");
 			gsap.fromTo(
 				`#${e.target.id}`,
 				{
@@ -251,10 +252,9 @@ const page = () => {
 			);
 		}
 	}
-
-	// Remove hover effect
 	function handleMouseLeaveCard(e: any) {
 		if (e.target.id) {
+			// console.log("Leave");
 			gsap.to(`#${e.target.id}`, {
 				background:
 					"radial-gradient(circle at bottom right, #242630e8 0%, #242630e8 100%)",
@@ -263,6 +263,7 @@ const page = () => {
 		}
 	}
 	function handleMouseLeaveBtn(e: any) {
+		// console.log("Leave");
 		if (e.target.id) {
 			gsap.to(`#${e.target.id}`, {
 				background:
@@ -271,6 +272,41 @@ const page = () => {
 			});
 		}
 	}
+
+
+	// Scroll to project/image
+	// TODO: Only implement this for mobile screens
+	// const resetImages = (currentIndex: number) => {
+	// 	gsap.utils.toArray(".project-img").forEach((imageElement: any, index) => {
+	// 	  if (index !== currentIndex) {
+	// 		gsap.to(imageElement, {
+	// 		  yPercent: 111,
+	// 		  duration: 1,
+	// 		  ease: "power1.inOut",
+	// 		});
+	// 	  }
+	// 	});
+	//   };
+	  
+	//   const scrollToProject = (index: number) => {
+	// 	const textElement = document.getElementById(`project-text-${index}`);
+	// 	const imageElement = document.querySelectorAll(".project-img")[index];
+	  
+	// 	if (textElement) {
+	// 	  textElement.scrollIntoView({ behavior: "smooth" });
+	// 	}
+	  
+	// 	if (imageElement) {
+	// 	  gsap.to(imageElement, {
+	// 		yPercent: 0,
+	// 		duration: 1,
+	// 		ease: "power1.inOut",
+	// 	  });
+	// 	}
+	  
+	// 	resetImages(index);
+	//   };
+
 
 	return (
 		<div id="animation-id">
@@ -291,14 +327,6 @@ const page = () => {
 							some of the projects I've{" "}
 							<span className="italic font-medium text-[#dcaa7e]">created</span>
 							.
-							<br />
-							(Coming Soon) <br />
-							{/* <br /> In the meantime check out{" "}
-							<span className="italic font-medium text-[#dcaa7e] z-[1000]">
-								<a href="https://ecommerce-psi-sooty-97.vercel.app/">
-									this project
-								</a>
-							</span> */}
 						</span>
 					</div>
 				</div>
@@ -310,9 +338,12 @@ const page = () => {
 						id="view-projects-text"
 					>
 						<span className="">
+							<div className="inline sm:hidden">
 							<span className="italic text-[#dcaa7e] font-medium">Click</span>{" "}
 							or{" "}
-							<span className="italic font-medium text-[#dcaa7e]">scroll</span>{" "}
+							</div>
+
+							<span className="italic font-medium text-[#dcaa7e]">Scroll</span>{" "}
 							to view my projects
 						</span>
 					</div>
@@ -323,15 +354,16 @@ const page = () => {
 					{/* PROJECT BUTTONS */}
 					<div
 						id="project-selection-btns"
-						className="flex flex-col justify-center items-start gap-10 pl-10"
+						className="flex flex-col justify-center items-start gap-8 pl-10 "
 					>
 						{projectData.map((project, index) => (
 							<button
 								key={index}
-								className="project-selection-btn text-white rounded border-2 border-[#ecedf1] px-7 py-2 opacity-0 w-[150px]"
+								className="project-selection-btn text-white rounded border-2 border-[#ecedf1] px-7 py-2 opacity-0 w-full"
 								id={`project-selection-btn-${index + 1}`}
 								onMouseEnter={handleMouseEnterBtn}
 								onMouseLeave={handleMouseLeaveBtn}
+								// onClick={() => scrollToProject(index)}
 							>
 								{project.projectBtnText}
 							</button>
@@ -385,6 +417,7 @@ const page = () => {
 												src={project.projectImage}
 												alt="project-image"
 												className="project-img"
+												id={`project-img-${index}`}
 											/>
 										</div>
 									))}
@@ -394,19 +427,29 @@ const page = () => {
 						{/* PROJECT DESCRIPTION */}
 						<div
 							id="project-text-container"
+							className="w-1/4 h-[60%] rounded-xl border-2 border-[#ecedf1] flex flex-col justify-start items-center text-text-light relative"
 							onMouseEnter={handleMouseEnterCard}
 							onMouseLeave={handleMouseLeaveCard}
-							className="w-1/4 h-[60%] rounded-xl border-2 border-[#ecedf1] flex flex-col justify-start items-center text-white relative"
 						>
 							{projectData.map((project, index) => (
 								<div
-									className="leading-6 tracking-wider border-2 border-green-600 flex flex-col pt-20 items-center w-full min-h-screen project-text"
+									className="leading-6 flex flex-col pt-20 items-center w-full min-h-screen p-6 gap-6 project-text"
 									key={index}
+									id={`project-text-${index}`}
 								>
-									<h1 className="text-xl font-semibold projectName">
+									<h1 className="text-4xl text-text-light font-semibold text-center tracking-[0.3em] projectName">
 										{project.projectName}
 									</h1>
-									<div className="text">{project.projectDescription}</div>
+									<div className="tracking-wider">
+										{project.projectDescription}
+									</div>
+									<a
+										className="tracking-wider border-[#ecedf1] rounded border-2 px-7 py-2 "
+										href={project.projectLink}
+										target="_blank"
+									>
+										{project.projectDescriptionButton}
+									</a>
 								</div>
 							))}
 						</div>
