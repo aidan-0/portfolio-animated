@@ -1,17 +1,20 @@
+.project-selection-btn,
+.project-description-btn,
+.tech-stack-item {
+	box-shadow: rgba(33, 33, 33, 0.4) 0px 2px 8px 0px;
+	transition: 0.5s;
+	background: radial-gradient(circle at bottom right, #242630 0%, #242630 100%);
+}
+
 #project-screen,
 #project-text-container,
-.project-selection-btn,
-.project-description-btn {
-    box-shadow: rgba(33, 33, 33, 0.4) 0px 2px 8px 0px;
-    transition: 0.5s;
-    background: radial-gradient(circle at bottom right, #242630e8 0%, #242630e8 100%)
+.tech-stack-item {
+	background: radial-gradient(circle at bottom right, #292e48 0%, #242630 100%);
 }
-
 
 #project-text-container {
-    overflow: scroll !important;
+	overflow: scroll !important;
 }
-
 
 #project-contents,
 #project-top-section,
@@ -19,23 +22,27 @@
 #project-preview,
 #three-dots,
 .project-text {
-    background: none !important;
+	background: none !important;
 }
 
 .project-img,
 .project-img-inner-container {
-    width: 100%;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center center;
+	width: 100%;
+	height: 100% !important;
+	object-fit: cover !important;
+	object-position: center center;
 }
 
 .project-img-container {
-    overflow: hidden !important;
-    border-radius: 10px;
+	overflow: hidden !important;
+	border-radius: 10px;
 }
 
 #project-selection-btns,
 #project-selection-btn {
-    white-space: nowrap;
+	white-space: nowrap;
+}
+
+.mini-bio-text {
+	text-wrap: normal;
 }

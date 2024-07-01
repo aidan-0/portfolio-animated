@@ -166,12 +166,34 @@ const page = () => {
 	// Scrolling effect
 	useGSAP(() => {
 		gsap.utils.toArray(".project-text").forEach((textElement: any, i) => {
-			// TODO: add not first element
 			const imageElement = document.querySelectorAll(".project-img")[i];
+			const techStack = document.querySelectorAll(".project-tech-stack")[i];
 
 			gsap.fromTo(
 				imageElement,
-				{ y: viewportHeight / 2  },
+				{ y: viewportHeight / 2 },
+				{
+					y: 0,
+					ease: "linear",
+					scrollTrigger: {
+						trigger: textElement,
+						// start: "top 50%",
+						// end: `top top`,
+						start: "top 50%",
+						end: `+=${viewportHeight / 2}`,
+						scrub: true,
+						// markers: {
+						//   startColor: "pink",
+						//   endColor: "pink",
+						//   fontSize: "18px",
+						//   indent: 400,
+						// },
+					},
+				},
+			);
+			gsap.fromTo(
+				techStack,
+				{ y: viewportHeight / 2 },
 				{
 					y: 0,
 					ease: "linear",
@@ -199,7 +221,8 @@ const page = () => {
 				yPercent: 100,
 			},
 			{
-				yPercent: -600,
+				yPercent: `-${projectData.length - 1}00`, // 100% * number of projects
+
 				ease: "linear",
 				scrollTrigger: {
 					trigger: ".project-text",
@@ -218,26 +241,9 @@ const page = () => {
 	}, []);
 
 	// Hover Effects
-	function handleMouseEnterCard(e: any) {
-		if (e.target.id) {
-			// console.log("Enter");
-			gsap.fromTo(
-				`#${e.target.id}`,
-				{
-					background:
-						"radial-gradient(circle at bottom right, #242630e8 0%, #242630e8 100%)",
-				},
-				{
-					background:
-						"radial-gradient(circle at bottom right, #292E48 0%, #242630 100%)",
-					duration: 0.5,
-				},
-			);
-		}
-	}
 	function handleMouseEnterBtn(e: any) {
 		if (e.target.id) {
-			// console.log("Enter");
+			console.log(e.target.id);
 			gsap.fromTo(
 				`#${e.target.id}`,
 				{
@@ -252,19 +258,10 @@ const page = () => {
 			);
 		}
 	}
-	function handleMouseLeaveCard(e: any) {
-		if (e.target.id) {
-			// console.log("Leave");
-			gsap.to(`#${e.target.id}`, {
-				background:
-					"radial-gradient(circle at bottom right, #242630e8 0%, #242630e8 100%)",
-				duration: 0.5,
-			});
-		}
-	}
+
 	function handleMouseLeaveBtn(e: any) {
-		// console.log("Leave");
 		if (e.target.id) {
+			console.log(e.target.id);
 			gsap.to(`#${e.target.id}`, {
 				background:
 					"radial-gradient(circle at bottom center, #242630e8 0%, #242630e8 100%)",
@@ -273,52 +270,53 @@ const page = () => {
 		}
 	}
 
-
 	// Scroll to project/image
 	// TODO: Only implement this for mobile screens
-	// const resetImages = (currentIndex: number) => {
-	// 	gsap.utils.toArray(".project-img").forEach((imageElement: any, index) => {
-	// 	  if (index !== currentIndex) {
-	// 		gsap.to(imageElement, {
-	// 		  yPercent: 111,
-	// 		  duration: 1,
-	// 		  ease: "power1.inOut",
-	// 		});
-	// 	  }
-	// 	});
-	//   };
-	  
-	//   const scrollToProject = (index: number) => {
-	// 	const textElement = document.getElementById(`project-text-${index}`);
-	// 	const imageElement = document.querySelectorAll(".project-img")[index];
-	  
-	// 	if (textElement) {
-	// 	  textElement.scrollIntoView({ behavior: "smooth" });
-	// 	}
-	  
-	// 	if (imageElement) {
-	// 	  gsap.to(imageElement, {
-	// 		yPercent: 0,
-	// 		duration: 1,
-	// 		ease: "power1.inOut",
-	// 	  });
-	// 	}
-	  
-	// 	resetImages(index);
-	//   };
+	const resetImages = (currentIndex: number) => {
+		gsap.utils.toArray(".project-img").forEach((imageElement: any, index) => {
+			if (index !== currentIndex) {
+				gsap.to(imageElement, {
+					yPercent: 111,
+					duration: 1,
+					ease: "power1.inOut",
+				});
+			}
+		});
+	};
 
+	const scrollToProject = (index: number) => {
+		const textElement = document.getElementById(`project-text-${index}`);
+		const imageElement = document.querySelectorAll(".project-img")[index];
+
+		if (textElement) {
+			textElement.scrollIntoView({ behavior: "smooth" });
+		}
+
+		if (imageElement) {
+			gsap.to(imageElement, {
+				yPercent: 0,
+				duration: 1,
+				ease: "power1.inOut",
+			});
+		}
+
+		resetImages(index);
+	};
 
 	return (
 		<div id="animation-id">
 			<div id="portfolio-bg" className="h-screen z-20 text-text-light">
 				{/* Landing */}
 				<div className="text-text-light" id="inner-portfolio-container">
-					<h1 id="page-transition-text" className="lg:text-7xl  2xl:text-8xl">
+					<h1
+						id="page-transition-text"
+						className="text-4xl lg:text-7xl  2xl:text-8xl"
+					>
 						PORTFOLIO
 					</h1>
 
 					<div
-						className="w-[1000px] pl-[10%] text-2xl font-[400] flex flex-col leading-9 top-[75%] absolute"
+						className="lg:w-[1000px] pl-[10%] text-2xl font-[400] flex flex-col leading-9 lg:top-[75%] absolute"
 						id="mini-bio-div"
 					>
 						<span className="mini-bio-text">
@@ -334,15 +332,14 @@ const page = () => {
 				<div className=" flex flex-col leading-9 justify-center items-center ">
 					{/* View my projects text */}
 					<div
-						className="text-2xl font-[400] absolute top-[15%] opacity-0"
+						className="text-2xl font-[400] absolute top-[15%] opacity-0 whitespace-normal"
 						id="view-projects-text"
 					>
 						<span className="">
 							<div className="inline sm:hidden">
-							<span className="italic text-[#dcaa7e] font-medium">Click</span>{" "}
-							or{" "}
+								<span className="italic text-[#dcaa7e] font-medium">Click</span>{" "}
+								or{" "}
 							</div>
-
 							<span className="italic font-medium text-[#dcaa7e]">Scroll</span>{" "}
 							to view my projects
 						</span>
@@ -363,7 +360,7 @@ const page = () => {
 								id={`project-selection-btn-${index + 1}`}
 								onMouseEnter={handleMouseEnterBtn}
 								onMouseLeave={handleMouseLeaveBtn}
-								// onClick={() => scrollToProject(index)}
+								onClick={() => scrollToProject(index)}
 							>
 								{project.projectBtnText}
 							</button>
@@ -377,8 +374,6 @@ const page = () => {
 						{/* PROJECT PREVIEW */}
 						<div
 							id="project-screen"
-							onMouseEnter={handleMouseEnterCard}
-							onMouseLeave={handleMouseLeaveCard}
 							className="w-1/2 h-[60%] rounded-xl border-2 border-[#ecedf1] flex flex-col justify-center items-center text-white"
 						>
 							<div
@@ -407,7 +402,7 @@ const page = () => {
 									</div>
 								</div>
 								{/* IMAGE CONTAINER */}
-								<div className="h-full border-2 border-[#ecedf1] mt-7 relative project-img-container overflow-hidden">
+								<div className="h-full border-2 border-[#ecedf1] mt-7 relative project-img-container ">
 									{projectData.map((project, index) => (
 										<div
 											key={index}
@@ -419,6 +414,16 @@ const page = () => {
 												className="project-img"
 												id={`project-img-${index}`}
 											/>
+											<div className="project-tech-stack absolute top-5 left-5">
+												{project.techStack.map((tech, index) => (
+													<div
+														key={index}
+														className="tech-stack-item text-sm bg-[#242630] rounded px-2 sm:px-3 py-1 sm:py-1.5 mb-2 font-[500]  text-text-light"
+													>
+														{tech}
+													</div>
+												))}
+											</div>
 										</div>
 									))}
 								</div>
@@ -428,8 +433,6 @@ const page = () => {
 						<div
 							id="project-text-container"
 							className="w-1/4 h-[60%] rounded-xl border-2 border-[#ecedf1] flex flex-col justify-start items-center text-text-light relative"
-							onMouseEnter={handleMouseEnterCard}
-							onMouseLeave={handleMouseLeaveCard}
 						>
 							{projectData.map((project, index) => (
 								<div

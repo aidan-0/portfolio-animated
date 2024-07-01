@@ -29,51 +29,39 @@ export const projectData = [
     techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
   },
   {
-    projectName: "Portfolio",
+    projectName: "Original Portfolio",
+    projectBtnText: "Portfolio v1",
+    projectDescription: "Nine months after first beginning my coding journey, through self-study after work, I created this portfolio to showcase my skills in HTML, CSS, JavaScript, and React. Completed in October 2023, this project highlights drive and passion for coding. It is highly responsive, scaling seamlessly across multiple screen sizes, not just the usual mobile, desktop, and tablet. Each part of the portfolio is meticulously designed to provide an optimal viewing experience on any device.",
+    projectDescriptionButton: "View Portfolio",
+    projectImage: "/projects/react-portfolio.png",
+    projectLink: "https://aidan-0.github.io/portfolio/",
+    techStack: ["React", "CSS", "HTML", "JavaScript", "Github"]
+  },
+  {
+    projectName: "New Portfolio (This site)",
+    projectBtnText: "Portfolio ",
+    projectDescription: "This updated portfolio project is built with Next.js, TypeScript, Tailwind, and GSAP to create a highly dynamic and interactive user experience. Featuring smooth animations and a responsive design, this portfolio showcases my advanced skills in modern web development technologies. It is designed to provide an optimal viewing experience across all devices, highlighting my projects and expertise effectively.",
+    projectDescriptionButton: "Return Home",
+    projectImage: "/projects/new-portfolio.png",
+    projectLink: "https://aidan-0.github.io/portfolio/",
+    techStack: ["Next.js", "GSAP", "Tailwind", "TypeScript", "React"]
+  },
+  {
+    projectName: "E-commerce Concept Design",
     projectBtnText: "View Project",
-    projectDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque dicta ipsam blanditiis doloribus, culpa sequi labore, veritatis laboriosam esse enim maxime earum, maiores dignissimos ad facilis debitis necessitatibus assumenda nam nostrum vitae eaque minus sint tenetur laborum! Iusto, esse labore.",
+    projectDescription: "This project showcases a concept design for an e-commerce store or online brand, featuring beautiful animations created with Next.js, TypeScript, Tailwind, and GSAP. The interactive and smooth animations highlight the potential for a dynamic user experience. This project demonstrates my ability to integrate advanced animation techniques into modern web development frameworks.",
+    projectDescriptionButton: "View Design",
+    projectImage: "/projects/ecommerce-store.png",
+    projectLink: "https://ecommerce-psi-sooty-97.vercel.app/",
+    techStack: ["Next.js", "TypeScript", "Tailwind", "GSAP", "Vercel"]
+  },
+  {
+    projectName: "Movie Selector API",
+    projectBtnText: "View Project",
+    projectDescription: "The Movie Selector API is a RESTful application that allows users to search for movies and add them to personalised watch lists. These lists are saved to local storage, ensuring users can access their selections even after closing the browser. This project highlights my skills in working with RESTful APIs and front-end technologies to create dynamic and interactive user experiences.",
+    projectDescriptionButton: "View Selector",
     projectImage: "/projects/Movie-selector-API.png",
-    projectLink: "www.aidanmcd.com",
-    techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
+    projectLink: "https://aidan-0.github.io/restful-api-movie-selector/",
+    techStack: ["Restful APIs", "HTML", "CSS", "JavaScript", "Github"]
   },
-  {
-    projectName: "E-commerce Store",
-    projectBtnText: "View Project",
-    projectDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque dicta ipsam blanditiis doloribus, culpa sequi labore, veritatis laboriosam esse enim maxime earum, maiores dignissimos ad facilis debitis necessitatibus assumenda nam nostrum vitae eaque minus sint tenetur laborum! Iusto, esse labore.",
-    projectImage: "/projects/Stride-for-Education.png",
-    projectLink: "www.ecommercestore.com",
-    techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
-  },
-  {
-    projectName: "Blog App",
-    projectBtnText: "View Project",
-    projectDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque dicta ipsam blanditiis doloribus, culpa sequi labore, veritatis laboriosam esse enim maxime earum, maiores dignissimos ad facilis debitis necessitatibus assumenda nam nostrum vitae eaque minus sint tenetur laborum! Iusto, esse labore.",
-    projectImage: "/projects/Movie-selector-API.png",
-    projectLink: "www.blogapp.com",
-    techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
-  },
-  {
-    projectName: "Social Media Dashboard",
-    projectBtnText: "View Project",
-    projectDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque dicta ipsam blanditiis doloribus, culpa sequi labore, veritatis laboriosam esse enim maxime earum, maiores dignissimos ad facilis debitis necessitatibus assumenda nam nostrum vitae eaque minus sint tenetur laborum! Iusto, esse labore.",
-    projectImage: "/projects/Stride-for-Education.png",
-    projectLink: "www.socialmediadashboard.com",
-    techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
-  },
-  {
-    projectName: "Weather App",
-    projectBtnText: "View Project",
-    projectDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque dicta ipsam blanditiis doloribus, culpa sequi labore, veritatis laboriosam esse enim maxime earum, maiores dignissimos ad facilis debitis necessitatibus assumenda nam nostrum vitae eaque minus sint tenetur laborum! Iusto, esse labore.",
-    projectImage: "/projects/Movie-selector-API.png",
-    projectLink: "www.weatherapp.com",
-    techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
-  },
-  {
-    projectName: "Task Manager",
-    projectBtnText: "View Project",
-    projectDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque dicta ipsam blanditiis doloribus, culpa sequi labore, veritatis laboriosam esse enim maxime earum, maiores dignissimos ad facilis debitis necessitatibus assumenda nam nostrum vitae eaque minus sint tenetur laborum! Iusto, esse labore.",
-    projectImage: "/projects/Stride-for-Education.png",
-    projectLink: "www.taskmanager.com",
-    techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
-  }
 ]
