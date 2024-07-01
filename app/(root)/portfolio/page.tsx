@@ -171,9 +171,9 @@ const page = () => {
 
 			gsap.fromTo(
 				imageElement,
-				{ yPercent: 105 },
+				{ y: viewportHeight / 2  },
 				{
-					yPercent: 0,
+					y: 0,
 					ease: "linear",
 					scrollTrigger: {
 						trigger: textElement,
