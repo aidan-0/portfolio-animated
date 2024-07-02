@@ -9,7 +9,7 @@ import { MaterialSymbolsCircle } from "../../../components/ui/Icons";
 import { projectData } from "../../../components/data";
 import { useLenis } from "lenis/react";
 const page = () => {
-	const [viewportHeight, setViewportHeight] = useState(0);
+	const [viewportHeight, setViewportHeight] = useState(window.innerHeight);
 
 	useEffect(() => {
 		// This code will only run on the client side
@@ -29,7 +29,6 @@ const page = () => {
 		};
 	  }, []);
 
-	// const viewportHeight = window.innerHeight;
 	const scrollLength = viewportHeight * projectData.length;
 
 
