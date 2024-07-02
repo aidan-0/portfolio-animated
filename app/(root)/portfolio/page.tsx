@@ -9,7 +9,7 @@ import { MaterialSymbolsCircle } from "../../../components/ui/Icons";
 import { projectData } from "../../../components/data";
 import { useLenis } from "lenis/react";
 const page = () => {
-	const [viewportHeight, setViewportHeight] = useState(window.innerHeight);
+	const [viewportHeight, setViewportHeight] = useState(10);
 	console.log(viewportHeight);
 
 
