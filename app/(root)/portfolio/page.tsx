@@ -10,6 +10,8 @@ import { projectData } from "../../../components/data";
 import { useLenis } from "lenis/react";
 const page = () => {
 	const [viewportHeight, setViewportHeight] = useState(window.innerHeight);
+	console.log(viewportHeight);
+
 
 	useEffect(() => {
 		// This code will only run on the client side
@@ -30,6 +32,7 @@ const page = () => {
 	  }, []);
 
 	const scrollLength = viewportHeight * projectData.length;
+	console.log(viewportHeight);
 
 
 	// TODO:
