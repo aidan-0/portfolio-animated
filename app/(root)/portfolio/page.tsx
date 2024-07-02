@@ -9,10 +9,10 @@ import { MaterialSymbolsCircle } from "../../../components/ui/Icons";
 import { projectData } from "../../../components/data";
 import { useLenis } from "lenis/react";
 const page = () => {
-	if (typeof window === "undefined") return null;
+	if (window.innerHeight === null) return null;
 	const viewportHeight = window.innerHeight;
 	const scrollLength = viewportHeight * projectData.length;
-	// console.log(viewportHeight);
+	console.log("test: ", viewportHeight);
 
 	// TODO:
 	//Scroll to (for the buttons to go to a set project)
