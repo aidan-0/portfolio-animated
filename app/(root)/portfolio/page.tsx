@@ -9,7 +9,7 @@ import { MaterialSymbolsCircle } from "../../../components/ui/Icons";
 import { projectData } from "../../../components/data";
 import { useLenis } from "lenis/react";
 const page = () => {
-	if (window.innerHeight === null) return null;
+	if (typeof window === "undefined") return null;
 	const viewportHeight = window.innerHeight;
 	const scrollLength = viewportHeight * projectData.length;
 	console.log("test: ", viewportHeight);
