@@ -167,7 +167,8 @@ const page = () => {
 	// Scrolling effect
 	useGSAP(() => {
 		gsap.utils.toArray(".project-text").forEach((textElement: any, i) => {
-			const imageElement = document.querySelectorAll(".project-img")[i];
+			const imageElement = document.querySelectorAll(".project-img-inner-container")[i];
+			// const imageElement = document.querySelectorAll(".project-img")[i];
 			const techStack = document.querySelectorAll(".project-tech-stack")[i];
 
 			gsap.fromTo(
@@ -178,8 +179,6 @@ const page = () => {
 					ease: "linear",
 					scrollTrigger: {
 						trigger: textElement,
-						// start: "top 50%",
-						// end: `top top`,
 						start: "top 50%",
 						end: `+=${viewportHeight / 2}`,
 						scrub: true,
@@ -197,11 +196,8 @@ const page = () => {
 				{ y: viewportHeight / 2 },
 				{
 					y: 0,
-					ease: "linear",
 					scrollTrigger: {
 						trigger: textElement,
-						// start: "top 50%",
-						// end: `top top`,
 						start: "top 50%",
 						end: `+=${viewportHeight / 2}`,
 						scrub: true,
@@ -249,7 +245,7 @@ const page = () => {
 				`#${e.target.id}`,
 				{
 					background:
-						"radial-gradient(circle at bottom center, #242630e8 0%, #242630e8 100%)",
+						"radial-gradient(circle at bottom center, #242630 0%, #242630 100%)",
 				},
 				{
 					background:
@@ -265,7 +261,7 @@ const page = () => {
 			console.log(e.target.id);
 			gsap.to(`#${e.target.id}`, {
 				background:
-					"radial-gradient(circle at bottom center, #242630e8 0%, #242630e8 100%)",
+					"radial-gradient(circle at bottom center, #242630 0%, #242630 100%)",
 				duration: 0.5,
 			});
 		}
@@ -409,17 +405,23 @@ const page = () => {
 											key={index}
 											className="absolute project-img-inner-container"
 										>
+											<a href={project.projectLink} target="_blank">
 											<img
 												src={project.projectImage}
 												alt="project-image"
 												className="project-img"
 												id={`project-img-${index}`}
 											/>
+											</a>
 											<div className="project-tech-stack absolute top-5 left-5">
 												{project.techStack.map((tech, index) => (
 													<div
 														key={index}
 														className="tech-stack-item text-sm bg-[#242630] rounded px-2 sm:px-3 py-1 sm:py-1.5 mb-2 font-[500]  text-text-light"
+														id={`tech-stack-item-${index + 1}`}
+
+														onMouseEnter={handleMouseEnterBtn}
+														onMouseLeave={handleMouseLeaveBtn}
 													>
 														{tech}
 													</div>
