@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Portfolio.css";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -9,9 +9,29 @@ import { MaterialSymbolsCircle } from "../../../components/ui/Icons";
 import { projectData } from "../../../components/data";
 import { useLenis } from "lenis/react";
 const page = () => {
-	const viewportHeight = window.innerHeight;
+	const [viewportHeight, setViewportHeight] = useState(0);
+
+	useEffect(() => {
+		// This code will only run on the client side
+		const handleResize = () => {
+		  setViewportHeight(window.innerHeight);
+		};
+	
+		// Set the initial height
+		handleResize();
+	
+		// Update height on resize
+		window.addEventListener('resize', handleResize);
+	
+		// Cleanup on unmount
+		return () => {
+		  window.removeEventListener('resize', handleResize);
+		};
+	  }, []);
+
+	// const viewportHeight = window.innerHeight;
 	const scrollLength = viewportHeight * projectData.length;
-	console.log(projectData.length);
+
 
 	// TODO:
 	//Scroll to (for the buttons to go to a set project)
@@ -240,6 +260,8 @@ const page = () => {
 		);
 	}, []);
 
+
+
 	// Hover Effects
 	function handleMouseEnterBtn(e: any) {
 		if (e.target.id) {
@@ -304,7 +326,7 @@ const page = () => {
 	};
 
 	return (
-		<div id="animation-id">
+		<div id="animation-id" >
 			<div id="portfolio-bg" className="h-screen z-20 text-text-light">
 				{/* Landing */}
 				<div className="text-text-light" id="inner-portfolio-container">

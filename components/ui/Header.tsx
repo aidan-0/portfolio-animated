@@ -30,7 +30,7 @@ const Header = () => {
 				const timeline = gsap.timeline();
 				timelineRef.current = timeline;
 
-				console.log("Starting Header Animation");
+				// console.log("Starting Header Animation");
 
 				//load in animation
 				timeline
