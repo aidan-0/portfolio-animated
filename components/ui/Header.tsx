@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { gsap } from "gsap";
@@ -18,7 +18,19 @@ const Header = () => {
 	const timelineRef = useRef<gsap.core.Timeline | null>(null);
 	const navSvgRef = useRef<HTMLImageElement | null>(null);
 	const [isContactModalOpen, setContactModalOpen] = useState(false); // State to manage the contact modal
+	const [windowWidth, setWindowWidth] = useState<number>(0);
 
+
+	// Refresh on resize
+	useEffect(() => {
+		const handleResize = () => {
+			window.location.reload();
+		};
+	
+		window.addEventListener("resize", handleResize);
+		
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
 
 
 

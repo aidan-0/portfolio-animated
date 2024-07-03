@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "./Portfolio.css";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -24,6 +24,10 @@ const page = () => {
 	// on page load
 
 	// TODO: Add link to project within the url section
+
+
+
+
 	useGSAP(() => {
 		const portfolioTl = gsap.timeline();
 
