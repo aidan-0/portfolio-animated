@@ -37,7 +37,7 @@ const page = () => {
 						</span>
 
 						<div
-							className="w-[1000px] pl-[10%] text-2xl font-[400] flex flex-col leading-9"
+							className="sm:w-[999px] pl-[10%] text-2xl font-[400] flex flex-col leading-9"
 							id="mini-bio-div"
 						>
 							<span className="mini-bio-text opacity-0">

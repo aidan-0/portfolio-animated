@@ -7,6 +7,10 @@ import { useAnimation } from '../AnimationContext';
 
 
 const EntryAnimation = () => {
+	if (typeof window === "undefined") return null;
+	const windowWidth = window.innerWidth;
+    console.log(windowWidth)
+
     const { setAnimationTrigger } = useAnimation();
 
     useGSAP(() => {
