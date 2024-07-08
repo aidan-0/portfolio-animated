@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, use } from "react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { gsap } from "gsap";
@@ -17,10 +17,13 @@ const Header = () => {
 	const { animationTrigger } = useAnimation();
 	const timelineRef = useRef<gsap.core.Timeline | null>(null);
 	const navSvgRef = useRef<HTMLImageElement | null>(null);
-	const navMenuRef = useRef<HTMLDivElement | null>(null); // Add this line
-	const [isContactModalOpen, setContactModalOpen] = useState(false); // State to manage the contact modal
+	const navMenuRef = useRef<HTMLDivElement | null>(null);
+	const [isContactModalOpen, setContactModalOpen] = useState(false); 
 	const [isNavOpen, setNavOpen] = useState(false);
-	const [windowWidth, setWindowWidth] = useState<number>(0);
+
+	if (typeof window === "undefined") return null;
+	const windowWidth = window.innerWidth;
+
 
 	// Refresh on resize
 	useEffect(() => {
@@ -33,8 +36,12 @@ const Header = () => {
 		return () => window.removeEventListener("resize", handleResize);
 	}, []);
 
+
+	// Entry Animations Desktop
 	useGSAP(() => {
-		if (pathname === "/") {
+		let mm = gsap.matchMedia();
+		mm.add("(min-width: 768px)", () => {
+					if (pathname === "/") {
 			if (animationTrigger) {
 				gsap.registerPlugin(ScrollTrigger);
 
@@ -148,8 +155,20 @@ const Header = () => {
 			navSvg.addEventListener("mouseleave", () => hoverAnimation.reverse());
 		}
 
-		// }, []);
+		});
 	}, [animationTrigger]);
+
+
+	// Entry Animations Mobile
+	useGSAP(() => {
+		let mm = gsap.matchMedia();
+	
+		mm.add("(max-width: 767px)", () => {
+			console.log("Mobile");
+			gsap.to("#mobile-header",  { opacity: 1, yPercent: 0, duration: 1, ease: "power1.inOut"});
+		});
+	}, []);
+
 
 	//Restart animation on logo click if on homepage, else redirect to homepage and refresh page
 	const handleLogoClick = (e: React.MouseEvent) => {
@@ -176,7 +195,7 @@ const Header = () => {
 
 	const toggleNav = () => {
 		setNavOpen((prevNavOpen) => !prevNavOpen);
-		console.log("toggleNav");
+		// console.log("toggleNav");
 		if (!isNavOpen) {
 			gsap.fromTo(
 				"#mobile-nav-menu",
@@ -206,17 +225,13 @@ const Header = () => {
 		}
 	};
 
-	useEffect(() => {
-		setWindowWidth(window.innerWidth);
-		console.log(windowWidth);
-	}, []);
 
 	return (
 		<>
 			{windowWidth < 768 ? (
 				<>
 					<div
-						className="fixed top-0 left-0 right-0 z-50 w-screen px-5 bg-[#242631] border-b-2 border-white shadow"
+						className="fixed top-0 left-0 right-0 z-50 w-screen px-5 bg-[#242631] border-b-2 border-white shadow opacity-100"
 						id="mobile-header"
 					>
 						<div className="z-60 flex justify-between items-center h-[90px]">

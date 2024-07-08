@@ -28,6 +28,11 @@ body {
   z-index: 1;
 }
 
+#mobile-header {
+  opacity: 0;
+  translateY: -100%;
+}
+
 #nav-svg {
 	border-radius: 50%;
   }
