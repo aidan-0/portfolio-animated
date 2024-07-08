@@ -18,7 +18,7 @@ const page = () => {
 			"marqueeContainerBottom",
 		);
 		let tech = document.getElementById("tech");
-
+		let mm = gsap.matchMedia();
 		const techTl = gsap.timeline();
 
 		//Load in animations
@@ -39,19 +39,23 @@ const page = () => {
 				},
 				"<",
 			)
-			.fromTo(
-				"#outer-header-container",
-				{ y: -150,
-				opacity: 0, 
-				 },
-				{
-					y: 0,
-					opacity: 1,
-					duration: 2,
-				},
-				"<",
-			)
-			.fromTo(boxSubtitle1, { top: "70%", opacity: 0 }, { top: "60%", opacity: 1, duration: 1.5, ease: "back"}, "<")
+
+			mm.add("(min-width: 768px)", () => {
+				techTl.fromTo(
+					"#outer-header-container",
+					{ y: -150,
+					opacity: 0, 
+					},
+					{
+						y: 0,
+						opacity: 1,
+						duration: 2,
+					},
+					"<",
+				)
+			})
+			
+			techTl.fromTo(boxSubtitle1, { top: "70%", opacity: 0 }, { top: "60%", opacity: 1, duration: 1.5, ease: "back"}, "<")
 			.fromTo(marqueeContainerTop, { y: "44vh", opacity: 0 }, { y: "42vh", opacity: 1, duration: 1.5, ease: "power1.inOut"  }, "<")
 			.fromTo(marqueeContainerBottom, {y: "-32vh", opacity: 0 }, { y: "-30vh", opacity: 1, duration: 1.5, ease: "power1.inOut"  }, "<")
 
@@ -165,3 +169,25 @@ const page = () => {
 };
 
 export default page;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

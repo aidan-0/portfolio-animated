@@ -28,9 +28,6 @@ const page = () => {
 
 	let mm = gsap.matchMedia();
 	
-	mm.add("(max-width: 640px)", () => {
-		console.log("Mobile");
-	});
 
 	useGSAP(() => {
 		const portfolioTl = gsap.timeline();
@@ -52,7 +49,9 @@ const page = () => {
 				},
 				"<",
 			)
-			.fromTo(
+
+			mm.add("(min-width: 767px)", () => {
+				portfolioTl.fromTo(
 				"#outer-header-container",
 				{ y: -150, opacity: 0 },
 				{
@@ -62,7 +61,9 @@ const page = () => {
 				},
 				"<",
 			)
-			.fromTo(
+			});
+
+			portfolioTl.fromTo(
 				"#mini-bio-div",
 				{ top: "85%", opacity: 0 },
 				{ top: "75%", opacity: 1, duration: 1.5, ease: "back" },
@@ -91,85 +92,90 @@ const page = () => {
 				pin: true,
 			},
 		});
-
 		tlPortfolio
-			.to("#portfolio-bg", {
-				background:
-					"radial-gradient(circle at top center, #b76f3f 0%, #9a3514 100%)",
-				duration: 100,
-			})
-			.to(
-				"#page-transition-text",
-				{
-					top: "10%",
-					duration: 12,
-				},
-				"<",
-			)
-			.fromTo(
-				"#outer-header-container",
-				{
-					y: 0,
-				},
-				{
-					y: -150,
-					duration: 7,
-				},
-				"<",
-			)
-			.fromTo(
-				"#mini-bio-div",
-				{
-					top: "75%",
-					opacity: 1,
-				},
-				{
-					top: "85%",
-					opacity: 0,
-					duration: 5,
-				},
-				"<",
-			)
-			.fromTo(
-				"#view-projects-text",
-				{
-					opacity: 0,
-					y: 40,
-				},
-				{
-					opacity: 1,
-					y: 0,
-					duration: 5,
-				},
-				+7,
-			)
-			.fromTo(
-				"#project-display",
-				{
-					opacity: 0,
-					y: 70,
-				},
-				{
-					y: 0,
-					opacity: 1,
-					duration: 7,
-					ease: "power2",
-				},
-				"<",
-			)
-			.fromTo(
-				".project-selection-btn",
-				{
-					x: -150,
-					opacity: 0,
-				},
-				{
-					x: 0,
-					opacity: 1,
-					stagger: 0.6,
-				},
-				"<",
-			);
+		.to("#portfolio-bg", {
+			background:
+				"radial-gradient(circle at top center, #b76f3f 0%, #9a3514 100%)",
+			duration: 100,
+		})
+		.to(
+			"#page-transition-text",
+			{
+				top: "10%",
+				duration: 12,
+			},
+			"<"
+		);
+
+	// Match media check for outer-header-container animation
+	mm.add("(min-width: 767px)", () => {
+		tlPortfolio.fromTo(
+			"#outer-header-container",
+			{
+				y: 0,
+			},
+			{
+				y: -150,
+				duration: 7,
+			},
+			"<"
+		);
+	});
+
+	tlPortfolio
+		.fromTo(
+			"#mini-bio-div",
+			{
+				top: "75%",
+				opacity: 1,
+			},
+			{
+				top: "85%",
+				opacity: 0,
+				duration: 5,
+			},
+			"<"
+		)
+		.fromTo(
+			"#view-projects-text",
+			{
+				opacity: 0,
+				y: 40,
+			},
+			{
+				opacity: 1,
+				y: 0,
+				duration: 5,
+			},
+			"+7"
+		)
+		.fromTo(
+			"#project-display",
+			{
+				opacity: 0,
+				y: 70,
+			},
+			{
+				y: 0,
+				opacity: 1,
+				duration: 7,
+				ease: "power2",
+			},
+			"<"
+		)
+		.fromTo(
+			".project-selection-btn",
+			{
+				x: -150,
+				opacity: 0,
+			},
+			{
+				x: 0,
+				opacity: 1,
+				stagger: 0.6,
+			},
+			"<"
+		);
 	});
 
 	// Scrolling effect

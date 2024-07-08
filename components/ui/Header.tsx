@@ -18,12 +18,11 @@ const Header = () => {
 	const timelineRef = useRef<gsap.core.Timeline | null>(null);
 	const navSvgRef = useRef<HTMLImageElement | null>(null);
 	const navMenuRef = useRef<HTMLDivElement | null>(null);
-	const [isContactModalOpen, setContactModalOpen] = useState(false); 
+	const [isContactModalOpen, setContactModalOpen] = useState(false);
 	const [isNavOpen, setNavOpen] = useState(false);
 
 	if (typeof window === "undefined") return null;
 	const windowWidth = window.innerWidth;
-
 
 	// Refresh on resize
 	useEffect(() => {
@@ -36,19 +35,84 @@ const Header = () => {
 		return () => window.removeEventListener("resize", handleResize);
 	}, []);
 
-
 	// Entry Animations Desktop
 	useGSAP(() => {
 		let mm = gsap.matchMedia();
 		mm.add("(min-width: 768px)", () => {
-					if (pathname === "/") {
-			if (animationTrigger) {
-				gsap.registerPlugin(ScrollTrigger);
+			if (pathname === "/") {
+				if (animationTrigger) {
+					gsap.registerPlugin(ScrollTrigger);
 
+					const timeline = gsap.timeline();
+					timelineRef.current = timeline;
+
+					// console.log("Starting Header Animation");
+
+					//load in animation
+					timeline
+						.to("#outer-header-container", {
+							opacity: 1,
+							duration: 1,
+							ease: "power1.inOut",
+						})
+						.to(
+							"#hero-div-container",
+							{
+								opacity: 1,
+								duration: 1,
+								ease: "power1.inOut",
+							},
+							"<",
+						)
+						.fromTo(
+							"#hero-main-text",
+							{
+								y: 80,
+							},
+							{
+								duration: 2,
+								y: 0,
+								stagger: 0.05,
+								ease: "elastic.out(1.15, 1)",
+							},
+							"<",
+						)
+						.from(
+							"#header-container",
+							{
+								duration: 1,
+								width: "70px",
+								alignContent: "center",
+							},
+							"<",
+						)
+						.fromTo(
+							".mini-bio-text",
+							{
+								y: 35,
+							},
+							{
+								opacity: 1,
+								y: 0,
+								stagger: 0.05,
+								ease: "power1.inOut",
+							},
+							"<",
+						);
+					timeline.from(
+						"#nav-link",
+						{
+							opacity: 0,
+							delay: 0.2,
+							duration: 1.5,
+						},
+						"<",
+					);
+				}
+			} else {
 				const timeline = gsap.timeline();
-				timelineRef.current = timeline;
 
-				// console.log("Starting Header Animation");
+				console.log("Starting Header Animation");
 
 				//load in animation
 				timeline
@@ -57,23 +121,6 @@ const Header = () => {
 						duration: 1,
 						ease: "power1.inOut",
 					})
-					.to(
-						"#hero-div-container",
-						{
-							opacity: 1,
-							duration: 1,
-							ease: "power1.inOut",
-						},
-						"<",
-					)
-					.fromTo(
-						"#hero-main-text",
-						{
-							y: 80,
-						},
-						{ duration: 2, y: 0, stagger: 0.05, ease: "elastic.out(1.15, 1)" },
-						"<",
-					)
 					.from(
 						"#header-container",
 						{
@@ -83,92 +130,124 @@ const Header = () => {
 						},
 						"<",
 					)
-					.fromTo(
-						".mini-bio-text",
+					.from(
+						"#nav-link",
 						{
-							y: 35,
-						},
-						{
-							opacity: 1,
-							y: 0,
-							stagger: 0.05,
-							ease: "power1.inOut",
+							opacity: 0,
+							delay: 0.2,
+							duration: 1.5,
 						},
 						"<",
 					);
-				timeline.from(
-					"#nav-link",
-					{
-						opacity: 0,
-						delay: 0.2,
-						duration: 1.5,
-					},
-					"<",
-				);
 			}
-		} else {
-			const timeline = gsap.timeline();
 
-			console.log("Starting Header Animation");
+			// nav logo hover effect
+			const hoverAnimation = gsap.to(navSvgRef.current, {
+				background: "linear-gradient(45deg, #f88f7f, #fbcb85)",
+				boxShadow: "rgba(153, 153, 153, 0.1) 0px 0px 8px 4px",
+				scale: 0.96,
+				filter: "grayscale(0.3)",
+				duration: 0.3,
+				ease: "power1.inOut",
+				paused: true,
+			});
 
-			//load in animation
-			timeline
-				.to("#outer-header-container", {
-					opacity: 1,
-					duration: 1,
-					ease: "power1.inOut",
-				})
-				.from(
-					"#header-container",
-					{
-						duration: 1,
-						width: "70px",
-						alignContent: "center",
-					},
-					"<",
-				)
-				.from(
-					"#nav-link",
-					{
-						opacity: 0,
-						delay: 0.2,
-						duration: 1.5,
-					},
-					"<",
-				);
-		}
-
-		// nav logo hover effect
-		const hoverAnimation = gsap.to(navSvgRef.current, {
-			background: "linear-gradient(45deg, #f88f7f, #fbcb85)",
-			boxShadow: "rgba(153, 153, 153, 0.1) 0px 0px 8px 4px",
-			scale: 0.96,
-			filter: "grayscale(0.3)",
-			duration: 0.3,
-			ease: "power1.inOut",
-			paused: true,
-		});
-
-		const navSvg = navSvgRef.current;
-		if (navSvg) {
-			navSvg.addEventListener("mouseenter", () => hoverAnimation.play());
-			navSvg.addEventListener("mouseleave", () => hoverAnimation.reverse());
-		}
-
+			const navSvg = navSvgRef.current;
+			if (navSvg) {
+				navSvg.addEventListener("mouseenter", () => hoverAnimation.play());
+				navSvg.addEventListener("mouseleave", () => hoverAnimation.reverse());
+			}
 		});
 	}, [animationTrigger]);
-
 
 	// Entry Animations Mobile
 	useGSAP(() => {
 		let mm = gsap.matchMedia();
-	
 		mm.add("(max-width: 767px)", () => {
-			console.log("Mobile");
-			gsap.to("#mobile-header",  { opacity: 1, yPercent: 0, duration: 1, ease: "power1.inOut"});
-		});
-	}, []);
+			if (pathname === "/") {
+				if (animationTrigger) {
+					gsap.registerPlugin(ScrollTrigger);
+					const timeline = gsap.timeline();
+					timelineRef.current = timeline;
 
+					//Load in animation
+					gsap.set("#mobile-header", { opacity: 0, yPercent: -100 });
+					timeline
+						.to("#mobile-header", {
+							opacity: 1,
+							yPercent: 0,
+							duration: 1,
+							ease: "power1.inOut",
+						})
+						.to(
+							"#hero-div-container",
+							{
+								opacity: 1,
+								duration: 1,
+								ease: "power1.inOut",
+							},
+							"<",
+						)
+						.fromTo(
+							"#hero-main-text",
+							{
+								y: 80,
+							},
+							{
+								duration: 2,
+								y: 0,
+								stagger: 0.05,
+								ease: "elastic.out(1.15, 1)",
+							},
+							"<",
+						)
+
+						.fromTo(
+							".mini-bio-text",
+							{
+								y: 35,
+							},
+							{
+								opacity: 1,
+								y: 0,
+								stagger: 0.05,
+								ease: "power1.inOut",
+							},
+							"<",
+						);
+				}
+			} else {
+				// const timeline = gsap.timeline();
+
+				console.log("Starting Header Animation //else block//");
+
+				//load in animation
+				gsap.set("#mobile-header", { opacity: 0, yPercent: -100 });
+				gsap.to("#mobile-header", {
+					opacity: 1,
+					yPercent: 0,
+					duration: 1,
+					ease: "power1.inOut",
+				});
+			}
+		});
+	}, [animationTrigger]);
+
+	// Entry Animations Mobile
+	// useGSAP(() => {
+	// 	let mm = gsap.matchMedia();
+
+	// 	mm.add("(max-width: 767px)", () => {
+	// 		console.log("Mobile");
+	// 		gsap.set("#mobile-header", { opacity: 0, yPercent: -100 });
+	// 		gsap.to("#mobile-header", {
+	// 			opacity: 1,
+	// 			yPercent: 0,
+	// 			duration: 1,
+	// 			ease: "power1.inOut",
+	// 		});
+	// 	});
+	// }, [animationTrigger]);
 
 	//Restart animation on logo click if on homepage, else redirect to homepage and refresh page
 	const handleLogoClick = (e: React.MouseEvent) => {
@@ -180,7 +259,7 @@ const Header = () => {
 		}
 	};
 
-	//open Modal
+	//Contact Modal
 	const handleContactClick = (e: React.MouseEvent) => {
 		console.log(isContactModalOpen);
 		setContactModalOpen((prevContactModalOpen) => !prevContactModalOpen);
@@ -193,6 +272,7 @@ const Header = () => {
 		}
 	};
 
+	// Mobile Nav Menu
 	const toggleNav = () => {
 		setNavOpen((prevNavOpen) => !prevNavOpen);
 		// console.log("toggleNav");
@@ -224,7 +304,6 @@ const Header = () => {
 			});
 		}
 	};
-
 
 	return (
 		<>
@@ -272,16 +351,16 @@ const Header = () => {
 								<TransitionLink href="/tech" label="TECH" />
 							</div>
 							<div onClick={toggleNav}>
-							<TransitionLink href="/portfolio" label="PORTFOLIO" />
+								<TransitionLink href="/portfolio" label="PORTFOLIO" />
 							</div>
 							<div onClick={toggleNav}>
-							<Link
-								href="https://github.com/aidan-0/portfolio-animated/raw/main/public/Resume-Aidan-McDonald.pdf"
-								download="Resume-Aidan-McDonald.pdf"
-								id="nav-link"
-							>
-								RESUME
-							</Link>
+								<Link
+									href="https://github.com/aidan-0/portfolio-animated/raw/main/public/Resume-Aidan-McDonald.pdf"
+									download="Resume-Aidan-McDonald.pdf"
+									id="nav-link"
+								>
+									RESUME
+								</Link>
 							</div>
 							<div
 								id="nav-link"
