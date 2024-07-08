@@ -20,7 +20,13 @@ body {
     display: none;  /* Safari and Chrome */
 }
 
-
+/* Hide mobile nav initially */
+#mobile-nav-menu {
+  translateY: -100%;
+  opacity: 0;
+  display: none;
+  z-index: 1;
+}
 
 #nav-svg {
 	border-radius: 50%;

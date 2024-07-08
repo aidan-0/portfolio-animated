@@ -26,7 +26,11 @@ const page = () => {
 	// TODO: Add link to project within the url section
 
 
-
+	let mm = gsap.matchMedia();
+	
+	mm.add("(max-width: 640px)", () => {
+		console.log("Mobile");
+	});
 
 	useGSAP(() => {
 		const portfolioTl = gsap.timeline();
