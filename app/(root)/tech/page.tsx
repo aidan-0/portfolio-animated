@@ -62,24 +62,24 @@ const page = () => {
 
 
 		//SCROLLING - TODO: Fix the scrolling
-		let tl1 = gsap.timeline({
-			scrollTrigger: {
-				trigger: tech,
-				start: "top top",
-				end: "+=1000px",
-				markers: true,
-				scrub: 1,
-				pin: tech,
-				pinSpacing: true,
-				invalidateOnRefresh: true,
-			},
-			defaults: { ease: "none" },
-		});
+	// 	let tl1 = gsap.timeline({
+	// 		scrollTrigger: {
+	// 			trigger: tech,
+	// 			start: "top top",
+	// 			end: "+=1000px",
+	// 			markers: true,
+	// 			scrub: 1,
+	// 			pin: tech,
+	// 			pinSpacing: true,
+	// 			invalidateOnRefresh: true,
+	// 		},
+	// 		defaults: { ease: "none" },
+	// 	});
 
-		tl1
-			// Scrolling text move left and right
-			.to(boxTitle1, { duration: 3, xPercent: -25 }, "<")
-			.to(boxSubtitle1, { duration: 3, xPercent: 25 }, "<");
+	// 	tl1
+	// 		// Scrolling text move left and right
+	// 		.to(boxTitle1, { duration: 3, xPercent: -25 }, "<")
+	// 		.to(boxSubtitle1, { duration: 3, xPercent: 25 }, "<");
 	});
 
 	return (
@@ -88,13 +88,13 @@ const page = () => {
 				<div id="tech" className="z-10"> 
 					<section id="boxSection">
 						<div id="boxContainer" className="flex justify-center">
-							<h1 id="boxTitle1" className="lg:text-7xl  2xl:text-8xl">
+							<h1 id="boxTitle1" className="text-4xl sm:text-6xl lg:text-7xl  2xl:text-8xl w-full">
 								TECH STACK
 							</h1>
-							<h4 id="boxSubtitle1" className="tracking-[1]">
+							<h4 id="boxSubtitle1" className="text-base sm:text-2xl tracking-[1] w-full">
 								Here's what i've been working with
 							</h4>
-							<div className="flex flex-col gap-20 justify-center items-center">
+							<div className="flex flex-col sm:gap-20 justify-center items-center">
 								<div className="marquee w-full" id="marqueeContainerTop">
 									<ul className="marquee-content justify-center items-center">
 										{techLogos.map((logo, index) => (

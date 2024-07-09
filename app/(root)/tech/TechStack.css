@@ -29,7 +29,7 @@
 #boxSubtitle1 {
 	display: flex;
 	justify-content: center;
-	font-size: 25px;
+	/* font-size: 25px; */
 	color: #ffffff;
 	align-self: center;
 	letter-spacing: 0.05em;

@@ -37,129 +37,129 @@ const Header = () => {
 	}, []);
 
 	// Entry Animations Desktop
-	// useGSAP(() => {
-	// 	let mm = gsap.matchMedia();
-	// 	mm.add("(min-width: 768px)", () => {
-	// 		if (pathname === "/") {
-	// 			if (animationTrigger) {
-	// 				gsap.registerPlugin(ScrollTrigger);
+	useGSAP(() => {
+		let mm = gsap.matchMedia();
+		mm.add("(min-width: 768px)", () => {
+			if (pathname === "/") {
+				if (animationTrigger) {
+					gsap.registerPlugin(ScrollTrigger);
 
-	// 				const timeline = gsap.timeline();
-	// 				timelineRef.current = timeline;
+					const timeline = gsap.timeline();
+					timelineRef.current = timeline;
 
-	// 				// console.log("Starting Header Animation");
+					// console.log("Starting Header Animation");
 
-	// 				//load in animation
-	// 				timeline
-	// 					.to("#outer-header-container", {
-	// 						opacity: 1,
-	// 						duration: 1,
-	// 						ease: "power1.inOut",
-	// 					})
-	// 					.to(
-	// 						"#hero-div-container",
-	// 						{
-	// 							opacity: 1,
-	// 							duration: 1,
-	// 							ease: "power1.inOut",
-	// 						},
-	// 						"<",
-	// 					)
-	// 					.fromTo(
-	// 						"#hero-main-text",
-	// 						{
-	// 							y: 80,
-	// 						},
-	// 						{
-	// 							duration: 2,
-	// 							y: 0,
-	// 							stagger: 0.05,
-	// 							ease: "elastic.out(1.15, 1)",
-	// 						},
-	// 						"<",
-	// 					)
-	// 					.from(
-	// 						"#header-container",
-	// 						{
-	// 							duration: 1,
-	// 							width: "70px",
-	// 							alignContent: "center",
-	// 						},
-	// 						"<",
-	// 					)
-	// 					.fromTo(
-	// 						".mini-bio-text",
-	// 						{
-	// 							y: 35,
-	// 						},
-	// 						{
-	// 							opacity: 1,
-	// 							y: 0,
-	// 							stagger: 0.05,
-	// 							ease: "power1.inOut",
-	// 						},
-	// 						"<",
-	// 					);
-	// 				timeline.from(
-	// 					"#nav-link",
-	// 					{
-	// 						opacity: 0,
-	// 						delay: 0.2,
-	// 						duration: 1.5,
-	// 					},
-	// 					"<",
-	// 				);
-	// 			}
-	// 		} else {
-	// 			const timeline = gsap.timeline();
+					//load in animation
+					timeline
+						.to("#outer-header-container", {
+							opacity: 1,
+							duration: 1,
+							ease: "power1.inOut",
+						})
+						.to(
+							"#hero-div-container",
+							{
+								opacity: 1,
+								duration: 1,
+								ease: "power1.inOut",
+							},
+							"<",
+						)
+						.fromTo(
+							"#hero-main-text",
+							{
+								y: 80,
+							},
+							{
+								duration: 2,
+								y: 0,
+								stagger: 0.05,
+								ease: "elastic.out(1.15, 1)",
+							},
+							"<",
+						)
+						.from(
+							"#header-container",
+							{
+								duration: 1,
+								width: "70px",
+								alignContent: "center",
+							},
+							"<",
+						)
+						.fromTo(
+							".mini-bio-text",
+							{
+								y: 35,
+							},
+							{
+								opacity: 1,
+								y: 0,
+								stagger: 0.05,
+								ease: "power1.inOut",
+							},
+							"<",
+						);
+					timeline.from(
+						"#nav-link",
+						{
+							opacity: 0,
+							delay: 0.2,
+							duration: 1.5,
+						},
+						"<",
+					);
+				}
+			} else {
+				const timeline = gsap.timeline();
 
-	// 			console.log("Starting Header Animation");
+				console.log("Starting Header Animation");
 
-	// 			//load in animation
-	// 			timeline
-	// 				.to("#outer-header-container", {
-	// 					opacity: 1,
-	// 					duration: 1,
-	// 					ease: "power1.inOut",
-	// 				})
-	// 				.from(
-	// 					"#header-container",
-	// 					{
-	// 						duration: 1,
-	// 						width: "70px",
-	// 						alignContent: "center",
-	// 					},
-	// 					"<",
-	// 				)
-	// 				.from(
-	// 					"#nav-link",
-	// 					{
-	// 						opacity: 0,
-	// 						delay: 0.2,
-	// 						duration: 1.5,
-	// 					},
-	// 					"<",
-	// 				);
-	// 		}
+				//load in animation
+				timeline
+					.to("#outer-header-container", {
+						opacity: 1,
+						duration: 1,
+						ease: "power1.inOut",
+					})
+					.from(
+						"#header-container",
+						{
+							duration: 1,
+							width: "70px",
+							alignContent: "center",
+						},
+						"<",
+					)
+					.from(
+						"#nav-link",
+						{
+							opacity: 0,
+							delay: 0.2,
+							duration: 1.5,
+						},
+						"<",
+					);
+			}
 
-	// 		// nav logo hover effect
-	// 		const hoverAnimation = gsap.to(navSvgRef.current, {
-	// 			background: "linear-gradient(45deg, #f88f7f, #fbcb85)",
-	// 			boxShadow: "rgba(153, 153, 153, 0.1) 0px 0px 8px 4px",
-	// 			scale: 0.96,
-	// 			filter: "grayscale(0.3)",
-	// 			duration: 0.3,
-	// 			ease: "power1.inOut",
-	// 			paused: true,
-	// 		});
+			// nav logo hover effect
+			const hoverAnimation = gsap.to(navSvgRef.current, {
+				background: "linear-gradient(45deg, #f88f7f, #fbcb85)",
+				boxShadow: "rgba(153, 153, 153, 0.1) 0px 0px 8px 4px",
+				scale: 0.96,
+				filter: "grayscale(0.3)",
+				duration: 0.3,
+				ease: "power1.inOut",
+				paused: true,
+			});
 
-	// 		const navSvg = navSvgRef.current;
-	// 		if (navSvg) {
-	// 			navSvg.addEventListener("mouseenter", () => hoverAnimation.play());
-	// 			navSvg.addEventListener("mouseleave", () => hoverAnimation.reverse());
-	// 		}
-	// 	});
-	// }, [animationTrigger]);
+			const navSvg = navSvgRef.current;
+			if (navSvg) {
+				navSvg.addEventListener("mouseenter", () => hoverAnimation.play());
+				navSvg.addEventListener("mouseleave", () => hoverAnimation.reverse());
+			}
+		});
+	}, [animationTrigger]);
 
 	// Entry Animations Mobile
 	useGSAP(() => {

@@ -11,39 +11,39 @@ const page = () => {
 			<div id="animation-id">
 				<div
 					id="home-section1"
-					className="h-screen flex justify-center align-middle items-center z-20"
+					className=" flex justify-center align-middle items-center z-20"
 				>
 					<div
-						className="h-screen w-screen flex flex-col justify-center tracking-wider font-semibold pt-20 opacity-0 text-text-light"
+						className="h-screen w-screen flex flex-col justify-center font-semibold pt-20 opacity-0 text-text-light"
 						id="hero-div-container"
 					>
 						<span
-							className="text-3xl text-center font-[500] pt-24 text-gradient"
+							className="text-xl sm:text-3xl text-center font-[500] pt-24 text-gradient"
 							id="hero-main-text"
 						>
 							Hi, I'm
 						</span>
 						<span
-							className="text-3xl sm:text-8xl text-center"
+							className="text-4xl sm:text-6xl lg:text-8xl  text-center"
 							id="hero-main-text"
 						>
 							AIDAN
 						</span>
 						<span
-							className="text-3xl sm:text-8xl text-center pb-36"
+							className="text-4xl sm:text-6xl lg:text-8xl  text-center pb-36"
 							id="hero-main-text"
 						>
 							MCDONALD
 						</span>
 
 						<div
-							className="sm:w-[999px] pl-[10%] text-2xl font-[400] flex flex-col leading-9"
+							className="sm:w-[999px] px-2 sm:pl-[10%] text-base sm:text-2xl pb-20 sm:pb-0 font-[400] flex flex-col leading-6 sm:leading-9"
 							id="mini-bio-div"
 						>
 							<span className="mini-bio-text opacity-0">
-								A dedicated Web Developer from Perth,
-								<br />
-							</span>
+								A dedicated Web Developer from Perth,{" "}
+							<span className="mini-bio-text opacity-0">
+								<br className="hidden sm:flex"/>
 							<span className="mini-bio-text opacity-0">
 								specialising in{" "}
 								<span className="italic font-medium text-gradient">
@@ -53,10 +53,10 @@ const page = () => {
 								<span className="italic font-medium text-gradient">
 									developing
 								</span>{" "}
-								<br />
+								<br className="hidden sm:flex"/>
 							</span>
-							<span className="mini-bio-text opacity-0">
 								advanced client solutions.
+							</span>
 							</span>
 						</div>
 					</div>
