@@ -24,6 +24,7 @@ const Header = () => {
 
 	if (typeof window === "undefined") return null;
 	const windowWidth = window.innerWidth;
+	console.log(`viewportWidth: ${windowWidth}`)
 
 	// Refresh on resize
 	useEffect(() => {

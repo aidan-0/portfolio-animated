@@ -12,7 +12,7 @@ const page = () => {
 	if (typeof window === "undefined") return null;
 	const viewportHeight = window.innerHeight;
 	const scrollLength = viewportHeight * projectData.length;
-	console.log("test: ", viewportHeight);
+	console.log("viewportHeight: ", viewportHeight);
 
 	// TODO:
 	//Scroll to (for the buttons to go to a set project)
@@ -23,11 +23,11 @@ const page = () => {
 
 	// on page load
 
-	// TODO: Add link to project within the url section
 
 
 	let mm = gsap.matchMedia();
 	
+	// TODO: something in the portfolio section is causing the rendered width of tech to be around 800px - could be fixed after portfolio is responsively designed
 
 	useGSAP(() => {
 		const portfolioTl = gsap.timeline();
@@ -337,7 +337,7 @@ const page = () => {
 				<div className="text-text-light" id="inner-portfolio-container">
 					<h1
 						id="page-transition-text"
-						className="text-4xl lg:text-7xl  2xl:text-8xl"
+						className="text-[2.5rem] sm:text-6xl lg:text-7xl 2xl:text-8xl "
 					>
 						PORTFOLIO
 					</h1>

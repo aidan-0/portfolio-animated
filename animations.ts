@@ -58,10 +58,13 @@ export const animatePageOut = (href: string, router: AppRouterInstance) => {
 
 
     tl.to(animationElement, {
-      scale: 0.7,
-      paddingTop: 50,
+      height: "100vh",
+      duration: 0.2,
+    }, 0)
+    .to(animationElement, {
+      scale: 0.8,
       filter: "blur(8px)",
-      y: -100,
+      borderRadius: "50px",
       duration: 1,
     }, +0.3)
 

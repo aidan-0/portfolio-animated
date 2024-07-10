@@ -40,6 +40,7 @@ const page = () => {
 				"<",
 			)
 
+			// Desktop
 			mm.add("(min-width: 768px)", () => {
 				techTl.fromTo(
 					"#outer-header-container",
@@ -53,9 +54,14 @@ const page = () => {
 					},
 					"<",
 				)
+			.fromTo(boxSubtitle1, { top: "70%", opacity: 0 }, { top: "60%", opacity: 1, duration: 1.5, ease: "back"}, "<")
+			.fromTo(marqueeContainerTop, { top: "-8%", opacity: 0 }, { top: "-12.5%", opacity: 1, duration: 1.5, ease: "power1.inOut" }, "<")
+			.fromTo(marqueeContainerBottom, { top: "10%", opacity: 0 }, { top: "17%", opacity: 1, duration: 1.5, ease: "power1.inOut" }, "<")
+
 			})
 
-			mm.add("(max-width: 767px)", () => {
+			// Mobile
+			mm.add("(max-width: 620px)", () => {
 				techTl.fromTo(
 					"#mobile-header",
 					{ y: -100,
@@ -68,12 +74,32 @@ const page = () => {
 					},
 					0,
 				)
+				.to(boxTitle1, { top: "30%", opacity: 1, duration: 1.5 }, "<")
+				.fromTo(boxSubtitle1, { top: "75%", opacity: 0 }, { top: "60%", opacity: 1, duration: 1.5, ease: "power1.inOut"}, "<")
+				.fromTo(marqueeContainerTop, { top: "0%", opacity: 0 }, { top: "-7.5%", opacity: 1, duration: 1.5, ease: "power1.inOut" }, "<")
+				.fromTo(marqueeContainerBottom, { top: "0%", opacity: 0 }, { top: "-2.5%", opacity: 1, duration: 1.5, ease: "power1.inOut" }, "<")
+			})
+			// Large mobile
+			mm.add("(min-width: 621px) and (max-width: 767px)", () => {
+				techTl.fromTo(
+					"#mobile-header",
+					{ y: -100,
+					opacity: 0, 
+					},
+					{
+						y: 0,
+						opacity: 1,
+						duration: 1,
+					},
+					0,
+				)
+				.to(boxTitle1, { top: "30%", opacity: 1, duration: 1.5 }, "<")
+				.fromTo(boxSubtitle1, { top: "75%", opacity: 0 }, { top: "60%", opacity: 1, duration: 1.5, ease: "power1.inOut"}, "<")
+				.fromTo(marqueeContainerTop, { top: "0%", opacity: 0 }, { top: "-2.5%", opacity: 1, duration: 1.5, ease: "power1.inOut" }, "<")
+				.fromTo(marqueeContainerBottom, { top: "0%", opacity: 0 }, { top: "-5.5%", opacity: 1, duration: 1.5, ease: "power1.inOut" }, "<")
 			})
 			
-			techTl.fromTo(boxSubtitle1, { top: "70%", opacity: 0 }, { top: "60%", opacity: 1, duration: 1.5, ease: "back"}, "<")
-			.fromTo(marqueeContainerTop, { y: "44vh", opacity: 0 }, { y: "42vh", opacity: 1, duration: 1.5, ease: "power1.inOut"  }, "<")
-			.fromTo(marqueeContainerBottom, {y: "-32vh", opacity: 0 }, { y: "-30vh", opacity: 1, duration: 1.5, ease: "power1.inOut"  }, "<")
-
+			
 
 
 		//SCROLLING - TODO: Fix the scrolling
@@ -103,7 +129,7 @@ const page = () => {
 				<div id="tech" className="z-10"> 
 					<section id="boxSection">
 						<div id="boxContainer" className="flex justify-center">
-							<h1 id="boxTitle1" className="text-4xl sm:text-6xl lg:text-7xl  2xl:text-8xl w-full">
+							<h1 id="boxTitle1" className="text-[2.5rem] sm:text-6xl lg:text-7xl 2xl:text-8xl w-full">
 								TECH STACK
 							</h1>
 							<h4 id="boxSubtitle1" className="text-base sm:text-2xl tracking-[1] w-full">
