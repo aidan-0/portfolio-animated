@@ -30,21 +30,34 @@ export const animatePageOut = (href: string, router: AppRouterInstance) => {
         h1text = " "; 
     }
 
+
+// CHANGING TO TECH FROM PORTFOLIO. PORTFOLIO FLIES DOWN INSTEAD OF UP
+
     // Set the h1 text content
     transitionText.innerText = h1text;
 
-    const tl = gsap.timeline({
-      // onComplete: () => {
-      //   router.push(href);
-      // }
-    });
+    const tl = gsap.timeline({});
 
     // Animate the page content (animationElement)
-    tl.to("#outer-header-container", {
-      y: "-100%",
-      duration: 0.4,
+    let mm = gsap.matchMedia();
+    // Desktop header animate out
+		mm.add("(min-width: 768px)", () => {
+      tl.to("#outer-header-container", {
+        y: "-100%",
+        duration: 0.4,
+      })
     })
-    .to(animationElement, {
+
+    // Desktop header animate out
+		mm.add("(max-width: 767px)", () => {
+      tl.to("#mobile-header", {
+        y: "-100%",
+        duration: 0.4,
+      })
+    })
+
+
+    tl.to(animationElement, {
       scale: 0.7,
       paddingTop: 50,
       filter: "blur(8px)",

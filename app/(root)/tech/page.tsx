@@ -54,6 +54,21 @@ const page = () => {
 					"<",
 				)
 			})
+
+			mm.add("(max-width: 767px)", () => {
+				techTl.fromTo(
+					"#mobile-header",
+					{ y: -100,
+					opacity: 0, 
+					},
+					{
+						y: 0,
+						opacity: 1,
+						duration: 1,
+					},
+					0,
+				)
+			})
 			
 			techTl.fromTo(boxSubtitle1, { top: "70%", opacity: 0 }, { top: "60%", opacity: 1, duration: 1.5, ease: "back"}, "<")
 			.fromTo(marqueeContainerTop, { y: "44vh", opacity: 0 }, { y: "42vh", opacity: 1, duration: 1.5, ease: "power1.inOut"  }, "<")

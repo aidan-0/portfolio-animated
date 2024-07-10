@@ -320,15 +320,15 @@ const Header = () => {
 						id="mobile-header"
 						ref={mobileHeaderRef}
 					>
-						<div className="z-60 flex justify-between items-center h-[90px]">
+						<div className="z-60 flex justify-between items-center h-[80px]">
 							<div onClick={handleLogoClick}>
 								<Link href="/" id="nav-logo nav-link">
 									<Image
 										ref={navSvgRef}
 										src="/logos/logo.png"
 										alt="Logo"
-										width={50}
-										height={50}
+										width={40}
+										height={40}
 										className=""
 										id="nav-svg"
 									/>
@@ -349,7 +349,7 @@ const Header = () => {
 					</div>
 
 					<div
-						className="fixed top-0 left-0 w-full bg-[#242631] shadow-lg z-40 mt-[92px]"
+						className="fixed top-0 left-0 w-full bg-[#2e303d] shadow-lg z-40 mt-[82px] rounded-b-2xl"
 						id="mobile-nav-menu"
 						ref={navMenuRef}
 					>

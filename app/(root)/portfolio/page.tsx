@@ -61,7 +61,23 @@ const page = () => {
 				},
 				"<",
 			)
-			});
+			})
+
+
+			mm.add("(max-width: 767px)", () => {
+				portfolioTl.fromTo(
+					"#mobile-header",
+					{ y: -100,
+					opacity: 0, 
+					},
+					{
+						y: 0,
+						opacity: 1,
+						duration: 1,
+					},
+					0,
+				)
+			})
 
 			portfolioTl.fromTo(
 				"#mini-bio-div",
