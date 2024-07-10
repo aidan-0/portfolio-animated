@@ -76,6 +76,7 @@ export const animatePageOut = (href: string, router: AppRouterInstance) => {
         opacity: 1,
         y: "100%",
         duration: 0,
+
       }, 0)
       .to(transitionElement, {
         y: 0,
