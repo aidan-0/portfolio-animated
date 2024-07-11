@@ -1,9 +1,3 @@
-#boxSection {
-	/* position: relative;
-	display: flex;
-	background: white; */
-}
-
 #boxContainer {
 	position: relative;
 	background: #086a38;
@@ -101,19 +95,20 @@ li .tech-logo {
 	#boxSubtitle1 {
 		font-size: 1.5rem;
 	}
+
 	.marquee {
 		--gap: 2.5rem;
 	}
+
 	.marquee-content {
 		animation: scroll 50s linear infinite;
 	}
-	/* #marqueeContainerTop {
-		display: none;
-	} */
+
 	li .tech-logo {
 		height: 35px;
 		width: 35px;
 	}
+	
 	.marquee-reverse {
 		animation-direction: reverse;
 	}

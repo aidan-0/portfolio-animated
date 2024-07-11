@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import React, { useRef, useState, useEffect, use } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,7 +13,6 @@ import ContactModal from "./ContactModal";
 import { ClosedMenu, OpenMenu } from "./Icons";
 const Header = () => {
 	const pathname = usePathname();
-	const router = useRouter();
 	const { animationTrigger } = useAnimation();
 	const timelineRef = useRef<gsap.core.Timeline | null>(null);
 	const navSvgRef = useRef<HTMLImageElement | null>(null);
@@ -24,7 +23,7 @@ const Header = () => {
 
 	if (typeof window === "undefined") return null;
 	const windowWidth = window.innerWidth;
-	console.log(`viewportWidth: ${windowWidth}`)
+	console.log(`viewportWidth: ${windowWidth}`);
 
 	// Refresh on resize
 	useEffect(() => {
@@ -48,9 +47,7 @@ const Header = () => {
 					const timeline = gsap.timeline();
 					timelineRef.current = timeline;
 
-					// console.log("Starting Header Animation");
-
-					//load in animation
+					//Homepage load in animation
 					timeline
 						.to("#outer-header-container", {
 							opacity: 1,
@@ -112,11 +109,9 @@ const Header = () => {
 					);
 				}
 			} else {
+				// If not on homepage, load in animation
 				const timeline = gsap.timeline();
 
-				console.log("Starting Header Animation");
-
-				//load in animation
 				timeline
 					.to("#outer-header-container", {
 						opacity: 1,
@@ -143,7 +138,7 @@ const Header = () => {
 					);
 			}
 
-			// nav logo hover effect
+			// Nav logo hover effect
 			const hoverAnimation = gsap.to(navSvgRef.current, {
 				background: "linear-gradient(45deg, #f88f7f, #fbcb85)",
 				boxShadow: "rgba(153, 153, 153, 0.1) 0px 0px 8px 4px",
@@ -172,7 +167,7 @@ const Header = () => {
 					const timeline = gsap.timeline();
 					timelineRef.current = timeline;
 
-					//Load in animation
+					//Homepage load in animation
 					gsap.set("#mobile-header", { opacity: 0, yPercent: -100 });
 					timeline
 						.to("#mobile-header", {
@@ -219,11 +214,7 @@ const Header = () => {
 						);
 				}
 			} else {
-				// const timeline = gsap.timeline();
-
-				console.log("Starting Header Animation //else block//");
-
-				//load in animation
+				// Load in animation if not on homepage
 				gsap.to("#mobile-header", {
 					opacity: 1,
 					yPercent: 0,
@@ -234,27 +225,26 @@ const Header = () => {
 		});
 	}, [animationTrigger]);
 
-	// Entry Animations Mobile
-	useGSAP(() => {
-		let mm = gsap.matchMedia();
-		if (animationTrigger) {
-			gsap.registerPlugin(ScrollTrigger);
-			const timeline = gsap.timeline();
-			timelineRef.current = timeline;
+	// TODO: KEEPING COMMENTED FOR NOW AS NOT SURE IF ITLL BREAK ANYTHING IF DELETING
+	// Entry Animation Mobile
+	// useGSAP(() => {
+	// 	let mm = gsap.matchMedia();
+	// 	if (animationTrigger) {
+	// 		gsap.registerPlugin(ScrollTrigger);
+	// 		const timeline = gsap.timeline();
+	// 		timelineRef.current = timeline;
 
-			// mm.add("(max-width: 767px)", () => {
-				console.log("Mobile");
-				gsap.set("#mobile-header", { opacity: 0, yPercent: -100 });
-				gsap.to("#mobile-header", {
-					opacity: 1,
-					yPercent: 0,
-					duration: 1,
-					zIndex: 4000,
-					ease: "power1.inOut",
-				});
-			// });
-		}
-	}, []);
+	// 		gsap.set("#mobile-header", { opacity: 0, yPercent: -100 });
+	// 		gsap.to("#mobile-header", {
+	// 			opacity: 1,
+	// 			yPercent: 0,
+	// 			duration: 1,
+	// 			zIndex: 4000,
+	// 			ease: "power1.inOut",
+	// 		});
+
+	// 	}
+	// }, []);
 
 	//Restart animation on logo click if on homepage, else redirect to homepage and refresh page
 	const handleLogoClick = (e: React.MouseEvent) => {
@@ -282,14 +272,13 @@ const Header = () => {
 	// Mobile Nav Menu
 	const toggleNav = () => {
 		setNavOpen((prevNavOpen) => !prevNavOpen);
-		// console.log("toggleNav");
 		if (!isNavOpen) {
 			gsap.fromTo(
 				"#mobile-nav-menu",
 				{
 					display: "none",
 					yPercent: -100,
-					zIndex: 40, // Ensure the z-index is set here as well
+					zIndex: 40,
 				},
 				{
 					display: "block",
@@ -381,6 +370,7 @@ const Header = () => {
 					</div>
 				</>
 			) : (
+				// 768 px and up
 				<div
 					className="opacity-0 flex justify-center top-0 absolute pt-4"
 					id="outer-header-container"

@@ -1,4 +1,6 @@
 "use client"
+
+// Context for Entry Animation talking to Header / Home page
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 

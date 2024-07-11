@@ -15,7 +15,7 @@ const page = () => {
 	console.log("viewportHeight: ", viewportHeight);
 
 	// TODO:
-	//Scroll to (for the buttons to go to a set project)
+	//'Scroll to' (for the buttons to go to a set project)
 	// const lenis = useLenis((scroll) => {
 	// 	console.log(scroll)
 	// })

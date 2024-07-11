@@ -159,9 +159,6 @@ const EntryAnimation = () => {
                 console.log("animation trigger set to true")
             },  
         })
-        // .to(".dev-text", {
-        //     color: "#E1EAF1"
-        // }, "<")  
         .to("#entry-animation-container", {
             opacity: 0,
         }, "<")
@@ -188,7 +185,6 @@ const EntryAnimation = () => {
         <div className='h-screen p-10 bg-1 absolute top-0 left-0 z-40 w-full' id="container-bg-1"></div>
         <div className='h-screen pb-[40%] sm:p-10 absolute top-0 left-0 z-50 w-full flex flex-col justify-center' id="text-container">
             <div id='inner-text-container'>
-                {/* maybe remove 'let me be' */}
                 <div><h1 className='text-2xl sm:text-4xl lg:text-5xl uppercase font-semibold h1-text pl-8 sm:pl-16 lg:pl-28 sm:pb-2 tracking-wide' id="initial-entry">your go-to</h1></div>
                 <div className='pl-8 sm:pl-16 lg:pl-28 sm:pb-2'>
                   <div className="text-wrapper"><h1 className='text-4xl sm:text-7xl lg:text-8xl uppercase font-semibold h1-text' id='word1'>Front-End</h1></div>

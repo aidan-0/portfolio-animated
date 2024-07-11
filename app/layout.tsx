@@ -5,22 +5,23 @@ import { AnimationProvider } from "@/components/AnimationContext";
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Aidan McDonald - Portfolio",
-  description: "This site is still under development",
+	title: "Aidan McDonald - Portfolio",
+	description: "A portfolio showcasing my work and projects",
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <AnimationProvider>
-      <body className={montserrat.className}>
-          {children}
-      </body>
-      </AnimationProvider>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<head>
+				<link rel="icon" href="/favicon.png" type="image/svg+xml" />
+			</head>
+			<AnimationProvider>
+				<body className={montserrat.className}>{children}</body>
+			</AnimationProvider>
+		</html>
+	);
 }

@@ -1,5 +1,6 @@
 export default function Template({ children }: { children: React.ReactNode }) {
 
+  // This is what swipes up on page change
   return (
     <div>
       <div

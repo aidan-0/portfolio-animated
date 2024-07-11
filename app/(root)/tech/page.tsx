@@ -14,10 +14,7 @@ const page = () => {
 		let boxTitle1 = document.getElementById("boxTitle1");
 		let boxSubtitle1 = document.getElementById("boxSubtitle1");
 		let marqueeContainerTop = document.getElementById("marqueeContainerTop");
-		let marqueeContainerBottom = document.getElementById(
-			"marqueeContainerBottom",
-		);
-		let tech = document.getElementById("tech");
+		let marqueeContainerBottom = document.getElementById("marqueeContainerBottom");
 		let mm = gsap.matchMedia();
 		const techTl = gsap.timeline();
 
@@ -79,6 +76,7 @@ const page = () => {
 				.fromTo(marqueeContainerTop, { top: "0%", opacity: 0 }, { top: "-7.5%", opacity: 1, duration: 2.2, ease: "power1.inOut" }, "<")
 				.fromTo(marqueeContainerBottom, { top: "0%", opacity: 0 }, { top: "-2.5%", opacity: 1, duration: 2.2, ease: "power1.inOut" }, "<")
 			})
+
 			// Large mobile
 			mm.add("(min-width: 621px) and (max-width: 767px)", () => {
 				techTl.fromTo(
@@ -98,29 +96,6 @@ const page = () => {
 				.fromTo(marqueeContainerTop, { top: "0%", opacity: 0 }, { top: "-2.5%", opacity: 1, duration: 2.2, ease: "power1.inOut" }, "<")
 				.fromTo(marqueeContainerBottom, { top: "0%", opacity: 0 }, { top: "-5.5%", opacity: 1, duration: 2.2, ease: "power1.inOut" }, "<")
 			})
-			
-			
-
-
-		//SCROLLING - TODO: Fix the scrolling
-	// 	let tl1 = gsap.timeline({
-	// 		scrollTrigger: {
-	// 			trigger: tech,
-	// 			start: "top top",
-	// 			end: "+=1000px",
-	// 			markers: true,
-	// 			scrub: 1,
-	// 			pin: tech,
-	// 			pinSpacing: true,
-	// 			invalidateOnRefresh: true,
-	// 		},
-	// 		defaults: { ease: "none" },
-	// 	});
-
-	// 	tl1
-	// 		// Scrolling text move left and right
-	// 		.to(boxTitle1, { duration: 3, xPercent: -25 }, "<")
-	// 		.to(boxSubtitle1, { duration: 3, xPercent: 25 }, "<");
 	});
 
 	return (

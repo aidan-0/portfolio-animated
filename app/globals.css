@@ -11,6 +11,7 @@ body {
 	overflow-x: hidden !important;
 }
 
+
 /* Remove scrollbars */
 * {
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
@@ -20,7 +21,8 @@ body {
     display: none;  /* Safari and Chrome */
 }
 
-/* Hide mobile nav initially */
+
+/* Nav / Header */
 #mobile-nav-menu {
   translateY: -100%;
   opacity: 0;
@@ -65,12 +67,7 @@ body {
 
 
 
-
-/* 
-#entry-animation-container  {
-    visibility: hidden;
-} */
-
+/* Homepage */
 h1 {
 	text-transform: uppercase;
 	clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
@@ -103,6 +100,7 @@ h1 {
 	align-items: center;
 }
 
+
 /* Swipe colours */
 /* Blue */
 .bg-1,
@@ -114,8 +112,7 @@ h1 {
 /* Green */
 .bg-2,
 #resume-bg {
-	/* halfway between 1 & 2 */
-	background: #086a38;
+	/* halfway between 1st & 2nd colour */ background: #086a38;
 	background: radial-gradient(circle at top center, #0c8c45 0%, #023926 100%);
 }
 
@@ -123,21 +120,15 @@ h1 {
 .bg-3,
 #portfolio,
 #portfolio-bg {
-	/* halfway between 1 & 2 */
-	background: #7c1e24;
+	/* halfway between 1st & 2nd colour */ background: #7c1e24;
 	background: radial-gradient(circle at top center, #8d2626 0%, #45071e 100%);
 }
 
 /* Orange */
 .bg-4,
 #tech-bg {
-	/* halfway between 1 & 2 */
-	background: #aa562c;
+	/* halfway between 1st & 2nd colour */ background: #aa562c;
 	background: radial-gradient(circle at top center, #b76f3f 0%, #9a3514 100%);
-}
-
-#test-bg {
-	background: radial-gradient(circle at top center, #0c8c45 0%, #023926 100%);
 }
 
 
@@ -151,8 +142,7 @@ h1 {
 }
 
 
-
-/* TRANSITIONS */
+/* Transitions */
 #page-transition-text {
 	color: #FFFFFF;
 	top: 50%;
@@ -160,7 +150,6 @@ h1 {
 	position: absolute;
 	overflow: hidden;
 	transform: translate(0%, -50%) translate(-50%, 0px) !important;
-	/* transform: translate(-50%, -50%); */
 	text-align: center;
 	font-weight: 600;
 	letter-spacing: 0.25rem;

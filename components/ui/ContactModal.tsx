@@ -8,6 +8,8 @@ interface ContactModalProps {
 const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
+  // TODO: Create a cleaner modal / a form to get in contact?
+
   return (
     <div className="w-screen h-screen absolute inset-0 flex bg-black bg-opacity-50 z-[200]">
       <div className="bg-white p-8 rounded-lg shadow-lg w-96 z-[200] m-auto">

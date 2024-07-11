@@ -3,11 +3,12 @@
 import React from "react";
 import EntryAnimation from "../../components/ui/EntryAnimation";
 
+// GSAP animations for this page are within EntryAnimation.tsx and Header.tsx to animate the text
+
 const page = () => {
 	return (
 		<>
 			<EntryAnimation />
-
 			<div id="animation-id">
 				<div
 					id="home-section1"

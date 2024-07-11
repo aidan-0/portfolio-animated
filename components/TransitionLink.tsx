@@ -19,7 +19,7 @@ export default function TransitionLink({
     } else {
     animatePageOut(href, router);
     }
-    console.log("clicked")
+    // console.log("clicked")
 
   };
 

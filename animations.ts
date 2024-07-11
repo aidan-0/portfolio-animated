@@ -31,8 +31,6 @@ export const animatePageOut = (href: string, router: AppRouterInstance) => {
     }
 
 
-// CHANGING TO TECH FROM PORTFOLIO. PORTFOLIO FLIES DOWN INSTEAD OF UP
-
     // Set the h1 text content
     transitionText.innerText = h1text;
 
@@ -48,7 +46,7 @@ export const animatePageOut = (href: string, router: AppRouterInstance) => {
       })
     })
 
-    // Desktop header animate out
+    // Mobile header animate out
 		mm.add("(max-width: 767px)", () => {
       tl.to("#mobile-header", {
         y: "-100%",
