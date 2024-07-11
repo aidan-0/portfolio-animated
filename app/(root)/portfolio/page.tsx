@@ -11,6 +11,7 @@ import { useLenis } from "lenis/react";
 const page = () => {
 	if (typeof window === "undefined") return null;
 	const viewportHeight = window.innerHeight;
+	const viewportWidth = window.innerWidth;
 	const scrollLength = viewportHeight * projectData.length;
 	console.log("viewportHeight: ", viewportHeight);
 
@@ -21,14 +22,11 @@ const page = () => {
 	// })
 	// https://www.youtube.com/watch?v=QNh0MH-G3OM
 
-	// on page load
-
-
-
 	let mm = gsap.matchMedia();
-	
+
 	// TODO: something in the portfolio section is causing the rendered width of tech to be around 800px - could be fixed after portfolio is responsively designed
 
+	// Entry animations
 	useGSAP(() => {
 		const portfolioTl = gsap.timeline();
 
@@ -48,10 +46,10 @@ const page = () => {
 					zIndex: 0,
 				},
 				"<",
-			)
+			);
 
-			mm.add("(min-width: 767px)", () => {
-				portfolioTl.fromTo(
+		mm.add("(min-width: 767px)", () => {
+			portfolioTl.fromTo(
 				"#outer-header-container",
 				{ y: -150, opacity: 0 },
 				{
@@ -60,26 +58,24 @@ const page = () => {
 					duration: 1.5,
 				},
 				"<",
-			)
-			})
+			);
+		});
 
-
-			mm.add("(max-width: 767px)", () => {
-				portfolioTl.fromTo(
-					"#mobile-header",
-					{ y: -100,
-					opacity: 0, 
-					},
-					{
-						y: 0,
-						opacity: 1,
-						duration: 1,
-					},
-					0,
-				)
-			})
-
+		mm.add("(max-width: 767px)", () => {
 			portfolioTl.fromTo(
+				"#mobile-header",
+				{ y: -100, opacity: 0 },
+				{
+					y: 0,
+					opacity: 1,
+					duration: 1,
+				},
+				0,
+			);
+		});
+
+		portfolioTl
+			.fromTo(
 				"#mini-bio-div",
 				{ top: "85%", opacity: 0 },
 				{ top: "75%", opacity: 1, duration: 1.5, ease: "back" },
@@ -94,7 +90,7 @@ const page = () => {
 			);
 	}, []);
 
-	// on scroll
+	// Scroll animations
 	useGSAP(() => {
 		gsap.registerPlugin(ScrollTrigger);
 
@@ -109,101 +105,103 @@ const page = () => {
 			},
 		});
 		tlPortfolio
-		.to("#portfolio-bg", {
-			background:
-				"radial-gradient(circle at top center, #b76f3f 0%, #9a3514 100%)",
-			duration: 100,
-		})
-		.to(
-			"#page-transition-text",
-			{
-				top: "10%",
-				duration: 12,
-			},
-			"<"
-		);
+			.to("#portfolio-bg", {
+				background:
+					"radial-gradient(circle at top center, #b76f3f 0%, #9a3514 100%)",
+				duration: 100,
+			})
+			.to(
+				"#page-transition-text",
+				{
+					top: "10%",
+					duration: 12,
+				},
+				"<",
+			);
 
-	// Match media check for outer-header-container animation
-	mm.add("(min-width: 767px)", () => {
-		tlPortfolio.fromTo(
-			"#outer-header-container",
-			{
-				y: 0,
-			},
-			{
-				y: -150,
-				duration: 7,
-			},
-			"<"
-		);
+		// Desktop header animation
+		mm.add("(min-width: 767px)", () => {
+			tlPortfolio.fromTo(
+				"#outer-header-container",
+				{
+					y: 0,
+				},
+				{
+					y: -150,
+					duration: 7,
+				},
+				"<",
+			);
+		});
+
+		tlPortfolio
+			.fromTo(
+				"#mini-bio-div",
+				{
+					top: "75%",
+					opacity: 1,
+				},
+				{
+					top: "85%",
+					opacity: 0,
+					duration: 5,
+				},
+				"<",
+			)
+			.fromTo(
+				"#view-projects-text",
+				{
+					opacity: 0,
+					y: 40,
+				},
+				{
+					opacity: 1,
+					y: 0,
+					duration: 5,
+				},
+				"+7",
+			)
+			.fromTo(
+				"#project-display",
+				{
+					opacity: 0,
+					y: 70,
+				},
+				{
+					y: 0,
+					opacity: 1,
+					duration: 7,
+					ease: "power2",
+				},
+				"<",
+			)
+			.fromTo(
+				".project-selection-btn",
+				{
+					x: -150,
+					opacity: 0,
+				},
+				{
+					x: 0,
+					opacity: 1,
+					stagger: 0.6,
+				},
+				"<",
+			);
 	});
 
-	tlPortfolio
-		.fromTo(
-			"#mini-bio-div",
-			{
-				top: "75%",
-				opacity: 1,
-			},
-			{
-				top: "85%",
-				opacity: 0,
-				duration: 5,
-			},
-			"<"
-		)
-		.fromTo(
-			"#view-projects-text",
-			{
-				opacity: 0,
-				y: 40,
-			},
-			{
-				opacity: 1,
-				y: 0,
-				duration: 5,
-			},
-			"+7"
-		)
-		.fromTo(
-			"#project-display",
-			{
-				opacity: 0,
-				y: 70,
-			},
-			{
-				y: 0,
-				opacity: 1,
-				duration: 7,
-				ease: "power2",
-			},
-			"<"
-		)
-		.fromTo(
-			".project-selection-btn",
-			{
-				x: -150,
-				opacity: 0,
-			},
-			{
-				x: 0,
-				opacity: 1,
-				stagger: 0.6,
-			},
-			"<"
-		);
-	});
-
-	// Scrolling effect
+	// Pinned Card Scroll Effect
 	useGSAP(() => {
 		gsap.utils.toArray(".project-text").forEach((textElement: any, i) => {
-			const imageElement = document.querySelectorAll(".project-img-inner-container")[i];
+			const imageElement = document.querySelectorAll(
+				".project-img-inner-container",
+			)[i];
 			// const imageElement = document.querySelectorAll(".project-img")[i];
 			const techStack = document.querySelectorAll(".project-tech-stack")[i];
 
 			gsap.fromTo(
 				imageElement,
-				{ y: viewportHeight / 2 },
+				{ y: viewportHeight / 1.9 },
 				{
 					y: 0,
 					ease: "linear",
@@ -298,41 +296,44 @@ const page = () => {
 	}
 
 	// Scroll to project/image
-	// TODO: Only implement this for mobile screens
-	const resetImages = (currentIndex: number) => {
-		gsap.utils.toArray(".project-img").forEach((imageElement: any, index) => {
-			if (index !== currentIndex) {
-				gsap.to(imageElement, {
-					yPercent: 111,
-					duration: 1,
-					ease: "power1.inOut",
-				});
-			}
-		});
-	};
+	// TODO: Only implement this for mobile screens - currently this breaks the scrolling
+	// const resetImages = (currentIndex: number) => {
+	// 	gsap.utils.toArray(".project-img").forEach((imageElement: any, index) => {
+	// 		if (index !== currentIndex) {
+	// 			gsap.to(imageElement, {
+	// 				yPercent: 111,
+	// 				duration: 1,
+	// 				ease: "power1.inOut",
+	// 			});
+	// 		}
+	// 	});
+	// };
 
-	const scrollToProject = (index: number) => {
-		const textElement = document.getElementById(`project-text-${index}`);
-		const imageElement = document.querySelectorAll(".project-img")[index];
+	// const scrollToProject = (index: number) => {
+	// 	const textElement = document.getElementById(`project-text-${index}`);
+	// 	const imageElement = document.querySelectorAll(".project-img")[index];
 
-		if (textElement) {
-			textElement.scrollIntoView({ behavior: "smooth" });
-		}
+	// 	if (textElement) {
+	// 		textElement.scrollIntoView({ behavior: "smooth" });
+	// 	}
 
-		if (imageElement) {
-			gsap.to(imageElement, {
-				yPercent: 0,
-				duration: 1,
-				ease: "power1.inOut",
-			});
-		}
+	// 	if (imageElement) {
+	// 		gsap.to(imageElement, {
+	// 			yPercent: 0,
+	// 			duration: 1,
+	// 			ease: "power1.inOut",
+	// 		});
+	// 	}
 
-		resetImages(index);
-	};
+	// 	resetImages(index);
+	// };
 
 	return (
 		<div id="animation-id">
-			<div id="portfolio-bg" className="h-screen z-20 text-text-light">
+			<div
+				id="portfolio-bg"
+				className="h-screen z-20 text-text-light flex justify-center"
+			>
 				{/* Landing */}
 				<div className="text-text-light" id="inner-portfolio-container">
 					<h1
@@ -343,7 +344,7 @@ const page = () => {
 					</h1>
 
 					<div
-						className="lg:w-[1000px] pl-[10%] text-2xl font-[400] flex flex-col leading-9 lg:top-[75%] absolute"
+						className="lg:w-[1000px] pl-[10%] 2xl:pl-[5%] text-2xl font-[400] leading-9 lg:top-[75%] absolute text-left"
 						id="mini-bio-div"
 					>
 						<span className="mini-bio-text">
@@ -356,27 +357,28 @@ const page = () => {
 					</div>
 				</div>
 
-				<div className=" flex flex-col leading-9 justify-center items-center ">
-					{/* View my projects text */}
-					<div
-						className="text-2xl font-[400] absolute top-[15%] opacity-0 whitespace-normal"
-						id="view-projects-text"
-					>
-						<span className="">
-							<div className="inline sm:hidden">
-								<span className="italic text-[#dcaa7e] font-medium">Click</span>{" "}
-								or{" "}
-							</div>
-							<span className="italic font-medium text-[#dcaa7e]">Scroll</span>{" "}
-							to view my projects
-						</span>
-					</div>
+				{/* View my projects text */}
+				<div
+					className="text-2xl font-[400] absolute top-[15%] right-0 left-0 mx-auto opacity-0 whitespace-normal flex justify-center items-center"
+					id="view-projects-text"
+				>
+					<span className="text-center">
+						<div className="inline sm:hidden">
+							<span className="italic text-[#dcaa7e] font-medium">Click</span>{" "}
+							or
+						</div>
+						<span className="italic font-medium text-[#dcaa7e]">Scroll</span> to
+						view my projects
+					</span>
 				</div>
 
 				{/* PORTFOLIO PROJECTS */}
-				<div className="flex flex-row h-screen" id="portfolio-projects-section">
+				<div
+					className="flex flex-row h-screen max-w-[1500px]"
+					id="portfolio-projects-section"
+				>
 					{/* PROJECT BUTTONS */}
-					<div
+					{/* <div
 						id="project-selection-btns"
 						className="flex flex-col justify-center items-start gap-8 pl-10 "
 					>
@@ -387,15 +389,15 @@ const page = () => {
 								id={`project-selection-btn-${index + 1}`}
 								onMouseEnter={handleMouseEnterBtn}
 								onMouseLeave={handleMouseLeaveBtn}
-								onClick={() => scrollToProject(index)}
+								// onClick={() => scrollToProject(index)}
 							>
 								{project.projectBtnText}
 							</button>
 						))}
-					</div>
+					</div> */}
 
 					<div
-						className="flex grow justify-center items-center gap-14 pr-10 opacity-0"
+						className="flex grow justify-center items-center gap-14 pr-10 opacity-0 max-w-[1500px]"
 						id="project-display"
 					>
 						{/* PROJECT PREVIEW */}
@@ -436,12 +438,12 @@ const page = () => {
 											className="absolute project-img-inner-container"
 										>
 											<a href={project.projectLink} target="_blank">
-											<img
-												src={project.projectImage}
-												alt="project-image"
-												className="project-img"
-												id={`project-img-${index}`}
-											/>
+												<img
+													src={project.projectImage}
+													alt="project-image"
+													className="project-img"
+													id={`project-img-${index}`}
+												/>
 											</a>
 											<div className="project-tech-stack absolute top-5 left-5">
 												{project.techStack.map((tech, index) => (
@@ -449,7 +451,6 @@ const page = () => {
 														key={index}
 														className="tech-stack-item text-sm bg-[#242630] rounded px-2 sm:px-3 py-1 sm:py-1.5 mb-2 font-[500]  text-text-light"
 														id={`tech-stack-item-${index + 1}`}
-
 														onMouseEnter={handleMouseEnterBtn}
 														onMouseLeave={handleMouseLeaveBtn}
 													>

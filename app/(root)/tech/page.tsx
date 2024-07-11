@@ -51,7 +51,7 @@ const page = () => {
 					},
 					"<",
 				)
-			.fromTo(boxSubtitle1, { top: "70%", opacity: 0 }, { top: "60%", opacity: 1, duration: 2.2, ease: "back"}, "<")
+			.fromTo(boxSubtitle1, { top: "70%", opacity: 0 }, { top: "60%", opacity: 1, duration: 2.2, ease: "back"}, 0.2)
 			.fromTo(marqueeContainerTop, { top: "-8%", opacity: 0 }, { top: "-12.5%", opacity: 1, duration: 2.2, ease: "power1.inOut" }, "<")
 			.fromTo(marqueeContainerBottom, { top: "10%", opacity: 0 }, { top: "17%", opacity: 1, duration: 2.2, ease: "power1.inOut" }, "<")
 
@@ -71,7 +71,7 @@ const page = () => {
 					},
 					0,
 				)
-				.to(boxTitle1, { top: "30%", opacity: 1, duration: 2.2 }, 0.1)
+				.to(boxTitle1, { top: "30%", opacity: 1, duration: 2.2 }, 0.2)
 				.fromTo(boxSubtitle1, { top: "75%", opacity: 0 }, { top: "60%", opacity: 1, duration: 2.2, ease: "power2.inOut"}, "<")
 				.fromTo(marqueeContainerTop, { top: "0%", opacity: 0 }, { top: "-7.5%", opacity: 1, duration: 2.2, ease: "power1.inOut" }, "<")
 				.fromTo(marqueeContainerBottom, { top: "0%", opacity: 0 }, { top: "-2.5%", opacity: 1, duration: 2.2, ease: "power1.inOut" }, "<")
@@ -91,7 +91,7 @@ const page = () => {
 					},
 					0,
 				)
-				.to(boxTitle1, { top: "30%", opacity: 1, duration: 2.2 }, 0.1)
+				.to(boxTitle1, { top: "30%", opacity: 1, duration: 2.2 }, 0.2)
 				.fromTo(boxSubtitle1, { top: "75%", opacity: 0 }, { top: "60%", opacity: 1, duration: 2.2, ease: "power2.inOut"}, "<")
 				.fromTo(marqueeContainerTop, { top: "0%", opacity: 0 }, { top: "-2.5%", opacity: 1, duration: 2.2, ease: "power1.inOut" }, "<")
 				.fromTo(marqueeContainerBottom, { top: "0%", opacity: 0 }, { top: "-5.5%", opacity: 1, duration: 2.2, ease: "power1.inOut" }, "<")
