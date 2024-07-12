@@ -174,95 +174,154 @@ const page = () => {
 					ease: "power2",
 				},
 				"<",
-			)
-			.fromTo(
-				".project-selection-btn",
-				{
-					x: -150,
-					opacity: 0,
-				},
-				{
-					x: 0,
-					opacity: 1,
-					stagger: 0.6,
-				},
-				"<",
 			);
+		// .fromTo(
+		// 	".project-selection-btn",
+		// 	{
+		// 		x: -150,
+		// 		opacity: 0,
+		// 	},
+		// 	{
+		// 		x: 0,
+		// 		opacity: 1,
+		// 		stagger: 0.6,
+		// 	},
+		// 	"<",
+		// );
 	});
 
 	// Pinned Card Scroll Effect
 	useGSAP(() => {
-		gsap.utils.toArray(".project-text").forEach((textElement: any, i) => {
-			const imageElement = document.querySelectorAll(
-				".project-img-inner-container",
-			)[i];
-			// const imageElement = document.querySelectorAll(".project-img")[i];
-			const techStack = document.querySelectorAll(".project-tech-stack")[i];
+		// Desktop
+		mm.add("(min-width: 768px)", () => {
+			gsap.utils.toArray(".project-text").forEach((textElement: any, i) => {
+				const imageElement = document.querySelectorAll(
+					".project-img-inner-container",
+				)[i];
+				// const imageElement = document.querySelectorAll(".project-img")[i];
+				const techStack = document.querySelectorAll(".project-tech-stack")[i];
+
+				gsap.fromTo(
+					imageElement,
+					{ y: viewportHeight / 1.884 },
+					{
+						y: 0,
+						ease: "linear",
+						scrollTrigger: {
+							trigger: textElement,
+							start: "top 50%",
+							end: `+=${viewportHeight / 2}`,
+							scrub: true,
+							// markers: {
+							//   startColor: "pink",
+							//   endColor: "pink",
+							//   fontSize: "18px",
+							//   indent: 400,
+							// },
+						},
+					},
+				);
+				gsap.fromTo(
+					techStack,
+					{ y: viewportHeight / 2 },
+					{
+						y: 0,
+						scrollTrigger: {
+							trigger: textElement,
+							start: "top 50%",
+							end: `+=${viewportHeight / 2}`,
+							scrub: true,
+							// markers: {
+							//   startColor: "pink",
+							//   endColor: "pink",
+							//   fontSize: "18px",
+							//   indent: 1000,
+							// },
+						},
+					},
+				);
+			});
 
 			gsap.fromTo(
-				imageElement,
-				{ y: viewportHeight / 1.884 },
+				".project-text",
 				{
-					y: 0,
+					yPercent: 100,
+				},
+				{
+					yPercent: `-${projectData.length - 1}00`, // 100% * number of projects
+
 					ease: "linear",
 					scrollTrigger: {
-						trigger: textElement,
-						start: "top 50%",
-						end: `+=${viewportHeight / 2}`,
+						trigger: ".project-text",
+						start: "top bottom",
+						end: `+=${scrollLength}`,
 						scrub: true,
 						// markers: {
-						//   startColor: "pink",
-						//   endColor: "pink",
+						//   startColor: "cyan",
+						//   endColor: "cyan",
 						//   fontSize: "18px",
-						//   indent: 400,
-						// },
-					},
-				},
-			);
-			gsap.fromTo(
-				techStack,
-				{ y: viewportHeight / 2 },
-				{
-					y: 0,
-					scrollTrigger: {
-						trigger: textElement,
-						start: "top 50%",
-						end: `+=${viewportHeight / 2}`,
-						scrub: true,
-						// markers: {
-						//   startColor: "pink",
-						//   endColor: "pink",
-						//   fontSize: "18px",
-						//   indent: 1000,
+						//   indent: 800,
 						// },
 					},
 				},
 			);
 		});
 
-		gsap.fromTo(
-			".project-text",
-			{
-				yPercent: 100,
-			},
-			{
-				yPercent: `-${projectData.length - 1}00`, // 100% * number of projects
+		// Mobile
+		mm.add("(max-width: 767px)", () => {
+			gsap.utils.toArray(".project-text").forEach((textElement: any, i) => {
+				const imageElement = document.querySelectorAll(
+					".project-img-inner-container",
+				)[i];
+				const techStack = document.querySelectorAll(".project-tech-stack")[i];
 
-				ease: "linear",
-				scrollTrigger: {
-					trigger: ".project-text",
-					start: "top bottom",
-					end: `+=${scrollLength}`,
-					scrub: true,
-					// markers: {
-					//   startColor: "cyan",
-					//   endColor: "cyan",
-					//   fontSize: "18px",
-					//   indent: 800,
-					// },
+				gsap.fromTo(
+					imageElement,
+					{ y: viewportHeight / 2 },
+					{
+						y: 0,
+						ease: "linear",
+						scrollTrigger: {
+							trigger: textElement,
+							start: "top 50%",
+							end: `+=${viewportHeight / 2}`,
+							scrub: true,
+							// markers: {
+							//   startColor: "pink",
+							//   endColor: "pink",
+							//   fontSize: "18px",
+							//   indent: 400,
+							// },
+						},
+					},
+				);
+			});
+
+			gsap.fromTo(
+				".project-text",
+				{
+					yPercent: 0,
 				},
-			},
-		);
+				{
+					yPercent: `-${projectData.length - 1}25`, // 100% * number of projects
+
+					ease: "linear",
+					scrollTrigger: {
+						trigger: ".project-text",
+						start: "top top",
+						end: `+=${scrollLength}`,
+						scrub: true,
+						// markers: {
+						//   startColor: "cyan",
+						//   endColor: "cyan",
+						//   fontSize: "18px",
+						//   indent: 800,
+						// },
+					},
+				},
+			);
+		});
+
 	}, []);
 
 	// Hover Effects
@@ -403,37 +462,44 @@ const page = () => {
 						{/* PROJECT PREVIEW */}
 						<div
 							id="project-screen"
-							className="w-[80%] lg:w-[60%] xl:w-1/2 h-[30%] lg:h-[64vh] rounded-xl border-2 border-[#ecedf1] flex flex-col justify-center items-center text-white"
+							className="w-[90%] sm:w-[80%] lg:w-[60%] xl:w-1/2 h-[30%] sm:h-[50%] lg:h-[64vh] rounded-xl border-2 border-[#ecedf1] flex flex-col justify-center items-center text-white"
 						>
 							<div
 								id="project-contents"
 								className="w-full lg:p-8 flex flex-col justify-between h-full"
 							>
-								{viewportWidth > 1024 ?
-								 <div
-									id="project-top-section"
-									className="flex flex-row justify-center items-center gap-4"
-								>
-									<div id="three-dots" className="flex flex-row gap-2">
-										<MaterialSymbolsCircle
-											height={"1.2em"}
-											width={"1.2em"}
-											color="#ecedf1"
-											id="three-dots-red"
-										/>
-										<MaterialSymbolsCircle height={"1.2em"} width={"1.2em"} id="three-dots-yellow"
- />
-										<MaterialSymbolsCircle height={"1.2em"} width={"1.2em"} id="three-dots-green"
-										/>
-									</div>
-
+								{viewportWidth > 1024 ? (
 									<div
-										id="search-bar"
-										className="border-2 rounded-full border-[#e2e3e7] w-full flex justify-end pr-3"
+										id="project-top-section"
+										className="flex flex-row justify-center items-center gap-4"
 									>
-										<span>x</span>
+										<div id="three-dots" className="flex flex-row gap-2">
+											<MaterialSymbolsCircle
+												height={"1.2em"}
+												width={"1.2em"}
+												color="#ecedf1"
+												id="three-dots-red"
+											/>
+											<MaterialSymbolsCircle
+												height={"1.2em"}
+												width={"1.2em"}
+												id="three-dots-yellow"
+											/>
+											<MaterialSymbolsCircle
+												height={"1.2em"}
+												width={"1.2em"}
+												id="three-dots-green"
+											/>
+										</div>
+
+										<div
+											id="search-bar"
+											className="border-2 rounded-full border-[#e2e3e7] w-full flex justify-end pr-3"
+										>
+											<span>x</span>
+										</div>
 									</div>
-								</div> : null}
+								) : null}
 								{/* IMAGE CONTAINER */}
 								<div className="h-full lg:border-2 lg:border-[#ecedf1] lg:mt-7 relative project-img-container ">
 									{projectData.map((project, index) => (
@@ -449,6 +515,7 @@ const page = () => {
 													id={`project-img-${index}`}
 												/>
 											</a>
+											{ viewportWidth > 600 ? 
 											<div className="project-tech-stack absolute top-5 left-5">
 												{project.techStack.map((tech, index) => (
 													<div
@@ -461,7 +528,7 @@ const page = () => {
 														{tech}
 													</div>
 												))}
-											</div>
+											</div> : null}
 										</div>
 									))}
 								</div>
@@ -470,11 +537,11 @@ const page = () => {
 						{/* PROJECT DESCRIPTION */}
 						<div
 							id="project-text-container"
-							className="w-[80%] lg:w-[30%] xl:w-1/4 h-[60%] lg:h-[64vh] rounded-xl border-2 border-[#ecedf1] flex flex-col justify-start items-center relative"
+							className="w-[90%] sm:w-[80%] lg:w-[30%] xl:w-1/4 h-[60%] sm:h-[50%] lg:h-[64vh] rounded-xl border-2 border-[#ecedf1] flex flex-col justify-start items-center relative"
 						>
 							{projectData.map((project, index) => (
 								<div
-									className="leading-6 flex flex-col pt-20 items-center w-full min-h-screen p-6 project-text"
+									className="leading-6 flex flex-col pt-20 items-center w-full min-h-screen p-4 sm:p-6 project-text"
 									key={index}
 									id={`project-text-${index}`}
 								>
@@ -482,10 +549,14 @@ const page = () => {
 										{project.projectName}
 									</h1>
 									<div className="border-b-2 border-[#36448a] mx-5 mb-4 w-[92%]"></div>
-							
+
 									<div className="pb-8 tracking-wide text-base 2xl:text-lg">
 										{project.projectDescription}
 									</div>
+									{ viewportWidth <= 600 ? 
+									<div className="pb-8 tracking-wide text-base 2xl:text-lg">
+										{project.techStack}
+									</div>: null}
 									<a
 										className="tracking-wider border-[#ecedf1] font-semibold text-base 2xl:text-lg rounded-[10px] border-2 justify-stretch text-center w-full mx-5 py-3 project-btn"
 										href={project.projectLink}
