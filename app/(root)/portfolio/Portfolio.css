@@ -15,6 +15,10 @@
 	overflow: scroll !important;
 }
 
+#project-text-4{
+	padding-top: 10px;
+}
+
 #project-contents,
 #project-top-section,
 #search-bar,
@@ -44,4 +48,33 @@
 
 .mini-bio-text {
 	text-wrap: normal;
+}
+
+.project-btn {
+	background: #242630;
+	transition: 0.3s;
+}
+
+.project-btn:hover {
+	background: #ecedf1;
+	color: #242630 !important;
+	border: #ecedf1 2px solid;
+}
+
+#three-dots-green, 
+#three-dots-yellow,
+#three-dots-red {
+	transition: 0.3s;
+}
+
+#three-dots-green:hover {
+	color: #26bf3d;
+}
+
+#three-dots-yellow:hover {
+	color: #f4b52c;
+}
+
+#three-dots-red:hover {
+	color: #f55a55;
 }

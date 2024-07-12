@@ -201,7 +201,7 @@ const page = () => {
 
 			gsap.fromTo(
 				imageElement,
-				{ y: viewportHeight / 1.9 },
+				{ y: viewportHeight / 1.884 },
 				{
 					y: 0,
 					ease: "linear",
@@ -233,7 +233,7 @@ const page = () => {
 						//   startColor: "pink",
 						//   endColor: "pink",
 						//   fontSize: "18px",
-						//   indent: 400,
+						//   indent: 1000,
 						// },
 					},
 				},
@@ -374,7 +374,7 @@ const page = () => {
 
 				{/* PORTFOLIO PROJECTS */}
 				<div
-					className="flex flex-row h-screen max-w-[1500px]"
+					className="flex flex-row h-screen max-w-[1700px]"
 					id="portfolio-projects-section"
 				>
 					{/* PROJECT BUTTONS */}
@@ -397,19 +397,20 @@ const page = () => {
 					</div> */}
 
 					<div
-						className="flex grow justify-center items-center gap-14 pr-10 opacity-0 max-w-[1500px]"
+						className="flex flex-col lg:flex-row grow justify-center items-center gap-4 pb-4 lg:pb-0 lg:gap-14 pt-24 lg:pt-16 opacity-0"
 						id="project-display"
 					>
 						{/* PROJECT PREVIEW */}
 						<div
 							id="project-screen"
-							className="w-1/2 h-[60%] rounded-xl border-2 border-[#ecedf1] flex flex-col justify-center items-center text-white"
+							className="w-[80%] lg:w-[60%] xl:w-1/2 h-[64vh] rounded-xl border-2 border-[#ecedf1] flex flex-col justify-center items-center text-white"
 						>
 							<div
 								id="project-contents"
-								className="w-full p-8 flex flex-col justify-between h-full"
+								className="w-full lg:p-8 flex flex-col justify-between h-full"
 							>
-								<div
+								{viewportWidth > 1024 ?
+								 <div
 									id="project-top-section"
 									className="flex flex-row justify-center items-center gap-4"
 								>
@@ -418,9 +419,12 @@ const page = () => {
 											height={"1.2em"}
 											width={"1.2em"}
 											color="#ecedf1"
+											id="three-dots-red"
 										/>
-										<MaterialSymbolsCircle height={"1.2em"} width={"1.2em"} />
-										<MaterialSymbolsCircle height={"1.2em"} width={"1.2em"} />
+										<MaterialSymbolsCircle height={"1.2em"} width={"1.2em"} id="three-dots-yellow"
+ />
+										<MaterialSymbolsCircle height={"1.2em"} width={"1.2em"} id="three-dots-green"
+										/>
 									</div>
 
 									<div
@@ -429,9 +433,9 @@ const page = () => {
 									>
 										<span>x</span>
 									</div>
-								</div>
+								</div> : null}
 								{/* IMAGE CONTAINER */}
-								<div className="h-full border-2 border-[#ecedf1] mt-7 relative project-img-container ">
+								<div className="h-full lg:border-2 lg:border-[#ecedf1] lg:mt-7 relative project-img-container ">
 									{projectData.map((project, index) => (
 										<div
 											key={index}
@@ -466,22 +470,24 @@ const page = () => {
 						{/* PROJECT DESCRIPTION */}
 						<div
 							id="project-text-container"
-							className="w-1/4 h-[60%] rounded-xl border-2 border-[#ecedf1] flex flex-col justify-start items-center text-text-light relative"
+							className="w-[80%] lg:w-[30%] xl:w-1/4 h-[64vh] rounded-xl border-2 border-[#ecedf1] flex flex-col justify-start items-center relative"
 						>
 							{projectData.map((project, index) => (
 								<div
-									className="leading-6 flex flex-col pt-20 items-center w-full min-h-screen p-6 gap-6 project-text"
+									className="leading-6 flex flex-col pt-20 items-center w-full min-h-screen p-6 project-text"
 									key={index}
 									id={`project-text-${index}`}
 								>
-									<h1 className="text-4xl text-text-light font-semibold text-center tracking-[0.3em] projectName">
+									<h1 className="md:text-xl lg:text-2xl xl:text-[36px] 2xl:text-4xl leading-4 xl:leading-[38px] text-text-light font-bold text-center tracking-[0.15em] projectName pb-3 ">
 										{project.projectName}
 									</h1>
-									<div className="tracking-wider">
+									<div className="border-b-2 border-[#36448a] mx-5 mb-4 w-[92%]"></div>
+							
+									<div className="pb-8 tracking-wide text-base 2xl:text-lg">
 										{project.projectDescription}
 									</div>
 									<a
-										className="tracking-wider border-[#ecedf1] rounded border-2 px-7 py-2 "
+										className="tracking-wider border-[#ecedf1] font-semibold text-base 2xl:text-lg rounded-[10px] border-2 justify-stretch text-center w-full mx-5 py-3 project-btn"
 										href={project.projectLink}
 										target="_blank"
 									>
