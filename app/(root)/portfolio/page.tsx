@@ -403,7 +403,7 @@ const page = () => {
 						{/* PROJECT PREVIEW */}
 						<div
 							id="project-screen"
-							className="w-[80%] lg:w-[60%] xl:w-1/2 h-[64vh] rounded-xl border-2 border-[#ecedf1] flex flex-col justify-center items-center text-white"
+							className="w-[80%] lg:w-[60%] xl:w-1/2 h-[30%] lg:h-[64vh] rounded-xl border-2 border-[#ecedf1] flex flex-col justify-center items-center text-white"
 						>
 							<div
 								id="project-contents"
@@ -470,7 +470,7 @@ const page = () => {
 						{/* PROJECT DESCRIPTION */}
 						<div
 							id="project-text-container"
-							className="w-[80%] lg:w-[30%] xl:w-1/4 h-[64vh] rounded-xl border-2 border-[#ecedf1] flex flex-col justify-start items-center relative"
+							className="w-[80%] lg:w-[30%] xl:w-1/4 h-[60%] lg:h-[64vh] rounded-xl border-2 border-[#ecedf1] flex flex-col justify-start items-center relative"
 						>
 							{projectData.map((project, index) => (
 								<div

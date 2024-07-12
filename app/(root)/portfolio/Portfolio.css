@@ -13,6 +13,7 @@
 
 #project-text-container {
 	overflow: scroll !important;
+	overflow-y: hidden !important;
 }
 
 #project-text-4{

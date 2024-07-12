@@ -20,21 +20,36 @@ const Header = () => {
 	const mobileHeaderRef = useRef<HTMLDivElement | null>(null);
 	const [isContactModalOpen, setContactModalOpen] = useState(false);
 	const [isNavOpen, setNavOpen] = useState(false);
+	const [initialWidth, setInitialWidth] = useState(window.innerWidth);
 
 	if (typeof window === "undefined") return null;
 	const windowWidth = window.innerWidth;
 	console.log(`viewportWidth: ${windowWidth}`);
 
 	// Refresh on resize
+
 	useEffect(() => {
-		const handleResize = () => {
-			window.location.reload();
-		};
+	  const handleResize = () => {
+		if (window.innerWidth !== initialWidth) {
+		  window.location.reload();
+		}
+	  };
+  
+	  window.addEventListener("resize", handleResize);
+  
+	  return () => window.removeEventListener("resize", handleResize);
+	}, [initialWidth]);
 
-		window.addEventListener("resize", handleResize);
 
-		return () => window.removeEventListener("resize", handleResize);
-	}, []);
+	// useEffect(() => {
+	// 	const handleResize = () => {
+	// 		window.location.reload();
+	// 	};
+
+	// 	window.addEventListener("resize", handleResize);
+
+	// 	return () => window.removeEventListener("resize", handleResize);
+	// }, []);
 
 	// Entry Animations Desktop
 	useGSAP(() => {
