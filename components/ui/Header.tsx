@@ -20,7 +20,7 @@ const Header = () => {
 	const mobileHeaderRef = useRef<HTMLDivElement | null>(null);
 	const [isContactModalOpen, setContactModalOpen] = useState(false);
 	const [isNavOpen, setNavOpen] = useState(false);
-	const [initialWidth, setInitialWidth] = useState(window.innerWidth);
+	// const [initialWidth, setInitialWidth] = useState(window.innerWidth);
 
 	if (typeof window === "undefined") return null;
 	const windowWidth = window.innerWidth;
