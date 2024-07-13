@@ -20,7 +20,6 @@ const Header = () => {
 	const mobileHeaderRef = useRef<HTMLDivElement | null>(null);
 	const [isContactModalOpen, setContactModalOpen] = useState(false);
 	const [isNavOpen, setNavOpen] = useState(false);
-	// const [initialWidth, setInitialWidth] = useState(window.innerWidth);
 
 	if (typeof window === "undefined") return null;
 	const windowWidth = window.innerWidth;
@@ -28,28 +27,33 @@ const Header = () => {
 
 	// Refresh on resize
 
+	const [initialWidth, setInitialWidth] = useState(
+		typeof window !== 'undefined' ? window.innerWidth : 0
+	  );
+	
+	  useEffect(() => {
+		if (typeof window !== 'undefined') {
+		  const handleResize = () => {
+			if (window.innerWidth !== initialWidth) {
+			  window.location.reload();
+			}
+		  };
+	
+		  window.addEventListener('resize', handleResize);
+	
+		  return () => window.removeEventListener('resize', handleResize);
+		}
+	  }, [initialWidth]);
+
 	// useEffect(() => {
-	//   const handleResize = () => {
-	// 	if (window.innerWidth !== initialWidth) {
-	// 	  window.location.reload();
-	// 	}
-	//   };
-  
-	//   window.addEventListener("resize", handleResize);
-  
-	//   return () => window.removeEventListener("resize", handleResize);
-	// }, [initialWidth]);
+	// 	const handleResize = () => {
+	// 		window.location.reload();
+	// 	};
 
+	// 	window.addEventListener("resize", handleResize);
 
-	useEffect(() => {
-		const handleResize = () => {
-			window.location.reload();
-		};
-
-		window.addEventListener("resize", handleResize);
-
-		return () => window.removeEventListener("resize", handleResize);
-	}, []);
+	// 	return () => window.removeEventListener("resize", handleResize);
+	// }, []);
 
 	// Entry Animations Desktop
 	useGSAP(() => {
