@@ -28,28 +28,28 @@ const Header = () => {
 
 	// Refresh on resize
 
-	useEffect(() => {
-	  const handleResize = () => {
-		if (window.innerWidth !== initialWidth) {
-		  window.location.reload();
-		}
-	  };
-  
-	  window.addEventListener("resize", handleResize);
-  
-	  return () => window.removeEventListener("resize", handleResize);
-	}, [initialWidth]);
-
-
 	// useEffect(() => {
-	// 	const handleResize = () => {
-	// 		window.location.reload();
-	// 	};
+	//   const handleResize = () => {
+	// 	if (window.innerWidth !== initialWidth) {
+	// 	  window.location.reload();
+	// 	}
+	//   };
+  
+	//   window.addEventListener("resize", handleResize);
+  
+	//   return () => window.removeEventListener("resize", handleResize);
+	// }, [initialWidth]);
 
-	// 	window.addEventListener("resize", handleResize);
 
-	// 	return () => window.removeEventListener("resize", handleResize);
-	// }, []);
+	useEffect(() => {
+		const handleResize = () => {
+			window.location.reload();
+		};
+
+		window.addEventListener("resize", handleResize);
+
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
 
 	// Entry Animations Desktop
 	useGSAP(() => {
