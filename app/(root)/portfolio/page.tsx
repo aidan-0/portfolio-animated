@@ -332,11 +332,12 @@ const page = () => {
 				`#${e.target.id}`,
 				{
 					background:
-						"radial-gradient(circle at bottom center, #19293c 0%, #19293c 100%)",
+						"radial-gradient(circle at bottom center, #242630 0%, #242630 100%)",
 				},
 				{
 					background:
 						"radial-gradient(circle at bottom center, #11263f 0%, #19293c 100%)",
+					duration: 0.5,
 				},
 			);
 		}
@@ -345,7 +346,10 @@ const page = () => {
 	function handleMouseLeaveBtn(e: any) {
 		if (e.target.id) {
 			console.log(e.target.id);
-			gsap.to(`#${e.target.id}`, {
+			gsap.fromTo(`#${e.target.id}`, {
+				background:
+				"radial-gradient(circle at bottom center, #11263f 0%, #19293c 100%)",
+			},{
 				background:
 					"radial-gradient(circle at bottom center, #242630 0%, #242630 100%)",
 				duration: 0.5,
@@ -424,7 +428,7 @@ const page = () => {
 						{/* PROJECT PREVIEW */}
 						<div
 							id="project-screen"
-							className="w-[90%] sm:w-[80%] md:w-[60%] lg:w-[60%] xl:w-1/2 h-[30%] sm:h-[50%] lg:h-[64vh] rounded-xl border border-portfolio-border flex flex-col justify-center items-center text-white"
+							className="w-[90%] sm:w-[80%] md:w-[60%] lg:w-[60%] xl:w-1/2 h-[30%] sm:h-[50%] lg:h-[64vh] rounded-xl border border-portfolio-border flex flex-col justify-center items-center text-text-light"
 						>
 							<div
 								id="project-contents"
@@ -482,7 +486,7 @@ const page = () => {
 												{project.techStack.map((tech, index) => (
 													<div
 														key={index}
-														className="tech-stack-item text-sm bg-[#242630] rounded px-2 sm:px-3 py-1 sm:py-1.5 mb-2 font-[500]  text-text-light"
+														className="tech-stack-item text-sm rounded bg-[#] px-2 sm:px-3 py-1 sm:py-1.5 mb-2 font-[500]  text-text-light"
 														id={`tech-stack-item-${index + 1}`}
 														onMouseEnter={handleMouseEnterBtn}
 														onMouseLeave={handleMouseLeaveBtn}

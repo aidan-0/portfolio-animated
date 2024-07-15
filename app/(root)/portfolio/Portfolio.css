@@ -1,8 +1,6 @@
-.project-selection-btn,
-.project-description-btn,
 .tech-stack-item {
 	box-shadow: rgba(33, 33, 33, 0.4) 0px 2px 8px 0px;
-	transition: 0.5s;
+	background: radial-gradient(circle at bottom center, #242630 0%, #242630 100%);
 }
 
 #project-screen,

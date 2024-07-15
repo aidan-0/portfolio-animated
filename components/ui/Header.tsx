@@ -315,7 +315,8 @@ const Header = () => {
 			{windowWidth < 768 ? (
 				<>
 					<div
-						className="fixed top-0 left-0 right-0 z-50 w-screen px-5 bg-[#242631] border-b-2 border-[#434a6e] shadow opacity-100"
+						//bg-[#031724]
+						className="fixed top-0 left-0 right-0 z-50 w-screen px-5 bg-[#22222244] border-b-[#d8d8d88f] border-b shadow-sm opacity-100"
 						id="mobile-header"
 						ref={mobileHeaderRef}
 					>
@@ -336,19 +337,19 @@ const Header = () => {
 							{isNavOpen ? (
 								<OpenMenu
 									onClick={toggleNav}
-									className="white text-white h-10 w-10"
+									className="text-text-light h-10 w-10"
 								/>
 							) : (
 								<ClosedMenu
 									onClick={toggleNav}
-									className="white text-white h-10 w-10"
+									className="text-text-light h-10 w-10"
 								/>
 							)}
 						</div>
 					</div>
 
 					<div
-						className="fixed top-0 left-0 w-full bg-[#2e303d] shadow-lg z-40 mt-[82px] rounded-b-2xl"
+						className="fixed top-0 left-0 w-full bg-[#22222244] shadow-lg z-40 mt-[82px] rounded-b-2xl"
 						id="mobile-nav-menu"
 						ref={navMenuRef}
 					>

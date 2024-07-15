@@ -55,14 +55,14 @@ const EntryAnimation = () => {
             y: 0,
             duration: 1,
             ease: "expo.inOut",
-            color: "#151B20"
+            color: "#E1EAF1"
         }, "<")
         .to('.dev-text', {
-            color: "#151B20",
+            color: "#E1EAF1",
             delay: 0.22
         }, "<")
         .to('.h1-text', {
-            color: "#151B20",
+            color: "#E1EAF1",
             delay: 0.1
         }, "<")
 
@@ -83,7 +83,6 @@ const EntryAnimation = () => {
             y: 0,
             duration: 1,
             ease: "expo.inOut",
-            color: "#E1EAF1"
         }, "<")
         .to('.dev-text', {
             color: "#E1EAF1",
@@ -102,7 +101,7 @@ const EntryAnimation = () => {
             ease: "power3.inOut", 
         })
         .to("#word4", {
-            color: "#151B20"
+            color: "#E1EAF1"
         }, "<")
         .to("#word3", {
             y: -150,
@@ -116,11 +115,11 @@ const EntryAnimation = () => {
             ease: "expo.inOut",
         }, "<")
         .to('.dev-text', {
-            color: "#151B20",
+            color: "#E1EAF1",
             delay: 0.18
         }, "<")
         .to('.h1-text', {
-            color: "#151B20",
+            color: "#E1EAF1",
             delay: 0.1 
         }, "<")
 
@@ -185,18 +184,16 @@ const EntryAnimation = () => {
         <div className='h-screen p-10 bg-1 absolute top-0 left-0 z-40 w-full' id="container-bg-1"></div>
         <div className='h-screen pb-[40%] sm:p-10 absolute top-0 left-0 z-50 w-full flex flex-col justify-center' id="text-container">
             <div id='inner-text-container'>
-                <div><h1 className='text-2xl sm:text-4xl lg:text-5xl uppercase font-semibold h1-text pl-8 sm:pl-16 lg:pl-28 sm:pb-2 tracking-wide' id="initial-entry">your go-to</h1></div>
+                <div><h1 className='text-2xl sm:text-4xl lg:text-5xl uppercase font-semibold h1-text pl-8 sm:pl-16 lg:pl-28 sm:pb-2 tracking-wide text-text-light' id="initial-entry">your go-to</h1></div>
                 <div className='pl-8 sm:pl-16 lg:pl-28 sm:pb-2'>
-                  <div className="text-wrapper"><h1 className='text-4xl sm:text-7xl lg:text-8xl uppercase font-semibold h1-text' id='word1'>Front-End</h1></div>
-                  <div className="text-wrapper"><h1 className='text-4xl sm:text-7xl lg:text-8xl uppercase font-semibold h1-text' id='word2'>Back-End</h1></div>
-                  <div className="text-wrapper"><h1 className='text-4xl sm:text-7xl lg:text-8xl uppercase font-semibold h1-text' id='word3'>Full-Stack</h1></div>
-                  <div className="text-wrapper"><h1 className='text-4xl sm:text-7xl lg:text-8xl uppercase font-semibold h1-text text-text-dark' id='word4'>Solutions</h1></div>
+                  <div className="text-wrapper"><h1 className='text-4xl sm:text-7xl lg:text-8xl uppercase font-semibold h1-text text-text-light' id='word1'>Front-End</h1></div>
+                  <div className="text-wrapper"><h1 className='text-4xl sm:text-7xl lg:text-8xl uppercase font-semibold h1-text text-text-light' id='word2'>Back-End</h1></div>
+                  <div className="text-wrapper"><h1 className='text-4xl sm:text-7xl lg:text-8xl uppercase font-semibold h1-text text-text-light' id='word3'>Full-Stack</h1></div>
+                  <div className="text-wrapper"><h1 className='text-4xl sm:text-7xl lg:text-8xl uppercase font-semibold h1-text text-text-light' id='word4'>Solutions</h1></div>
                 </div>
                 <div><h1 className='text-4xl sm:text-7xl lg:text-8xl'>&nbsp;</h1></div>
-                <div><h1 className='text-4xl sm:text-7xl lg:text-8xl uppercase font-semibold dev-text block pl-12 sm:pl-20 lg:pl-48 ' id="initial-entry">Developer.</h1></div>
+                <div><h1 className='text-4xl sm:text-7xl lg:text-8xl uppercase font-semibold dev-text block pl-12 sm:pl-20 lg:pl-48 text-text-light' id="initial-entry">Developer.</h1></div>
             </div>
-
-  
         </div>
         
         {/* Second (green) Container */}
