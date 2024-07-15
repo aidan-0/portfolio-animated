@@ -106,8 +106,8 @@ const page = () => {
 		});
 		tlPortfolio
 			.to("#portfolio-bg", {
-				background:
-					"radial-gradient(circle at top center, #b76f3f 0%, #9a3514 100%)",
+				// background:
+				// 	"radial-gradient(circle at top center, #091d2b 0%, #091d2b 100%)",
 				duration: 100,
 			})
 			.to(
@@ -193,7 +193,7 @@ const page = () => {
 	// Pinned Card Scroll Effect
 	useGSAP(() => {
 		// Desktop
-		mm.add("(min-width: 768px)", () => {
+		mm.add("(min-width: 1024px)", () => {
 			gsap.utils.toArray(".project-text").forEach((textElement: any, i) => {
 				const imageElement = document.querySelectorAll(
 					".project-img-inner-container",
@@ -268,7 +268,7 @@ const page = () => {
 		});
 
 		// Mobile
-		mm.add("(max-width: 767px)", () => {
+		mm.add("(max-width: 1023px)", () => {
 			gsap.utils.toArray(".project-text").forEach((textElement: any, i) => {
 				const imageElement = document.querySelectorAll(
 					".project-img-inner-container",
@@ -332,12 +332,11 @@ const page = () => {
 				`#${e.target.id}`,
 				{
 					background:
-						"radial-gradient(circle at bottom center, #242630 0%, #242630 100%)",
+						"radial-gradient(circle at bottom center, #19293c 0%, #19293c 100%)",
 				},
 				{
 					background:
-						"radial-gradient(circle at bottom center, #292E48 50%, #242630 100%)",
-					duration: 0.4,
+						"radial-gradient(circle at bottom center, #11263f 0%, #19293c 100%)",
 				},
 			);
 		}
@@ -353,39 +352,6 @@ const page = () => {
 			});
 		}
 	}
-
-	// Scroll to project/image
-	// TODO: Only implement this for mobile screens - currently this breaks the scrolling
-	// const resetImages = (currentIndex: number) => {
-	// 	gsap.utils.toArray(".project-img").forEach((imageElement: any, index) => {
-	// 		if (index !== currentIndex) {
-	// 			gsap.to(imageElement, {
-	// 				yPercent: 111,
-	// 				duration: 1,
-	// 				ease: "power1.inOut",
-	// 			});
-	// 		}
-	// 	});
-	// };
-
-	// const scrollToProject = (index: number) => {
-	// 	const textElement = document.getElementById(`project-text-${index}`);
-	// 	const imageElement = document.querySelectorAll(".project-img")[index];
-
-	// 	if (textElement) {
-	// 		textElement.scrollIntoView({ behavior: "smooth" });
-	// 	}
-
-	// 	if (imageElement) {
-	// 		gsap.to(imageElement, {
-	// 			yPercent: 0,
-	// 			duration: 1,
-	// 			ease: "power1.inOut",
-	// 		});
-	// 	}
-
-	// 	resetImages(index);
-	// };
 
 	return (
 		<div id="animation-id">
@@ -408,9 +374,9 @@ const page = () => {
 					>
 						<span className="mini-bio-text">
 							Scroll down to{" "}
-							<span className="italic text-[#dcaa7e] font-medium">explore</span>{" "}
+							<span className="italic text-portfolio-accent font-medium">explore</span>{" "}
 							some of the projects I've{" "}
-							<span className="italic font-medium text-[#dcaa7e]">created</span>
+							<span className="italic font-medium text-portfolio-accent">created</span>
 							.
 						</span>
 					</div>
@@ -422,11 +388,7 @@ const page = () => {
 					id="view-projects-text"
 				>
 					<span className="text-center">
-						<div className="inline sm:hidden">
-							<span className="italic text-[#dcaa7e] font-medium">Click</span>{" "}
-							or
-						</div>
-						<span className="italic font-medium text-[#dcaa7e]">Scroll</span> to
+						<span className="italic font-medium text-portfolio-accent">Scroll</span> to
 						view my projects
 					</span>
 				</div>
@@ -462,13 +424,13 @@ const page = () => {
 						{/* PROJECT PREVIEW */}
 						<div
 							id="project-screen"
-							className="w-[90%] sm:w-[80%] lg:w-[60%] xl:w-1/2 h-[30%] sm:h-[50%] lg:h-[64vh] rounded-xl border-2 border-[#ecedf1] flex flex-col justify-center items-center text-white"
+							className="w-[90%] sm:w-[80%] md:w-[60%] lg:w-[60%] xl:w-1/2 h-[30%] sm:h-[50%] lg:h-[64vh] rounded-xl border border-portfolio-border flex flex-col justify-center items-center text-white"
 						>
 							<div
 								id="project-contents"
 								className="w-full lg:p-8 flex flex-col justify-between h-full"
 							>
-								{viewportWidth > 1024 ? (
+								{viewportWidth >= 1024 ? (
 									<div
 										id="project-top-section"
 										className="flex flex-row justify-center items-center gap-4"
@@ -494,14 +456,14 @@ const page = () => {
 
 										<div
 											id="search-bar"
-											className="border-2 rounded-full border-[#e2e3e7] w-full flex justify-end pr-3"
+											className="border rounded-full border-text-light w-full flex justify-end pr-3"
 										>
 											<span>x</span>
 										</div>
 									</div>
 								) : null}
 								{/* IMAGE CONTAINER */}
-								<div className="h-full lg:border-2 lg:border-[#ecedf1] lg:mt-7 relative project-img-container ">
+								<div className="h-full lg:border lg:border-portfolio-border lg:mt-7 relative project-img-container ">
 									{projectData.map((project, index) => (
 										<div
 											key={index}
@@ -537,7 +499,7 @@ const page = () => {
 						{/* PROJECT DESCRIPTION */}
 						<div
 							id="project-text-container"
-							className="w-[90%] sm:w-[80%] lg:w-[30%] xl:w-1/4 h-[60%] sm:h-[50%] lg:h-[64vh] rounded-xl border-2 border-[#ecedf1] flex flex-col justify-start items-center relative"
+							className="w-[90%] sm:w-[80%] md:w-[60%] lg:w-[30%] xl:w-1/4 h-[60%] sm:h-[50%] lg:h-[64vh] rounded-xl border border-portfolio-border flex flex-col justify-start items-center relative"
 						>
 							{projectData.map((project, index) => (
 								<div
@@ -548,7 +510,7 @@ const page = () => {
 									<h1 className="md:text-xl lg:text-2xl xl:text-[36px] 2xl:text-4xl leading-4 xl:leading-[38px] text-text-light font-bold text-center tracking-[0.15em] projectName pb-3 ">
 										{project.projectName}
 									</h1>
-									<div className="border-b-2 border-[#36448a] mx-5 mb-4 w-[92%]"></div>
+									<div className="border-b-2 border-portfolio-accent mx-5 mb-4 w-[92%]"></div>
 
 									<div className="pb-8 tracking-wide text-base 2xl:text-lg">
 										{project.projectDescription}
@@ -558,7 +520,7 @@ const page = () => {
 										{project.techStack}
 									</div>: null}
 									<a
-										className="tracking-wider border-[#ecedf1] font-semibold text-base 2xl:text-lg rounded-[10px] border-2 justify-stretch text-center w-full mx-5 py-3 project-btn"
+										className="tracking-wider font-semibold text-base 2xl:text-lg rounded-[10px] justify-stretch text-center w-full mx-5 py-3 project-btn"
 										href={project.projectLink}
 										target="_blank"
 									>

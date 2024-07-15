@@ -21,6 +21,8 @@ const config: Config = {
 				"bg-orange": "#aa562c",
 				"text-light": "#E1EAF1",
 				"text-dark": "#151B20",
+				"portfolio-border": "#313D4A",
+				"portfolio-accent": "#2877D3"
 			},
 			fontFamily: {
 				spaceGrotesk: ["Space Grotesk", "sans-serif"],

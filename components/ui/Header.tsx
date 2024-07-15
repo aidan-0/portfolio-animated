@@ -25,8 +25,7 @@ const Header = () => {
 	const windowWidth = window.innerWidth;
 	console.log(`viewportWidth: ${windowWidth}`);
 
-	// Refresh on resize
-
+	// Refresh on horizontal resize
 	const [initialWidth, setInitialWidth] = useState(
 		typeof window !== 'undefined' ? window.innerWidth : 0
 	  );
@@ -45,15 +44,6 @@ const Header = () => {
 		}
 	  }, [initialWidth]);
 
-	// useEffect(() => {
-	// 	const handleResize = () => {
-	// 		window.location.reload();
-	// 	};
-
-	// 	window.addEventListener("resize", handleResize);
-
-	// 	return () => window.removeEventListener("resize", handleResize);
-	// }, []);
 
 	// Entry Animations Desktop
 	useGSAP(() => {
@@ -325,7 +315,7 @@ const Header = () => {
 			{windowWidth < 768 ? (
 				<>
 					<div
-						className="fixed top-0 left-0 right-0 z-50 w-screen px-5 bg-[#242631] border-b-2 border-white shadow opacity-100"
+						className="fixed top-0 left-0 right-0 z-50 w-screen px-5 bg-[#242631] border-b-2 border-[#434a6e] shadow opacity-100"
 						id="mobile-header"
 						ref={mobileHeaderRef}
 					>

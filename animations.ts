@@ -18,15 +18,15 @@ export const animatePageOut = (href: string, router: AppRouterInstance) => {
       //   h1text = "RESUME";
       //   break;
       case "/tech":
-        background = "radial-gradient(circle at top center, #0c8c45 0%, #023926 100%)";
+        background = "radial-gradient(circle at top center, #112f3f 10%, #000a10 100%)";
         h1text = "TECH STACK";
         break;
       case "/portfolio":
-        background = "radial-gradient(circle at top center, #8d2626 0%, #45071e 100%)";
+        background = "radial-gradient(circle at top center, #11263f 10%, #000710 100%)";
         h1text = "PORTFOLIO";
         break;
       default:
-        background = "#000";
+        background = "radial-gradient(circle at top center, #11223f 10%, #000510 100%)";
         h1text = " "; 
     }
 

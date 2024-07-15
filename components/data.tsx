@@ -20,13 +20,13 @@ export const techLogos = [
 
 export const projectData = [
   {
-    projectName: "Stride for Education",
-    projectBtnText: "CSF PWA",
-    projectDescription: "Stride For Education is a progressive web app which enables participants to track their kilometers while engaging in a walking / running / wheeling challenge. Through the app, we aim to raise funds and awareness for Community Spirit Foundation. I created the app using Vue and Vuetify for the front-end interfaces and Python & Django for the back-end testing. The app is also PWA compliant and can be installed on any device.",
-    projectDescriptionButton: "View Project",
-    projectImage: "/projects/Stride-for-Education.webp",
-    projectLink: "https://stride-for-education.vercel.app/",
-    techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
+    projectName: "Ecommerce Concept",
+    projectBtnText: "View Project",
+    projectDescription: "This project showcases a concept design for an e-commerce store or online brand, featuring beautiful animations created with Next.js, TypeScript, Tailwind, and GSAP. The interactive and smooth animations highlight the potential for a dynamic user experience. This project demonstrates my ability to integrate advanced animation techniques into modern web development frameworks.",
+    projectDescriptionButton: "View Design",
+    projectImage: "/projects/ecommerce-store.webp",
+    projectLink: "https://ecommerce-psi-sooty-97.vercel.app/",
+    techStack: ["Next.js", "TypeScript", "Tailwind", "GSAP", "Vercel"]
   },
   {
     projectName: "Original Portfolio",
@@ -47,13 +47,13 @@ export const projectData = [
     techStack: ["Next.js", "GSAP", "Tailwind", "TypeScript", "React"]
   },
   {
-    projectName: "Ecommerce Concept",
-    projectBtnText: "View Project",
-    projectDescription: "This project showcases a concept design for an e-commerce store or online brand, featuring beautiful animations created with Next.js, TypeScript, Tailwind, and GSAP. The interactive and smooth animations highlight the potential for a dynamic user experience. This project demonstrates my ability to integrate advanced animation techniques into modern web development frameworks.",
-    projectDescriptionButton: "View Design",
-    projectImage: "/projects/ecommerce-store.webp",
-    projectLink: "https://ecommerce-psi-sooty-97.vercel.app/",
-    techStack: ["Next.js", "TypeScript", "Tailwind", "GSAP", "Vercel"]
+    projectName: "Stride for Education",
+    projectBtnText: "CSF PWA",
+    projectDescription: "Stride For Education is a progressive web app which enables participants to track their kilometers while engaging in a walking / running / wheeling challenge. Through the app, we aim to raise funds and awareness for Community Spirit Foundation. I created the app using Vue and Vuetify for the front-end interfaces and Python & Django for the back-end testing. The app is also PWA compliant and can be installed on any device.",
+    projectDescriptionButton: "View Project",
+    projectImage: "/projects/Stride-for-Education.webp",
+    projectLink: "https://stride-for-education.vercel.app/",
+    techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
   },
   {
     projectName: "Movie Selector API",

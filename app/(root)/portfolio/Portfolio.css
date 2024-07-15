@@ -3,12 +3,11 @@
 .tech-stack-item {
 	box-shadow: rgba(33, 33, 33, 0.4) 0px 2px 8px 0px;
 	transition: 0.5s;
-	background: radial-gradient(circle at bottom center, #242630 0%, #242630 100%);
 }
 
 #project-screen,
 #project-text-container {
-	background: radial-gradient(circle at bottom right, #292e48 0%, #242630 100%);
+	background: #66666620;
 }
 
 #project-text-container {
@@ -52,14 +51,13 @@
 }
 
 .project-btn {
-	background: #242630;
-	transition: 0.3s;
+	transition: .5s;
+	border: 1px solid #313D4A;
+	background: #2877D3bb;
 }
 
 .project-btn:hover {
-	background: #ecedf1;
-	color: #242630 !important;
-	border: #ecedf1 2px solid;
+	background: #2877D3ff;
 }
 
 #three-dots-green, 

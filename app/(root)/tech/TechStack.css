@@ -1,7 +1,7 @@
 #boxContainer {
 	position: relative;
-	background: #086a38;
-	background: radial-gradient(circle at top center, #0c8c45 0%, #023926 100%);
+	/* background: #086a38; */
+	/* background: radial-gradient(circle at top center, #0c8c45 0%, #023926 100%); */
 	marginLeft: auto;
 	marginRight: auto;
 	width: 100vw;
