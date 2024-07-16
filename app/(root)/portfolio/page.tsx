@@ -46,6 +46,20 @@ const page = () => {
 					zIndex: 0,
 				},
 				"<",
+			)
+			.fromTo(
+				"#portfolio-bio-div",
+				{ top: "85%", opacity: 0 },
+				{ top: "75%", opacity: 1, duration: 1.5 },
+				"<",
+			)
+
+			.to(
+				"*",
+				{
+					overflow: "initial",
+				},
+				"<",
 			);
 
 		mm.add("(min-width: 767px)", () => {
@@ -72,22 +86,7 @@ const page = () => {
 				},
 				0,
 			);
-		});
-
-		portfolioTl
-			.fromTo(
-				"#mini-bio-div",
-				{ top: "85%", opacity: 0 },
-				{ top: "75%", opacity: 1, duration: 1.5, ease: "back" },
-				"<",
-			)
-			.to(
-				"*",
-				{
-					overflow: "initial",
-				},
-				"<",
-			);
+		});		
 	}, []);
 
 	// Scroll animations
@@ -119,15 +118,15 @@ const page = () => {
 				"<",
 			)
 			.fromTo(
-				"#mini-bio-div",
+				".mini-bio-text",
 				{
-					top: "75%",
+					paddingTop: 0,
 					opacity: 1,
 				},
 				{
-					top: "85%",
+					paddingTop: 120,
 					opacity: 0,
-					duration: 5,
+					duration: 10,
 				},
 				"<",
 			)
@@ -177,6 +176,7 @@ const page = () => {
 				"+7",
 			)
 
+
 			mm.add("(max-width: 1023px)", () => {
 				tlPortfolio.fromTo("#view-projects-text",
 				{
@@ -191,6 +191,7 @@ const page = () => {
 				"+7",
 			)
 			})
+			
 
 			mm.add("(min-width: 1024px)", () => {
 				tlPortfolio.fromTo(
@@ -225,6 +226,15 @@ const page = () => {
 					2,
 				)
 			});
+
+			tlPortfolio.to(
+				"#portfolio-bio-div",
+				{
+					display: "none",
+				},
+				"+10",
+			)
+			
 	});
 
 	// Pinned Card Scroll Effect
@@ -410,8 +420,8 @@ const page = () => {
 					</h1>
 
 					<div
-						className="lg:w-[1000px] pl-[10%] 2xl:pl-[5%] text-2xl font-[400] leading-9 lg:top-[75%] absolute text-left"
-						id="mini-bio-div"
+						className="lg:w-[1000px] pl-[10%] 2xl:pl-[5%] text-2xl font-[400] leading-9 lg:top-[75%] absolute text-left opacity-0"
+						id="portfolio-bio-div"
 					>
 						<span className="mini-bio-text">
 							Scroll down to{" "}

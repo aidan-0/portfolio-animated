@@ -46,11 +46,11 @@
 
 .mini-bio-text {
 	text-wrap: normal;
-	/* opacity: 0; */
 }
 
-#mini-bio-div {
+#portfolio-bio-div {
 	opacity: 0;
+	/* display: none; */
 }
 
 
