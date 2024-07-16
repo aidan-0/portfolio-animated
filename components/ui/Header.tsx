@@ -316,7 +316,7 @@ const Header = () => {
 				<>
 					<div
 						//bg-[#031724]
-						className="fixed top-0 left-0 right-0 z-50 w-screen px-5 bg-[#22222244] border-b-[#d8d8d88f] border-b shadow-sm opacity-100"
+						className="fixed top-0 left-0 right-0 z-50 w-screen px-5 bg-[#141414] border-b-[#d8d8d88f] border-b shadow-sm opacity-100"
 						id="mobile-header"
 						ref={mobileHeaderRef}
 					>
@@ -349,7 +349,7 @@ const Header = () => {
 					</div>
 
 					<div
-						className="fixed top-0 left-0 w-full bg-[#22222244] shadow-lg z-40 mt-[82px] rounded-b-2xl"
+						className="fixed top-0 left-0 w-full bg-[#111111] shadow-lg z-40 mt-[82px] rounded-b-2xl"
 						id="mobile-nav-menu"
 						ref={navMenuRef}
 					>
