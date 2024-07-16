@@ -117,7 +117,22 @@ const page = () => {
 					duration: 12,
 				},
 				"<",
+			)
+
+
+		mm.add("(max-width: 1023px)", () => {
+			tlPortfolio.to(
+				"#page-transition-text",
+				{
+					top: "10%",
+					opacity: 0,
+					duration: 8,
+				},
+				"<",
 			);
+		});
+
+
 
 		// Desktop header animation
 		mm.add("(min-width: 767px)", () => {
@@ -161,33 +176,55 @@ const page = () => {
 				},
 				"+7",
 			)
-			.fromTo(
-				"#project-display",
+
+			mm.add("(max-width: 1023px)", () => {
+				tlPortfolio.fromTo("#view-projects-text",
 				{
 					opacity: 0,
-					y: 70,
+					y: 40,
 				},
 				{
+					opacity: 0,
 					y: 0,
-					opacity: 1,
-					duration: 7,
-					ease: "power2",
+					duration: 5,
 				},
-				"<",
-			);
-		// .fromTo(
-		// 	".project-selection-btn",
-		// 	{
-		// 		x: -150,
-		// 		opacity: 0,
-		// 	},
-		// 	{
-		// 		x: 0,
-		// 		opacity: 1,
-		// 		stagger: 0.6,
-		// 	},
-		// 	"<",
-		// );
+				"+7",
+			)
+			})
+
+			mm.add("(min-width: 1024px)", () => {
+				tlPortfolio.fromTo(
+					"#project-display",
+					{
+						opacity: 0,
+						y: 70,
+					},
+					{
+						y: 0,
+						opacity: 1,
+						duration: 7,
+						ease: "power2",
+					},
+					"<",
+				)
+			});
+
+			mm.add("(max-width: 1023px)", () => {
+				tlPortfolio.fromTo(
+					"#project-display",
+					{
+						opacity: 0,
+						y: 70,
+					},
+					{
+						y: 0,
+						opacity: 1,
+						duration: 7,
+						ease: "power2",
+					},
+					2,
+				)
+			});
 	});
 
 	// Pinned Card Scroll Effect
@@ -402,33 +439,14 @@ const page = () => {
 					className="flex flex-row h-screen max-w-[1700px]"
 					id="portfolio-projects-section"
 				>
-					{/* PROJECT BUTTONS */}
-					{/* <div
-						id="project-selection-btns"
-						className="flex flex-col justify-center items-start gap-8 pl-10 "
-					>
-						{projectData.map((project, index) => (
-							<button
-								key={index}
-								className="project-selection-btn text-white rounded border-2 border-[#ecedf1] px-7 py-2 opacity-0 w-full"
-								id={`project-selection-btn-${index + 1}`}
-								onMouseEnter={handleMouseEnterBtn}
-								onMouseLeave={handleMouseLeaveBtn}
-								// onClick={() => scrollToProject(index)}
-							>
-								{project.projectBtnText}
-							</button>
-						))}
-					</div> */}
-
 					<div
-						className="flex flex-col lg:flex-row grow justify-center items-center gap-4 pb-4 lg:pb-0 lg:gap-14 pt-24 lg:pt-16 opacity-0"
+						className="flex flex-col lg:flex-row grow justify-center items-center gap-4 pb-4 lg:pb-0 lg:gap-14 pt-24 md:pt-4 lg:pt-16 opacity-0"
 						id="project-display"
 					>
 						{/* PROJECT PREVIEW */}
 						<div
 							id="project-screen"
-							className="w-[90%] sm:w-[80%] md:w-[60%] lg:w-[60%] xl:w-1/2 h-[30%] sm:h-[50%] lg:h-[64vh] rounded-xl border border-portfolio-border flex flex-col justify-center items-center text-text-light"
+							className="w-[90%] sm:w-[88%] md:w-[65%] lg:w-[60%] xl:w-1/2 h-[30%] sm:h-[50%] lg:h-[64vh] rounded-xl border border-portfolio-border flex flex-col justify-center items-center text-text-light"
 						>
 							<div
 								id="project-contents"
@@ -503,7 +521,7 @@ const page = () => {
 						{/* PROJECT DESCRIPTION */}
 						<div
 							id="project-text-container"
-							className="w-[90%] sm:w-[80%] md:w-[60%] lg:w-[30%] xl:w-1/4 h-[60%] sm:h-[50%] lg:h-[64vh] rounded-xl border border-portfolio-border flex flex-col justify-start items-center relative"
+							className="w-[90%] sm:w-[88%] md:w-[65%] lg:w-[30%] xl:w-1/4 h-[70%] sm:h-[50%] lg:h-[64vh] rounded-xl border border-portfolio-border flex flex-col justify-start items-center relative"
 						>
 							{projectData.map((project, index) => (
 								<div

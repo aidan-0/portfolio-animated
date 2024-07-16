@@ -25,11 +25,13 @@ body {
 	opacity: 0;
 	display: none;
 	z-index: 1;
+	backdrop-filter: blur(15px);
 }
 
 #mobile-header {
 	opacity: 0;
 	translatey: -100%;
+	backdrop-filter: blur(15px);
 }
 
 #nav-svg {
@@ -148,3 +150,5 @@ Green: 	background: radial-gradient(circle at top center, #0c8c45 0%, #023926 10
 	wrap: nowrap;
 	white-space: nowrap;
 }
+
+
