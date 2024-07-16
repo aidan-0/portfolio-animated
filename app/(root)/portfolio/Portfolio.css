@@ -46,7 +46,13 @@
 
 .mini-bio-text {
 	text-wrap: normal;
+	/* opacity: 0; */
 }
+
+#mini-bio-div {
+	opacity: 0;
+}
+
 
 .project-btn {
 	transition: .5s;
@@ -75,3 +81,4 @@
 #three-dots-red:hover {
 	color: #f55a55;
 }
+

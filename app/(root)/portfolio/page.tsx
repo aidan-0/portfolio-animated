@@ -118,6 +118,19 @@ const page = () => {
 				},
 				"<",
 			)
+			.fromTo(
+				"#mini-bio-div",
+				{
+					top: "75%",
+					opacity: 1,
+				},
+				{
+					top: "85%",
+					opacity: 0,
+					duration: 5,
+				},
+				"<",
+			)
 
 
 		mm.add("(max-width: 1023px)", () => {
@@ -150,19 +163,6 @@ const page = () => {
 		});
 
 		tlPortfolio
-			.fromTo(
-				"#mini-bio-div",
-				{
-					top: "75%",
-					opacity: 1,
-				},
-				{
-					top: "85%",
-					opacity: 0,
-					duration: 5,
-				},
-				"<",
-			)
 			.fromTo(
 				"#view-projects-text",
 				{
