@@ -32,7 +32,7 @@ const page = () => {
 			.to(
 				"#transition-element",
 				{
-					zIndex: 0,
+					zIndex: -10,
 				},
 				"<",
 			)
