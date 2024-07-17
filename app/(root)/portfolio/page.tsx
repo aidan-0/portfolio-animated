@@ -7,24 +7,14 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MaterialSymbolsCircle } from "../../../components/ui/Icons";
 import { projectData } from "../../../components/data";
-import { useLenis } from "lenis/react";
 const page = () => {
 	if (typeof window === "undefined") return null;
 	const viewportHeight = window.innerHeight;
 	const viewportWidth = window.innerWidth;
 	const scrollLength = viewportHeight * projectData.length;
-	console.log("viewportHeight: ", viewportHeight);
-
-	// TODO:
-	//'Scroll to' (for the buttons to go to a set project)
-	// const lenis = useLenis((scroll) => {
-	// 	console.log(scroll)
-	// })
-	// https://www.youtube.com/watch?v=QNh0MH-G3OM
+	// console.log("viewportHeight: ", viewportHeight);
 
 	let mm = gsap.matchMedia();
-
-	// TODO: something in the portfolio section is causing the rendered width of tech to be around 800px - could be fixed after portfolio is responsively designed
 
 	// Entry animations
 	useGSAP(() => {
@@ -62,7 +52,9 @@ const page = () => {
 				"<",
 			);
 
-		mm.add("(min-width: 767px)", () => {
+		
+
+		mm.add("(min-width: 768px)", () => {
 			portfolioTl.fromTo(
 				"#outer-header-container",
 				{ y: -150, opacity: 0 },
@@ -72,7 +64,7 @@ const page = () => {
 					duration: 1.5,
 				},
 				"<",
-			);
+			)
 		});
 
 		mm.add("(max-width: 767px)", () => {
@@ -85,7 +77,13 @@ const page = () => {
 					duration: 1,
 				},
 				0,
-			);
+			)
+			.fromTo(
+				"#portfolio-bio-div",
+				{ top: "85%", opacity: 0 },
+				{ top: "65%", opacity: 1, duration: 1.5 },
+				"<",
+			)
 		});		
 	}, []);
 
@@ -109,39 +107,25 @@ const page = () => {
 				// 	"radial-gradient(circle at top center, #091d2b 0%, #091d2b 100%)",
 				duration: 100,
 			})
-			.to(
-				"#page-transition-text",
-				{
-					top: "10%",
-					duration: 12,
-				},
-				"<",
-			)
-			.fromTo(
-				".mini-bio-text",
-				{
-					paddingTop: 0,
-					opacity: 1,
-				},
-				{
-					paddingTop: 120,
-					opacity: 0,
-					duration: 10,
-				},
-				"<",
-			)
+
+
 
 
 		mm.add("(max-width: 1023px)", () => {
 			tlPortfolio.to(
 				"#page-transition-text",
 				{
-					top: "10%",
+					top: "30%",
 					opacity: 0,
-					duration: 8,
+					duration: 3,
 				},
 				"<",
-			);
+			)
+			.fromTo("#portfolio-bio-div",
+				{ opacity: 1 },
+				{ opacity: 0, duration: 2.5 },
+				"<",
+				)
 		});
 
 
@@ -158,7 +142,21 @@ const page = () => {
 					duration: 7,
 				},
 				"<",
-			);
+			)
+			.fromTo("#portfolio-bio-div",
+				{ top: "75%", opacity: 1 },
+				{ top: "85%", opacity: 0, duration: 2.5 },
+				"<",
+				)
+			.to(
+				"#page-transition-text",
+				{
+					top: "10%",
+					duration: 12,
+				},
+				"<",
+			)
+		
 		});
 
 		tlPortfolio
@@ -220,7 +218,7 @@ const page = () => {
 					{
 						y: 0,
 						opacity: 1,
-						duration: 7,
+						duration: 5,
 						ease: "power2",
 					},
 					2,
@@ -314,8 +312,8 @@ const page = () => {
 			);
 		});
 
-		// Mobile
-		mm.add("(max-width: 1023px)", () => {
+		// Tablet
+		mm.add("(max-width: 1023px) and (min-width: 450px)", () => {
 			gsap.utils.toArray(".project-text").forEach((textElement: any, i) => {
 				const imageElement = document.querySelectorAll(
 					".project-img-inner-container",
@@ -330,14 +328,69 @@ const page = () => {
 						ease: "linear",
 						scrollTrigger: {
 							trigger: textElement,
-							start: "top 50%",
+							start: "top 80%",
+							end: `+=${viewportHeight / 2}`,
+							scrub: true,
+							markers: {
+							  startColor: "pink",
+							  endColor: "pink",
+							  fontSize: "18px",
+							  indent: 50,
+							},
+						},
+					},
+				);
+			});
+
+			gsap.fromTo(
+				".project-text",
+				{
+					yPercent: 0,
+				},
+				{
+					yPercent: `-${projectData.length - 1}00`, // 100% * number of projects
+
+					ease: "linear",
+					scrollTrigger: {
+						trigger: ".project-text",
+						start: "top 35%",
+						end: `+=${scrollLength * 0.8}`,
+						scrub: true,
+						markers: {
+						  startColor: "cyan",
+						  endColor: "cyan",
+						  fontSize: "18px",
+						  indent: 100,
+						},
+					},
+				},
+			);
+		});
+
+		//Mobile
+		mm.add("(max-width: 449px)", () => {
+			gsap.utils.toArray(".project-text").forEach((textElement: any, i) => {
+				const imageElement = document.querySelectorAll(
+					".project-img-inner-container",
+				)[i];
+				const techStack = document.querySelectorAll(".project-tech-stack")[i];
+
+				gsap.fromTo(
+					imageElement,
+					{ y: viewportHeight / 2.5 },
+					{
+						y: 0,
+						ease: "linear",
+						scrollTrigger: {
+							trigger: textElement,
+							start: "top 40%",
 							end: `+=${viewportHeight / 2}`,
 							scrub: true,
 							// markers: {
 							//   startColor: "pink",
 							//   endColor: "pink",
 							//   fontSize: "18px",
-							//   indent: 400,
+							//   indent: 50,
 							// },
 						},
 					},
@@ -350,7 +403,7 @@ const page = () => {
 					yPercent: 0,
 				},
 				{
-					yPercent: `-${projectData.length - 1}25`, // 100% * number of projects
+					yPercent: `-${projectData.length -1}25`, // 100% * number of projects
 
 					ease: "linear",
 					scrollTrigger: {
@@ -362,7 +415,7 @@ const page = () => {
 						//   startColor: "cyan",
 						//   endColor: "cyan",
 						//   fontSize: "18px",
-						//   indent: 800,
+						//   indent: 100,
 						// },
 					},
 				},
@@ -374,7 +427,7 @@ const page = () => {
 	// Hover Effects
 	function handleMouseEnterBtn(e: any) {
 		if (e.target.id) {
-			console.log(e.target.id);
+			// console.log(e.target.id);
 			gsap.fromTo(
 				`#${e.target.id}`,
 				{
@@ -392,7 +445,7 @@ const page = () => {
 
 	function handleMouseLeaveBtn(e: any) {
 		if (e.target.id) {
-			console.log(e.target.id);
+			// console.log(e.target.id);
 			gsap.fromTo(`#${e.target.id}`, {
 				background:
 				"radial-gradient(circle at bottom center, #11263f 0%, #19293c 100%)",
@@ -420,7 +473,7 @@ const page = () => {
 					</h1>
 
 					<div
-						className="lg:w-[1000px] pl-[10%] 2xl:pl-[5%] text-2xl font-[400] leading-9 lg:top-[75%] absolute text-left opacity-0"
+						className="lg:w-[1000px] pb-[20%] sm:pb-[0] px-[5%] sm:pl-[10%] 2xl:pl-[5%] text-xl sm:text-2xl font-[400] leading-9 absolute text-center sm:text-left opacity-0"
 						id="portfolio-bio-div"
 					>
 						<span className="mini-bio-text">
@@ -535,7 +588,7 @@ const page = () => {
 						>
 							{projectData.map((project, index) => (
 								<div
-									className="leading-6 flex flex-col pt-20 items-center w-full min-h-screen p-4 sm:p-6 project-text"
+									className="leading-6 flex flex-col pt-20 items-center w-full max-h-screen min-h-screen p-4 sm:p-6 project-text"
 									key={index}
 									id={`project-text-${index}`}
 								>

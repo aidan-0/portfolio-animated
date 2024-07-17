@@ -23,7 +23,7 @@ const Header = () => {
 
 	if (typeof window === "undefined") return null;
 	const windowWidth = window.innerWidth;
-	console.log(`viewportWidth: ${windowWidth}`);
+	// console.log(`viewportWidth: ${windowWidth}`);
 
 	// Refresh on horizontal resize
 	const [initialWidth, setInitialWidth] = useState(
@@ -267,11 +267,11 @@ const Header = () => {
 
 	//Contact Modal
 	const handleContactClick = (e: React.MouseEvent) => {
-		console.log(isContactModalOpen);
+		// console.log(isContactModalOpen);
 		setContactModalOpen((prevContactModalOpen) => !prevContactModalOpen);
 
 		e.preventDefault();
-		console.log(isContactModalOpen);
+		// console.log(isContactModalOpen);
 
 		if (isNavOpen) {
 			toggleNav();

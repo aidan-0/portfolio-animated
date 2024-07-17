@@ -7,7 +7,7 @@ export const animatePageOut = (href: string, router: AppRouterInstance) => {
   const transitionText = document.getElementById("page-transition-text");
 
   if (animationElement && transitionText) {
-    console.log("Animating page out");
+    // console.log("Animating page out");
     let background;
     let h1text;
 

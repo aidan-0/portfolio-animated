@@ -9,7 +9,7 @@ import { useAnimation } from '../AnimationContext';
 const EntryAnimation = () => {
 	if (typeof window === "undefined") return null;
 	const windowWidth = window.innerWidth;
-    console.log(windowWidth)
+    // console.log(windowWidth)
 
     const { setAnimationTrigger } = useAnimation();
 
@@ -153,9 +153,9 @@ const EntryAnimation = () => {
         .to("#inner-text-container", {
             opacity: 0,
             onComplete: () => {
-                console.log("entry animation complete")
+                // console.log("entry animation complete")
                 setAnimationTrigger(true);
-                console.log("animation trigger set to true")
+                // console.log("animation trigger set to true")
             },  
         })
         .to("#entry-animation-container", {
