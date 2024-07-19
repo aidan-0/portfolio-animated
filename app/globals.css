@@ -26,12 +26,16 @@ body {
 	display: none;
 	z-index: 1;
 	backdrop-filter: blur(15px);
+	-webkit-backdrop-filter: blur(15px);
+
 }
 
 #mobile-header {
 	opacity: 0;
 	translatey: -100%;
 	backdrop-filter: blur(15px);
+	-webkit-backdrop-filter: blur(15px);
+
 }
 
 #nav-svg {

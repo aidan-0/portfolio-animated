@@ -86,90 +86,76 @@ const page = () => {
 		});
 	}, []);
 
-	// Scroll animations
+	// Scroll animations desktop
 	useGSAP(() => {
-		gsap.registerPlugin(ScrollTrigger);
-
-		const tlPortfolio = gsap.timeline({
-			scrollTrigger: {
-				trigger: "#portfolio-bg",
-				start: "top top",
-				end: `+=${scrollLength + 300}`,
-				scrub: 1,
-				// markers: true,
-				pin: true,
-			},
-		});
-		tlPortfolio.to("#portfolio-bg", {
-			// background:
-			// 	"radial-gradient(circle at top center, #091d2b 0%, #091d2b 100%)",
-			duration: 100,
-		});
-
-		mm.add("(max-width: 1023px)", () => {
-			tlPortfolio
-				.to(
-					"#page-transition-text",
-					{
-						top: "30%",
-						opacity: 0,
-						duration: 3,
-					},
-					"<",
-				)
-				.fromTo(
-					"#portfolio-bio-div",
-					{ opacity: 1 },
-					{ opacity: 0, duration: 2.5 },
-					"<",
-				);
-		});
-
-		// Desktop header animation
-		mm.add("(min-width: 767px)", () => {
-			tlPortfolio
-				.fromTo(
-					"#outer-header-container",
-					{
-						y: 0,
-					},
-					{
-						y: -150,
-						duration: 7,
-					},
-					"<",
-				)
-				.fromTo(
-					"#portfolio-bio-div",
-					{ top: "75%", opacity: 1 },
-					{ top: "85%", opacity: 0, duration: 2.5 },
-					"<",
-				)
-				.to(
-					"#page-transition-text",
-					{
-						top: "10%",
-						duration: 12,
-					},
-					"<",
-				);
-		});
-
-		tlPortfolio.fromTo(
-			"#view-projects-text",
-			{
-				opacity: 0,
-				y: 40,
-			},
-			{
-				opacity: 1,
-				y: 0,
-				duration: 5,
-			},
-			"+7",
-		);
-
-		mm.add("(max-width: 1023px)", () => {
+	mm.add("(min-width: 640px)", () => {
+			gsap.registerPlugin(ScrollTrigger);
+	
+			const tlPortfolio = gsap.timeline({
+				scrollTrigger: {
+					trigger: "#portfolio-bg",
+					start: "top top",
+					end: `+=${scrollLength + 300}`,
+					scrub: 1,
+					// markers: true,
+					pin: true,
+				},
+			});
+			tlPortfolio.to("#portfolio-bg", {
+				// background:
+				// 	"radial-gradient(circle at top center, #091d2b 0%, #091d2b 100%)",
+				duration: 100,
+			});
+	
+			mm.add("(max-width: 1023px)", () => {
+				tlPortfolio
+					.to(
+						"#page-transition-text",
+						{
+							top: "30%",
+							opacity: 0,
+							duration: 3,
+						},
+						"<",
+					)
+					.fromTo(
+						"#portfolio-bio-div",
+						{ opacity: 1 },
+						{ opacity: 0, duration: 2.5 },
+						"<",
+					);
+			});
+	
+			// Desktop header animation
+			mm.add("(min-width: 767px)", () => {
+				tlPortfolio
+					.fromTo(
+						"#outer-header-container",
+						{
+							y: 0,
+						},
+						{
+							y: -150,
+							duration: 7,
+						},
+						"<",
+					)
+					.fromTo(
+						"#portfolio-bio-div",
+						{ top: "75%", opacity: 1 },
+						{ top: "85%", opacity: 0, duration: 2.5 },
+						"<",
+					)
+					.to(
+						"#page-transition-text",
+						{
+							top: "10%",
+							duration: 12,
+						},
+						"<",
+					);
+			});
+	
 			tlPortfolio.fromTo(
 				"#view-projects-text",
 				{
@@ -177,56 +163,172 @@ const page = () => {
 					y: 40,
 				},
 				{
-					opacity: 0,
+					opacity: 1,
 					y: 0,
 					duration: 5,
 				},
 				"+7",
 			);
-		});
-
-		mm.add("(min-width: 1024px)", () => {
-			tlPortfolio.fromTo(
-				"#project-display",
+	
+			mm.add("(max-width: 1023px)", () => {
+				tlPortfolio.fromTo(
+					"#view-projects-text",
+					{
+						opacity: 0,
+						y: 40,
+					},
+					{
+						opacity: 0,
+						y: 0,
+						duration: 5,
+					},
+					"+7",
+				);
+			});
+	
+			mm.add("(min-width: 1024px)", () => {
+				tlPortfolio.fromTo(
+					"#project-display",
+					{
+						opacity: 0,
+						y: 70,
+					},
+					{
+						y: 0,
+						opacity: 1,
+						duration: 7,
+						ease: "power2",
+					},
+					"<",
+				);
+			});
+	
+			mm.add("(max-width: 1023px)", () => {
+				tlPortfolio.fromTo(
+					"#project-display",
+					{
+						opacity: 0,
+						y: 70,
+					},
+					{
+						y: 0,
+						opacity: 1,
+						duration: 5,
+						ease: "power2",
+					},
+					2,
+				);
+			});
+	
+			tlPortfolio.to(
+				"#portfolio-bio-div",
 				{
-					opacity: 0,
-					y: 70,
+					display: "none",
 				},
-				{
-					y: 0,
-					opacity: 1,
-					duration: 7,
-					ease: "power2",
-				},
-				"<",
+				"+10",
 			);
 		});
-
-		mm.add("(max-width: 1023px)", () => {
-			tlPortfolio.fromTo(
-				"#project-display",
-				{
-					opacity: 0,
-					y: 70,
-				},
-				{
-					y: 0,
-					opacity: 1,
-					duration: 5,
-					ease: "power2",
-				},
-				2,
-			);
-		});
-
-		tlPortfolio.to(
-			"#portfolio-bio-div",
-			{
-				display: "none",
-			},
-			"+10",
-		);
 	});
+
+	// Mobile scroll animations
+	useGSAP(() => {
+	mm.add("(max-width: 639px)", () => {		
+		const mobileProjectContainer2 = document.querySelector("#mobile-project-container") as HTMLElement;
+		const totalHeight = mobileProjectContainer2.scrollHeight;
+		gsap.registerPlugin(ScrollTrigger);
+	
+			const tlPortfolio = gsap.timeline({
+				scrollTrigger: {
+					trigger: "#portfolio-bg",
+					start: "top top",
+					end: `+=${totalHeight}`,
+					scrub: 1,
+					// markers: true,
+					pin: true,
+				},
+			});
+			tlPortfolio.to("#portfolio-bg", {
+				// background:
+				// 	"radial-gradient(circle at top center, #091d2b 0%, #091d2b 100%)",
+				duration: 100,
+			});
+	
+			mm.add("(max-width: 1023px)", () => {
+				tlPortfolio
+					.to(
+						"#page-transition-text",
+						{
+							top: "30%",
+							opacity: 0,
+							duration: 3,
+						},
+						"<",
+					)
+					.fromTo(
+						"#portfolio-bio-div",
+						{ opacity: 1 },
+						{ opacity: 0, duration: 2.5 },
+						"<",
+					);
+			});
+	
+			tlPortfolio.fromTo(
+				"#view-projects-text",
+				{
+					opacity: 0,
+					y: 40,
+				},
+				{
+					opacity: 1,
+					y: 0,
+					duration: 5,
+				},
+				"+7",
+			);
+	
+			mm.add("(max-width: 1023px)", () => {
+				tlPortfolio.fromTo(
+					"#view-projects-text",
+					{
+						opacity: 0,
+						y: 40,
+					},
+					{
+						opacity: 0,
+						y: 0,
+						duration: 5,
+					},
+					"+7",
+				);
+			});
+	
+			mm.add("(max-width: 1023px)", () => {
+				tlPortfolio.fromTo(
+					"#project-display",
+					{
+						opacity: 0,
+						y: 70,
+					},
+					{
+						y: 0,
+						opacity: 1,
+						duration: 5,
+						ease: "power2",
+					},
+					2,
+				);
+			});
+	
+			tlPortfolio.to(
+				"#portfolio-bio-div",
+				{
+					display: "none",
+				},
+				"+10",
+			);
+		});
+	});
+
 
 	// Pinned Card Scroll Effect
 	useGSAP(() => {
@@ -360,38 +462,36 @@ const page = () => {
 			);
 		});
 
-		
 		//Mobile
 		mm.add("(max-width: 639px)", () => {
-			const mobileProjectContainer = document.querySelector("#mobile-project-container") as HTMLElement;
-			const lastChild = mobileProjectContainer?.lastElementChild as HTMLElement;
-		
+			const mobileProjectContainer = document.querySelector(
+				"#mobile-project-container",
+			) as HTMLElement;
+			const totalHeight = mobileProjectContainer.scrollHeight;
+
 			gsap.fromTo(
 				mobileProjectContainer,
 				{
 					yPercent: 0,
 				},
 				{
-					yPercent: -100,
+					yPercent: -87.5,
 					ease: "linear",
 					scrollTrigger: {
 						trigger: ".project-text",
 						start: "top top",
-						end: () => lastChild 
-							? `bottom+=${lastChild.getBoundingClientRect().bottom - window.innerHeight}px top` 
-							: "bottom bottom",
+						end: () => `+=${totalHeight}px`,
 						scrub: true,
-						markers: {
-						    startColor: "cyan",
-						    endColor: "cyan",
-						    fontSize: "18px",
-						    indent: 100,
-						},
+						// markers: {
+						// 	startColor: "cyan",
+						// 	endColor: "cyan",
+						// 	fontSize: "18px",
+						// 	indent: 100,
+						// },
 					},
-				}
+				},
 			);
 		});
-		
 	}, []);
 
 	// Hover Effects
@@ -600,10 +700,7 @@ const page = () => {
 						</div>
 					</div>
 				) : (
-					<div
-						className=""
-						id="portfolio-projects-section"
-					>
+					<div className="" id="portfolio-projects-section">
 						<div
 							className="flex grow justify-center items-center gap-4 pb-4 pt-24 opacity-0 h-[100%]"
 							id="project-display"
@@ -613,58 +710,63 @@ const page = () => {
 								className="w-[95%] h-full rounded-xl border border-portfolio-border flex flex-col justify-start items-center relative"
 							>
 								<div id="mobile-project-container">
-								{projectData.map((project, index) => (
-									<div
-										className="leading-6 flex flex-col pt-10 items-center w-full p-4 project-text"
-										key={index}
-										id={`project-text-${index}`}
-									>
-										<h1 className="leading-4 text-text-light font-bold text-center tracking-[0.15em] projectName pb-3">
-											{project.projectName}
-										</h1>
+									{projectData.map((project, index) => (
+										<div
+											className="leading-6 flex flex-col pt-10 items-center w-full p-4 project-text"
+											key={index}
+											id={`project-text-${index}`}
+										>
+											<h1 className="leading-4 text-text-light font-bold text-center tracking-[0.15em] projectName pb-3">
+												{project.projectName}
+											</h1>
 
-										<div className="border-b-2 border-portfolio-accent mx-5 mb-4 w-[92%]"></div>
+											<div className="border-b-2 border-portfolio-accent mx-5 mb-4 w-[92%]"></div>
 
-										<div key={index} className="mobile-project-img-inner-container rounded-xl mb-4 border border-portfolio-border w-[100%] h-[100%]">
-											<a href={project.projectLink} target="_blank" className="">
-												<img
-													src={project.projectImage}
-													alt="project-image"
-													className="project-img rounded-xl w-[100%] h-[100%]"
-													id={`project-img-${index}`}
+											<div
+												key={index}
+												className="mobile-project-img-inner-container rounded-xl mb-4 border border-portfolio-border w-[100%] h-[100%]"
+											>
+												<a
+													href={project.projectLink}
+													target="_blank"
+													className=""
+												>
+													<img
+														src={project.projectImage}
+														alt="project-image"
+														className="project-img rounded-xl w-[100%] h-[100%]"
+														id={`project-img-${index}`}
+													/>
+												</a>
+											</div>
 
+											<div className="pb-4 tracking-wide text-[15px]">
+												{project.projectDescription}
+											</div>
 
-												/>
+											<div className="tracking-wide text-base flex flex-row gap-2 flex-wrap justify-center">
+												{project.techStack.map((tech, index) => (
+													<div
+														key={index}
+														className="mobile-tech-stack-item text-sm rounded-[6px] bg-[#ffffff0e] border border-portfolio-border px-2 py-1 mb-1 font-[500] text-text-light"
+														id={`tech-stack-item-${index + 1}`}
+														onMouseEnter={handleMouseEnterBtn}
+														onMouseLeave={handleMouseLeaveBtn}
+													>
+														{tech}
+													</div>
+												))}
+											</div>
+
+											<a
+												className="tracking-wider font-semibold text-base rounded-[10px] justify-stretch text-center w-full mx-5 py-3 mt-4 mb-10 mobile-project-btn border border-portfolio-border"
+												href={project.projectLink}
+												target="_blank"
+											>
+												{project.projectDescriptionButton}
 											</a>
 										</div>
-
-										<div className="pb-4 tracking-wide text-[15px]">
-											{project.projectDescription}
-										</div>
-
-										<div className="tracking-wide text-base flex flex-row gap-2 flex-wrap justify-center">
-											{project.techStack.map((tech, index) => (
-												<div
-													key={index}
-													className="mobile-tech-stack-item text-sm rounded-[6px] bg-[#ffffff0e] border border-portfolio-border px-2 py-1 mb-1 font-[500] text-text-light"
-													id={`tech-stack-item-${index + 1}`}
-													onMouseEnter={handleMouseEnterBtn}
-													onMouseLeave={handleMouseLeaveBtn}
-												>
-													{tech}
-												</div>
-											))}
-										</div>
-
-										<a
-											className="tracking-wider font-semibold text-base rounded-[10px] justify-stretch text-center w-full mx-5 py-3 mt-4 mb-10 mobile-project-btn border border-portfolio-border"
-											href={project.projectLink}
-											target="_blank"
-										>
-											{project.projectDescriptionButton}
-										</a>
-									</div>
-								))}
+									))}
 								</div>
 							</div>
 						</div>
