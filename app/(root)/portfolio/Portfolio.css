@@ -64,6 +64,15 @@
 	background: #2877D3ff;
 }
 
+.mobile-project-btn {
+	transition: .5s;
+	background: #2877D3bb;
+}
+
+.mobile-project-btn:hover {
+	background: #2877D3ff;
+}
+
 #three-dots-green, 
 #three-dots-yellow,
 #three-dots-red {
@@ -82,3 +91,6 @@
 	color: #f55a55;
 }
 
+.mobile-project-img-inner-container {
+	overflow: hidden !important;
+}
