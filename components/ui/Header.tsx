@@ -23,19 +23,21 @@ const Header = () => {
 	const [isNavOpen, setNavOpen] = useState(false);
 	const [windowWidth, setWindowWidth] = useState<number>(0);
 
-	useEffect(() => {
-		if (typeof window !== "undefined") {
-			setWindowWidth(window.innerWidth);
-
-			const handleResize = () => {
-				setWindowWidth(window.innerWidth);
-				window.location.reload(); // Reload the page on window resize
-			};
-
-			window.addEventListener("resize", handleResize);
-			return () => window.removeEventListener("resize", handleResize);
-		}
-	}, []);
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+          setWindowWidth(window.innerWidth);
+    
+          const handleResize = () => {
+            const newWindowWidth = window.innerWidth;
+            if (newWindowWidth !== windowWidth) {
+              window.location.reload(); // Reload the page on horizontal resize
+            }
+          };
+    
+          window.addEventListener('resize', handleResize);
+          return () => window.removeEventListener('resize', handleResize);
+        }
+      }, [windowWidth]);
 
 	useGSAP(() => {
 		if (!animationTrigger || typeof window === "undefined") return;

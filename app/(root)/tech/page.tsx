@@ -84,7 +84,7 @@ const Page = () => {
 		});
 
 		// Mobile
-		mm.add("(max-width: 620px)", () => {
+		mm.add("(max-width: 640px)", () => {
 			if (mobileHeader) {
 				techTl
 					.fromTo(
@@ -120,7 +120,7 @@ const Page = () => {
 		});
 
 		// Large mobile
-		mm.add("(min-width: 621px) and (max-width: 767px)", () => {
+		mm.add("(min-width: 641px) and (max-width: 767px)", () => {
 			if (mobileHeader) {
 				techTl
 					.fromTo(

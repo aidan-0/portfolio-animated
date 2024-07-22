@@ -1,23 +1,25 @@
 import { useState, useEffect } from "react";
 
 const useViewportWidth = () => {
-	const [viewportWidth, setViewportWidth] = useState<number>(0);
+  const [viewportWidth, setViewportWidth] = useState<number>(typeof window !== "undefined" ? window.innerWidth : 0);
+  const [initialWindowWidth, setInitialWindowWidth] = useState<number>(typeof window !== "undefined" ? window.innerWidth : 0);
 
-	useEffect(() => {
-		if (typeof window !== "undefined") {
-			setViewportWidth(window.innerWidth);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleResize = () => {
+        const newWidth = window.innerWidth;
+        if (newWidth !== initialWindowWidth) {
+          setViewportWidth(newWidth);
+          setInitialWindowWidth(newWidth); // Update initial width after change
+        }
+      };
 
-			const handleResize = () => {
-				setViewportWidth(window.innerWidth);
-			};
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, [initialWindowWidth]);
 
-			window.addEventListener("resize", handleResize);
-			return () => window.removeEventListener("resize", handleResize);
-		}
-	}, []);
-
-	// console.log("viewportWidth", viewportWidth);
-	return viewportWidth;
+  return viewportWidth;
 };
 
 export default useViewportWidth;

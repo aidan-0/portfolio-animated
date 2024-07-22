@@ -12,20 +12,23 @@ const EntryAnimation = () => {
 	// const windowWidth = window.innerWidth;
     // console.log(windowWidth)
 
-    const [windowWidth, setWindowWidth] = useState<number>(0);
+	const [windowWidth, setWindowWidth] = useState<number>(0);
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            setWindowWidth(window.innerWidth);
-
-            const handleResize = () => {
-                setWindowWidth(window.innerWidth);
-            };
-
-            window.addEventListener('resize', handleResize);
-            return () => window.removeEventListener('resize', handleResize);
+          setWindowWidth(window.innerWidth);
+    
+          const handleResize = () => {
+            const newWindowWidth = window.innerWidth;
+            if (newWindowWidth !== windowWidth) {
+              window.location.reload(); // Reload the page on horizontal resize
+            }
+          };
+    
+          window.addEventListener('resize', handleResize);
+          return () => window.removeEventListener('resize', handleResize);
         }
-    }, []);
+      }, [windowWidth]);
 
 
     const { setAnimationTrigger } = useAnimation();
