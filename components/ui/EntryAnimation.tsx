@@ -3,13 +3,30 @@
 import { gsap } from 'gsap';
 import { useGSAP } from "@gsap/react";
 import { useAnimation } from '../AnimationContext';
+import { useEffect, useState } from 'react';
 
 
 
 const EntryAnimation = () => {
-	if (typeof window === "undefined") return null;
-	const windowWidth = window.innerWidth;
+	// if (typeof window === "undefined") return null;
+	// const windowWidth = window.innerWidth;
     // console.log(windowWidth)
+
+    const [windowWidth, setWindowWidth] = useState<number>(0);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            setWindowWidth(window.innerWidth);
+
+            const handleResize = () => {
+                setWindowWidth(window.innerWidth);
+            };
+
+            window.addEventListener('resize', handleResize);
+            return () => window.removeEventListener('resize', handleResize);
+        }
+    }, []);
+
 
     const { setAnimationTrigger } = useAnimation();
 
