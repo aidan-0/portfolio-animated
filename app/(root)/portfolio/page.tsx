@@ -7,497 +7,459 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MaterialSymbolsCircle } from "../../../components/ui/Icons";
 import { projectData } from "../../../components/data";
-const page = () => {
-	if (typeof window === "undefined") return null;
-	const viewportHeight = window.innerHeight;
-	const viewportWidth = window.innerWidth;
+import useViewportHeight from "@/components/viewportHeight";
+
+const Page = () => {
+	const viewportHeight = useViewportHeight();
 	const scrollLength = viewportHeight * projectData.length;
-	// console.log("viewportHeight: ", viewportHeight);
 
-	let mm = gsap.matchMedia();
+	const [windowWidth, setWindowWidth] = useState<number>(0);
 
-	// Entry animations
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			setWindowWidth(window.innerWidth);
+
+			const handleResize = () => {
+				setWindowWidth(window.innerWidth);
+				window.location.reload();
+			};
+
+			window.addEventListener("resize", handleResize);
+			return () => window.removeEventListener("resize", handleResize);
+		}
+	}, []);
+
 	useGSAP(() => {
-		const portfolioTl = gsap.timeline();
+		if (windowWidth > 0) {
+			gsap.registerPlugin(ScrollTrigger);
 
-		portfolioTl
-			.to(
-				"#animation-id",
-				{
-					opacity: 1,
-					duration: 1,
-					ease: "power1.inOut",
-				},
-				0,
-			)
-			.to(
-				"#transition-element",
-				{
-					zIndex: 0,
-				},
-				"<",
-			)
-			.fromTo(
-				"#portfolio-bio-div",
-				{ top: "85%", opacity: 0 },
-				{ top: "75%", opacity: 1, duration: 1.5 },
-				"<",
-			)
+			let mm = gsap.matchMedia();
 
-			.to(
-				"*",
-				{
-					overflow: "initial",
-				},
-				"<",
-			);
+			// Entry animations
+			const portfolioTl = gsap.timeline();
 
-		mm.add("(min-width: 768px)", () => {
-			portfolioTl.fromTo(
-				"#outer-header-container",
-				{ y: -150, opacity: 0 },
-				{
-					y: 0,
-					opacity: 1,
-					duration: 1.5,
-				},
-				"<",
-			);
-		});
-
-		mm.add("(max-width: 767px)", () => {
 			portfolioTl
-				.fromTo(
-					"#mobile-header",
-					{ y: -100, opacity: 0 },
+				.to(
+					"#animation-id",
 					{
-						y: 0,
 						opacity: 1,
 						duration: 1,
+						ease: "power1.inOut",
 					},
 					0,
+				)
+				.to(
+					"#transition-element",
+					{
+						zIndex: 0,
+					},
+					"<",
 				)
 				.fromTo(
 					"#portfolio-bio-div",
 					{ top: "85%", opacity: 0 },
-					{ top: "65%", opacity: 1, duration: 1.5 },
+					{ top: "75%", opacity: 1, duration: 1.5 },
+					"<",
+				)
+				.to(
+					"*",
+					{
+						overflow: "initial",
+					},
 					"<",
 				);
-		});
-	}, []);
 
-	// Scroll animations desktop
-	useGSAP(() => {
-	mm.add("(min-width: 640px)", () => {
-			gsap.registerPlugin(ScrollTrigger);
-	
-			const tlPortfolio = gsap.timeline({
-				scrollTrigger: {
-					trigger: "#portfolio-bg",
-					start: "top top",
-					end: `+=${scrollLength + 300}`,
-					scrub: 1,
-					// markers: true,
-					pin: true,
-				},
+			mm.add("(min-width: 768px)", () => {
+				portfolioTl.fromTo(
+					"#outer-header-container",
+					{ y: -150, opacity: 0 },
+					{
+						y: 0,
+						opacity: 1,
+						duration: 1.5,
+					},
+					"<",
+				);
 			});
-			tlPortfolio.to("#portfolio-bg", {
-				// background:
-				// 	"radial-gradient(circle at top center, #091d2b 0%, #091d2b 100%)",
-				duration: 100,
-			});
-	
-			mm.add("(max-width: 1023px)", () => {
-				tlPortfolio
-					.to(
-						"#page-transition-text",
-						{
-							top: "30%",
-							opacity: 0,
-							duration: 3,
-						},
-						"<",
-					)
+
+			mm.add("(max-width: 767px)", () => {
+				portfolioTl
 					.fromTo(
-						"#portfolio-bio-div",
-						{ opacity: 1 },
-						{ opacity: 0, duration: 2.5 },
-						"<",
-					);
-			});
-	
-			// Desktop header animation
-			mm.add("(min-width: 767px)", () => {
-				tlPortfolio
-					.fromTo(
-						"#outer-header-container",
+						"#mobile-header",
+						{ y: -100, opacity: 0 },
 						{
 							y: 0,
+							opacity: 1,
+							duration: 1,
 						},
-						{
-							y: -150,
-							duration: 7,
-						},
-						"<",
+						0,
 					)
 					.fromTo(
 						"#portfolio-bio-div",
-						{ top: "75%", opacity: 1 },
-						{ top: "85%", opacity: 0, duration: 2.5 },
-						"<",
-					)
-					.to(
-						"#page-transition-text",
-						{
-							top: "10%",
-							duration: 12,
-						},
+						{ top: "85%", opacity: 0 },
+						{ top: "65%", opacity: 1, duration: 1.5 },
 						"<",
 					);
 			});
-	
-			tlPortfolio.fromTo(
-				"#view-projects-text",
-				{
-					opacity: 0,
-					y: 40,
-				},
-				{
-					opacity: 1,
-					y: 0,
-					duration: 5,
-				},
-				"+7",
-			);
-	
-			mm.add("(max-width: 1023px)", () => {
-				tlPortfolio.fromTo(
-					"#view-projects-text",
-					{
-						opacity: 0,
-						y: 40,
-					},
-					{
-						opacity: 0,
-						y: 0,
-						duration: 5,
-					},
-					"+7",
-				);
-			});
-	
-			mm.add("(min-width: 1024px)", () => {
-				tlPortfolio.fromTo(
-					"#project-display",
-					{
-						opacity: 0,
-						y: 70,
-					},
-					{
-						y: 0,
-						opacity: 1,
-						duration: 7,
-						ease: "power2",
-					},
-					"<",
-				);
-			});
-	
-			mm.add("(max-width: 1023px)", () => {
-				tlPortfolio.fromTo(
-					"#project-display",
-					{
-						opacity: 0,
-						y: 70,
-					},
-					{
-						y: 0,
-						opacity: 1,
-						duration: 5,
-						ease: "power2",
-					},
-					2,
-				);
-			});
-	
-			tlPortfolio.to(
-				"#portfolio-bio-div",
-				{
-					display: "none",
-				},
-				"+10",
-			);
-		});
-	});
 
-	// Mobile scroll animations
-	useGSAP(() => {
-	mm.add("(max-width: 639px)", () => {		
-		const mobileProjectContainer2 = document.querySelector("#mobile-project-container") as HTMLElement;
-		const totalHeight = mobileProjectContainer2.scrollHeight;
-		gsap.registerPlugin(ScrollTrigger);
-	
-			const tlPortfolio = gsap.timeline({
-				scrollTrigger: {
-					trigger: "#portfolio-bg",
-					start: "top top",
-					end: `+=${totalHeight}`,
-					scrub: 1,
-					// markers: true,
-					pin: true,
-				},
-			});
-			tlPortfolio.to("#portfolio-bg", {
-				// background:
-				// 	"radial-gradient(circle at top center, #091d2b 0%, #091d2b 100%)",
-				duration: 100,
-			});
-	
-			mm.add("(max-width: 1023px)", () => {
-				tlPortfolio
-					.to(
-						"#page-transition-text",
-						{
-							top: "30%",
-							opacity: 0,
-							duration: 3,
-						},
-						"<",
-					)
-					.fromTo(
-						"#portfolio-bio-div",
-						{ opacity: 1 },
-						{ opacity: 0, duration: 2.5 },
-						"<",
-					);
-			});
-	
-			tlPortfolio.fromTo(
-				"#view-projects-text",
-				{
-					opacity: 0,
-					y: 40,
-				},
-				{
-					opacity: 1,
-					y: 0,
-					duration: 5,
-				},
-				"+7",
-			);
-	
-			mm.add("(max-width: 1023px)", () => {
-				tlPortfolio.fromTo(
-					"#view-projects-text",
-					{
-						opacity: 0,
-						y: 40,
-					},
-					{
-						opacity: 0,
-						y: 0,
-						duration: 5,
-					},
-					"+7",
-				);
-			});
-	
-			mm.add("(max-width: 1023px)", () => {
-				tlPortfolio.fromTo(
-					"#project-display",
-					{
-						opacity: 0,
-						y: 70,
-					},
-					{
-						y: 0,
-						opacity: 1,
-						duration: 5,
-						ease: "power2",
-					},
-					2,
-				);
-			});
-	
-			tlPortfolio.to(
-				"#portfolio-bio-div",
-				{
-					display: "none",
-				},
-				"+10",
-			);
-		});
-	});
-
-
-	// Pinned Card Scroll Effect
-	useGSAP(() => {
-		// Desktop
-		mm.add("(min-width: 1024px)", () => {
-			gsap.utils.toArray(".project-text").forEach((textElement: any, i) => {
-				const imageElement = document.querySelectorAll(
-					".project-img-inner-container",
-				)[i];
-				// const imageElement = document.querySelectorAll(".project-img")[i];
-				const techStack = document.querySelectorAll(".project-tech-stack")[i];
-
-				gsap.fromTo(
-					imageElement,
-					{ y: viewportHeight / 1.884 },
-					{
-						y: 0,
-						ease: "linear",
-						scrollTrigger: {
-							trigger: textElement,
-							start: "top 50%",
-							end: `+=${viewportHeight / 2}`,
-							scrub: true,
-							// markers: {
-							//   startColor: "pink",
-							//   endColor: "pink",
-							//   fontSize: "18px",
-							//   indent: 400,
-							// },
-						},
-					},
-				);
-				gsap.fromTo(
-					techStack,
-					{ y: viewportHeight / 2 },
-					{
-						y: 0,
-						scrollTrigger: {
-							trigger: textElement,
-							start: "top 50%",
-							end: `+=${viewportHeight / 2}`,
-							scrub: true,
-							// markers: {
-							//   startColor: "pink",
-							//   endColor: "pink",
-							//   fontSize: "18px",
-							//   indent: 1000,
-							// },
-						},
-					},
-				);
-			});
-
-			gsap.fromTo(
-				".project-text",
-				{
-					yPercent: 100,
-				},
-				{
-					yPercent: `-${projectData.length - 1}00`, // 100% * number of projects
-
-					ease: "linear",
+			// Scroll animations desktop
+			mm.add("(min-width: 640px)", () => {
+				const tlPortfolio = gsap.timeline({
 					scrollTrigger: {
-						trigger: ".project-text",
-						start: "top bottom",
-						end: `+=${scrollLength}`,
-						scrub: true,
-						// markers: {
-						//   startColor: "cyan",
-						//   endColor: "cyan",
-						//   fontSize: "18px",
-						//   indent: 800,
-						// },
+						trigger: "#portfolio-bg",
+						start: "top top",
+						end: `+=${scrollLength + 300}`,
+						scrub: 1,
+						pin: true,
 					},
-				},
-			);
-		});
+				});
+				tlPortfolio.to("#portfolio-bg", {
+					duration: 100,
+				});
 
-		// Tablet
-		mm.add("(max-width: 1023px) and (min-width: 640px)", () => {
-			gsap.utils.toArray(".project-text").forEach((textElement: any, i) => {
-				const imageElement = document.querySelectorAll(
-					".project-img-inner-container",
-				)[i];
-				const techStack = document.querySelectorAll(".project-tech-stack")[i];
+				mm.add("(max-width: 1023px)", () => {
+					tlPortfolio
+						.to(
+							"#page-transition-text",
+							{
+								top: "30%",
+								opacity: 0,
+								duration: 3,
+							},
+							"<",
+						)
+						.fromTo(
+							"#portfolio-bio-div",
+							{ opacity: 1 },
+							{ opacity: 0, duration: 2.5 },
+							"<",
+						);
+				});
 
-				gsap.fromTo(
-					imageElement,
-					{ y: viewportHeight / 2 },
+				mm.add("(min-width: 767px)", () => {
+					tlPortfolio
+						.fromTo(
+							"#outer-header-container",
+							{
+								y: 0,
+							},
+							{
+								y: -150,
+								duration: 7,
+							},
+							"<",
+						)
+						.fromTo(
+							"#portfolio-bio-div",
+							{ top: "75%", opacity: 1 },
+							{ top: "85%", opacity: 0, duration: 2.5 },
+							"<",
+						)
+						.to(
+							"#page-transition-text",
+							{
+								top: "10%",
+								duration: 12,
+							},
+							"<",
+						);
+				});
+
+				tlPortfolio.fromTo(
+					"#view-projects-text",
 					{
+						opacity: 0,
+						y: 40,
+					},
+					{
+						opacity: 1,
 						y: 0,
-						ease: "linear",
-						scrollTrigger: {
-							trigger: textElement,
-							start: "top 80%",
-							end: `+=${viewportHeight / 2}`,
-							scrub: true,
-							markers: {
-								startColor: "pink",
-								endColor: "pink",
-								fontSize: "18px",
-								indent: 50,
+						duration: 5,
+					},
+					"+7",
+				);
+
+				mm.add("(max-width: 1023px)", () => {
+					tlPortfolio.fromTo(
+						"#view-projects-text",
+						{
+							opacity: 0,
+							y: 40,
+						},
+						{
+							opacity: 0,
+							y: 0,
+							duration: 5,
+						},
+						"+7",
+					);
+				});
+
+				mm.add("(min-width: 1024px)", () => {
+					tlPortfolio.fromTo(
+						"#project-display",
+						{
+							opacity: 0,
+							y: 70,
+						},
+						{
+							y: 0,
+							opacity: 1,
+							duration: 7,
+							ease: "power2",
+						},
+						"<",
+					);
+				});
+
+				mm.add("(max-width: 1023px)", () => {
+					tlPortfolio.fromTo(
+						"#project-display",
+						{
+							opacity: 0,
+							y: 70,
+						},
+						{
+							y: 0,
+							opacity: 1,
+							duration: 5,
+							ease: "power2",
+						},
+						2,
+					);
+				});
+
+				tlPortfolio.to(
+					"#portfolio-bio-div",
+					{
+						display: "none",
+					},
+					"+10",
+				);
+			});
+
+			// Mobile scroll animations
+			mm.add("(max-width: 639px)", () => {
+				const mobileProjectContainer2 = document.querySelector(
+					"#mobile-project-container",
+				) as HTMLElement;
+				const totalHeight = mobileProjectContainer2.scrollHeight;
+
+				const tlPortfolio = gsap.timeline({
+					scrollTrigger: {
+						trigger: "#portfolio-bg",
+						start: "top top",
+						end: `+=${totalHeight}`,
+						scrub: 1,
+						pin: true,
+					},
+				});
+				tlPortfolio.to("#portfolio-bg", {
+					duration: 100,
+				});
+
+				mm.add("(max-width: 1023px)", () => {
+					tlPortfolio
+						.to(
+							"#page-transition-text",
+							{
+								top: "30%",
+								opacity: 0,
+								duration: 3,
+							},
+							"<",
+						)
+						.fromTo(
+							"#portfolio-bio-div",
+							{ opacity: 1 },
+							{ opacity: 0, duration: 2.5 },
+							"<",
+						);
+				});
+
+				tlPortfolio.fromTo(
+					"#view-projects-text",
+					{
+						opacity: 0,
+						y: 40,
+					},
+					{
+						opacity: 1,
+						y: 0,
+						duration: 5,
+					},
+					"+7",
+				);
+
+				mm.add("(max-width: 1023px)", () => {
+					tlPortfolio.fromTo(
+						"#view-projects-text",
+						{
+							opacity: 0,
+							y: 40,
+						},
+						{
+							opacity: 0,
+							y: 0,
+							duration: 5,
+						},
+						"+7",
+					);
+				});
+
+				mm.add("(max-width: 1023px)", () => {
+					tlPortfolio.fromTo(
+						"#project-display",
+						{
+							opacity: 0,
+							y: 70,
+						},
+						{
+							y: 0,
+							opacity: 1,
+							duration: 5,
+							ease: "power2",
+						},
+						2,
+					);
+				});
+
+				tlPortfolio.to(
+					"#portfolio-bio-div",
+					{
+						display: "none",
+					},
+					"+10",
+				);
+			});
+
+			// Pinned Card Scroll Effect
+			mm.add("(min-width: 1024px)", () => {
+				gsap.utils.toArray(".project-text").forEach((textElement: any, i) => {
+					const imageElement = document.querySelectorAll(
+						".project-img-inner-container",
+					)[i];
+					const techStack = document.querySelectorAll(".project-tech-stack")[i];
+
+					gsap.fromTo(
+						imageElement,
+						{ y: viewportHeight / 1.884 },
+						{
+							y: 0,
+							ease: "linear",
+							scrollTrigger: {
+								trigger: textElement,
+								start: "top 50%",
+								end: `+=${viewportHeight / 2}`,
+								scrub: true,
 							},
 						},
+					);
+					gsap.fromTo(
+						techStack,
+						{ y: viewportHeight / 2 },
+						{
+							y: 0,
+							scrollTrigger: {
+								trigger: textElement,
+								start: "top 50%",
+								end: `+=${viewportHeight / 2}`,
+								scrub: true,
+							},
+						},
+					);
+				});
+
+				gsap.fromTo(
+					".project-text",
+					{
+						yPercent: 100,
+					},
+					{
+						yPercent: `-${projectData.length - 1}00`,
+						ease: "linear",
+						scrollTrigger: {
+							trigger: ".project-text",
+							start: "top bottom",
+							end: `+=${scrollLength}`,
+							scrub: true,
+						},
 					},
 				);
 			});
 
-			gsap.fromTo(
-				".project-text",
-				{
-					yPercent: 0,
-				},
-				{
-					yPercent: `-${projectData.length - 1}00`, // 100% * number of projects
+			// Tablet
+			mm.add("(max-width: 1023px) and (min-width: 640px)", () => {
+				gsap.utils.toArray(".project-text").forEach((textElement: any, i) => {
+					const imageElement = document.querySelectorAll(
+						".project-img-inner-container",
+					)[i];
+					const techStack = document.querySelectorAll(".project-tech-stack")[i];
 
-					ease: "linear",
-					scrollTrigger: {
-						trigger: ".project-text",
-						start: "top 35%",
-						end: `+=${scrollLength * 0.8}`,
-						scrub: true,
-						markers: {
-							startColor: "cyan",
-							endColor: "cyan",
-							fontSize: "18px",
-							indent: 100,
+					gsap.fromTo(
+						imageElement,
+						{ y: viewportHeight / 2 },
+						{
+							y: 0,
+							ease: "linear",
+							scrollTrigger: {
+								trigger: textElement,
+								start: "top 80%",
+								end: `+=${viewportHeight / 2}`,
+								scrub: true,
+							},
+						},
+					);
+				});
+
+				gsap.fromTo(
+					".project-text",
+					{
+						yPercent: 0,
+					},
+					{
+						yPercent: `-${projectData.length - 1}00`,
+						ease: "linear",
+						scrollTrigger: {
+							trigger: ".project-text",
+							start: "top 35%",
+							end: `+=${scrollLength * 0.8}`,
+							scrub: true,
 						},
 					},
-				},
-			);
-		});
+				);
+			});
 
-		//Mobile
-		mm.add("(max-width: 639px)", () => {
-			const mobileProjectContainer = document.querySelector(
-				"#mobile-project-container",
-			) as HTMLElement;
-			const totalHeight = mobileProjectContainer.scrollHeight;
+			// Mobile
+			mm.add("(max-width: 639px)", () => {
+				const mobileProjectContainer = document.querySelector(
+					"#mobile-project-container",
+				) as HTMLElement;
+				const totalHeight = mobileProjectContainer.scrollHeight;
 
-			gsap.fromTo(
-				mobileProjectContainer,
-				{
-					yPercent: 0,
-				},
-				{
-					yPercent: -87.5,
-					ease: "linear",
-					scrollTrigger: {
-						trigger: ".project-text",
-						start: "top top",
-						end: () => `+=${totalHeight}px`,
-						scrub: true,
-						// markers: {
-						// 	startColor: "cyan",
-						// 	endColor: "cyan",
-						// 	fontSize: "18px",
-						// 	indent: 100,
-						// },
+				gsap.fromTo(
+					mobileProjectContainer,
+					{
+						yPercent: 0,
 					},
-				},
-			);
-		});
-	}, []);
+					{
+						yPercent: -87.5,
+						ease: "linear",
+						scrollTrigger: {
+							trigger: ".project-text",
+							start: "top top",
+							end: () => `+=${totalHeight}px`,
+							scrub: true,
+						},
+					},
+				);
+			});
+		}
+	}, [windowWidth]);
 
 	// Hover Effects
 	function handleMouseEnterBtn(e: any) {
 		if (e.target.id) {
-			// console.log(e.target.id);
 			gsap.fromTo(
 				`#${e.target.id}`,
 				{
@@ -515,7 +477,6 @@ const page = () => {
 
 	function handleMouseLeaveBtn(e: any) {
 		if (e.target.id) {
-			// console.log(e.target.id);
 			gsap.fromTo(
 				`#${e.target.id}`,
 				{
@@ -578,7 +539,7 @@ const page = () => {
 				</div>
 
 				{/* PORTFOLIO PROJECTS */}
-				{viewportWidth >= 640 ? (
+				{windowWidth >= 640 ? (
 					<div
 						className="flex flex-row h-screen max-w-[1700px]"
 						id="portfolio-projects-section"
@@ -596,7 +557,7 @@ const page = () => {
 									id="project-contents"
 									className="w-full lg:p-8 flex flex-col justify-between h-full"
 								>
-									{viewportWidth >= 1024 ? (
+									{windowWidth >= 1024 ? (
 										<div
 											id="project-top-section"
 											className="flex flex-row justify-center items-center gap-4"
@@ -643,7 +604,7 @@ const page = () => {
 														id={`project-img-${index}`}
 													/>
 												</a>
-												{viewportWidth > 600 ? (
+												{windowWidth > 600 ? (
 													<div className="project-tech-stack absolute top-5 left-5">
 														{project.techStack.map((tech, index) => (
 															<div
@@ -682,7 +643,7 @@ const page = () => {
 										<div className="pb-8 tracking-wide text-base 2xl:text-lg">
 											{project.projectDescription}
 										</div>
-										{viewportWidth <= 600 ? (
+										{windowWidth <= 600 ? (
 											<div className="pb-8 tracking-wide text-base 2xl:text-lg">
 												{project.techStack}
 											</div>
@@ -777,4 +738,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default Page;
