@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import "./TechStack.css";
 import Image from "next/image";
-import { techLogos } from "@/components/data";
+import { techLogosBottom, techLogosTop } from "@/components/data";
 
 const page = () => {
 	useGSAP(() => {
@@ -113,7 +113,7 @@ const page = () => {
 							<div className="flex flex-col sm:gap-20 justify-center items-center">
 								<div className="marquee w-full" id="marqueeContainerTop">
 									<ul className="marquee-content justify-center items-center">
-										{techLogos.map((logo, index) => (
+										{techLogosTop.map((logo, index) => (
 											<li key={index}>
 												<Image
 													src={logo.src}
@@ -131,7 +131,7 @@ const page = () => {
 										aria-hidden="true"
 										className="marquee-content justify-center items-center"
 									>
-										{techLogos.map((logo, index) => (
+										{techLogosTop.map((logo, index) => (
 											<li key={index}>
 												<Image
 													src={logo.src}
@@ -146,7 +146,7 @@ const page = () => {
 								</div>
 								<div className="marquee w-full" id="marqueeContainerBottom">
 									<ul className="marquee-content marquee-reverse justify-center items-center">
-										{techLogos.map((logo, index) => (
+										{techLogosBottom.map((logo, index) => (
 											<li key={index}>
 												<Image
 													src={logo.src}
@@ -162,7 +162,7 @@ const page = () => {
 										aria-hidden="true"
 										className="marquee-content marquee-reverse justify-center items-center"
 									>
-										{techLogos.map((logo, index) => (
+										{techLogosBottom.map((logo, index) => (
 											<li key={index}>
 												<Image
 													src={logo.src}

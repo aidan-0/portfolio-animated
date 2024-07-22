@@ -1,7 +1,7 @@
 #boxContainer {
 	position: relative;
-	marginLeft: auto;
-	marginRight: auto;
+	/* marginLeft: auto;
+	marginRight: auto; */
 	width: 100vw;
 	height: 100vh;
 }

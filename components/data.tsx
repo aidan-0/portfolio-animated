@@ -1,4 +1,4 @@
-export const techLogos = [
+export const techLogosTop = [
   { src: "/tech-logos/html-1.svg", alt: "html-1" },
   { src: "/tech-logos/javascript.svg", alt: "javascript" },
   { src: "/tech-logos/css-3.svg", alt: "css-3" },
@@ -7,6 +7,9 @@ export const techLogos = [
   { src: "/tech-logos/typescript.svg", alt: "typescript" },
   { src: "/tech-logos/GSAP.png", alt: "GSAP" },
   { src: "/tech-logos/next-js.svg", alt: "next-js" },
+  ];
+
+export const techLogosBottom = [
   { src: "/tech-logos/woocommerce.svg", alt: "woocommerce" },
   { src: "/tech-logos/wordpress-icon.svg", alt: "wordpress-icon" },
   { src: "/tech-logos/notion-logo.svg", alt: "notion-logo" },
