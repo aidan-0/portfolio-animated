@@ -32,7 +32,7 @@ body {
 
 #mobile-header {
 	opacity: 0;
-	translatey: -100%;
+	/* translatey: -100%; */
 	backdrop-filter: blur(15px);
 	-webkit-backdrop-filter: blur(15px);
 
@@ -54,7 +54,6 @@ body {
 }
 
 #nav-link:hover {
-	boxshadow: rgba(173, 202, 229, 1) 0px 0px 20px 20px;
 	background: linear-gradient(45deg, #f88f7f, #fbd586);
 	-webkit-background-clip: text;
 	background-clip: text;
@@ -151,7 +150,7 @@ Green: 	background: radial-gradient(circle at top center, #0c8c45 0%, #023926 10
 	text-align: center;
 	font-weight: 600;
 	letter-spacing: 0.25rem;
-	wrap: nowrap;
+	/* wrap: nowrap; */
 	white-space: nowrap;
 }
 
