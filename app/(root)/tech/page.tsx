@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -8,7 +8,7 @@ import "./TechStack.css";
 import Image from "next/image";
 import { techLogosBottom, techLogosTop } from "@/components/data";
 
-const page = () => {
+const Page = () => {
     const [windowWidth, setWindowWidth] = useState<number>(0);
 
     useEffect(() => {
@@ -29,84 +29,98 @@ const page = () => {
 
         gsap.registerPlugin(ScrollTrigger);
 
-        let boxTitle1 = document.getElementById("boxTitle1");
-        let boxSubtitle1 = document.getElementById("boxSubtitle1");
-        let marqueeContainerTop = document.getElementById("marqueeContainerTop");
-        let marqueeContainerBottom = document.getElementById("marqueeContainerBottom");
-        let mm = gsap.matchMedia();
-        const techTl = gsap.timeline();
+        // const setupAnimations = () => {
+            const boxTitle1 = document.getElementById("boxTitle1");
+            const boxSubtitle1 = document.getElementById("boxSubtitle1");
+            const marqueeContainerTop = document.getElementById("marqueeContainerTop");
+            const marqueeContainerBottom = document.getElementById("marqueeContainerBottom");
+            const outerHeaderContainer = document.getElementById("outer-header-container");
+            const mobileHeader = document.getElementById("mobile-header");
 
-        // Load in animations
-        techTl
-            .to(
-                "#animation-id",
-                {
-                    opacity: 1,
-                    duration: 1,
-                    ease: "power1.inOut",
-                },
-                0,
-            )
-            .to(
-                "#transition-element",
-                {
-                    zIndex: -10,
-                },
-                "<",
-            );
+            const mm = gsap.matchMedia();
+            const techTl = gsap.timeline();
 
-        // Desktop
-        mm.add("(min-width: 768px)", () => {
-            techTl.fromTo(
-                "#outer-header-container",
-                { y: -150, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 2,
-                },
-                "<",
-            )
-                .fromTo(boxSubtitle1, { top: "70%", opacity: 0 }, { top: "60%", opacity: 1, duration: 2.2, ease: "back" }, 0.2)
-                .fromTo(marqueeContainerTop, { top: "-8%", opacity: 0 }, { top: "-12.5%", opacity: 1, duration: 2.2, ease: "power1.inOut" }, "<")
-                .fromTo(marqueeContainerBottom, { top: "10%", opacity: 0 }, { top: "17%", opacity: 1, duration: 2.2, ease: "power1.inOut" }, "<");
-        });
+            // Load in animations
+            techTl
+                .to(
+                    "#animation-id",
+                    {
+                        opacity: 1,
+                        duration: 1,
+                        ease: "power1.inOut",
+                    },
+                    0,
+                )
+                .to(
+                    "#transition-element",
+                    {
+                        zIndex: -10,
+                    },
+                    "<",
+                );
 
-        // Mobile
-        mm.add("(max-width: 620px)", () => {
-            techTl.fromTo(
-                "#mobile-header",
-                { y: -100, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 2,
-                },
-                0,
-            )
-                .to(boxTitle1, { top: "30%", opacity: 1, duration: 2.2 }, 0.2)
-                .fromTo(boxSubtitle1, { top: "75%", opacity: 0 }, { top: "60%", opacity: 1, duration: 2.2, ease: "power2.inOut" }, "<")
-                .fromTo(marqueeContainerTop, { top: "0%", opacity: 0 }, { top: "-7.5%", opacity: 1, duration: 2.2, ease: "power1.inOut" }, "<")
-                .fromTo(marqueeContainerBottom, { top: "0%", opacity: 0 }, { top: "-2.5%", opacity: 1, duration: 2.2, ease: "power1.inOut" }, "<");
-        });
+            // Desktop
+            mm.add("(min-width: 768px)", () => {
+                if (outerHeaderContainer) {
+                    techTl
+                        .fromTo(
+                            outerHeaderContainer,
+                            { y: -150, opacity: 0 },
+                            {
+                                y: 0,
+                                opacity: 1,
+                                duration: 2,
+                            },
+                            "<",
+                        )
+                        .fromTo(boxSubtitle1, { top: "70%", opacity: 0 }, { top: "60%", opacity: 1, duration: 2.2, ease: "back" }, 0.2)
+                        .fromTo(marqueeContainerTop, { top: "-8%", opacity: 0 }, { top: "-12.5%", opacity: 1, duration: 2.2, ease: "power1.inOut" }, "<")
+                        .fromTo(marqueeContainerBottom, { top: "10%", opacity: 0 }, { top: "17%", opacity: 1, duration: 2.2, ease: "power1.inOut" }, "<");
+                }
+            });
 
-        // Large mobile
-        mm.add("(min-width: 621px) and (max-width: 767px)", () => {
-            techTl.fromTo(
-                "#mobile-header",
-                { y: -100, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 2,
-                },
-                0,
-            )
-                .to(boxTitle1, { top: "30%", opacity: 1, duration: 2.2 }, 0.2)
-                .fromTo(boxSubtitle1, { top: "75%", opacity: 0 }, { top: "60%", opacity: 1, duration: 2.2, ease: "power2.inOut" }, "<")
-                .fromTo(marqueeContainerTop, { top: "0%", opacity: 0 }, { top: "-2.5%", opacity: 1, duration: 2.2, ease: "power1.inOut" }, "<")
-                .fromTo(marqueeContainerBottom, { top: "0%", opacity: 0 }, { top: "-5.5%", opacity: 1, duration: 2.2, ease: "power1.inOut" }, "<");
-        });
+            // Mobile
+            mm.add("(max-width: 620px)", () => {
+                if (mobileHeader) {
+                    techTl
+                        .fromTo(
+                            mobileHeader,
+                            { y: -100, opacity: 0 },
+                            {
+                                y: 0,
+                                opacity: 1,
+                                duration: 2,
+                            },
+                            0,
+                        )
+                        .to(boxTitle1, { top: "30%", opacity: 1, duration: 2.2 }, 0.2)
+                        .fromTo(boxSubtitle1, { top: "75%", opacity: 0 }, { top: "60%", opacity: 1, duration: 2.2, ease: "power2.inOut" }, "<")
+                        .fromTo(marqueeContainerTop, { top: "0%", opacity: 0 }, { top: "-7.5%", opacity: 1, duration: 2.2, ease: "power1.inOut" }, "<")
+                        .fromTo(marqueeContainerBottom, { top: "0%", opacity: 0 }, { top: "-2.5%", opacity: 1, duration: 2.2, ease: "power1.inOut" }, "<");
+                }
+            });
+
+            // Large mobile
+            mm.add("(min-width: 621px) and (max-width: 767px)", () => {
+                if (mobileHeader) {
+                    techTl
+                        .fromTo(
+                            mobileHeader,
+                            { y: -100, opacity: 0 },
+                            {
+                                y: 0,
+                                opacity: 1,
+                                duration: 2,
+                            },
+                            0,
+                        )
+                        .to(boxTitle1, { top: "30%", opacity: 1, duration: 2.2 }, 0.2)
+                        .fromTo(boxSubtitle1, { top: "75%", opacity: 0 }, { top: "60%", opacity: 1, duration: 2.2, ease: "power2.inOut" }, "<")
+                        .fromTo(marqueeContainerTop, { top: "0%", opacity: 0 }, { top: "-2.5%", opacity: 1, duration: 2.2, ease: "power1.inOut" }, "<")
+                        .fromTo(marqueeContainerBottom, { top: "0%", opacity: 0 }, { top: "-5.5%", opacity: 1, duration: 2.2, ease: "power1.inOut" }, "<");
+                }
+            });
+        // };
     }, [windowWidth]);
 
     return (
@@ -119,7 +133,7 @@ const page = () => {
                                 TECH STACK
                             </h1>
                             <h4 id="boxSubtitle1" className="text-base sm:text-2xl tracking-[1] w-full">
-                                Here's what i've been working with
+                                Here's what I've been working with
                             </h4>
                             <div className="flex flex-col sm:gap-20 justify-center items-center">
                                 <div className="marquee w-full" id="marqueeContainerTop">
@@ -194,4 +208,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Page;
