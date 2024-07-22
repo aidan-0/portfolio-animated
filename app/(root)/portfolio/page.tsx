@@ -41,6 +41,12 @@ useGSAP(() => {
     const portfolioTl = gsap.timeline();
 
     portfolioTl
+		.fromTo(
+			".mini-bio-text",
+			{ opacity: 0 },
+			{ opacity: 1, duration: 2 },
+			"+=0.01",
+		)
       .to(
         "#animation-id",
         {
@@ -63,6 +69,7 @@ useGSAP(() => {
         { top: "75%", opacity: 1, duration: 1.5 },
         "<",
       )
+
       .to(
         "*",
         {
@@ -513,7 +520,7 @@ useGSAP(() => {
 						className="lg:w-[1000px] pb-[20%] sm:pb-[0] px-[5%] sm:pl-[10%] 2xl:pl-[5%] text-xl sm:text-2xl font-[400] leading-9 absolute text-center sm:text-left opacity-0"
 						id="portfolio-bio-div"
 					>
-						<span className="mini-bio-text">
+						<span className="mini-bio-text opacity-0">
 							Scroll down to{" "}
 							<span className="italic text-portfolio-accent font-medium">
 								explore
