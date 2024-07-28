@@ -358,7 +358,7 @@ const Header = () => {
 							</div>
 
 							<Link
-								href="https://github.com/aidan-0/portfolio-animated/raw/main/public/Resume-Aidan-McDonald.pdf"
+								href="https://github.com/aidan-0/portfolio-animated/raw/main/public/Resume%20-%20Aidan%20McDonald.pdf"
 								download="Resume-Aidan-McDonald.pdf"
 								id="nav-link"
 							>
