@@ -51,6 +51,7 @@
 #portfolio-bio-div {
 	opacity: 0;
 	/* display: none; */
+	visibility: hidden;
 }
 
 

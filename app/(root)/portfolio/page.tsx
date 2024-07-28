@@ -65,8 +65,8 @@ useGSAP(() => {
       )
       .fromTo(
         "#portfolio-bio-div",
-        { top: "85%", opacity: 0 },
-        { top: "75%", opacity: 1, duration: 1.5 },
+        { top: "85%", opacity: 0, visibility: "hidden", autoAlpha: 0 },
+        { top: "75%", opacity: 1, duration: 1.5, autoAlpha: 1 },
         "<",
       )
 
@@ -81,11 +81,12 @@ useGSAP(() => {
     mm.add("(min-width: 768px)", () => {
       portfolioTl.fromTo(
         "#outer-header-container",
-        { y: -150, opacity: 0 },
+        { y: -150, opacity: 0, visibility: "hidden", autoAlpha: 0 },
         {
           y: 0,
           opacity: 1,
           duration: 1.5,
+          autoAlpha: 1,
         },
         "<",
       );
