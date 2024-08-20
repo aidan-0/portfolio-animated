@@ -32,6 +32,15 @@ export const projectData = [
     techStack: ["Next.js", "TypeScript", "Tailwind", "GSAP", "Vercel"]
   },
   {
+    projectName: "Stride for Education",
+    projectBtnText: "CSF PWA",
+    projectDescription: "Stride For Education is a progressive web app which enables participants to track their kilometers while engaging in a walking / running / wheeling challenge. Through the app, we aim to raise funds and awareness for Community Spirit Foundation. I created the app using Vue and Vuetify for the front-end interfaces and Python & Django for the back-end testing. The app is also PWA compliant and can be installed on any device.",
+    projectDescriptionButton: "View Project",
+    projectImage: "/projects/Stride-for-Education.webp",
+    projectLink: "https://stride-for-education.vercel.app/",
+    techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
+  },
+  {
     projectName: "Original Portfolio",
     projectBtnText: "Portfolio v1",
     projectDescription: "Nine months after first beginning my coding journey, through self-study after work, I created this portfolio to showcase my skills in HTML, CSS, JavaScript, and React. Completed in October 2023, this project highlights drive and passion for coding. It is highly responsive, scaling seamlessly across multiple screen sizes, not just the usual mobile, desktop, and tablet. Each part of the portfolio is meticulously designed to provide an optimal viewing experience on any device.",
@@ -46,17 +55,8 @@ export const projectData = [
     projectDescription: "This updated portfolio project is built with Next.js, TypeScript, Tailwind, and GSAP to create a highly dynamic and interactive user experience. Featuring smooth animations and a responsive design, this portfolio showcases my advanced skills in modern web development technologies. It is designed to provide an optimal viewing experience across all devices, highlighting my projects and expertise effectively.",
     projectDescriptionButton: "Return Home",
     projectImage: "/projects/new-portfolio.webp",
-    projectLink: "https://aidan-0.github.io/portfolio/",
+    projectLink: "https://aidan.digidesigns.com.au/",
     techStack: ["Next.js", "GSAP", "Tailwind", "TypeScript", "React"]
-  },
-  {
-    projectName: "Stride for Education",
-    projectBtnText: "CSF PWA",
-    projectDescription: "Stride For Education is a progressive web app which enables participants to track their kilometers while engaging in a walking / running / wheeling challenge. Through the app, we aim to raise funds and awareness for Community Spirit Foundation. I created the app using Vue and Vuetify for the front-end interfaces and Python & Django for the back-end testing. The app is also PWA compliant and can be installed on any device.",
-    projectDescriptionButton: "View Project",
-    projectImage: "/projects/Stride-for-Education.webp",
-    projectLink: "https://stride-for-education.vercel.app/",
-    techStack: ["Vue", "Vuetify", "Python", "Django", "Netlify"]
   },
   {
     projectName: "Movie Selector API",
