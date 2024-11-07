@@ -23,6 +23,15 @@ export const techLogosBottom = [
 
 export const projectData = [
   {
+    projectName: "Digi Designs",
+    projectBtnText: "View Site",
+    projectDescription: "Digi Designs is my full-service web and software development agency focused on creating custom, high-quality solutions for businesses. Our expertise spans from website design and development to software architecture, ensuring businesses stand out online and operate seamlessly. Key offerings include custom-built websites tailored to business goals, SEO solutions, robust security and maintenance, and scalable, integrated systems.",
+    projectDescriptionButton: "View Site",
+    projectImage: "/projects/digidesigns.webp",
+    projectLink: "https://digidesigns.com.au/",
+    techStack: ["Next.js", "TypeScript", "Tailwind", "GSAP", "Framer Motion", "Vercel", "Shadcn"]
+  },
+  {
     projectName: "Ecommerce Concept",
     projectBtnText: "View Project",
     projectDescription: "This project showcases a concept design for an e-commerce store or online brand, featuring beautiful animations created with Next.js, TypeScript, Tailwind, and GSAP. The interactive and smooth animations highlight the potential for a dynamic user experience. This project demonstrates my ability to integrate advanced animation techniques into modern web development frameworks.",
